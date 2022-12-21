@@ -1,0 +1,66 @@
+#site-title {
+    color: #833aad;
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+    user-select: none;
+    font-family: 'Rubik Vinyl', cursive;
+}
+
+#disclaimer {
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 20px;
+    display: block;
+    background-color: #833aad;
+    width: 100%;
+    padding: 0;
+}
+
+#disclaimer>p {
+    padding-left: 100px;
+    color: #220530;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+#invite-link {
+    background-color: #220530;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    left: 100px;
+    border-radius: 10px;
+    border-color: #000;
+    border-style: solid;
+    border-width: 10px;
+}
+
+#invite-link>img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 75px;
+    top: 40px;
+}
+
+#invite-link>a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #59cc4f;
+    border-radius: 5px;
+    padding: 7px;
+    position: relative;
+    top: 80px;
+    right: 17px;
+}
+
+#invite-link>a:hover {
+    color: rgb(112, 112, 112);
+    text-decoration: none;
+    background-color: #115c0b;
+    border-radius: 5px;
+    padding: 7px;
+    position: relative;
+    top: 80px;
+    right: 17px;
+}
