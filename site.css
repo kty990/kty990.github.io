@@ -2,6 +2,20 @@
 /*font-family: 'Rubik Vinyl', cursive;*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Rubik+Vinyl&family=Shadows+Into+Light&family=Trispace:wght@100&display=swap');
 /*font-family: 'Shadows Into Light', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Rubik+Vinyl&family=Shadows+Into+Light&family=Trispace:wght@100&family=Yanone+Kaffeesatz:wght@300;400;700&display=swap');
+/*font-family: 'Yanone Kaffeesatz', sans-serif;*/
+
+@keyframes ham_hover {
+    from {
+        color: #522a82;
+        background-color: #ba3df4;
+    }
+
+    to {
+        color: #000;
+        background-color: #fff;
+    }
+}
 
 body,
 html {
@@ -14,6 +28,27 @@ html {
     height: 100%;
     position: fixed;
     z-index: 0;
+}
+
+#hamburger {
+    position: fixed;
+    left: 10px;
+    top: 2%;
+    color: #522a82;
+    background-color: #ba3df4;
+    padding: 0px 15px;
+    border-radius: 25px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #24031b;
+}
+
+#hamburger:hover {
+    color: #000;
+    background-color: #fff;
+    animation-name: ham_hover;
+    animation-direction: normal;
+    animation-duration: 0.5s;
 }
 
 .hr-padding {
