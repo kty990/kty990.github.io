@@ -19,11 +19,11 @@
 
 @keyframes reveal {
     from {
-        left: -21%;
+        left: -310px;
     }
 
     to {
-        left: 0%;
+        left: 0px;
     }
 }
 
@@ -53,31 +53,35 @@ html {
     display: inline-block;
     padding: 5px 10px;
     left: 105%;
-    top: 2%;
+    bottom: 120px;
     width: auto;
     color: #522a82;
-    background-color: #ba3df4;
+    background-color: #ba3df47d;
     border-radius: 25px;
     border-width: 5px;
     border-style: solid;
     border-color: #24031b;
+    transition: background-color 0.25s;
 }
 
 #hamburger:hover {
     color: #000;
-    background-color: #fff;
+    background-color: #ffffffcc;
     cursor: pointer;
 }
 
 #nav-container {
     z-index: 2;
     position: fixed;
-    left: -21%;
+    left: -310px;
     height: 100%;
-    width: 20%;
+    width: 300px;
+    backdrop-filter: blur(2px);
     text-decoration: none;
-    background-color: #000;
+    background-color: #000000cc;
     border-right: #fff;
+    border-top: #00000000;
+    border-left: #00000000;
     border-style: solid;
     white-space: nowrap;
     transition: left 0.5s;
@@ -87,28 +91,44 @@ html {
     z-index: 2;
     position: fixed;
     height: 100%;
-    width: 20%;
+    width: 300px;
+    backdrop-filter: blur(2px);
     text-decoration: none;
-    background-color: #000;
+    background-color: #000000cc;
     border-right: #fff;
+    border-top: #00000000;
+    border-left: #00000000;
     border-style: solid;
     white-space: nowrap;
 
     animation-name: reveal;
     animation-duration: 0.5s;
     animation-direction: normal;
-    left: 0%;
+    left: 0px;
 }
 
 #navbar {
     overflow: hidden;
     position: relative;
-    top: 150px;
+    top: 50px;
     list-style: none;
     white-space: nowrap;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: bold;
     user-select: none;
+}
+
+#nav-icon {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    right: 50px;
+    top: 50px;
+
+    border-radius: 100px;
+    border-color: #fff;
+    border-style: solid;
+    /* border-width: 2px; */
 }
 
 #navbar>li {
@@ -118,12 +138,12 @@ html {
 }
 
 .nav-link {
-    color: #2b1644;
+    color: #5c2f93;
     text-decoration: none;
 }
 
 .nav-link:hover {
-    color: #612da1;
+    color: #8c42e6;
     cursor: pointer;
 }
 
@@ -141,6 +161,16 @@ html {
     padding-bottom: 27px;
     margin: 0;
     z-index: 1;
+}
+
+#nav-separator {
+    width: 75%;
+    height: 1px;
+    background-image: linear-gradient(0.25turn, #000, #fff, #000);
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 30px;
 }
 
 .hr-padding {
