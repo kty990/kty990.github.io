@@ -1,24 +1,18 @@
-#site-title {
-    text-align: center;
-    z-index: 0;
-    font-size: 2em;
-    user-select: none;
-    font-family: 'Rubik Vinyl', cursive;
-}
-
 #disclaimer {
     position: absolute;
     bottom: 0px;
     padding-bottom: 20px;
+    padding-top: 20px;
     display: block;
-    background-color: #833aad;
+    background-color: #000;
     width: 100%;
     padding: 0;
 }
 
 #disclaimer>p {
-    padding-left: 100px;
-    color: #220530;
+    /* padding-left: 100px; */
+    color: #fff;
+    text-align: center;
     font-family: 'Shadows Into Light', cursive;
     white-space: nowrap;
 }
@@ -34,6 +28,7 @@
     border-color: #ccc;
     border-style: solid;
     border-width: 2px;
+    user-select: none;
 }
 
 #invite-link>img {
@@ -61,20 +56,9 @@
     background-color: #115c0b;
 }
 
-#scroll-page {
-    position: absolute;
-    top: 100vh;
-    background-color: #220530;
-    display: block;
-    width: 100%;
-    padding: 0;
-    padding-bottom: 27px;
-    margin: 0;
-    z-index: 1;
-}
-
 #command-list {
     padding-top: 15px;
+    margin-bottom: 100px;
 }
 
 #cmd-list-title {
