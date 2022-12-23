@@ -74,8 +74,46 @@
     background-color: #220530;
     display: block;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 0;
+    padding-bottom: 150px;
     margin: 0;
     z-index: 1;
+}
+
+#command-list {
+    padding-top: 15px;
+}
+
+#cmd-list-title {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 40pt;
+}
+
+.command {
+    display: block;
+    width: 100%;
+    background-color: #bc8cd4;
+    user-select: none;
+    margin-bottom: 30px;
+}
+
+.command>h4 {
+    width: 98%;
+    padding: 0;
+    margin: 0;
+    padding-left: 2%;
+    background-color: #a33cd6;
+}
+
+.command>p {
+    width: 96%;
+    padding: 0;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 4%;
 }
