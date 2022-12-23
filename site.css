@@ -15,3 +15,7 @@ html {
     position: fixed;
     z-index: 0;
 }
+
+.hr-padding {
+    margin-bottom: 30px;
+}
