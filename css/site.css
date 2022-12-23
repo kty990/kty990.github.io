@@ -17,6 +17,16 @@
     }
 }
 
+@keyframes reveal {
+    from {
+        left: -21%;
+    }
+
+    to {
+        left: 0%;
+    }
+}
+
 body,
 html {
     margin: 0;
@@ -30,13 +40,23 @@ html {
     z-index: 0;
 }
 
+#site-title {
+    text-align: center;
+    font-size: 1em;
+    user-select: none;
+    font-family: 'Rubik Vinyl', cursive;
+}
+
+/** Inactive */
 #hamburger {
-    position: fixed;
-    left: 10px;
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    left: 105%;
     top: 2%;
+    width: auto;
     color: #522a82;
     background-color: #ba3df4;
-    padding: 0px 15px;
     border-radius: 25px;
     border-width: 5px;
     border-style: solid;
@@ -46,9 +66,81 @@ html {
 #hamburger:hover {
     color: #000;
     background-color: #fff;
-    animation-name: ham_hover;
-    animation-direction: normal;
+    cursor: pointer;
+}
+
+#nav-container {
+    z-index: 2;
+    position: fixed;
+    left: -21%;
+    height: 100%;
+    width: 20%;
+    text-decoration: none;
+    background-color: #000;
+    border-right: #fff;
+    border-style: solid;
+    white-space: nowrap;
+    transition: left 0.5s;
+}
+
+#nav-container_active {
+    z-index: 2;
+    position: fixed;
+    height: 100%;
+    width: 20%;
+    text-decoration: none;
+    background-color: #000;
+    border-right: #fff;
+    border-style: solid;
+    white-space: nowrap;
+
+    animation-name: reveal;
     animation-duration: 0.5s;
+    animation-direction: normal;
+    left: 0%;
+}
+
+#navbar {
+    overflow: hidden;
+    position: relative;
+    top: 150px;
+    list-style: none;
+    white-space: nowrap;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: bold;
+    user-select: none;
+}
+
+#navbar>li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 3em;
+}
+
+.nav-link {
+    color: #2b1644;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #612da1;
+    cursor: pointer;
+}
+
+#nav-active {
+    color: #9947fd;
+}
+
+#scroll-page {
+    position: absolute;
+    top: 100%;
+    background-color: #220530;
+    display: block;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 27px;
+    margin: 0;
+    z-index: 1;
 }
 
 .hr-padding {
