@@ -23,6 +23,8 @@ const commands = {
     "//skip": "Skips the current sound track if one is playing/paused."
 }
 
+let last_cmd = "//skip";
+
 let template = document.getElementsByTagName("template")[0];
 let cmdList = document.getElementById("command-list");
 for (const [cmd, desc] of Object.entries(commands)) {
@@ -33,6 +35,9 @@ for (const [cmd, desc] of Object.entries(commands)) {
         } else {
             child.textContent = desc;
         }
+    }
+    if (cmd == last_cmd) {
+        c.children[1].remove();
     }
     cmdList.appendChild(c);
 }
