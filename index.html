@@ -15,29 +15,31 @@
                 <h1 id="site-title">Homies<br>Discord<br>Bot</h1>
             </div>
 
-            <img id="nav-icon" src="./res/images/icon/icon1.png" alt="icon">
+            <div id="nav-flexbox">
+                <img id="nav-icon" src="./res/images/icon/icon1.png" alt="icon">
 
-            <div id="nav-separator">
-                <p style="display:none">If you are reading this... why?</p>
-            </div>>
+                <div id="nav-separator">
+                    <p style="display:none">If you are reading this... why?</p>
+                </div>>
 
-            <ul id="navbar">
-                <li>
-                    <a class="nav-link" id="nav-active" href="#">
-                        Commands
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="./about.html">
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link">
-                        FAQ
-                    </a>
-                </li>
-            </ul>
+                <ul id="navbar">
+                    <li>
+                        <a class="nav-link" id="nav-active" href="#">
+                            Commands
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./about.html">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link">
+                            FAQ
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div id="invite-link">
@@ -48,15 +50,22 @@
         </a>
     </div>
     <div id="scroll-page">
-        <div id="command-list">
-            <h1 id="cmd-list-title">Commands</h1>
-            <hr class="hr-padding">
-            <template>
-                <div class="command">
-                    <h4>CommandName</h4>
-                    <p>CommandDescription</p>
+        <div class="center-horizontal">
+            <div id="command-list" class="center-horizontal">
+                <h1 id="cmd-list-title">Commands</h1>
+                <div class="separator" style="width:75%;">
+                    <p style="display:none">If you are reading this... why?</p>
                 </div>
-            </template>
+                <template>
+                    <div class="command">
+                        <h4>CommandName</h4>
+                        <p>CommandDescription</p>
+                    </div>
+                    <div class="skinny-separator" style="width:100%;">
+                        <p style="display:none">If you are reading this... why?</p>
+                    </div>
+                </template>
+            </div>
         </div>
         <span id="disclaimer">
             <p>
