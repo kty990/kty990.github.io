@@ -37,6 +37,8 @@ html {
     width: 100%;
     height: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 0;
 }
 
@@ -118,12 +120,18 @@ html {
     overflow: hidden;
     position: relative;
     top: 50px;
-    right: 20%;
+    right: 5%;
     list-style: none;
     white-space: nowrap;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: bold;
     user-select: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 #nav-icon {
@@ -166,7 +174,7 @@ html {
     padding: 0;
     padding-bottom: 27px;
     margin: 0;
-    z-index: 1;
+    z-index: 5;
 }
 
 #nav-separator {
