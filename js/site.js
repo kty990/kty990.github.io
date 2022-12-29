@@ -13,6 +13,13 @@ function toggle() {
     }
 }
 
+function setActive() {
+    let url = window.location.href;
+    console.log(`URL: ${url}`);
+}
+
 hamburger.addEventListener("mousedown", () => {
     toggle();
 });
+
+setActive();
