@@ -12,7 +12,7 @@
 
 #p1 {
     position: fixed;
-    top: 50%;
+    top: 50vh;
     left: 5%;
     width: 25%;
     color: #fff;
@@ -20,9 +20,9 @@
     padding: 10px;
     margin: 0;
     font-size: 15pt;
-    background-color: #5f2292;
+    background-color: #3d0a66cc;
     border-radius: 10px;
-    border-color: #fff;
+    border-color: #919191cc;
     border-width: 2px;
     border-style: solid;
     font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -31,7 +31,7 @@
 
 #p2 {
     position: fixed;
-    top: 50%;
+    top: 50vh;
     right: 5%;
     width: 25%;
     color: #fff;
@@ -39,13 +39,42 @@
     padding: 10px;
     margin: 0;
     font-size: 15pt;
-    background-color: #5f2292;
+    background-color: #3d0a66cc;
     border-radius: 10px;
-    border-color: #fff;
+    border-color: #919191cc;
     border-width: 2px;
     border-style: solid;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: 300;
+}
+
+#placeholder_img1 {
+    position: fixed;
+    top: 20vh;
+    width: 25vh;
+    height: 25vh;
+    left: 10%;
+    z-index: 1;
+    margin: 0;
+}
+
+#placeholder_img2 {
+    position: fixed;
+    top: 20vh;
+    width: 25vh;
+    height: 25vh;
+    right: 10%;
+    z-index: 1;
+    margin: 0;
+}
+
+#placeholder_img3 {
+    position: fixed;
+    top: 20vh;
+    width: 40vh;
+    height: 40vh;
+    z-index: 1;
+    margin: 0;
 }
 
 #bot-status {
