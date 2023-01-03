@@ -87,7 +87,7 @@ html {
 }
 
 #nav-container {
-    z-index: 2;
+    z-index: 100;
     position: fixed;
     left: -21vh;
     height: 100%;
@@ -105,7 +105,7 @@ html {
 }
 
 #nav-container_active {
-    z-index: 2;
+    z-index: 100;
     position: fixed;
     height: 100%;
     width: 20vh;
