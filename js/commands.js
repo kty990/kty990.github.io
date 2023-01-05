@@ -41,3 +41,21 @@ for (const [cmd, desc] of Object.entries(commands)) {
     }
     cmdList.appendChild(c);
 }
+
+
+
+let scrollMsg = document.getElementById("scroll-dir");
+if (scrollMsg) {
+    document.onscroll = () => {
+        let scrollTop = document.body.scrollTop;
+        var scrollBottom = document.documentElement.scrollHeight - window.innerHeight - scrollTop;
+        if (window.scrollY + 10 >= scrollBottom) {
+            scrollMsg.style.display = "none";
+        } else {
+            scrollMsg.style.display = "block";
+        }
+        console.log(`sb: ${scrollBottom}\tsy: ${window.scrollY}`);
+    }
+} else {
+    throw new Error("Unable to control scroll message.. scroll message not found.");
+}
