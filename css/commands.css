@@ -1,10 +1,45 @@
+@keyframes down-arrow-kf {
+    from {
+        bottom: 7vh;
+    }
+    to {
+        bottom: 11vh;
+    }
+}
+
+#title {
+    position: fixed;
+    top: -5vh;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font-size: 10vh;
+    color: #6f2dad;
+    text-shadow: 5px 5px #330747;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: bold;
+}
+
+#site-desc {
+    position: fixed;
+    top: 15vh;
+    width: 60vw;
+    left: 20vw;
+    text-align: center;
+    z-index: 1;
+    font-size: 1.25vh;
+    color: #ccc;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: bold;
+}
+
 #invite-link {
     background-color: #220530;
-    width: 200px;
-    height: 200px;
+    width: 20vh;
+    height: 20vh;
     position: fixed;
-    right: 100px;
-    top: 200px;
+    right: 5vw;
+    top: 20vh;
     border-radius: 10px;
     border-color: #ccc;
     border-style: solid;
@@ -13,11 +48,11 @@
 }
 
 #invite-link>img {
-    width: 120px;
-    height: 120px;
+    width: 14vh;
+    height: 14vh;
     position: relative;
-    left: 40px;
-    top: 20px;
+    left: 3vh;
+    top: 1vh;
 }
 
 #invite-link>a {
@@ -27,14 +62,53 @@
     border-radius: 5px;
     padding: 7px;
     position: relative;
-    top: 35px;
-    left: 60px;
+    top: 2vh;
+    left: 5.5vh;
     white-space: nowrap;
 }
 
 #invite-link>a:hover {
     color: rgb(112, 112, 112);
     background-color: #115c0b;
+}
+
+#down-arrow {
+    width: 10vh; /* Actually the height */
+    height: 7vh; /* Actually the width */
+    rotate: 90deg;
+
+    position: fixed;
+    z-index: 6;
+    bottom: 7vh;
+    right: 3vw;
+
+    /* Animation: */
+    animation-name: down-arrow-kf;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#scroll-dir {
+    background-color: #f487fecc;
+    width: 20vh;
+    height: 15vh;
+    position: fixed;
+    z-index: 6;
+    bottom: 5vh;
+    right: 3vw;
+
+    border-radius: 30px;
+}
+
+#scroll-dir>p {
+    position: relative;
+    left: 2vh;
+    top: 0vh;
+
+    font-size: 4vh;
+    color: #fff;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 #command-list {
