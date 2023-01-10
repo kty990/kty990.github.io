@@ -127,24 +127,6 @@ html {
     user-select: none;
 }
 
-#navbar {
-    overflow: hidden;
-    position: relative;
-    top: 2vh;
-    right: 5%;
-    list-style: none;
-    white-space: nowrap;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-weight: bold;
-    user-select: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-}
-
 #nav-icon {
     width: 15vh;
     height: 15vh;
@@ -156,15 +138,17 @@ html {
     /* border-width: 2px; */
 }
 
-#navbar>li {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    font-size: 4vh;
-}
-
 .nav-link {
     color: #5c2f93;
     text-decoration: none;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    font-size: 4vh;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.nav-link-first {
+    margin-top: 5vh;
 }
 
 .nav-link:hover {
@@ -243,4 +227,69 @@ html {
     height: 1px;
     background-image: linear-gradient(0.25turn, transparent, transparent, #000, transparent, transparent);
     margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1080px) {
+    #nav-icon {
+        display: none;
+    }
+
+    #nav-flexbox {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        margin-top: -7.2vh;
+    }
+
+    #nav-separator {
+        display: none;
+    }
+
+    #nav-container {
+        position: fixed;
+        top: 95vh;
+        left: 0;
+        width: 100%;
+        height: 5vh;
+        z-index: 6;
+        display: flex;
+        flex-direction: column;
+        background-color: #47074dd8;
+        backdrop-filter: blur(6px);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #nav-active { /* Active page link */
+        color: #430a53;
+        background-color: #3e1351;
+        text-shadow: 0px 0px 3px #ff9ef2;
+    }
+    
+    .nav-link-first {
+        margin: 0;
+    }
+
+    .nav-link {
+        padding-left: 5vw;
+        padding-right: 5vw;
+        text-decoration: none;
+        color: #cccccc;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 3vh;
+        background-color: #5f1280cc;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        border-color: #000;
+        border-style: solid;
+        border-width: 1px;
+    }
+    
+    .nav-link:hover {
+        color: #000000;
+        background-color: #f487fecc;
+    }
 }
