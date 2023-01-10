@@ -1,19 +1,19 @@
 @keyframes down-arrow-kf {
     from {
-        bottom: 7vh;
+        bottom: calc(var(--vh, 1vh) * 7);;
     }
     to {
-        bottom: 11vh;
+        bottom: calc(var(--vh, 1vh) * 11);;
     }
 }
 
 #title {
     position: fixed;
-    top: -5vh;
+    top: calc(var(--vh, 1vh) * -5);;
     width: 100%;
     text-align: center;
     z-index: 1;
-    font-size: 10vh;
+    font-size: calc(var(--vh, 1vh) * 10);;
     color: #6f2dad;
     text-shadow: 5px 5px #330747;
     font-family: 'Shadows Into Light', cursive;
@@ -22,12 +22,12 @@
 
 #site-desc {
     position: fixed;
-    top: 15vh;
-    width: 60vw;
-    left: 20vw;
+    top: calc(var(--vh, 1vh) * 15);;
+    width: calc(var(--vw, 1vw) * 60);
+    left: calc(var(--vw, 1vw) * 20);
     text-align: center;
     z-index: 1;
-    font-size: 1.25vh;
+    font-size: calc(var(--vh, 1vh) * 1.25);;
     color: #ccc;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: bold;
@@ -35,11 +35,11 @@
 
 #invite-link {
     background-color: #220530;
-    width: 20vh;
-    height: 20vh;
+    width: calc(var(--vh, 1vh) * 20);;
+    height: calc(var(--vh, 1vh) * 20);;
     position: fixed;
-    right: 5vw;
-    top: 20vh;
+    right: calc(var(--vw, 1vw) * 5);
+    top: calc(var(--vh, 1vh) * 20);;
     border-radius: 10px;
     border-color: #ccc;
     border-style: solid;
@@ -48,11 +48,11 @@
 }
 
 #invite-link>img {
-    width: 14vh;
-    height: 14vh;
+    width: calc(var(--vh, 1vh) * 14);;
+    height: calc(var(--vh, 1vh) * 14);;
     position: relative;
-    left: 3vh;
-    top: 1vh;
+    left: calc(var(--vh, 1vh) * 3);;
+    top: calc(var(--vh, 1vh) * 1);;
 }
 
 #invite-link>a {
@@ -62,8 +62,8 @@
     border-radius: 5px;
     padding: 7px;
     position: relative;
-    top: 2vh;
-    left: 5.5vh;
+    top: calc(var(--vh, 1vh) * 2);;
+    left: calc(var(--vh, 1vh) * 5.5);;
     white-space: nowrap;
 }
 
@@ -73,14 +73,14 @@
 }
 
 #down-arrow {
-    width: 10vh; /* Actually the height */
-    height: 7vh; /* Actually the width */
+    width: calc(var(--vh, 1vh) * 10);; /* Actually the height */
+    height: calc(var(--vh, 1vh) * 7);; /* Actually the width */
     rotate: 90deg;
 
     position: fixed;
     z-index: 6;
-    bottom: 7vh;
-    right: 3vw;
+    bottom: calc(var(--vh, 1vh) * 7);;
+    right: calc(var(--vw, 1vw) * 3);
 
     /* Animation: */
     animation-name: down-arrow-kf;
@@ -91,22 +91,22 @@
 
 #scroll-dir {
     background-color: #f487fecc;
-    width: 20vh;
-    height: 15vh;
+    width: calc(var(--vh, 1vh) * 20);;
+    height: calc(var(--vh, 1vh) * 15);;
     position: fixed;
     z-index: 6;
-    bottom: 5vh;
-    right: 3vw;
+    bottom: calc(var(--vh, 1vh) * 5);;
+    right: calc(var(--vw, 1vw) * 3);
 
     border-radius: 30px;
 }
 
 #scroll-dir>p {
     position: relative;
-    left: 2vh;
-    top: 0vh;
+    left: calc(var(--vh, 1vh) * 2);;
+    top: calc(var(--vh, 1vh) * 0);;
 
-    font-size: 4vh;
+    font-size: calc(var(--vh, 1vh) * 4);;
     color: #fff;
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
@@ -163,4 +163,54 @@
     padding-bottom: 10px;
     padding-left: 4%;
     font-size: 15pt;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1080px) {
+    #invite-link {
+        background-color: #220530;
+        width: calc(var(--vh, 1vh) * 7);;
+        height: calc(var(--vh, 1vh) * 9);;
+        position: fixed;
+        right: calc(var(--vw, 1vw) * 5);
+        top: calc(var(--vh, 1vh) * 20);;
+        border-radius: 10px;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 2px;
+        user-select: none;
+    }
+    
+    #invite-link>img {
+        width: calc(var(--vh, 1vh) * 5);;
+        height: calc(var(--vh, 1vh) * 5);;
+        position: relative;
+        left: calc(var(--vh, 1vh) * 1);;
+        top: calc(var(--vh, 1vh) * 1);;
+    }
+    
+    #invite-link>a {
+        color: #fff;
+        text-decoration: none;
+        background-color: #59cc4f;
+        border-radius: 5px;
+        padding: calc(var(--vh, 1vh) * 0.5);
+        position: relative;
+        top: calc(var(--vh, 1vh) * 2);
+        left: calc(var(--vw, 1vw) * 2);
+        font-size: calc(var(--vh, 1vh) * 1);
+        white-space: nowrap;
+        z-index: 6;
+    }
+    
+    #invite-link>a:hover {
+        color: rgb(112, 112, 112);
+        background-color: #115c0b;
+    }
 }

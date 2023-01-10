@@ -1,6 +1,6 @@
 .dropdown-flex {
     display: flex;
-    height: 70vh;
+    height: calc(var(--vh, 1vh) * 70);
     width: 100%;
     position: relative;
     flex-direction: column;
@@ -15,13 +15,13 @@
     user-select: none;
     padding: 0;
     margin: 0;
-    margin-top: 5vh;
+    margin-top: calc(var(--vh, 1vh) * 5);
 }
 
 .title {
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 2vh;
+    font-size: calc(var(--vh, 1vh) * 2);
     width: 50%;
     position: relative;
     left: 25%;
@@ -29,9 +29,9 @@
     color: #fff;
     padding: 0;
     margin: 0;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    margin-top: 2vh;
+    padding-top: calc(var(--vh, 1vh) * 1);
+    padding-bottom: calc(var(--vh, 1vh) * 1);
+    margin-top: calc(var(--vh, 1vh) * 2);
 }
 
 .title:hover {
@@ -49,16 +49,16 @@
     display: none;
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 1vh;
-    width: 50vw;
+    font-size: calc(var(--vh, 1vh) * 1);
+    width: calc(var(--vw, 1vw) * 50);
     /* position: fixed; */
     padding: 0;
     margin: 0;
-    margin-left: 25vw;
+    margin-left: calc(var(--vw, 1vw) * 25);
     background-color: #612e79;
     color: #fff;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+    padding-top: calc(var(--vh, 1vh) * 1);
+    padding-bottom: calc(var(--vh, 1vh) * 1);
 }
 
 #faq-title {
@@ -68,8 +68,8 @@
     width: 100%;
     text-align: center;
     font-family: 'Shadows Into Light', cursive;
-    font-size: 10vh;
-    top: -5vh;
+    font-size: calc(var(--vh, 1vh) * 10);
+    top: calc(var(--vh, 1vh) * -5);
     color: #6f2dad;
     text-shadow: 5px 5px #330747;
 }
