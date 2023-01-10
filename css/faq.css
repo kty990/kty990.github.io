@@ -1,7 +1,7 @@
 .dropdown-flex {
     display: flex;
     height: 70vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     flex-direction: column;
 }
@@ -65,7 +65,7 @@
     z-index: 5;
     display: block;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     text-align: center;
     font-family: 'Shadows Into Light', cursive;
     font-size: 10vh;
