@@ -50,11 +50,11 @@
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: calc(var(--vh, 1vh) * 1);
-    width: 50vw;
+    width: calc(var(--vw, 1vw) * 50);
     /* position: fixed; */
     padding: 0;
     margin: 0;
-    margin-left: 25vw;
+    margin-left: calc(var(--vw, 1vw) * 25);
     background-color: #612e79;
     color: #fff;
     padding-top: calc(var(--vh, 1vh) * 1);
