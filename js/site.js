@@ -2,7 +2,7 @@ let v = 1;
 console.log(`Version: ${v}`);
 
 function toggle() {
-    let navContainer = document.getElementById("nav-container");
+    let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     if (navContainer.id == "nav-container") {
         navContainer.id = "nav-container_active";
     } else {
