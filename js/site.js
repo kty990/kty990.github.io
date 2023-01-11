@@ -1,10 +1,6 @@
 let hamburger = document.getElementById("hamburger");
 const navContainer = document.getElementById("nav-container");
 
-let commandsNav = document.getElementById("cmds");
-let aboutNav = document.getElementById("about");
-let faqNav = document.getElementById("faq");
-
 function toggle() {
     if (navContainer.id == "nav-container") {
         navContainer.id = "nav-container_active";
@@ -13,9 +9,21 @@ function toggle() {
     }
 }
 
+async function main() {
+    let res = await fetch("/../navbar.html");
+    let txt = await res.text();
+    let oldelem = document.getElementById("replace-with-navbar");
+    let newelem = document.createElement("div");
+    newelem.innerHTML = txt;
+    oldelem.parentNode.replaceChild(newelem,oldelem);
+}
+
 async function setActive() {
     await main();
     let url = window.location.href;
+    let commandsNav = document.getElementById("cmds");
+    let aboutNav = document.getElementById("about");
+    let faqNav = document.getElementById("faq");
     if (url.indexOf("commands") != -1) {
         commandsNav.id = "nav-active";
     } else if (url.indexOf("about") != -1) {
@@ -23,15 +31,6 @@ async function setActive() {
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
     }
-}
-
-async function main() {
-    let res = await fetch("/../navbar.html");
-    let txt = res.text();
-    let oldelem = document.querySelector("script#replace-with-navbar");
-    let newelem = document.createElement("div");
-    newelem.innerHTML = txt;
-    oldelem.parentNode.replaceChild(newelem,oldelem);
 }
 
 window.addEventListener("resize", (event) => {
@@ -52,7 +51,7 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vw', `${vw}px`);
 });
 
-setActive();
+setActive().catch(console.log);
 
 
 if (!hamburger) {
