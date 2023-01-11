@@ -37,6 +37,7 @@ async function setActive() {
     }
     
     hamburger.addEventListener("mousedown", () => {
+        console.log("Clicked!");
         toggle();
     });
 }
