@@ -13,7 +13,8 @@ function toggle() {
     }
 }
 
-function setActive() {
+async function setActive() {
+    await main();
     let url = window.location.href;
     if (url.indexOf("commands") != -1) {
         commandsNav.id = "nav-active";
@@ -22,6 +23,15 @@ function setActive() {
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
     }
+}
+
+async function main() {
+    let res = await fetch("/../navbar.html");
+    let txt = res.text();
+    let oldelem = document.querySelector("script#replace-with-navbar");
+    let newelem = document.createElement("div");
+    newelem.innerHTML = txt;
+    oldelem.parentNode.replaceChild(newelem,oldelem);
 }
 
 window.addEventListener("resize", (event) => {
@@ -43,6 +53,7 @@ window.addEventListener('resize', () => {
 });
 
 setActive();
+
 
 if (!hamburger) {
     throw new Error("Unable to adjust for hamburger... must have been eaten!")
