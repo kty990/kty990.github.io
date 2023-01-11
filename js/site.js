@@ -1,4 +1,4 @@
-let v = 1;
+let v = 3;
 console.log(`Version: ${v}`);
 
 function toggle() {
@@ -45,6 +45,7 @@ async function setActive() {
 }
 
 window.addEventListener("resize", (event) => {
+    let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     if (window.innerWidth <= 1080 && navContainer.id == "nav-container_active") {
         navContainer.id = "nav-container";
     }
