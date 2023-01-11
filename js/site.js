@@ -1,3 +1,6 @@
+let v = 1;
+console.log(`Version: ${v}`);
+
 function toggle() {
     let navContainer = document.getElementById("nav-container");
     if (navContainer.id == "nav-container") {
