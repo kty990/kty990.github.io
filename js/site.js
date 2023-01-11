@@ -11,7 +11,7 @@ function toggle() {
 
 async function main() {
     let res = await fetch("/../navbar.html");
-    let txt = res.text();
+    let txt = await res.text();
     let oldelem = document.querySelector("script#replace-with-navbar");
     let newelem = document.createElement("div");
     newelem.innerHTML = txt;
