@@ -31,6 +31,14 @@ async function setActive() {
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
     }
+
+    if (!hamburger) {
+        throw new Error("Unable to adjust for hamburger... must have been eaten!")
+    }
+    
+    hamburger.addEventListener("mousedown", () => {
+        toggle();
+    });
 }
 
 window.addEventListener("resize", (event) => {
@@ -52,12 +60,3 @@ window.addEventListener('resize', () => {
 });
 
 setActive().catch(console.log);
-
-
-if (!hamburger) {
-    throw new Error("Unable to adjust for hamburger... must have been eaten!")
-}
-
-hamburger.addEventListener("mousedown", () => {
-    toggle();
-});
