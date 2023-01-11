@@ -1,7 +1,5 @@
-let hamburger = document.getElementById("hamburger");
-const navContainer = document.getElementById("nav-container");
-
 function toggle() {
+    let navContainer = document.getElementById("nav-container");
     if (navContainer.id == "nav-container") {
         navContainer.id = "nav-container_active";
     } else {
@@ -24,6 +22,7 @@ async function setActive() {
     let commandsNav = document.getElementById("cmds");
     let aboutNav = document.getElementById("about");
     let faqNav = document.getElementById("faq");
+    let hamburger = document.getElementById("hamburger");
     if (url.indexOf("commands") != -1) {
         commandsNav.id = "nav-active";
     } else if (url.indexOf("about") != -1) {
