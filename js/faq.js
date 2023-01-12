@@ -1,4 +1,21 @@
-let dropdowns = document.getElementsByClassName("dropdown");
+let dropdown_flex = document.getElementById("dropdown-flex");
+let q_a = {
+    "This is the question":"This is the answer"
+}
+
+let template = document.getElementsByTagName("template")[0];
+for (const [question, answer] of Object.entries(q_a)) {
+    let t = template.content.cloneNode(true);
+    let title = t.querySelector("div.title").querySelector("p");
+    let desc = t.querySelector("div.description").querySelector("p");
+    title.textContent = question;
+    desc.textContent = answer;
+    let newDiv = document.createElement("div");
+    newDiv.classList.add("dropdown");
+    newDiv.appendChild(title);
+    newDiv.appendChild(desc);
+    dropdown_flex.appendChild(newDiv);
+}
 
 let active_dropdowns = 0;
 
