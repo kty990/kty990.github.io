@@ -1,4 +1,4 @@
-let dropdown_flex = document.getElementById("dropdown-flex");
+let dropdown_flex = document.getElementsByClassName("dropdown-flex")[0];
 let q_a = {
     "This is the question":"This is the answer"
 }
