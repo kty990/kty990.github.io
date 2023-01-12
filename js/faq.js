@@ -3,6 +3,8 @@ let q_a = {
     "This is the question":"This is the answer"
 }
 
+let faqs = [];
+
 let template = document.getElementsByTagName("template")[0];
 for (const [question, answer] of Object.entries(q_a)) {
     let t = template.content.cloneNode(true);
@@ -15,6 +17,7 @@ for (const [question, answer] of Object.entries(q_a)) {
     newDiv.appendChild(title);
     newDiv.appendChild(desc);
     dropdown_flex.appendChild(newDiv);
+    faqs.push(newDiv);
 }
 
 let active_dropdowns = 0;
@@ -37,6 +40,6 @@ function activate(element) {
     });
 }
 
-for (let x = 0; x < dropdowns.length; x++) {
-    activate(dropdowns[x]);
+for (let x = 0; x < faqs.length; x++) {
+    activate(faqs[x]);
 }
