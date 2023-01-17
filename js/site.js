@@ -1,5 +1,6 @@
 /* Debugging version control */
 let v = 5;
+const ERROR_LENGTH = 3000; // 3 seconds
 console.log(`Version: ${v}`);
 
 /* Functions */
@@ -110,3 +111,26 @@ window.addEventListener('resize', () => {
 });
 
 setActive().catch(console.log);
+
+
+addEventListener('error', (event) => {
+    let error = event.message;
+    let errObj = document.createElement("div");
+    errObj.style.position = "fixed";
+    errObj.style.right = "calc(var(--vw, 1vw) * 5)";
+    errObj.style.color = "#fff";
+    errObj.style.backgroundColor = "#cccccc7d";
+    errObj.style.borderRadius = "50px";
+    errObj.style.borderColor = "#000000cc";
+    errObj.style.borderStyle = "solid";
+    errObj.style.zIndex = "99"; // should be on top of everything
+    errObj.style.backdropFilter = "blur(3)";
+    errObj.style.textAlign = "center";
+    errObj.style.fontSize = "calc(var(--vh, 1vh) * 1.5)";
+    errObj.style.padding = "5px";
+    errObj.textContent = error;
+    document.appendChild(errObj);
+    setTimeout(() => {
+        errObj.remove();
+    },ERROR_LENGTH);
+});
