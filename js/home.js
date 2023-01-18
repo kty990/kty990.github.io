@@ -42,8 +42,8 @@ for (let project of projects) {
     slide.style.left = "12.5%";
     slide.style.display = "flex";
     slide.style.flexDirection = "row";
-    // slide.style.marginTop = "3%";
-    slide.style.marginBottom = "5%";
+    slide.style.marginTop = "-5%";
+    slide.style.marginBottom = "10%";
     for (const [key, value] of Object.entries(project.properties)) {
         let lang = document.createElement("div");
         lang.style.backgroundColor = GetColorFromLang(key);

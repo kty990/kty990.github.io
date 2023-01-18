@@ -52,6 +52,7 @@
     position: relative;
     height: calc(var(--vh, 1vh) * 50);
     overflow-y:scroll;
+    overflow-x: hidden;
     top: calc(var(--vh, 1vh) * 5);
 }
 
@@ -75,4 +76,9 @@
     height: auto;
     font-size: 20px;
     text-align: center;
+    background-color: #4e2859;
+    margin-bottom: 2px;
+    border-color: #cccccc;
+    border-width: 1px;
+    border-style: solid;
 }
