@@ -1,0 +1,62 @@
+#homepage-title {
+    position: fixed;
+    z-index:7;
+    color:#000;
+    width:100vw;
+    text-align:center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#homepage-subtitle {
+    position:fixed;
+    z-index:7;
+    color:#000;
+    top:10vh;
+    width:50vw;
+    font-size:2vh;
+    text-align:center;
+    left:25vw;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#project-list {
+    position: fixed;
+    z-index:7;
+    width: calc(var(--vw, 1vw) * 17);
+    left: calc(var(--vw, 1vw) * 5);
+    height: calc(var(--vh, 1vh) * 70);
+    top: calc(var(--vh, 1vh) * 20);
+    background-color: #31103b;
+    border-color: #b8b8b8;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+#project-list>p {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    font-size: calc(var(--vh, 1vh) * 4);
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 0; 
+    padding: 0;
+    top: calc(var(--vwh, 1vh) * 2);
+}
+
+#project-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.project {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    text-align: center;
+}

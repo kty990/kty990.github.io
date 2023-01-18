@@ -102,22 +102,23 @@ let vh = window.innerHeight * 0.01;
 let vw = window.innerWidth * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 document.documentElement.style.setProperty('--vw', `${vw}px`);
+document.documentElement.style.setProperty('--vwh',`${Math.min(vh,vw)}px`);
 
 window.addEventListener('resize', () => {
   let vh = window.innerHeight * 0.01;
   let vw = window.innerWidth * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
   document.documentElement.style.setProperty('--vw', `${vw}px`);
+  document.documentElement.style.setProperty('--vwh',`${Math.min(vh,vw)}px`);
 });
 
 setActive().catch(console.log);
 
-
-addEventListener('error', (event) => {
-    let error = event.message;
+function OnError(message) {
     let errObj = document.createElement("div");
     errObj.style.position = "fixed";
     errObj.style.right = "calc(var(--vw, 1vw) * 5)";
+    errObj.style.bottom = "0px";
     errObj.style.color = "#fff";
     errObj.style.backgroundColor = "#cccccc7d";
     errObj.style.borderRadius = "50px";
@@ -126,11 +127,19 @@ addEventListener('error', (event) => {
     errObj.style.zIndex = "99"; // should be on top of everything
     errObj.style.backdropFilter = "blur(3)";
     errObj.style.textAlign = "center";
-    errObj.style.fontSize = "calc(var(--vh, 1vh) * 1.5)";
+    errObj.style.fontSize = "calc(var(--vh, 1vh) * 3)";
     errObj.style.padding = "5px";
-    errObj.textContent = error;
-    document.appendChild(errObj);
+    errObj.textContent = message;
+    document.body.appendChild(errObj);
     setTimeout(() => {
         errObj.remove();
     },ERROR_LENGTH);
-});
+}
+
+window.onerror = function(message, source, lineno, colno, error) { 
+    let msg = message;
+    if (message == "Script error.") {
+        msg = "An unknown script error has occured.";
+    }
+    OnError(msg);
+}

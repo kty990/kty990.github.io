@@ -3,8 +3,8 @@
 
 <head>
     <title>Home</title>
-    <!-- <link rel="stylesheet" href="./css/about.css"> -->
     <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link rel="icon" type="image/x-icon" href="../res/images/favicon.ico"/>
 </head>
 
@@ -13,17 +13,27 @@
 
     <script id="replace-with-navbar"></script>
 
-    <h1 style="position: fixed;z-index:7;color:#fff;width:100vw;text-align:center;">[TITLE OF WEBPAGE]</h1>
-    <p style="position:fixed;z-index:7;color:#fff;top:10vh;width:50vw;font-size:2vh;text-align:center;left:25vw;">
+    <h1 id="homepage-title">[TITLE OF WEBPAGE]</h1>
+    
+    <p id="homepage-subtitle"> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
         dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
 
-    <div id="scroll-page">
-        
+    <div id="project-list">
+        <p>Project List</p>
+        <div class="separator" style="margin:0;top:calc(var(--vh, 1vh) * 3.5);width:75%;left:12.5%;">
+            <p style="display:none">If you are reading this... why?</p>
+        </div>
+        <div id="project-flex">
+            <div class="project">
+                Lorem ipsum dolor sit amet
+            </div>
+        </div>
     </div>
+
     <script type="text/javascript" src="../js/site.js"></script>
 </body>
 
