@@ -30,6 +30,7 @@
     border-color: #b8b8b8;
     border-style: solid;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 #project-list>p {
@@ -47,13 +48,28 @@
 #project-flex {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
+    z-index: 7;
+    position: relative;
+    height: calc(var(--vh, 1vh) * 50);
+    overflow-y:scroll;
+    top: calc(var(--vh, 1vh) * 5);
+}
+
+#project-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin: 0;
+    padding: 0;
+    /* background-color: #0000007d; */
+    padding-bottom: calc(var(--vh, 1vh) * 7);
+    padding-top: calc(var(--vh, 1vh) * 2);
+    height: calc(var(--vh, 1vh) * 4);
+    margin-top: calc(var(--vh, 1vh) * 5);
 }
 
 .project {
-    display: none;
+    display: block;
     position: relative;
     width: 100%;
     height: auto;
