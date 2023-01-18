@@ -36,6 +36,7 @@
 #project-list>p {
     position: relative;
     width: 100%;
+    color: #ffffff;
     height: 50px;
     font-size: calc(var(--vh, 1vh) * 4);
     text-align: center;
