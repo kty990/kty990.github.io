@@ -78,7 +78,7 @@
     font-size: 20px;
     text-align: center;
     background-color: #4e2859;
-    margin-bottom: 2px;
+    margin-bottom: calc(var(--vh,1vh)*0.5);
     border-color: #cccccc;
     border-width: 1px;
     border-style: solid;

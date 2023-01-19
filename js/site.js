@@ -1,6 +1,6 @@
 /* Debugging version control */
-let v = 5;
-const ERROR_LENGTH = 3000; // 3 seconds
+let v = 6;
+const ERROR_LENGTH = 3 * 1000; // 3 seconds
 console.log(`Version: ${v}`);
 
 /* Functions */

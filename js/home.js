@@ -42,14 +42,19 @@ for (let project of projects) {
     slide.style.left = "12.5%";
     slide.style.display = "flex";
     slide.style.flexDirection = "row";
-    slide.style.marginTop = "-5%";
+    slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
     slide.style.marginBottom = "10%";
     for (const [key, value] of Object.entries(project.properties)) {
         let lang = document.createElement("div");
         lang.style.backgroundColor = GetColorFromLang(key);
         lang.style.width = `${value}%`;
-        lang.style.height = "2px";
+        lang.style.height = "calc(var(--vh,1vh)*2)";
         lang.style.padding = "0";
+        lang.textContent = `${value}%`;
+        lang.style.fontSize = "calc(var(--vwh,1vh)*2)";
+        lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
+        lang.style.textAlign = "center";
+        lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)"
         let empty = document.createElement("p");
         empty.textContent = "If you are reading this... why?";
         empty.style.display = "none";
