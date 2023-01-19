@@ -13,7 +13,7 @@
 
 #p1 {
     position: fixed;
-    top: calc(var(--vh, 1vh) * 55);;
+    top: calc(var(--vh, 1vh) * 60);;
     left: 5%;
     width: 25%;
     color: #fff;
@@ -32,7 +32,7 @@
 
 #p2 {
     position: fixed;
-    top: calc(var(--vh, 1vh) * 55);;
+    top: calc(var(--vh, 1vh) * 60);;
     right: 5%;
     width: 25%;
     color: #fff;
@@ -51,7 +51,7 @@
 
 #placeholder_img1 {
     position: fixed;
-    top: calc(var(--vh, 1vh) * 25);;
+    top: calc(var(--vh, 1vh) * 30);;
     width: calc(var(--vh, 1vh) * 25);;
     height: calc(var(--vh, 1vh) * 25);;
     left: 10%;
@@ -61,7 +61,7 @@
 
 #placeholder_img2 {
     position: fixed;
-    top: calc(var(--vh, 1vh) * 25);;
+    top: calc(var(--vh, 1vh) * 27);;
     width: calc(var(--vh, 1vh) * 25);;
     height: calc(var(--vh, 1vh) * 25);;
     right: 10%;
@@ -69,13 +69,16 @@
     margin: 0;
 }
 
-#placeholder_img3 {
+#github_snapshot {
     position: fixed;
     top: calc(var(--vh, 1vh) * 25);;
-    width: calc(var(--vh, 1vh) * 40);;
-    height: calc(var(--vh, 1vh) * 40);;
+    height: calc(var(--vh, 1vh) * 30);;
     z-index: 1;
     margin: 0;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #fff;
+    border-width: 5px;
 }
 
 #bot-status {
