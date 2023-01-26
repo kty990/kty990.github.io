@@ -44,14 +44,25 @@ for (let project of projects) {
     slide.style.flexDirection = "row";
     slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
     slide.style.marginBottom = "10%";
+    let x = 0;
     for (const [key, value] of Object.entries(project.properties)) {
         let lang = document.createElement("div");
+        if (x == 0) {
+            lang.style.borderBottomLeftRadius = "50px";
+            lang.style.borderTopLeftRadius = "50px";
+        } 
+        if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
+            lang.style.borderBottomRightRadius = "50px";
+            lang.style.borderTopRightRadius = "50px";
+        }
+        console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
+        x++;
         lang.style.backgroundColor = GetColorFromLang(key);
         lang.style.width = `${value}%`;
         lang.style.height = "calc(var(--vh,1vh)*2)";
         lang.style.padding = "0";
         lang.textContent = `${value}%`;
-        lang.style.fontSize = "calc(var(--vwh,1vh)*2)";
+        lang.style.fontSize = "calc(var(--vwh,1vh)*1.5)";
         lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
         lang.style.textAlign = "center";
         lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)"
