@@ -1,6 +1,7 @@
 let dropdown_flex = document.getElementsByClassName("dropdown-flex")[0];
 let q_a = {
-    "This is the question":"This is the answer"
+    "This is the question":"This is the answer",
+    "What is the homies bot?":"The homies bot is a general purpose discord bot."
 }
 
 let faqs = [];
@@ -11,7 +12,9 @@ for (const [question, answer] of Object.entries(q_a)) {
     let title = t.querySelector("div.title").querySelector("p");
     let desc = t.querySelector("div.description").querySelector("p");
     title.textContent = question;
+    title.classList.add("title");
     desc.textContent = answer;
+    desc.classList.add("description")
     let newDiv = document.createElement("div");
     newDiv.classList.add("dropdown");
     newDiv.appendChild(title);
