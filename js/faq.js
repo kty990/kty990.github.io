@@ -1,6 +1,6 @@
 let dropdown_flex = document.getElementsByClassName("dropdown-flex")[0];
 let q_a = {
-    "This is the question":"This is the answer",
+    "How do I invite the Homies bot to my server?":"As of right now, you can't! It uses some features that are not meant for public use, but a public version may be released in the future.",
     "What is the homies bot?":"The homies bot is a general purpose discord bot."
 }
 
@@ -27,12 +27,16 @@ let active_dropdowns = 0;
 
 function toggleFAQ(element) {
     let currentDisplay = element.querySelector(".description").style.display;
+    // let _vh = document.documentElement.style.getPropertyValue("--vh");
+    // let scrollPosition = document.body.scrollTop;
     if (currentDisplay == "block") {
         element.querySelector(".description").style.display = 'none';
         active_dropdowns--;
+        // document.body.scrollTo(scrollPosition - (_vh))
     } else {
         element.querySelector(".description").style.display = 'block';
         active_dropdowns++;
+        // document.body.scrollTo(scrollPosition + (_vh))
     }
     document.querySelector(".dropdown-flex").style.padding = `0vh 0vh ${active_dropdowns * 5}vh 0vh`;
 }
