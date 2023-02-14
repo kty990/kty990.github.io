@@ -70,6 +70,7 @@ async function setActive() {
             discordNav.id = "discord-page";
         } else {
             mainAbout.id = "nav-active";
+            discordNav.id = "discord";
         }
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
@@ -87,7 +88,7 @@ async function setActive() {
         toggle();
     });
     
-    let discord = document.getElementById("discord") || document.getElementById("discord-page");
+    let discord = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
 
     discord.addEventListener("mousedown", () => {
         console.debug("Test : Discord");
