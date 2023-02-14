@@ -1,6 +1,6 @@
 /* Debugging version control */
 let v = 6;
-const ERROR_LENGTH = 3 * 1000; // 3 seconds
+const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
 /* Functions */
@@ -56,6 +56,7 @@ async function setActive() {
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
     let aboutNav = document.getElementById("about");
+    let mainAbout = document.getElementById("main_about");
     let faqNav = document.getElementById("faq");
     let homeNav = document.getElementById("home");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
@@ -64,8 +65,12 @@ async function setActive() {
         commandsNav.id = "nav-active";
         discordNav.id = "discord-page";
     } else if (url.indexOf("about") != -1) {
-        aboutNav.id = "nav-active";
-        discordNav.id = "discord-page";
+        if (url.indexOf("discord") != -1) {
+            aboutNav.id = "nav-active";
+            discordNav.id = "discord-page";
+        } else {
+            mainAbout.id = "nav-active";
+        }
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
         discordNav.id = "discord-page";
