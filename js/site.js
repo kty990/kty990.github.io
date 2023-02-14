@@ -90,6 +90,7 @@ async function setActive() {
     let discord = document.getElementById("discord") || document.getElementById("discord-page");
 
     discord.addEventListener("mousedown", () => {
+        console.debug("Test : Discord");
         toggleDiscord();
     });
 }
