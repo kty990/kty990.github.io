@@ -10,7 +10,7 @@
 #homepage-subtitle {
     position:fixed;
     z-index:7;
-    color:#000;
+    color:#ffffffcc;
     top:10vh;
     width:50vw;
     font-size:2vh;
@@ -21,7 +21,7 @@
 
 #project-list {
     position: fixed;
-    z-index:7;
+    z-index: 5;
     width: calc(var(--vw, 1vw) * 17);
     left: calc(var(--vw, 1vw) * 5);
     height: calc(var(--vh, 1vh) * 70);
@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-#project-list>p {
+#project-list-title {
     position: relative;
     width: 100%;
     color: #ffffff;
@@ -46,15 +46,28 @@
     top: calc(var(--vwh, 1vh) * 2);
 }
 
+#project-list-subtitle {
+    position: relative;
+    width: 100%;
+    color: #ffffff;
+    height: 50px;
+    font-size: calc(var(--vh, 1vh) * 2);
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 0; 
+    padding: 0;
+    top: calc(var(--vwh, 1vh) * 1);
+}
+
 #project-flex {
     display: flex;
     flex-direction: column;
     z-index: 7;
     position: relative;
-    height: calc(var(--vh, 1vh) * 50);
+    height: calc(var(--vh, 1vh) * 45);
     overflow-y:scroll;
     overflow-x: hidden;
-    top: calc(var(--vh, 1vh) * 5);
+    top: calc(var(--vh, 1vh) * 2);
 }
 
 #project-legend {
@@ -82,4 +95,58 @@
     border-color: #cccccc;
     border-width: 1px;
     border-style: solid;
+}
+
+
+
+/* Socials IDs and classes */
+
+#socials {
+    width: 30vw;
+    height: auto;
+    margin-left: 69vw;
+    margin-top: calc(var(--vwh, 1vh) * 2);
+    background-color: #903aaa;
+    padding-top: calc(var(--vwh, 1vh) * 2);
+    padding-bottom: calc(var(--vwh, 1vh) * 2);
+    border-radius: 20px;
+    border-color: #ffffff7d;
+    border-style: solid;
+}
+
+.social_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+    margin-left: calc(var(--vwh, 1vh) * 2);
+    position: relative;
+    /* top: 10px; */
+}
+
+.social_text {
+    font-size: calc(var(--vwh, 1vh) * 2);
+    color: #ffffffcc;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    padding: 0;
+    margin: 0;
+    margin-left: calc(var(--vwh, 1vh) * 2);
+    position: relative;
+    /* bottom: calc(var(--vwh, 1vh) * 1); */
+    text-decoration: none;
+}
+
+.social_elem {
+    background-color: #652a837d;
+    border-radius: 20px;
+    height: calc(var(--vwh, 1vh) * 5);
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 75%;
+    position: relative;
+    left: 12.5%;
+    margin-bottom: calc(var(--vwh, 1vh) * 1.25);
 }
