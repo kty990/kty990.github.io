@@ -1,19 +1,17 @@
-function getJSON(url, success) {
-
-    var ud = '_' + +new Date,
-        script = document.createElement('script'),
-        head = document.getElementsByTagName('head')[0] 
-               || document.documentElement;
-
-    window[ud] = function(data) {
-        head.removeChild(script);
-        success && success(data);
+function getJSON(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
     };
-
-    script.src = url.replace('callback=?', 'callback=' + ud);
-    head.appendChild(script);
-
-}
+    xhr.send();
+};
 
 
 
@@ -22,8 +20,11 @@ function getJSON(url, success) {
 let myProjects = []; // replace nae with projects when completed
 
 let repo_url = "https://api.github.com/users/kty990/repos"
-getJSON(repo_url, function(data) {
+getJSON(repo_url, function(err,data) {
     console.log(data);
+    if (err != null) {
+        console.error(`Error in getJson occured: ${err}`);
+    }
 });
 
 
