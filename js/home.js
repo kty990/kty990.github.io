@@ -45,27 +45,29 @@ getJSON(repo_url, function(err,data) {
                 if (e != null) {
                     console.error(`Error in language obtain: ${e}`);
                 } else {
+                    let language_tmp = {};
+                    let total = 0;
                     for (const [language, count] of Object.entries(d)) {
                         console.log(`L: ${language}\tC: ${count}`);
+                        language_tmp[language] = count;
+                        total = total + count;
                     }
+                    for (const [l,c] of Object.entries(language_tmp)) {
+                        language_tmp[l] = Math.floor(c/total);
+                    }
+                    myProjects.append(new Project(repo_name,language_tmp);
                 }
             });
         }
     }
 });
 
-
-const projects = [
-    new Project("Homies Bot",{"JS":100}),
-    new Project("kty990.github.io",{"HTML":24.1,"JS":33.3,"CSS":42.6})
-]
-
 function GetColorFromLang(lang) {
     return colorField[lang] || "#fff"
 }
 
 let target = document.getElementById("project-flex");
-for (let project of projects) {
+for (let project of myProjects) {
     let obj = document.createElement("div");
     obj.classList.add("project");
     let p = document.createElement("p");
