@@ -10,9 +10,10 @@ class Project {
 }
 
 const colorField = {
-    "JS":"#f5e042",
+    "JAVASCRIPT":"#f5e042",
     "HTML":"#f56342",
-    "CSS":"#c040f7"
+    "CSS":"#c040f7",
+    "PYTHON": "#c9b81a"
 }
 
 function getJSON(url, callback) {
@@ -110,8 +111,8 @@ async function main() {
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             console.log(`KEY: ${key.toUpperCase()}`);
-            lang.style.width = `${value}%`;
-            console.log(`Width: ${value}%`);
+            lang.style.width = `${value*100}%`;
+            console.log(`Width: ${value*100}%`);
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
             lang.textContent = `${value}%`;
