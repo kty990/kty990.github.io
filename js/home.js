@@ -111,6 +111,7 @@ async function main() {
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             console.log(`KEY: ${key.toUpperCase()}`);
             lang.style.width = `${value}%`;
+            console.log(`Width: ${value}%`);
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
             lang.textContent = `${value}%`;
