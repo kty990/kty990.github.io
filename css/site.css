@@ -225,16 +225,16 @@ html {
 }
 
 .invert-circle {
-    width: calc(var(--vh, 1vh) * 100);
-    height: calc(var(--vh, 1vh) * 100);
-    border-radius: calc(var(--vh, 1vh) * 50);
+    width: calc(var(--vwh, 1vh) * 100);
+    height: calc(var(--vwh, 1vh) * 100);
+    border-radius: calc(var(--vwh, 1vh) * 50);
     border-color: #ffffff7d;
     border-style: solid;
     backdrop-filter: invert(0.5);
     filter: blur(0.5);
     background-color: #ffffff3a;
     position: fixed;
-    left:calc(var(--vwh, 1vh) * 95);
+    right:calc(var(--vwh, 1vh) * -50);
     top:calc(var(--vwh, 1vh) * 40);
 }
 

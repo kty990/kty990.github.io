@@ -1,3 +1,46 @@
+function getJSON(url, success) {
+
+    var ud = '_' + +new Date,
+        script = document.createElement('script'),
+        head = document.getElementsByTagName('head')[0] 
+               || document.documentElement;
+
+    window[ud] = function(data) {
+        head.removeChild(script);
+        success && success(data);
+    };
+
+    script.src = url.replace('callback=?', 'callback=' + ud);
+    head.appendChild(script);
+
+}
+
+
+
+
+
+let myProjects = []; // replace nae with projects when completed
+
+let repo_url = "https://api.github.com/users/kty990/repos"
+getJSON(repo_url, function(data) {
+    console.log(data);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Project {
     constructor(name, properties) {
         this.name = name;
@@ -14,6 +57,8 @@ const colorField = {
     "HTML":"#f56342",
     "CSS":"#c040f7"
 }
+
+
 
 const projects = [
     new Project("Homies Bot",{"JS":100}),
