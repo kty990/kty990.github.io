@@ -109,6 +109,7 @@ async function main() {
             console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
+            console.log(`KEY: ${key.toUpperCase()}`);
             lang.style.width = `${value}%`;
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
