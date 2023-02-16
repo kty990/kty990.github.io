@@ -55,7 +55,7 @@ getJSON(repo_url, function(err,data) {
                     for (const [l,c] of Object.entries(language_tmp)) {
                         language_tmp[l] = Math.floor(c/total);
                     }
-                    myProjects.append(new Project(repo_name,language_tmp));
+                    myProjects.push(new Project(repo_name,language_tmp));
                 }
             });
         }
