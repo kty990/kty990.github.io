@@ -1,47 +1,3 @@
-function getJSON(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
-    };
-    xhr.send();
-};
-
-
-
-
-
-let myProjects = []; // replace nae with projects when completed
-
-let repo_url = "https://api.github.com/users/kty990/repos"
-getJSON(repo_url, function(err,data) {
-    console.log(data);
-    if (err != null) {
-        console.error(`Error in getJson occured: ${err}`);
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Project {
     constructor(name, properties) {
         this.name = name;
@@ -59,6 +15,44 @@ const colorField = {
     "CSS":"#c040f7"
 }
 
+function getJSON(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
+
+let myProjects = [];
+
+let repo_url = "https://api.github.com/users/kty990/repos"
+getJSON(repo_url, function(err,data) {
+    if (err != null) {
+        console.error(`Error in getJson occured: ${err}`);
+    } else {
+        for (let x = 0; x < data.length; x++) {
+            let repo_name = data[x].name;
+            let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
+            getJSON(language_url, function(e,d) {
+                if (e != null) {
+                    console.error(`Error in language obtain: ${e}`);
+                } else {
+                    for (const [language, count] of Object.entries(d)) {
+                        console.log(`L: ${language}\tC: ${count}`);
+                    }
+                }
+            });
+        }
+    }
+});
 
 
 const projects = [
