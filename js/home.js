@@ -58,7 +58,7 @@ function load_projects() {
                                 total = total + count;
                             }
                             for (const [l,c] of Object.entries(language_tmp)) {
-                                language_tmp[l] = Math.floor(c/total);
+                                language_tmp[l] = c/total;
                             }
                             myProjects.push(new Project(repo_name,language_tmp));
                             if (myProjects.length == data.length) {
@@ -112,10 +112,9 @@ async function main() {
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             console.log(`KEY: ${key.toUpperCase()}`);
             lang.style.width = `${value*100}%`;
-            console.log(`Width: ${value*100}%`);
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
-            lang.textContent = `${value}%`;
+            lang.textContent = `${Math.round(value*1000)/10}%`;
             lang.style.fontSize = "calc(var(--vwh,1vh)*1.5)";
             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
             lang.style.textAlign = "center";
