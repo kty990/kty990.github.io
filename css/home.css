@@ -99,18 +99,12 @@
 
 
 .tooltip {
-    border-radius: 40%;
+    border-radius: 40px;
     background-color: #797979;
-    display: hidden;
+    display: block;
     overflow: hidden;
-    position: relative;
-    top: 100%;
     margin: 0;
     padding: 0;
-}
-
-.tooltip:hover {
-    display: block;
 }
 
 .tooltip>.tooltip-text {
@@ -119,6 +113,13 @@
     text-align: center;
     width: 100%;
     height: 100%;
+    position: relative;
+    top: 100%;
+    visibility: hidden;
+}
+
+.tooltip>.tooltip-text:hover {
+    visibility: visible;
 }
 
 
