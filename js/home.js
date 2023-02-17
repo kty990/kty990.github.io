@@ -127,6 +127,17 @@ async function main() {
             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
             lang.style.textAlign = "center";
             lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)"
+
+            let tooltip_div = document.createElement("div");
+            tooltip_div.classList.add("tooltip");
+
+            let tooltip_text = document.createElement("p");
+            tooltip_text.classList.add("tooltip-text");
+            tooltip_text.textContent = `${key.toLowerCase()} (${Math.round(value * 1000) / 10}%)`;
+
+            tooltip_div.appendChild(tooltip_text);
+            lang.appendChild(tooltip_div);
+
             let empty = document.createElement("p");
             empty.textContent = "If you are reading this... why?";
             empty.style.display = "none";
