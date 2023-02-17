@@ -102,8 +102,13 @@
     border-radius: 40%;
     background-color: #797979;
     display: hidden;
+    overflow: hidden;
     position: relative;
     top: 100%;
+}
+
+.tooltip:hover {
+    display: block;
 }
 
 .tooltip>.tooltip-text {

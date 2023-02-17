@@ -130,6 +130,8 @@ async function main() {
 
             let tooltip_div = document.createElement("div");
             tooltip_div.classList.add("tooltip");
+            tooltip_div.style.width = "100%";
+            tooltip_div.style.height = "100%";
 
             let tooltip_text = document.createElement("p");
             tooltip_text.classList.add("tooltip-text");
