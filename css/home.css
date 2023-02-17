@@ -105,6 +105,8 @@
     overflow: hidden;
     position: relative;
     top: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .tooltip:hover {
