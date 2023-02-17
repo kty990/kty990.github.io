@@ -13,7 +13,8 @@ const colorField = {
     "JAVASCRIPT":"#f5e042",
     "HTML":"#f56342",
     "CSS":"#c040f7",
-    "PYTHON": "#c9b81a"
+    "PYTHON": "#c9b81a",
+    "JAVA": "#a86f32"
 }
 
 function getJSON(url, callback) {

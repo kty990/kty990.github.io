@@ -47,7 +47,7 @@
 }
 
 #project-list-subtitle {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     color: #ffffff;
     height: 50px;
@@ -56,7 +56,7 @@
     font-family: 'Yanone Kaffeesatz', sans-serif;
     margin: 0; 
     padding: 0;
-    top: calc(var(--vwh, 1vh) * 1);
+    margin-top: calc(var(--vwh, 1vh) * 3);
 }
 
 #project-flex {
