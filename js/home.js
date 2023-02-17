@@ -10,9 +10,9 @@ class Project {
 }
 
 const colorField = {
-    "JAVASCRIPT":"#f5e042",
-    "HTML":"#f56342",
-    "CSS":"#c040f7",
+    "JAVASCRIPT": "#f5e042",
+    "HTML": "#f56342",
+    "CSS": "#c040f7",
     "PYTHON": "#c9b81a",
     "JAVA": "#a86f32"
 }
@@ -21,13 +21,13 @@ function getJSON(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
+    xhr.onload = function () {
+        var status = xhr.status;
+        if (status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status, xhr.response);
+        }
     };
     xhr.send();
 };
@@ -39,7 +39,7 @@ let repo_url = "https://api.github.com/users/kty990/repos"
 
 function load_projects() {
     return new Promise((resolve, reject) => {
-        getJSON(repo_url, function(err,data) {
+        getJSON(repo_url, function (err, data) {
             if (err != null) {
                 console.error(`Error in getJson occured: ${err}`);
                 reject(`An error occured trying to load github url: ${err}`);
@@ -47,7 +47,7 @@ function load_projects() {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
-                    getJSON(language_url, function(e,d) {
+                    getJSON(language_url, function (e, d) {
                         if (e != null) {
                             console.error(`Error in language obtain: ${e}`);
                         } else {
@@ -58,11 +58,18 @@ function load_projects() {
                                 language_tmp[language] = count;
                                 total = total + count;
                             }
-                            for (const [l,c] of Object.entries(language_tmp)) {
-                                language_tmp[l] = c/total;
+                            for (const [l, c] of Object.entries(language_tmp)) {
+                                language_tmp[l] = c / total;
                             }
-                            myProjects.push(new Project(repo_name,language_tmp));
+                            myProjects.push(new Project(repo_name, language_tmp));
                             if (myProjects.length == data.length) {
+                                myProjects = myProjects.sort((a, b) => {
+                                    if (a.name > b.name) {
+                                        return 1
+                                    } else {
+                                        return -1
+                                    }
+                                })
                                 resolve();
                             }
                         }
@@ -103,7 +110,7 @@ async function main() {
             if (x == 0) {
                 lang.style.borderBottomLeftRadius = "50px";
                 lang.style.borderTopLeftRadius = "50px";
-            } 
+            }
             if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
                 lang.style.borderBottomRightRadius = "50px";
                 lang.style.borderTopRightRadius = "50px";
@@ -112,10 +119,10 @@ async function main() {
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             console.log(`KEY: ${key.toUpperCase()}`);
-            lang.style.width = `${value*100}%`;
+            lang.style.width = `${value * 100}%`;
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
-            lang.textContent = `${Math.round(value*1000)/10}%`;
+            lang.textContent = `${Math.round(value * 1000) / 10}%`;
             lang.style.fontSize = "calc(var(--vwh,1vh)*1.5)";
             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
             lang.style.textAlign = "center";
@@ -191,10 +198,10 @@ function display(media) {
 }
 
 let medias = [
-    new Media("instagram.png","Instagram","t.kutcher", "https://www.instagram.com/t.kutcher/"),
-    new Media("snaplogo.png","Snapchat","kty990", "../res/images/snapcode.png")
+    new Media("instagram.png", "Instagram", "t.kutcher", "https://www.instagram.com/t.kutcher/"),
+    new Media("snaplogo.png", "Snapchat", "kty990", "../res/images/snapcode.png")
 ]
 
-for (let x = 0; x < medias.length; x++){
+for (let x = 0; x < medias.length; x++) {
     display(medias[x]);
 }
