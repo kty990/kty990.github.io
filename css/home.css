@@ -107,7 +107,7 @@
     padding: 0;
 }
 
-.tooltip>.tooltip-text {
+.tooltip-text {
     color: #cccccc;
     font-size: calc(var(--vwh, 1vh) * 1);
     text-align: center;
@@ -116,9 +116,11 @@
     position: relative;
     top: 100%;
     visibility: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-.tooltip>.tooltip-text:hover {
+.tooltip:hover .tooltip-text {
     visibility: visible;
 }
 
