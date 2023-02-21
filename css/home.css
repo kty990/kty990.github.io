@@ -100,11 +100,11 @@
 
 .tooltip {
     border-radius: 40px;
-    background-color: #797979;
     display: block;
-    overflow: hidden;
     margin: 0;
     padding: 0;
+    position: relative;
+    bottom: 125%;
 }
 
 .tooltip-text {
@@ -118,6 +118,7 @@
     visibility: hidden;
     margin: 0;
     padding: 0;
+    background-color: #797979;
 }
 
 .tooltip:hover .tooltip-text {
