@@ -136,7 +136,11 @@ async function main() {
 
             let tooltip_text = document.createElement("p");
             tooltip_text.classList.add("tooltip-text");
-            tooltip_text.textContent = `${key.toLowerCase()} (${Math.round(value * 1000) / 10}%)`;
+            if (key.toLowerCase() == "javascript") {
+                tooltip_text.textContent = `JS`;
+            } else {
+                tooltip_text.textContent = `${key.toLowerCase()}`;
+            }
 
             tooltip_div.appendChild(tooltip_text);
             lang.appendChild(tooltip_div);
