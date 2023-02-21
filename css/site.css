@@ -188,6 +188,7 @@ html {
 
 #nav-active {
     color: #9947fd;
+    font-size: calc(var(--vh, 1vh) * 5.5);
 }
 
 #scroll-page {
