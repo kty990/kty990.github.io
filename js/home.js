@@ -9,6 +9,54 @@ class Project {
     }
 }
 
+class Media {
+    constructor(image_path, social_type, display_text, link) {
+        this.image = "../res/images/" + image_path;
+        this.social_type = social_type;
+        this.text = display_text;
+        this.href = link;
+    }
+}
+
+class CustomCSS {
+    constructor() {
+        this.classes = [];
+        this.ids = [];
+    }
+
+    CreateCSSClass(className, attributes) {
+        if (this.classes.includes(className)) {
+            throw new Error(`Unable to create class "${className}". Class already exists.`);
+        }
+        let style = document.createElement('style');
+        let s = `.${className} {\n`;
+        for (const [key, value] of Object.entries(attributes)) {
+            s = s + `${key}: ${value};`;
+        }
+        s = s + "\n}";
+
+        style.innerHTML = s;
+        document.getElementsByTagName('head')[0].appendChild(style);
+        this.classes.push(className);
+    }
+
+    CreateCSSId(IDName, attributes) {
+        if (this.ids.includes(IDName)) {
+            throw new Error(`Unable to create class "${IDName}". Class already exists.`);
+        }
+        let style = document.createElement('style');
+        let s = `#${IDName} {\n`;
+        for (const [key, value] of Object.entries(attributes)) {
+            s = s + `${key}: ${value};`;
+        }
+        s = s + "\n}";
+
+        style.innerHTML = s;
+        document.getElementsByTagName('head')[0].appendChild(style);
+        this.classes.push(IDName);
+    }
+}
+
 const colorField = {
     "JAVASCRIPT": "#f5e042",
     "HTML": "#f56342",
@@ -32,10 +80,10 @@ function getJSON(url, callback) {
     xhr.send();
 };
 
-
 let myProjects = [];
 
-let repo_url = "https://api.github.com/users/kty990/repos"
+let username = "kty990"
+let repo_url = `https://api.github.com/users/${username}/repos`
 
 function load_projects() {
     return new Promise((resolve, reject) => {
@@ -118,7 +166,6 @@ async function main() {
             console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
-            console.log(`KEY: ${key.toUpperCase()}`);
             lang.style.width = `${value * 100}%`;
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
@@ -139,7 +186,7 @@ async function main() {
             if (key.toLowerCase() == "javascript") {
                 tooltip_text.textContent = `JS`;
             } else {
-                tooltip_text.textContent = `${key.toLowerCase()}`;
+                tooltip_text.textContent = `${key.toUpperCase()}`;
             }
 
             tooltip_div.appendChild(tooltip_text);
@@ -161,6 +208,8 @@ async function main() {
     }
 }
 
+
+
 main();
 
 function GetColorFromLang(lang) {
@@ -170,14 +219,6 @@ function GetColorFromLang(lang) {
 
 /* Socials */
 
-class Media {
-    constructor(image_path, social_type, display_text, link) {
-        this.image = "../res/images/" + image_path;
-        this.social_type = social_type;
-        this.text = display_text;
-        this.href = link;
-    }
-}
 
 let parent = document.getElementById("socials");
 function display(media) {
