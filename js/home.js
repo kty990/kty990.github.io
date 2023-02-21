@@ -163,27 +163,6 @@ function GetColorFromLang(lang) {
     return colorField[lang] || "#fff"
 }
 
-// let legendTarget = document.getElementById("project-legend");
-// for (const [lang, color] of Object.entries(colorField)) {
-//     let div = document.createElement('div');
-//     div.style.width = "calc(var(--vh, 1vh) * 3)";
-//     div.style.height = "calc(var(--vh, 1vh) * 3)";
-//     div.style.textAlign = "center";
-//     div.style.display = "flex";
-//     div.style.justifyContent = "center";
-//     div.style.alignItems = "center";
-//     div.style.fontSize = "calc(var(--vh, 1vh) * 1)";
-//     div.style.padding = "calc(var(--vh, 1vh) * 0.5)"
-//     div.style.backgroundColor = color;
-//     div.style.marginRight = "5px";
-//     div.textContent = lang;
-//     legendTarget.appendChild(div);
-// }
-
-
-
-
-
 
 /* Socials */
 
