@@ -138,15 +138,6 @@ async function main() {
             tooltip_text.classList.add("tooltip-text");
             tooltip_text.textContent = `${key.toLowerCase()} (${Math.round(value * 1000) / 10}%)`;
 
-            if (x == 0) {
-                tooltip_text.style.borderBottomLeftRadius = "50px";
-                tooltip_text.style.borderTopLeftRadius = "50px";
-            }
-            if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
-                tooltip_text.style.borderBottomRightRadius = "50px";
-                tooltip_text.style.borderTopRightRadius = "50px";
-            }
-
             tooltip_div.appendChild(tooltip_text);
             lang.appendChild(tooltip_div);
 
