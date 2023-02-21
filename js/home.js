@@ -128,6 +128,7 @@ async function main() {
             lang.style.textAlign = "center";
             lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)"
 
+            /* TOOLTIP CREATION */
             let tooltip_div = document.createElement("div");
             tooltip_div.classList.add("tooltip");
             tooltip_div.style.width = "100%";
@@ -137,8 +138,19 @@ async function main() {
             tooltip_text.classList.add("tooltip-text");
             tooltip_text.textContent = `${key.toLowerCase()} (${Math.round(value * 1000) / 10}%)`;
 
+            if (x == 0) {
+                tooltip_text.style.borderBottomLeftRadius = "50px";
+                tooltip_text.style.borderTopLeftRadius = "50px";
+            }
+            if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
+                tooltip_text.style.borderBottomRightRadius = "50px";
+                tooltip_text.style.borderTopRightRadius = "50px";
+            }
+
             tooltip_div.appendChild(tooltip_text);
             lang.appendChild(tooltip_div);
+
+            /* END OF TOOLTIP CREATION */
 
             let empty = document.createElement("p");
             empty.textContent = "If you are reading this... why?";
