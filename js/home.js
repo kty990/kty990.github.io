@@ -85,6 +85,10 @@ let myProjects = [];
 let username = "kty990"
 let repo_url = `https://api.github.com/users/${username}/repos`
 
+function ConvertToTime(timestamp) {
+    return timestamp.split("T")[1].replace("Z", ""); // temporary
+}
+
 function load_projects() {
     return new Promise((resolve, reject) => {
         getJSON(repo_url, function (err, data) {
@@ -95,7 +99,7 @@ function load_projects() {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
                     if (repo_name == "kty990.github.io") {
-                        document.getElementById("project-list-subtitle").textContent = data[x].updated_at.split("T")[1].replace("Z", "");
+                        document.getElementById("site-last-update").textContent = `Updated: ${ConvertToTime(data[x].updated_at)}`;
                     }
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {

@@ -54,6 +54,16 @@ html {
     z-index: 0;
 }
 
+#site-last-update {
+    color: #ffffffcc;
+    font-weight: lighter;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    position: fixed;
+    z-index: 10;
+    right: calc(var(--vw, 1vw) * 10);
+    top: calc(var(--vh, 1vh) * 3);
+}
+
 #site-title {
     text-align: center;
     font-size: 1em;
