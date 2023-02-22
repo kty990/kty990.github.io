@@ -49,7 +49,7 @@
     display: none;
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: calc(var(--vh, 1vh) * 1);
+    font-size: calc(var(--vwh, 1vh) * 2);
     width: calc(var(--vw, 1vw) * 50);
     /* position: fixed; */
     padding: 0;

@@ -1,6 +1,6 @@
 /* Debugging version control */
-let v = 5;
-const ERROR_LENGTH = 3000; // 3 seconds
+let v = 7;
+const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
 /* Functions */
@@ -39,6 +39,16 @@ function toggleDiscord() {
 }
 
 async function main() {
+    // Add inverted circle effect to background
+    let div = document.createElement("div"); /* <div class="invert-circle"><p style="display:none;">Why are you looking at this???</p></div> */
+    div.classList.add("invert-circle");
+    let p = document.createElement("p");
+    p.style.display = "none";
+    p.textContent = "Why are you looking at this???";
+    div.appendChild(p);
+    document.body.appendChild(div);
+
+    // Navbar
     let res = await fetch("/../main/navbar.html");
     let txt = await res.text();
     let oldelem = document.getElementById("replace-with-navbar");
@@ -56,6 +66,7 @@ async function setActive() {
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
     let aboutNav = document.getElementById("about");
+    let mainAbout = document.getElementById("main_about");
     let faqNav = document.getElementById("faq");
     let homeNav = document.getElementById("home");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
@@ -64,8 +75,13 @@ async function setActive() {
         commandsNav.id = "nav-active";
         discordNav.id = "discord-page";
     } else if (url.indexOf("about") != -1) {
-        aboutNav.id = "nav-active";
-        discordNav.id = "discord-page";
+        if (url.indexOf("discord") != -1) {
+            aboutNav.id = "nav-active";
+            discordNav.id = "discord-page";
+        } else {
+            mainAbout.id = "nav-active";
+            discordNav.id = "discord";
+        }
     } else if (url.indexOf("faq") != -1) {
         faqNav.id = "nav-active";
         discordNav.id = "discord-page";
@@ -82,9 +98,10 @@ async function setActive() {
         toggle();
     });
     
-    let discord = document.getElementById("discord") || document.getElementById("discord-page");
+    let discord = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
 
     discord.addEventListener("mousedown", () => {
+        console.debug("Test : Discord");
         toggleDiscord();
     });
 }
