@@ -271,6 +271,6 @@ request.open("GET", "https://github.com/kty990/kty990.github.io", true);
 request.send(null);
 request.onreadystatechange = function () {
     if (request.readyState == 4) {
-        alert(request.responseText);
+        console.log(request.responseText);
     }
 };
