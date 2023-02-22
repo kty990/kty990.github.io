@@ -1,3 +1,5 @@
 # kty990.github.io
 
-Website for [Homies Bot](https://github.com/kty990/HomiesBot), a bot developed by me!
+Website created by and for Ty!
+
+It currently has a separate section for [Homies Bot](https://github.com/kty990/HomiesBot), including the command usage, about the bot, and FAQ sections!
