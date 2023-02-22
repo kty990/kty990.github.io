@@ -256,24 +256,24 @@ for (let x = 0; x < medias.length; x++) {
 
 /** TESTING */
 
-function makeHttpObject() {
-    try { return new XMLHttpRequest(); }
-    catch (error) { }
-    try { return new ActiveXObject("Msxml2.XMLHTTP"); }
-    catch (error) { }
-    try { return new ActiveXObject("Microsoft.XMLHTTP"); }
-    catch (error) { }
+// function makeHttpObject() {
+//     try { return new XMLHttpRequest(); }
+//     catch (error) { }
+//     try { return new ActiveXObject("Msxml2.XMLHTTP"); }
+//     catch (error) { }
+//     try { return new ActiveXObject("Microsoft.XMLHTTP"); }
+//     catch (error) { }
 
-    throw new Error("Could not create HTTP request object.");
-}
+//     throw new Error("Could not create HTTP request object.");
+// }
 
-var request = makeHttpObject();
-request.open("GET", "https://github.com/kty990/kty990.github.io", true);
-request.send(null);
-request.onreadystatechange = function () {
-    if (request.readyState == 4) {
-        console.log(request.responseText);
-    } else {
-        console.log(`\n\nError: \n${request.responseText}\n\n`);
-    }
-};
+// var request = makeHttpObject();
+// request.open("GET", "https://github.com/kty990/kty990.github.io", true);
+// request.send(null);
+// request.onreadystatechange = function () {
+//     if (request.readyState == 4) {
+//         console.log(request.responseText);
+//     } else {
+//         console.log(`\n\nError: \n${request.responseText}\n\n`);
+//     }
+// };
