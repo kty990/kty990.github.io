@@ -272,5 +272,7 @@ request.send(null);
 request.onreadystatechange = function () {
     if (request.readyState == 4) {
         console.log(request.responseText);
+    } else {
+        console.log(`\n\nError: \n${request.responseText}\n\n`);
     }
 };
