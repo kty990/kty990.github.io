@@ -44,33 +44,45 @@
         bot, future updates, changelog, etc. But for now, enjoy this over and over.
     </p>
 
-    <<div class="center-horizontal">
+    <div class="center-horizontal">
+        <!-- 
+        <iframe id="github-iframe" src=""></iframe>
+        <script>
+            fetch('https://api.github.com/repos/ileathan/hubot-mubot/contents/src/mubot.coffee')
+                .then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    var iframe = document.getElementById('github-iframe');
+                    iframe.src = 'data:text/html;base64,' + encodeURIComponent(data['content']);
+                });
+        </script>
+         -->
         <img id="github_snapshot" src="../res/images/discord_github_snapshot.png" alt="placeholder image">
-        </div>>
+    </div>
 
 
 
-        <div id="scroll-page">
-            <div id="bot-status">
-                <p style="display:none">If you are reading this... why?</p>
-                <div id="online">
-                    <p>Status: Unknown</p>
-                </div>
-                <div id="guilds">
-                    <p>Guilds: Unknown</p>
-                </div>
-                <div id="uptime">
-                    <p>Uptime: Unknown</p>
-                </div>
+    <div id="scroll-page">
+        <div id="bot-status">
+            <p style="display:none">If you are reading this... why?</p>
+            <div id="online">
+                <p>Status: Unknown</p>
             </div>
-            <span id="disclaimer">
-                <p>
-                    The 'Homies' discord bot was made by kty990#8610 A.K.A. kty990. The bot is used for recreational use
-                    only.
-                </p>
-            </span>
+            <div id="guilds">
+                <p>Guilds: Unknown</p>
+            </div>
+            <div id="uptime">
+                <p>Uptime: Unknown</p>
+            </div>
         </div>
-        <script type="text/javascript" src="../js/site.js"></script>
+        <span id="disclaimer">
+            <p>
+                The 'Homies' discord bot was made by kty990#8610 A.K.A. kty990. The bot is used for recreational use
+                only.
+            </p>
+        </span>
+    </div>
+    <script type="text/javascript" src="../js/site.js"></script>
 </body>
 
 </html>

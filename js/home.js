@@ -92,6 +92,7 @@ function load_projects() {
                 console.error(`Error in getJson occured: ${err}`);
                 reject(`An error occured trying to load github url: ${err}`);
             } else {
+                console.log(data);
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
