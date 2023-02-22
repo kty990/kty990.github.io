@@ -92,9 +92,11 @@ function load_projects() {
                 console.error(`Error in getJson occured: ${err}`);
                 reject(`An error occured trying to load github url: ${err}`);
             } else {
-                console.log(data);
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
+                    if (repo_name == "kty990.github.io") {
+                        document.getElementById("project-list-subtitle").textContent = data[x].updated_at.split("T")[1].replace("Z", "");
+                    }
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {
                         if (e != null) {
@@ -246,34 +248,3 @@ let medias = [
 for (let x = 0; x < medias.length; x++) {
     display(medias[x]);
 }
-
-
-
-
-
-
-
-
-/** TESTING */
-
-// function makeHttpObject() {
-//     try { return new XMLHttpRequest(); }
-//     catch (error) { }
-//     try { return new ActiveXObject("Msxml2.XMLHTTP"); }
-//     catch (error) { }
-//     try { return new ActiveXObject("Microsoft.XMLHTTP"); }
-//     catch (error) { }
-
-//     throw new Error("Could not create HTTP request object.");
-// }
-
-// var request = makeHttpObject();
-// request.open("GET", "https://github.com/kty990/kty990.github.io", true);
-// request.send(null);
-// request.onreadystatechange = function () {
-//     if (request.readyState == 4) {
-//         console.log(request.responseText);
-//     } else {
-//         console.log(`\n\nError: \n${request.responseText}\n\n`);
-//     }
-// };
