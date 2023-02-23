@@ -57,6 +57,93 @@ class CustomCSS {
     }
 }
 
+class Time {
+    constructor(datetime) {
+        try {
+            let time = datetime.split("T")[1].replace("Z", "").split(":");
+            this.hour = parseInt(time[0]);
+            this.minute = parseInt(time[1]);
+            this.second = parseInt(time[2]);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    Add(seconds) {
+        let s = seconds;
+        let m = Math.floor(seconds / 60);
+        s -= m * 60;
+        let h = Math.floor(m / 60);
+        m -= h * 60;
+
+        if (h > 23) {
+            h -= 24;
+        }
+        if (m > 59) {
+            h++;
+            m -= 59;
+        }
+        if (s > 59) {
+            m++;
+            s -= 59;
+        }
+        this.hour += h;
+        this.minute += m;
+        this.second += s;
+    }
+
+    Remove(seconds) {
+        let s = seconds;
+        let m = Math.floor(seconds / 60);
+        s -= m * 60;
+        let h = Math.floor(m / 60);
+        m -= h * 60;
+
+        if (h < 0) {
+            h += 23;
+        }
+        if (m < 0) {
+            if (h > 0) {
+                h--;
+            } else {
+                h += 23;
+            }
+            m += 59;
+        }
+        if (s < 0) {
+            if (m > 0) {
+                m--;
+            } else {
+                if (h > 0) {
+                    h--;
+                    m += 59;
+                } else {
+                    h += 23;
+                    m += 59;
+                }
+
+            }
+            s += 59;
+        }
+        this.hour -= h;
+        this.minute -= m;
+        this.second -= s;
+    }
+}
+
+class Datestamp {
+    constructor(datetime) {
+        try {
+            let time = datetime.split("T")[0].split("-");
+            this.year = parseInt(time[0]);
+            this.month = parseInt(time[1]);
+            this.day = parseInt(time[2]);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
+
 const colorField = {
     "JAVASCRIPT": "#f5e042",
     "HTML": "#f56342",
@@ -86,7 +173,31 @@ let username = "kty990"
 let repo_url = `https://api.github.com/users/${username}/repos`
 
 function ConvertToTime(timestamp) {
-    return timestamp.split("T")[1].replace("Z", ""); // temporary
+    let t = new Time(timestamp);
+    t.Remove(7 * 60 * 60);
+    return `${t.hour}:${t.minute}:${t.second}`;
+}
+
+function ConvertToDate(timestamp) {
+    let t = new Datestamp(timestamp);
+    let months = [
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEPT",
+        "OCT",
+        "NOV",
+        "DEC"
+    ]
+    let year = t.year;
+    let month = months[t.month];
+    let day = t.day;
+    return `${day} ${month}, ${year}`;
 }
 
 function load_projects() {
@@ -99,7 +210,7 @@ function load_projects() {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
                     if (repo_name == "kty990.github.io") {
-                        document.getElementById("site-last-update").textContent = `Updated: ${ConvertToTime(data[x].updated_at)}`;
+                        document.getElementById("site-last-update").textContent = `Updated: ${ConvertToTime(data[x].updated_at)} ET, ${ConvertToDate(data[x].updated_at)}`;
                     }
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {
