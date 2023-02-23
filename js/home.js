@@ -242,7 +242,7 @@ function GetDateTime(timestamp) {
             d.day = daysPerMonth[month];
             day = d.day;
         }
-        t.hour += Math.abs(t.hour);
+        t.hour = Math.abs(t.hour);
     }
 
     return `${t.hour}:${t.minute}:${t.second} ET, ${day} ${month}, ${year}`
