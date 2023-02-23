@@ -225,7 +225,9 @@ function GetDateTime(timestamp) {
     let month = months[d.month];
     let day = d.day;
 
+    console.log(`Hour: ${t.hour}`);
     if (t.hour < 0) {
+        console.log("Yes");
         if (day > 1) {
             day--;
         } else if (month > 1) {
@@ -240,6 +242,7 @@ function GetDateTime(timestamp) {
             d.day = daysPerMonth[month];
             day = d.day;
         }
+        t.hour += Math.abs(t.hour);
     }
 
     return `${t.hour}:${t.minute}:${t.second} ET, ${day} ${month}, ${year}`
