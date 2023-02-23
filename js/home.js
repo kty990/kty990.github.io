@@ -125,6 +125,7 @@ class Time {
             }
             s += 59;
         }
+
         this.hour -= h;
         this.minute -= m;
         this.second -= s;
@@ -172,6 +173,36 @@ let myProjects = [];
 let username = "kty990"
 let repo_url = `https://api.github.com/users/${username}/repos`
 
+let months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEPT",
+    "OCT",
+    "NOV",
+    "DEC"
+]
+
+let daysPerMonth = {
+    "JAN": 31,
+    "FEB": 28,
+    "MAR": 31,
+    "APR": 30,
+    "MAY": 31,
+    "JUN": 30,
+    "JUL": 31,
+    "AUG": 31,
+    "SEPT": 30,
+    "OCT": 31,
+    "NOV": 30,
+    "DEC": 31
+}
+
 function ConvertToTime(timestamp) {
     let t = new Time(timestamp);
     t.Remove(7 * 60 * 60);
@@ -179,25 +210,39 @@ function ConvertToTime(timestamp) {
 }
 
 function ConvertToDate(timestamp) {
-    let t = new Datestamp(timestamp);
-    let months = [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEPT",
-        "OCT",
-        "NOV",
-        "DEC"
-    ]
-    let year = t.year;
-    let month = months[t.month];
-    let day = t.day;
+    let d = new Datestamp(timestamp);
+    let year = d.year;
+    let month = months[d.month];
+    let day = d.day;
     return `${day} ${month}, ${year}`;
+}
+
+function GetDateTime(timestamp) {
+    let t = new Time(timestamp);
+    t.Remove(7 * 60 * 60);
+    let d = new Datestamp(timestamp);
+    let year = d.year;
+    let month = months[d.month];
+    let day = d.day;
+
+    if (t.hour < 0) {
+        if (day > 1) {
+            day--;
+        } else if (month > 1) {
+            d.month--;
+            month = months[d.month];
+            d.day = daysPerMonth[month];
+            day = d.day;
+        } else {
+            d.year--;
+            d.month += 11;
+            month = months[d.month];
+            d.day = daysPerMonth[month];
+            day = d.day;
+        }
+    }
+
+    return `${t.hour}:${t.minute}:${t.second} ET, ${day} ${month}, ${year}`
 }
 
 function load_projects() {
@@ -210,7 +255,7 @@ function load_projects() {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
                     if (repo_name == "kty990.github.io") {
-                        document.getElementById("site-last-update").textContent = `Updated: ${ConvertToTime(data[x].updated_at)} ET, ${ConvertToDate(data[x].updated_at)}`;
+                        document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].updated_at)}`;
                     }
                     let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {
