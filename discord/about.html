@@ -53,7 +53,7 @@
                     return response.json();
                 }).then(function (data) {
                     var iframe = document.getElementById('github-iframe');
-                    iframe.src = 'data:text/html;base64,' + data['content'];//encodeURIComponent(data['content']);
+                    iframe.src = 'data:text/html;base64,' + encodeURIComponent(data);//encodeURIComponent(data['content']);
                     console.log("\n\n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n");
                     console.log(data);
                     console.log("\n\n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n");
