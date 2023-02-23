@@ -172,6 +172,7 @@ let myProjects = [];
 
 let username = "kty990"
 let repo_url = `https://api.github.com/users/${username}/repos`
+const SITE_NAME = "kty990.github.io"
 
 let months = [
     "JAN",
@@ -257,10 +258,10 @@ function load_projects() {
             } else {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
-                    if (repo_name == "kty990.github.io") {
+                    if (repo_name == SITE_NAME) {
                         document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].updated_at)}`;
                     }
-                    let language_url = `https://api.github.com/repos/kty990/${repo_name}/languages`;
+                    let language_url = `https://api.github.com/repos/${username}/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {
                         if (e != null) {
                             console.error(`Error in language obtain: ${e}`);
@@ -405,7 +406,9 @@ function display(media) {
 
 let medias = [
     new Media("instagram.png", "Instagram", "t.kutcher", "https://www.instagram.com/t.kutcher/"),
-    new Media("snaplogo.png", "Snapchat", "kty990", "../res/images/snapcode.png")
+    new Media("instagram.png", "Instagram", "t.kutcher", "https://www.instagram.com/t.kutcher/"),
+    new Media("instagram.png", "Instagram", "t.kutcher", "https://www.instagram.com/t.kutcher/"),
+    new Media("instagram.png", "Instagram", "t.kutcher", "https://www.instagram.com/t.kutcher/")
 ]
 
 for (let x = 0; x < medias.length; x++) {
