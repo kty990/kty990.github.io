@@ -103,25 +103,36 @@ class Time {
             h += 23;
         }
         if (m < 0) {
-            if (h > 0) {
+            if (h > 1) {
                 h--;
+            } else if (h == 1) {
+                h += 22;
             } else {
                 h += 23;
             }
             m += 59;
         }
         if (s < 0) {
-            if (m > 0) {
+            if (m > 1) {
                 m--;
-            } else {
-                if (h > 0) {
+            } else if (m == 1) {
+                if (h > 1) {
                     h--;
-                    m += 59;
+                } else if (h == 1) {
+                    h += 22;
                 } else {
                     h += 23;
-                    m += 59;
                 }
-
+                m += 58
+            } else {
+                if (h > 1) {
+                    h--;
+                } else if (h == 1) {
+                    h += 22;
+                } else {
+                    h += 23;
+                }
+                m += 59
             }
             s += 59;
         }
