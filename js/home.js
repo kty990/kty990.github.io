@@ -224,7 +224,7 @@ function ConvertToTime(timestamp) {
 function ConvertToDate(timestamp) {
     let d = new Datestamp(timestamp);
     let year = d.year;
-    let month = months[d.month];
+    let month = months[d.month-1];
     let day = d.day;
     return `${day} ${month}, ${year}`;
 }
@@ -234,7 +234,7 @@ function GetDateTime(timestamp) {
     t.Remove(7 * 60 * 60);
     let d = new Datestamp(timestamp);
     let year = d.year;
-    let month = months[d.month];
+    let month = months[d.month-1];
     let day = d.day;
 
     console.log(`Hour: ${t.hour}`);
@@ -244,13 +244,13 @@ function GetDateTime(timestamp) {
             day--;
         } else if (month > 1) {
             d.month--;
-            month = months[d.month];
+            month = months[d.month-1];
             d.day = daysPerMonth[month];
             day = d.day;
         } else {
             d.year--;
             d.month += 11;
-            month = months[d.month];
+            month = months[d.month-1];
             d.day = daysPerMonth[month];
             day = d.day;
         }
