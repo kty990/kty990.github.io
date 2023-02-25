@@ -111,7 +111,7 @@
 .tooltip-text {
     color: #cccccc;
     text-align: left;
-    width: auto;
+    width: fit-content;
     height: auto;
     position: relative;
     top: 100%;
