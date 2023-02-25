@@ -271,6 +271,7 @@ function load_projects() {
             } else {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
+                    console.log(data[x]);
                     if (repo_name == SITE_NAME) {
                         document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].updated_at)}`;
                     }
