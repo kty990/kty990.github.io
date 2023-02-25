@@ -217,7 +217,7 @@ let daysPerMonth = {
 
 function ConvertToTime(timestamp) {
     let t = new Time(timestamp);
-    t.Remove(5 * 60 * 60);
+    t.Add(19 * 60 * 60);
     return `${t.hour}:${t.minute}:${t.second} ET`;
 }
 
@@ -232,7 +232,7 @@ function ConvertToDate(timestamp) {
 function GetDateTime(timestamp) {
     let t = new Time(timestamp);
     console.log(`Old time: ${t.hour}:${t.minute}:${t.second}`);
-    t.Remove(5 * 60 * 60);
+    t.Add(19 * 60 * 60);
     console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
     let d = new Datestamp(timestamp);
     let year = d.year;
@@ -240,6 +240,21 @@ function GetDateTime(timestamp) {
     let day = d.day;
 
     console.log(`Hour: ${t.hour}`);
+    while (t.hour > 23) {
+        t.hour -= 23;
+        day++;
+        if (day > daysPerMonth[month]) {
+            d.day -= daysPerMonth[month];
+            d.month++;
+            if (d.month > 12) {
+                d.year++;
+                d.month -= 12;
+            }
+            month = months[d.month-1];
+            
+        }
+    }
+    
     if (t.hour < 0) {
         console.log("Yes");
         if (day > 1) {
