@@ -288,7 +288,7 @@ function load_projects() {
                     let repo_name = data[x].name;
                     console.log(data[x]);
                     if (repo_name == SITE_NAME) {
-                        document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].updated_at)}`;
+                        document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].pushed_at)}`;
                     }
                     let language_url = `https://api.github.com/repos/${username}/${repo_name}/languages`;
                     getJSON(language_url, function (e, d) {
