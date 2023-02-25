@@ -273,6 +273,8 @@ function GetDateTime(timestamp) {
         }
         t.hour = 12 + Math.abs(t.hour);
     }
+    
+    day--;
 
     return `${t.hour}:${t.minute}:${t.second} ET, ${day} ${month}, ${year}`
 }
