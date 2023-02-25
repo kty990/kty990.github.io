@@ -111,7 +111,7 @@
 .tooltip-text {
     color: #cccccc;
     text-align: center;
-    width: 100%;
+    width: calc(var(--vw, 1vw) * 10);
     height: auto;
     position: relative;
     top: 100%;
