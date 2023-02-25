@@ -164,6 +164,17 @@ const colorField = {
     "JAVA": "#a86f32"
 }
 
+function formatIntToLength(number, len) {
+    let isNegative = number < 0
+    let num = Math.abs(number)
+    let x = ("0" + num).slice(-len);
+    if (isNegative) {
+        return -x;
+    } else {
+        return x;
+    }
+} 
+
 function getJSON(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -218,7 +229,7 @@ let daysPerMonth = {
 function ConvertToTime(timestamp) {
     let t = new Time(timestamp);
     t.Add(19 * 60 * 60);
-    return `${t.hour}:${t.minute}:${t.second} ET`;
+    return `${t.hour}:${formatIntToLength(t.minute,2)}:${formatIntToLength(t.second, 2)} ET`;
 }
 
 function ConvertToDate(timestamp) {
@@ -276,7 +287,7 @@ function GetDateTime(timestamp) {
     
     day--;
 
-    return `${t.hour}:${t.minute}:${t.second} ET, ${day} ${month}, ${year}`
+    return `${t.hour}:${formatIntToLength(t.minute, 2)}:${formatIntToLength(t.second,2)} ET, ${day} ${month}, ${year}`
 }
 
 function load_projects() {
