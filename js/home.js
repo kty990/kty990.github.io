@@ -392,11 +392,12 @@ async function main() {
 
             let tooltip_text = document.createElement("p");
             tooltip_text.classList.add("tooltip-text");
-            if (key.toLowerCase() == "javascript") {
-                tooltip_text.textContent = `JS`;
-            } else {
-                tooltip_text.textContent = `${key.toUpperCase()}`;
-            }
+//             if (key.toLowerCase() == "javascript") {
+//                 tooltip_text.textContent = `JS`;
+//             } else {
+//                 tooltip_text.textContent = `${key.toUpperCase()}`;
+//             }
+            tooltip_text.textContent = `${key.toUpperCase()}`;
 
             tooltip_div.appendChild(tooltip_text);
             lang.appendChild(tooltip_div);
