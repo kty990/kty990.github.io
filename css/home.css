@@ -118,6 +118,7 @@
     visibility: hidden;
     margin: 0;
     padding: 0;
+    padding-left: calc(var(--vw, 1vw)*1);
     background-color: #651675;
     border-radius: 30px;
 }
