@@ -368,6 +368,7 @@ async function main() {
 
         let slide = document.createElement("div");
         slide.style.position = "relative";
+        slide.style.top = "calc(var(--vh,1vh)*1.2)";
         slide.style.width = "75%";
         slide.style.height = "25%";
         slide.style.left = "12.5%";
