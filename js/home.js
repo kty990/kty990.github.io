@@ -418,7 +418,7 @@ async function main() {
 
             slide.appendChild(lang);
         }
-
+        obj.append(lastUpdated);
         obj.appendChild(p);
         obj.appendChild(slide);
         target.appendChild(obj);
