@@ -374,7 +374,7 @@ async function main() {
         slide.style.left = "12.5%";
         slide.style.display = "flex";
         slide.style.flexDirection = "row";
-        slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
+        // slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
         slide.style.marginBottom = "10%";
         let x = 0;
         for (const [key, value] of Object.entries(project.properties)) {
