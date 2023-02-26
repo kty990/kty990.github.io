@@ -353,7 +353,6 @@ async function main() {
         p.style.color = "#fff";
         p.style.textAlign = "center";
         p.style.width = "100%";
-        p.style.height = "50%";
         p.style.fontSize = "calc(var(--vh, 1vh) * 2)"
         p.textContent = project.GetName();
         let lastUpdated = document.createElement("p");
@@ -365,7 +364,7 @@ async function main() {
         lastUpdated.style.padding = "0";
         lastUpdated.style.margin = "0";
         lastUpdated.style.position = "relative";
-        lastUpdated.style.top = "calc(var(--vh, 1vh) * 2)";
+        lastUpdated.style.bottom = "calc(var(--vh, 1vh) * 1)";
 
         let slide = document.createElement("div");
         slide.style.position = "relative";
@@ -375,7 +374,7 @@ async function main() {
         slide.style.display = "flex";
         slide.style.flexDirection = "row";
         // slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
-        slide.style.marginBottom = "10%";
+        // slide.style.marginBottom = "10%";
         let x = 0;
         for (const [key, value] of Object.entries(project.properties)) {
             let lang = document.createElement("div");
