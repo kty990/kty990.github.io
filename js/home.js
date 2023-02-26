@@ -1,5 +1,5 @@
 class Project {
-    constructor(name, properties) {
+    constructor(name, properties, lastUpdated) {
         this.name = name;
         this.lastUpdated = lastUpdated;
         this.properties = properties;
