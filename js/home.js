@@ -356,11 +356,11 @@ async function main() {
         p.style.fontSize = "calc(var(--vh, 1vh) * 2)"
         p.textContent = project.GetName();
         let lastUpdated = document.createElement("p");
-        lastUpdated.textContent = project.GetLastUpdated();
+        lastUpdated.textContent = "Last updated: " + project.GetLastUpdated();
         lastUpdated.style.color = "#fff";
         lastUpdated.style.textAlign = "center";
         lastUpdated.style.width = "100%";
-        lastUpdated.style.fontSize = "calc(var(--vh, 1vh) * 2)";
+        lastUpdated.style.fontSize = "calc(var(--vwh, 1vh) * 1)";
         lastUpdated.style.padding = "0";
         lastUpdated.style.margin = "0";
         lastUpdated.style.position = "relative";
