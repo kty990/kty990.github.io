@@ -362,7 +362,11 @@ async function main() {
         lastUpdated.style.textAlign = "center";
         lastUpdated.style.width = "100%";
         lastUpdated.style.height = "50%";
-        lastUpdated.style.fontSize = "calc(var(--vh, 1vh) * 2)"
+        lastUpdated.style.fontSize = "calc(var(--vh, 1vh) * 2)";
+        lastUpdated.style.padding = "0";
+        lastUpdated.style.margin = "0";
+        lastUpdated.style.position = "relative";
+        lastUpdated.style.top = "calc(var(--vh, 1vh) * 2)";
 
         let slide = document.createElement("div");
         slide.style.position = "relative";
