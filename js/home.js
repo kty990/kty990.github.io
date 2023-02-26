@@ -1,11 +1,16 @@
 class Project {
     constructor(name, properties) {
         this.name = name;
+        this.lastUpdated = lastUpdated;
         this.properties = properties;
     }
 
     GetName() {
         return this.name;
+    }
+
+    GetLastUpdated() {
+        return this.lastUpdated;
     }
 }
 
@@ -173,7 +178,7 @@ function formatIntToLength(number, len) {
     } else {
         return x;
     }
-} 
+}
 
 function getJSON(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -229,13 +234,13 @@ let daysPerMonth = {
 function ConvertToTime(timestamp) {
     let t = new Time(timestamp);
     t.Add(19 * 60 * 60);
-    return `${t.hour}:${formatIntToLength(t.minute,2)}:${formatIntToLength(t.second, 2)} ET`;
+    return `${t.hour}:${formatIntToLength(t.minute, 2)}:${formatIntToLength(t.second, 2)} ET`;
 }
 
 function ConvertToDate(timestamp) {
     let d = new Datestamp(timestamp);
     let year = d.year;
-    let month = months[d.month-1];
+    let month = months[d.month - 1];
     let day = d.day;
     return `${day} ${month}, ${year}`;
 }
@@ -247,7 +252,7 @@ function GetDateTime(timestamp) {
     console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
     let d = new Datestamp(timestamp);
     let year = d.year;
-    let month = months[d.month-1];
+    let month = months[d.month - 1];
     let day = d.day;
 
     console.log(`Hour: ${t.hour}`);
@@ -261,33 +266,33 @@ function GetDateTime(timestamp) {
                 d.year++;
                 d.month -= 12;
             }
-            month = months[d.month-1];
-            
+            month = months[d.month - 1];
+
         }
     }
-    
+
     if (t.hour < 0) {
         console.log("Yes");
         if (day > 1) {
             day--;
         } else if (month > 1) {
             d.month--;
-            month = months[d.month-1];
+            month = months[d.month - 1];
             d.day = daysPerMonth[month];
             day = d.day;
         } else {
             d.year--;
             d.month += 11;
-            month = months[d.month-1];
+            month = months[d.month - 1];
             d.day = daysPerMonth[month];
             day = d.day;
         }
         t.hour = 12 + Math.abs(t.hour);
     }
-    
+
     day--;
 
-    return `${t.hour}:${formatIntToLength(t.minute, 2)}:${formatIntToLength(t.second,2)} ET, ${day} ${month}, ${year}`
+    return `${t.hour}:${formatIntToLength(t.minute, 2)}:${formatIntToLength(t.second, 2)} ET, ${day} ${month}, ${year}`
 }
 
 function load_projects() {
@@ -299,7 +304,6 @@ function load_projects() {
             } else {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
-                    console.log(data[x]);
                     if (repo_name == SITE_NAME) {
                         document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].pushed_at)}`;
                     }
@@ -318,7 +322,7 @@ function load_projects() {
                             for (const [l, c] of Object.entries(language_tmp)) {
                                 language_tmp[l] = c / total;
                             }
-                            myProjects.push(new Project(repo_name, language_tmp));
+                            myProjects.push(new Project(repo_name, language_tmp, GetDateTime(data[x].pushed_at)));
                             if (myProjects.length == data.length) {
                                 myProjects = myProjects.sort((a, b) => {
                                     if (a.name > b.name) {
@@ -352,6 +356,14 @@ async function main() {
         p.style.height = "50%";
         p.style.fontSize = "calc(var(--vh, 1vh) * 2)"
         p.textContent = project.GetName();
+        let lastUpdated = document.createElement("p");
+        lastUpdated.textContent = project.GetLastUpdated();
+        lastUpdated.style.color = "#fff";
+        lastUpdated.style.textAlign = "center";
+        lastUpdated.style.width = "100%";
+        lastUpdated.style.height = "50%";
+        lastUpdated.style.fontSize = "calc(var(--vh, 1vh) * 2)"
+
         let slide = document.createElement("div");
         slide.style.position = "relative";
         slide.style.width = "75%";
@@ -392,11 +404,6 @@ async function main() {
 
             let tooltip_text = document.createElement("p");
             tooltip_text.classList.add("tooltip-text");
-//             if (key.toLowerCase() == "javascript") {
-//                 tooltip_text.textContent = `JS`;
-//             } else {
-//                 tooltip_text.textContent = `${key.toUpperCase()}`;
-//             }
             tooltip_text.textContent = `${key.toUpperCase()}`;
 
             tooltip_div.appendChild(tooltip_text);
@@ -417,8 +424,6 @@ async function main() {
         target.appendChild(obj);
     }
 }
-
-
 
 main();
 
