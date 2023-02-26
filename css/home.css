@@ -64,7 +64,7 @@
     flex-direction: column;
     z-index: 7;
     position: relative;
-    height: calc(var(--vh, 1vh) * 45);
+    height: calc(var(--vh, 1vh) * 60);
     overflow-y: scroll;
     overflow-x: hidden;
     top: calc(var(--vh, 1vh) * 2);
