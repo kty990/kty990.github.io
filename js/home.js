@@ -361,7 +361,6 @@ async function main() {
         lastUpdated.style.color = "#fff";
         lastUpdated.style.textAlign = "center";
         lastUpdated.style.width = "100%";
-        lastUpdated.style.height = "50%";
         lastUpdated.style.fontSize = "calc(var(--vh, 1vh) * 2)";
         lastUpdated.style.padding = "0";
         lastUpdated.style.margin = "0";
@@ -398,7 +397,9 @@ async function main() {
             lang.style.fontSize = "calc(var(--vwh,1vh)*1.5)";
             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
             lang.style.textAlign = "center";
-            lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)"
+            lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)";
+            lang.style.position = "relative";
+            lang.style.bottom = "calc(var(--vh,1vh)*2)";
 
             /* TOOLTIP CREATION */
             let tooltip_div = document.createElement("div");
@@ -422,8 +423,8 @@ async function main() {
 
             slide.appendChild(lang);
         }
-        obj.append(lastUpdated);
         obj.appendChild(p);
+        obj.append(lastUpdated);
         obj.appendChild(slide);
         target.appendChild(obj);
     }

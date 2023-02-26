@@ -1,5 +1,5 @@
 /* Debugging version control */
-let v = 8;
+let v = 9;
 const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
@@ -57,12 +57,12 @@ async function main() {
     }
     let newelem = document.createElement("div");
     newelem.innerHTML = txt;
-    oldelem.parentNode.replaceChild(newelem,oldelem);
+    oldelem.parentNode.replaceChild(newelem, oldelem);
 }
 
 async function setActive() {
     await main().catch(console.log);
-    
+
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
     let aboutNav = document.getElementById("about");
@@ -93,11 +93,11 @@ async function setActive() {
     if (!hamburger) {
         throw new Error("The hamburger was eaten!");
     }
-    
+
     hamburger.addEventListener("mousedown", () => {
         toggle();
     });
-    
+
     let discord = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
 
     discord.addEventListener("mousedown", () => {
@@ -119,14 +119,14 @@ let vh = window.innerHeight * 0.01;
 let vw = window.innerWidth * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 document.documentElement.style.setProperty('--vw', `${vw}px`);
-document.documentElement.style.setProperty('--vwh',`${Math.min(vh,vw)}px`);
+document.documentElement.style.setProperty('--vwh', `${Math.min(vh, vw)}px`);
 
 window.addEventListener('resize', () => {
-  let vh = window.innerHeight * 0.01;
-  let vw = window.innerWidth * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-  document.documentElement.style.setProperty('--vw', `${vw}px`);
-  document.documentElement.style.setProperty('--vwh',`${Math.min(vh,vw)}px`);
+    let vh = window.innerHeight * 0.01;
+    let vw = window.innerWidth * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--vw', `${vw}px`);
+    document.documentElement.style.setProperty('--vwh', `${Math.min(vh, vw)}px`);
 });
 
 setActive().catch(console.log);
@@ -150,10 +150,10 @@ function OnError(message) {
     document.body.appendChild(errObj);
     setTimeout(() => {
         errObj.remove();
-    },ERROR_LENGTH);
+    }, ERROR_LENGTH);
 }
 
-window.onerror = function(message, source, lineno, colno, error) { 
+window.onerror = function (message, source, lineno, colno, error) {
     let msg = message;
     if (message == "Script error.") {
         msg = "An unknown script error has occured.";
