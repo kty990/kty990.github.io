@@ -7,6 +7,38 @@
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
+#socials-title {
+    color:#ffffff;
+    font-size:25pt;
+    text-align:center;
+    width:100%;
+    font-weight:bold;
+    font-family:'Yanone Kaffeesatz', sans-serif;
+    margin:0;
+    margin-bottom:3vh;
+}
+
+#me-picture {
+    position: relative;
+    height: calc(var(--vh, 1vh) * 30);
+    right: calc(var(--vh, 1vh) * 3);
+}
+
+#me-frame {
+    position: fixed;
+    width: calc(var(--vh, 1vh) * 30);
+    height: calc(var(--vh, 1vh) * 30);
+    border-radius: 500px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    left: calc(var(--vh, 1vh) * 95 / (1200/900));
+    top: 10vh;
+    background-color: #c48bd6;
+    border-color: #fff;
+    border-width: 3px;
+    border-style: solid;
+}
+
 #socials {
     width: 30vw;
     height: auto;

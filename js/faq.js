@@ -1,7 +1,8 @@
 let dropdown_flex = document.getElementsByClassName("dropdown-flex")[0];
 let q_a = {
     "How do I invite the Homies bot to my server?":"As of right now, you can't! It uses some features that are not meant for public use, but a public version may be released in the future.",
-    "What is the homies bot?":"The homies bot is a general purpose discord bot."
+    "What is the homies bot?":"The homies bot is a general purpose discord bot.",
+    "Is the homies bot complete?":"No, updates will continue in the near future."
 }
 
 let faqs = [];
