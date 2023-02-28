@@ -251,8 +251,9 @@ function GetDateTime(timestamp) {
     t.Add(19 * 60 * 60);
     console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
     let d = new Datestamp(timestamp);
+    d.month--;
     let year = d.year;
-    let month = months[d.month - 1];
+    let month = months[d.month];
     let day = d.day;
 
     console.log(`Hour: ${t.hour}`);

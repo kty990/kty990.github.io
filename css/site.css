@@ -52,6 +52,7 @@ html {
     top: 0;
     left: 0;
     z-index: 0;
+    filter: hue-rotate(90deg);
 }
 
 #site-last-update {
@@ -92,6 +93,7 @@ html {
     border-style: solid;
     border-color: #24031b;
     transition: background-color 0.25s;
+    filter: hue-rotate(90deg);
 }
 
 #hamburger:hover {
@@ -141,6 +143,7 @@ html {
     white-space: nowrap;
     transition: left 0.5s;
     user-select: none;
+    filter: hue-rotate(90deg);
 }
 
 #nav-container_active {
@@ -163,6 +166,7 @@ html {
     left: 0px;
 
     user-select: none;
+    filter: hue-rotate(90deg);
 }
 
 #nav-icon {
@@ -173,6 +177,7 @@ html {
     border-radius: 100px;
     border-color: #fff;
     border-style: solid;
+    filter: hue-rotate(90deg);
     /* border-width: 2px; */
 }
 
@@ -185,6 +190,7 @@ html {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     text-shadow: 2px 0px #000000;
     font-weight: bold;
+    filter: hue-rotate(90deg);
 }
 
 .nav-link-first {
@@ -194,11 +200,13 @@ html {
 .nav-link:hover {
     color: #8c42e6;
     cursor: pointer;
+    filter: hue-rotate(90deg);
 }
 
 #nav-active {
     color: #9947fd;
     font-size: calc(var(--vh, 1vh) * 5.5);
+    filter: hue-rotate(90deg);
 }
 
 #scroll-page {
@@ -211,6 +219,7 @@ html {
     padding-bottom: 27px;
     margin: 0;
     z-index: 5;
+    filter: hue-rotate(90deg);
 }
 
 #nav-separator {
@@ -257,6 +266,7 @@ html {
     position: fixed;
     right: calc(var(--vwh, 1vh) * -50);
     top: calc(var(--vwh, 1vh) * 40);
+    filter: hue-rotate(90deg);
 }
 
 .hr-padding {
@@ -304,6 +314,7 @@ html {
     border-style: solid;
     border-left-color: #000;
     margin-top: calc(var(--vh, 1vh) * 19);
+    filter: hue-rotate(90deg);
 }
 
 
@@ -311,15 +322,18 @@ html {
 .discord {
     color: #5c2f93;
     text-decoration: none;
+    filter: hue-rotate(90deg);
 }
 
 #discord-page {
     color: #9947fd;
+    filter: hue-rotate(90deg);
 }
 
 .discord_nav_active {
     color: #8c42e6;
     text-decoration: underline;
+    filter: hue-rotate(90deg);
 }
 
 
