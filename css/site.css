@@ -176,7 +176,7 @@ html {
     border-radius: 100px;
     border-color: #fff;
     border-style: solid;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
     /* border-width: 2px; */
 }
 
@@ -189,7 +189,7 @@ html {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     text-shadow: 2px 0px #000000;
     font-weight: bold;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
 }
 
 .nav-link-first {
@@ -199,7 +199,7 @@ html {
 .nav-link:hover {
     color: #8c42e6;
     cursor: pointer;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
 }
 
 #nav-active {
