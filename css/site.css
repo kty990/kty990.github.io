@@ -93,7 +93,7 @@ html {
     border-style: solid;
     border-color: #24031b;
     transition: background-color 0.25s;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
 }
 
 #hamburger:hover {
@@ -110,7 +110,6 @@ html {
     align-items: center;
     margin: 0;
     margin-top: calc(var(--vh, 1vh) * -5);
-    ;
 }
 
 #discord_bot {
@@ -143,7 +142,7 @@ html {
     white-space: nowrap;
     transition: left 0.5s;
     user-select: none;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
 }
 
 #nav-container_active {
@@ -166,7 +165,7 @@ html {
     left: 0px;
 
     user-select: none;
-    filter: hue-rotate(90deg);
+    /* filter: hue-rotate(90deg); */
 }
 
 #nav-icon {
