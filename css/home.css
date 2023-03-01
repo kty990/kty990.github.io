@@ -145,7 +145,7 @@
     padding-right: calc(var(--vw, 1vw)*1);
     background-color: #651675;
     border-radius: 30px;
-    /* filter: hue-rotate(90deg); */
+    filter: hue-rotate(90deg);
 }
 
 .tooltip:hover .tooltip-text {
