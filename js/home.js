@@ -375,8 +375,6 @@ async function main() {
         slide.style.left = "12.5%";
         slide.style.display = "flex";
         slide.style.flexDirection = "row";
-        // slide.style.marginTop = "calc(var(--vh,1vh)*-2)";
-        // slide.style.marginBottom = "10%";
         let x = 0;
         for (const [key, value] of Object.entries(project.properties)) {
             let lang = document.createElement("div");
@@ -392,10 +390,11 @@ async function main() {
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             lang.style.width = `${value * 100}%`;
+            lang.style.filter = "hue-rotate(270deg)";
             lang.style.height = "calc(var(--vh,1vh)*2)";
             lang.style.padding = "0";
             lang.textContent = `${Math.round(value * 1000) / 10}%`;
-            lang.style.fontSize = "calc(var(--vwh,1vh)*1.5)";
+            lang.style.fontSize = "calc(var(--vwh,1vh)*1)";
             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
             lang.style.textAlign = "center";
             lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)";
