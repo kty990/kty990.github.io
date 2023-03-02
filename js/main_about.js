@@ -93,6 +93,11 @@ right_arrow.addEventListener("mousedown", () => {
 });
 
 const DURATION = 5000;
-setTimeout(() => {
-    increment();
-}, DURATION)
+function slideshow() {
+    setTimeout(() => {
+        increment();
+        slideshow();
+    }, DURATION)
+}
+
+slideshow();
