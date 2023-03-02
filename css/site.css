@@ -189,7 +189,7 @@ html {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     text-shadow: 2px 0px #000000;
     font-weight: bold;
-    /* filter: hue-rotate(90deg); */
+    filter: hue-rotate(90deg);
 }
 
 .nav-link-first {
