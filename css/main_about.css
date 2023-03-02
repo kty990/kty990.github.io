@@ -43,6 +43,7 @@
 
 #slideshow img {
     width: 90%;
+    max-height: 80%;
     position: relative;
     left: 5%;
     top: 5%;

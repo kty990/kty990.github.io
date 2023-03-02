@@ -38,7 +38,18 @@ for (let x = 0; x < medias.length; x++){
     display(medias[x]);
 }
 
+/* "Slideshow" */
+
+let img_template = "../res/images/"
+let images = [
+    `${img_template}placeholder_img.png`,
+    `${img_template}discordicon.png`,
+    `${img_template}instagram.png`,
+    `${img_template}temp_bg.png`
+];
+
 let dots = document.getElementsByClassName("dot");
+let slideshow_img = document.getElementById("slideshow_image");
 let current_dot = 0;
 let arrow_elems = document.getElementsByClassName("arrow-btn");
 let left_arrow = null;
@@ -60,6 +71,7 @@ function decrement() {
         current_dot = dots.length - 1;
     }
     dots[current_dot].classList.add("active-dot");
+    slideshow_img.src = images[current_dot];
 }
 
 function increment() {
@@ -69,6 +81,7 @@ function increment() {
         current_dot = 0;
     }
     dots[current_dot].classList.add("active-dot");
+    slideshow_img.src = images[current_dot];
 }
 
 left_arrow.addEventListener("mousedown", () => {
@@ -78,3 +91,8 @@ left_arrow.addEventListener("mousedown", () => {
 right_arrow.addEventListener("mousedown", () => {
     increment();
 });
+
+const DURATION = 5000;
+setTimeout(() => {
+    increment();
+}, DURATION)
