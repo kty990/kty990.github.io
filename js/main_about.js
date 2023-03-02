@@ -37,3 +37,44 @@ let medias = [
 for (let x = 0; x < medias.length; x++){
     display(medias[x]);
 }
+
+let dots = document.getElementsByClassName("dot");
+let current_dot = 0;
+let arrow_elems = document.getElementsByClassName("arrow-btn");
+let left_arrow = null;
+let right_arrow = null;
+
+for (let x = 0; x < arrow_elems.length; x++) {
+    if (arrow_elems[x].textContent == arrows["left"]) {
+        left_arrow = arrow_elems[x];
+    }
+    if (arrow_elems[x].textContent == arrows["right"]) {
+        right_arrow = arrow_elems[x];
+    }
+}
+
+function decrement() {
+    dots[current_dot].classList.remove("active-dot");
+    current_dot--;
+    if (current_dot < 0) {
+        current_dot = dots.length - 1;
+    }
+    dots[current_dot].classList.add("active-dot");
+}
+
+function increment() {
+    dots[current_dot].classList.remove("active-dot");
+    current_dot++;
+    if (current_dot >= dots.length) {
+        current_dot = 0;
+    }
+    dots[current_dot].classList.add("active-dot");
+}
+
+left_arrow.addEventListener("mousedown", () => {
+    decrement();
+});
+
+right_arrow.addEventListener("mousedown", () => {
+    increment();
+});
