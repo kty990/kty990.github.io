@@ -172,7 +172,7 @@ html {
     width: calc(var(--vh, 1vh) * 15);
     height: calc(var(--vh, 1vh) * 15);
     position: relative;
-
+    background-color: #cccccc7d;
     border-radius: 100px;
     border-color: #fff;
     border-style: solid;
