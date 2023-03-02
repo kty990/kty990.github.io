@@ -39,14 +39,14 @@ function toggleDiscord() {
 }
 
 async function main() {
-    // Add inverted circle effect to background
-    let div = document.createElement("div"); /* <div class="invert-circle"><p style="display:none;">Why are you looking at this???</p></div> */
-    div.classList.add("invert-circle");
-    let p = document.createElement("p");
-    p.style.display = "none";
-    p.textContent = "Why are you looking at this???";
-    div.appendChild(p);
-    document.body.appendChild(div);
+    // // Add inverted circle effect to background
+    // let div = document.createElement("div"); /* <div class="invert-circle"><p style="display:none;">Why are you looking at this???</p></div> */
+    // div.classList.add("invert-circle");
+    // let p = document.createElement("p");
+    // p.style.display = "none";
+    // p.textContent = "Why are you looking at this???";
+    // div.appendChild(p);
+    // document.body.appendChild(div);
 
     // Navbar
     let res = await fetch("/../main/navbar.html");
