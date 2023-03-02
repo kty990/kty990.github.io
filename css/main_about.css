@@ -116,19 +116,19 @@
 
 #me-picture {
     position: relative;
-    height: calc(var(--vh, 1vh) * 30);
+    height: 100%; /*calc(var(--vh, 1vh) * 30);*/
     right: calc(var(--vh, 1vh) * 3);
 }
 
 #me-frame {
     position: fixed;
-    width: calc(var(--vh, 1vh) * 30);
-    height: calc(var(--vh, 1vh) * 30);
+    width: calc(var(--vh, 1vh) * 15);
+    height: calc(var(--vh, 1vh) * 15);
     border-radius: 500px;
     overflow-x: hidden;
     overflow-y: hidden;
-    left: calc(var(--vw, 1vw) * 40);
-    top: calc(var(--vh, 1vh) * 15);
+    left: calc(var(--vw, 1vw) * 25);
+    top: calc(var(--vh, 1vh) * 4);
     background-color: #c48bd6;
     border-color: #fff;
     border-width: 3px;
