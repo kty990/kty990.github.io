@@ -313,7 +313,6 @@ html {
     border-style: solid;
     border-left-color: #000;
     margin-top: calc(var(--vh, 1vh) * 19);
-    filter: hue-rotate(90deg);
 }
 
 
