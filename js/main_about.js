@@ -1,3 +1,8 @@
+const arrows = {
+    "right":"→",
+    "left":"←"
+}
+
 class Media {
     constructor(image_path, social_type, display_text, link) {
         this.image = "../res/images/" + image_path;
