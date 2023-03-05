@@ -346,7 +346,7 @@ function load_projects() {
 async function main() {
     await load_projects();
 	
-	window.location.search = "test%20search%20string";
+	window.location.hash = "test%20hash%20string";
 
     let target = document.getElementById("project-flex");
     for (let project of myProjects) {
