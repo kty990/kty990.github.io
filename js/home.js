@@ -346,7 +346,7 @@ function load_projects() {
 async function main() {
     await load_projects();
 	
-	console.debug(`\n\nHistory:\n${window.history}`);
+	console.debug(`\n\nHistory:\n${window.opener}`);
 
     let target = document.getElementById("project-flex");
     for (let project of myProjects) {
