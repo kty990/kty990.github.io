@@ -116,6 +116,10 @@ html {
     position: relative;
     padding-left: calc(var(--vh, 1vh) * 1);
     padding-right: calc(var(--vh, 1vh) * 1);
+    padding-bottom: calc(var(--vh, 1vh) * 1.5);
+    z-index: -1;
+    right: 25%;
+    bottom: 134%;
     width: 110%;
     height: 110%;
     animation-name: flash;
