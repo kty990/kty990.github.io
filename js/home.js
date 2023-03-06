@@ -350,7 +350,7 @@ function hashString(str) {
 async function main() {
     await load_projects();
 	
-	if (window.hash == undefined) {
+	if (window.location.hash == undefined) {
 		window.location.hash = hashString("test hash string");
 	}
 
