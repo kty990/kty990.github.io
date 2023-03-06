@@ -38,6 +38,10 @@ function toggleDiscord() {
     }
 }
 
+function hashString(str) {
+    return encodeURIComponent(str);
+}
+
 async function main() {
     // // Add inverted circle effect to background
     // let div = document.createElement("div"); /* <div class="invert-circle"><p style="display:none;">Why are you looking at this???</p></div> */
@@ -61,6 +65,12 @@ async function main() {
 }
 
 async function setActive() {
+    if (window.location.hash == undefined) {
+		window.location.hash = hashString("direct");
+	} else if (window.location.hash.length == 0) {
+        window.location.hash = hashString("direct");
+    }
+
     await main().catch(console.log);
 
     if (window.location.hash != undefined) {

@@ -349,12 +349,6 @@ function hashString(str) {
 
 async function main() {
     await load_projects();
-	
-	if (window.location.hash == undefined) {
-		window.location.hash = hashString("direct");
-	} else if (window.location.hash.length == 0) {
-        window.location.hash = hashString("direct");
-    }
 
     let target = document.getElementById("project-flex");
     for (let project of myProjects) {
