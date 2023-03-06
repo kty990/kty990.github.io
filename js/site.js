@@ -48,6 +48,8 @@ async function main() {
     // div.appendChild(p);
     // document.body.appendChild(div);
 
+    console.debug(`Hash: ${window.location.hash}`);
+
     // Navbar
     let res = await fetch("/../main/navbar.html");
     let txt = await res.text();
