@@ -37,6 +37,19 @@
     }
 }
 
+@keyframes flash {
+    from {
+        width: 110%;
+        height: 110%;
+        background-color: #ffffffff;
+    }
+    to {
+        width: 120%;
+        height: 120%;
+        background-color: #ffffff00;
+    }
+}
+
 body,
 html {
     margin: 0;
@@ -82,9 +95,7 @@ html {
     padding-right: calc(var(--vh, 1vh) * 1);
     left: 105%;
     width: calc(var(--vh, 1vh) * 5);
-    ;
     height: calc(var(--vh, 1vh) * 5);
-    ;
     font-size: calc(var(--vh, 1vh) * 1.25);
     color: #2c0957;
     background-color: #7a28a07d;
@@ -94,6 +105,23 @@ html {
     border-color: #24031b;
     transition: background-color 0.25s;
     /* filter: hue-rotate(90deg); */
+}
+
+#hamburger-flash {
+    background-color: #fff;
+    border-radius: calc(var(--vh, 1vh) * 1);
+    display: block;
+    padding-top: 0vh;
+    padding-bottom: calc(var(--vh, 1vh) * 1.5);
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right: calc(var(--vh, 1vh) * 1);
+    width: 110%;
+    height: 110%;
+    animation-name: flash;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
 }
 
 #hamburger:hover {

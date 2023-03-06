@@ -3,10 +3,18 @@ let v = 9;
 const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
+let flashing = true;
+
 /* Functions */
 function toggle() {
     let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
+
+    if (flashing) {
+        flashing = false;
+        let flash = document.getElementById("hamburger-flash");
+        flash.style.visibility = "hidden";
+    }
 
     if (navContainer.id == "nav-container") {
         navContainer.id = "nav-container_active";
