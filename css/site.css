@@ -112,7 +112,8 @@ html {
     border-radius: calc(var(--vh, 1vh) * 1);
     display: block;
     padding-top: 0vh;
-    padding-bottom: calc(var(--vh, 1vh) * 1.5);
+    margin: 0;
+    position: relative;
     padding-left: calc(var(--vh, 1vh) * 1);
     padding-right: calc(var(--vh, 1vh) * 1);
     width: 110%;
