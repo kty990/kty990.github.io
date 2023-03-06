@@ -394,7 +394,7 @@ async function main() {
                 lang.style.borderBottomRightRadius = "50px";
                 lang.style.borderTopRightRadius = "50px";
             }
-            console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
+            // console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
             x++;
             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
             lang.style.width = `${value * 100}%`;
