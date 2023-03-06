@@ -63,7 +63,11 @@ async function main() {
 async function setActive() {
     await main().catch(console.log);
 
-    console.error(`Hash: ${window.location.hash}`);
+    if (window.location.hash != undefined) {
+        console.warn(`Hash: ${window.location.hash}\tLength: ${window.location.hash.length}`);
+    } else {
+        console.warn(`Hash: ${window.location.hash}\tLength: ${undefined}`);
+    }
 
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
