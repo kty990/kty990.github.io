@@ -352,7 +352,9 @@ async function main() {
 	
 	if (window.location.hash == undefined) {
 		window.location.hash = hashString("test hash string");
-	}
+	} else if (window.location.hash.length == 0) {
+        window.location.hash = hashString("test hash string");
+    }
 
     let target = document.getElementById("project-flex");
     for (let project of myProjects) {
