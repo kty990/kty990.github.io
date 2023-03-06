@@ -343,11 +343,15 @@ function load_projects() {
     });
 }
 
+function hashString(str) {
+    return encodeURIComponent(str);
+}
+
 async function main() {
     await load_projects();
 	
-	if (window.hash.length == 0) {
-		window.location.hash = "test%20hash%20string";
+	if (window.hash == undefined) {
+		window.location.hash = hashString("test hash string");
 	}
 
     let target = document.getElementById("project-flex");
