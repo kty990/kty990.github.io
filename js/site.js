@@ -48,8 +48,6 @@ async function main() {
     // div.appendChild(p);
     // document.body.appendChild(div);
 
-    console.debug(`Hash: ${window.location.hash}`);
-
     // Navbar
     let res = await fetch("/../main/navbar.html");
     let txt = await res.text();
@@ -64,6 +62,8 @@ async function main() {
 
 async function setActive() {
     await main().catch(console.log);
+
+    console.error(`Hash: ${window.location.hash}`);
 
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
