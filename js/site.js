@@ -108,6 +108,7 @@ async function setActive() {
     }
 
     if (window.location.hash != "direct") {
+        console.error(`Not direct: ${window.location.hash}`);
         if (flashing) {
             flashing = false;
             let flash = document.getElementById("hamburger-flash");
