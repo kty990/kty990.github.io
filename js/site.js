@@ -107,7 +107,7 @@ async function setActive() {
         window.location.hash = hashString("direct");
     }
 
-    if (window.location.hash != "direct") {
+    if (window.location.hash != "#direct") {
         console.error(`Not direct: ${window.location.hash}`);
         if (flashing) {
             flashing = false;
