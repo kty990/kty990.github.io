@@ -64,6 +64,7 @@ async function main() {
 }
 
 async function setActive() {
+
     await main().catch(console.log);
 
     let url = window.location.href;
@@ -114,6 +115,11 @@ async function setActive() {
             let flash = document.getElementById("hamburger-flash");
             flash.style.visibility = "hidden";
         }
+    }
+
+    if (localStorage.flashing == false) {
+        let flash = document.getElementById("hamburger-flash");
+        flash.style.visibility = "hidden";
     }
 
     let discord = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
