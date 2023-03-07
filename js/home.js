@@ -247,16 +247,16 @@ function ConvertToDate(timestamp) {
 
 function GetDateTime(timestamp) {
     let t = new Time(timestamp);
-    console.log(`Old time: ${t.hour}:${t.minute}:${t.second}`);
+    // console.log(`Old time: ${t.hour}:${t.minute}:${t.second}`);
     t.Add(19 * 60 * 60);
-    console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
+    // console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
     let d = new Datestamp(timestamp);
     d.month--;
     let year = d.year;
     let month = months[d.month];
     let day = d.day;
 
-    console.log(`Hour: ${t.hour}`);
+    // console.log(`Hour: ${t.hour}`);
     while (t.hour > 23) {
         t.hour -= 23;
         day++;
@@ -273,7 +273,7 @@ function GetDateTime(timestamp) {
     }
 
     if (t.hour < 0) {
-        console.log("Yes");
+        // console.log("Yes");
         if (day > 1) {
             day--;
         } else if (month > 1) {
@@ -316,7 +316,7 @@ function load_projects() {
                             let language_tmp = {};
                             let total = 0;
                             for (const [language, count] of Object.entries(d)) {
-                                console.log(`L: ${language}\tC: ${count}`);
+                                // console.log(`L: ${language}\tC: ${count}`);
                                 language_tmp[language] = count;
                                 total = total + count;
                             }

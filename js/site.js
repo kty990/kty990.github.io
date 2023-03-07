@@ -22,7 +22,7 @@ function toggle() {
         navContainer.id = "nav-container";
         if (discordNav.classList.contains("discord_nav_active")) {
             toggleDiscord();
-            console.log("Toggled");
+            // console.log("Toggled");
         } else {
             console.log(`List: ${discordNav.classList}\nContains: ${discordNav.classList.contains("discord-active")}\n`);
         }
@@ -51,15 +51,6 @@ function hashString(str) {
 }
 
 async function main() {
-    // // Add inverted circle effect to background
-    // let div = document.createElement("div"); /* <div class="invert-circle"><p style="display:none;">Why are you looking at this???</p></div> */
-    // div.classList.add("invert-circle");
-    // let p = document.createElement("p");
-    // p.style.display = "none";
-    // p.textContent = "Why are you looking at this???";
-    // div.appendChild(p);
-    // document.body.appendChild(div);
-
     // Navbar
     let res = await fetch("/../main/navbar.html");
     let txt = await res.text();
@@ -127,7 +118,7 @@ async function setActive() {
     let discord = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
 
     discord.addEventListener("mousedown", () => {
-        console.debug("Test : Discord");
+        // console.debug("Test : Discord");
         toggleDiscord();
     });
 }
