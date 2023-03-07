@@ -74,18 +74,20 @@ async function main() {
 
 async function setActive() {
     if (window.location.hash == undefined) {
-		window.location.hash = hashString("direct");
-	} else if (window.location.hash.length == 0) {
+        window.location.hash = hashString("direct");
+    } else if (window.location.hash.length == 0) {
         window.location.hash = hashString("direct");
     }
 
-    await main().catch(console.log);
-
-    if (window.location.hash != undefined) {
-        console.warn(`Hash: ${window.location.hash}\tLength: ${window.location.hash.length}`);
-    } else {
-        console.warn(`Hash: ${window.location.hash}\tLength: ${undefined}`);
+    if (window.location.hash != "direct") {
+        if (flashing) {
+            flashing = false;
+            let flash = document.getElementById("hamburger-flash");
+            flash.style.visibility = "hidden";
+        }
     }
+
+    await main().catch(console.log);
 
     let url = window.location.href;
     let commandsNav = document.getElementById("cmds");
