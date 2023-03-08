@@ -3,15 +3,17 @@ let v = 9;
 const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
-localStorage.flashing = true;
+if (localStorage.getItem("flashing") == undefined || localStorage.getItem("flashing") == null) {
+	localStorage.setItem("flashing",true);
+}
 
 /* Functions */
 function toggle() {
     let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
 
-    if (localStorage.flashing) {
-        localStorage.flashing = false;
+    if (localStorage.getItem("flashing") == true) {
+        localStorage.setItem("flashing", false);
         let flash = document.getElementById("hamburger-flash");
         flash.style.visibility = "hidden";
     }
@@ -110,14 +112,14 @@ async function setActive() {
 
     if (window.location.hash != "#direct") {
         console.error(`Not direct: ${window.location.hash}`);
-        if (localStorage.flashing) {
-            localStorage.flashing = false;
-            let flash = document.getElementById("hamburger-flash");
-            flash.style.visibility = "hidden";
-        }
+        if (localStorage.getItem("flashing") == true) {
+        localStorage.setItem("flashing", false);
+        let flash = document.getElementById("hamburger-flash");
+        flash.style.visibility = "hidden";
+    }
     }
 
-    if (localStorage.flashing == false) {
+    if (localStorage.getItem("flashing") == false) {
         let flash = document.getElementById("hamburger-flash");
         flash.style.visibility = "hidden";
     }
