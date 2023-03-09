@@ -64,7 +64,12 @@ for (let x = 0; x < arrow_elems.length; x++) {
     }
 }
 
+let lastMovement = new Date().getTime() / 1000;
+
 function decrement() {
+    if (lastMovement < 5) {
+        return;
+    }
     dots[current_dot].classList.remove("active-dot");
     current_dot--;
     if (current_dot < 0) {
@@ -75,6 +80,9 @@ function decrement() {
 }
 
 function increment() {
+    if (lastMovement < 5) {
+        return;
+    }
     dots[current_dot].classList.remove("active-dot");
     current_dot++;
     if (current_dot >= dots.length) {
@@ -83,6 +91,7 @@ function increment() {
     dots[current_dot].classList.add("active-dot");
     slideshow_img.src = images[current_dot];
 }
+
 
 left_arrow.addEventListener("mousedown", () => {
     decrement();
