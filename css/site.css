@@ -358,7 +358,7 @@ html {
 
 /* DISCORD ELEMENT CLASSES & IDs */
 .discord {
-    color: #5c2f93;
+    /* color: #5c2f93; */
     text-decoration: none;
     filter: hue-rotate(90deg);
 }
