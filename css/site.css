@@ -165,10 +165,10 @@ html {
     left: calc(var(--vh, 1vh) * -21);
     height: 100%;
     width: calc(var(--vh, 1vh) * 20);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #ffffff8e;
-    border-right: #fff;
+    border-right: #000;
     border-top: #00000000;
     border-left: #00000000;
     border-style: solid;
@@ -183,10 +183,10 @@ html {
     position: fixed;
     height: 100%;
     width: calc(var(--vh, 1vh) * 20);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #ffffff8e;
-    border-right: #fff;
+    border-right: #000;
     border-top: #00000000;
     border-left: #00000000;
     border-style: solid;
