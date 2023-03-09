@@ -209,8 +209,6 @@ html {
     border-radius: 100px;
     border-color: #fff;
     border-style: solid;
-    /* filter: hue-rotate(90deg); */
-    /* border-width: 2px; */
 }
 
 .nav-link {
@@ -227,8 +225,6 @@ html {
 
     width: 100%;
     text-align: center;
-
-    /* border-radius: 50px; */
 
     background-color: #7d7d7d7d;
     border-color: #000000cc;
