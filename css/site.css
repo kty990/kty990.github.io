@@ -237,7 +237,7 @@ html {
 }
 
 .nav-link:hover {
-    color: #8c42e6;
+    color: #4252e6;
     cursor: pointer;
     /* filter: hue-rotate(90deg); */
 }
