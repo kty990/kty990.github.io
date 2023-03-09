@@ -68,6 +68,8 @@
     border-style: solid;
     border-color: #24031b;
     transition: background-color 0.25s;
+
+    filter: hue-rotate(90deg);
 }
 
 #hamburger:hover {
@@ -226,7 +228,7 @@ html {
     width: 100%;
     text-align: center;
 
-    background-color: #7d7d7d7d;
+    /* background-color: #7d7d7d7d; */
     border-color: #000000cc;
     border-top-style: none;
     border-bottom-style: solid;
@@ -355,6 +357,9 @@ html {
     margin-top: calc(var(--vh, 1vh) * 19);
 }
 
+.discord-active>a {
+    color: #cccccc;
+}
 
 /* DISCORD ELEMENT CLASSES & IDs */
 .discord {
