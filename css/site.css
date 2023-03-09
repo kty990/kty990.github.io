@@ -17,13 +17,12 @@
 
 @keyframes ham_hover {
     from {
-        color: #522a82;
-        background-color: #7a28a0;
-    }
-
-    to {
         color: #000;
         background-color: #fff;
+    }
+    to {
+        color: #522a82;
+        background-color: #7a28a0;
     }
 }
 
@@ -48,6 +47,33 @@
         height: 120%;
         background-color: #ffffff00;
     }
+}
+
+/** Inactive */
+#hamburger {
+    position: relative;
+    display: inline-block;
+    padding-top: 0vh;
+    padding-bottom: calc(var(--vh, 1vh) * 1.5);
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right: calc(var(--vh, 1vh) * 1);
+    left: 105%;
+    width: calc(var(--vh, 1vh) * 5);
+    height: calc(var(--vh, 1vh) * 5);
+    font-size: calc(var(--vh, 1vh) * 1.25);
+    color: #000;
+    background-color: #fff;
+    border-radius: calc(var(--vh, 1vh) * 1);
+    border-width: calc(var(--vh, 1vh) * 0.25);
+    border-style: solid;
+    border-color: #24031b;
+    transition: background-color 0.25s;
+}
+
+#hamburger:hover {
+    color: #522a82;
+    background-color: #7a28a0cc;
+    cursor: pointer;
 }
 
 body,
@@ -85,27 +111,7 @@ html {
     font-family: 'Rubik Vinyl', cursive;
 }
 
-/** Inactive */
-#hamburger {
-    position: relative;
-    display: inline-block;
-    padding-top: 0vh;
-    padding-bottom: calc(var(--vh, 1vh) * 1.5);
-    padding-left: calc(var(--vh, 1vh) * 1);
-    padding-right: calc(var(--vh, 1vh) * 1);
-    left: 105%;
-    width: calc(var(--vh, 1vh) * 5);
-    height: calc(var(--vh, 1vh) * 5);
-    font-size: calc(var(--vh, 1vh) * 1.25);
-    color: #2c0957;
-    background-color: #7a28a07d;
-    border-radius: calc(var(--vh, 1vh) * 1);
-    border-width: calc(var(--vh, 1vh) * 0.25);
-    border-style: solid;
-    border-color: #24031b;
-    transition: background-color 0.25s;
-    /* filter: hue-rotate(90deg); */
-}
+
 
 #hamburger-flash {
     background-color: #fff;
@@ -127,12 +133,6 @@ html {
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-iteration-count: infinite;
-}
-
-#hamburger:hover {
-    color: #000;
-    background-color: #ffffffcc;
-    cursor: pointer;
 }
 
 #nav-flexbox {
@@ -167,7 +167,7 @@ html {
     width: calc(var(--vh, 1vh) * 20);
     backdrop-filter: blur(5px);
     text-decoration: none;
-    background-color: #ffffff8e;
+    background-color: #cccccc8e;
     border: #000;
     border-style: solid;
     border-top-right-radius: 50px;
@@ -214,7 +214,8 @@ html {
 }
 
 .nav-link {
-    color: #5c2f93;
+    /* color: #5c2f93; */
+    color: #383838;
     text-decoration: none;
     padding-top: calc(var(--vh, 1vh) * 2);
     padding-bottom: calc(var(--vh, 1vh) * 2);
