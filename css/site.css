@@ -167,7 +167,7 @@ html {
     width: calc(var(--vh, 1vh) * 20);
     backdrop-filter: blur(2px);
     text-decoration: none;
-    background-color: #000000cc;
+    background-color: #ffffff8e;
     border-right: #fff;
     border-top: #00000000;
     border-left: #00000000;
@@ -185,7 +185,7 @@ html {
     width: calc(var(--vh, 1vh) * 20);
     backdrop-filter: blur(2px);
     text-decoration: none;
-    background-color: #000000cc;
+    background-color: #ffffff8e;
     border-right: #fff;
     border-top: #00000000;
     border-left: #00000000;
@@ -223,6 +223,10 @@ html {
     text-shadow: 2px 0px #000000;
     font-weight: bold;
     filter: hue-rotate(90deg);
+
+    background-color: #7d7d7d7d;
+    border-color: #000000cc;
+    border-style: solid;
 }
 
 .nav-link-first {
