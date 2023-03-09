@@ -224,6 +224,8 @@ html {
     font-weight: bold;
     filter: hue-rotate(90deg);
 
+    width: 100%;
+
     background-color: #7d7d7d7d;
     border-color: #000000cc;
     border-style: solid;
