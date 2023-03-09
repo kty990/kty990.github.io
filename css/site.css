@@ -378,6 +378,7 @@ html {
     color: #8c42e6;
     text-decoration: underline;
     filter: hue-rotate(90deg);
+    border-bottom-style: none;
 }
 
 
