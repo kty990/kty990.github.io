@@ -343,12 +343,76 @@ function load_projects() {
     });
 }
 
+function encodeProjects() {
+    const PROJ_SEP = "!";
+    const SEP = "@";
+    const ARG_SEP = "_";
+    let data = "";
+    
+    for (let x = 0; x < myProjects.length; x++) {
+        let p = myProjects[x];
+        let args = "";
+        for (const [l, v] of Object.entries(myProjects[x].properties)) {
+            args += `${l}#${v}${ARG_SEP}`;
+        }
+        let tmp = `${p.GetName()}${SEP}${p.lastUpdated}${SEP}${args}${PROJ_SEP}`;
+        data += tmp;
+    }
+    return data;
+}
+
+function decodeProjects(data) {
+    const PROJ_SEP = "!";
+    const SEP = "@";
+    const ARG_SEP = "_";
+    let projects = data.split(PROJ_SEP);
+    let tmp = [];
+    for (let x = 0; x < projects.length; x++) {
+        let splitString = projects[x].split(SEP);
+        let name = splitString.splice(0,1)[0];
+        let update = splitString.splice(0,1)[0];
+        let args = {};
+        let arg_string = splitString[i].split(ARG_SEP);
+        for (let i = 0; i < arg_string.length; i++) {
+            let tmp = arg_string[i].split("#");
+            args[tmp[0]] = parseFloat(tmp[1]);
+        }
+        tmp.push(new Project(name, args, update));
+    }
+    return tmp;
+}
+
+function saveData() {
+    localStorage.setItem("last_save", "");
+    localStorage.setItem("projects", encodeProjects());
+}
+
+function loadData() {
+    let success = true;
+    try {
+        let tmp = decodeProjects(localStorage.getItem("projects"));
+        if (tmp.length == 0) {
+            success = false;
+        }
+    } catch (e) {
+        success = false;
+    }
+    return success;
+}
+
 function hashString(str) {
     return encodeURIComponent(str);
 }
 
 async function main() {
-    await load_projects();
+    if (!loadData()) {
+        await load_projects();
+        saveData();
+    } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 30) {
+        // if there has been 30 minutes or more since last save
+        await load_projects();
+        saveData();
+    }
 
     let target = document.getElementById("project-flex");
     for (let project of myProjects) {
