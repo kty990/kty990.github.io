@@ -168,10 +168,9 @@ html {
     backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #ffffff8e;
-    border-right: #000;
-    border-top: #00000000;
-    border-left: #00000000;
+    border: #000;
     border-style: solid;
+    border-radius: 50px;
     white-space: nowrap;
     transition: left 0.5s;
     user-select: none;
@@ -186,10 +185,9 @@ html {
     backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #ffffff8e;
-    border-right: #000;
-    border-top: #00000000;
-    border-left: #00000000;
+    border: #000;
     border-style: solid;
+    border-radius: 50px;
     white-space: nowrap;
 
     animation-name: reveal;
