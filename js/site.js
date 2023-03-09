@@ -74,6 +74,7 @@ async function setActive() {
     let aboutNav = document.getElementById("about");
     let mainAbout = document.getElementById("main_about");
     let faqNav = document.getElementById("faq");
+    let codeNav = document.getElementById("code");
     let homeNav = document.getElementById("home");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
     let hamburger = document.getElementById("hamburger");
@@ -93,6 +94,9 @@ async function setActive() {
         discordNav.id = "discord-page";
     } else if (url.indexOf("home") != -1) {
         homeNav.id = "nav-active";
+        discordNav.id = "discord";
+    } else if (url.indexOf("code") != -1) {
+        codeNav.id = "nav-active";
         discordNav.id = "discord";
     }
 
