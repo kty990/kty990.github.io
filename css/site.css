@@ -438,8 +438,10 @@ html {
     }
 
     .nav-link {
-        padding-left: 5vw;
-        padding-right: 5vw;
+        margin: 0;
+        padding: 0;
+        /*padding-left: 5vw;*/
+        /*padding-right: 5vw;*/
         text-decoration: none;
         width: calc(var(--vw,1vw) * 100/4);
         color: #cccccc;
