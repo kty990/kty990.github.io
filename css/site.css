@@ -356,7 +356,8 @@ html {
     border-color: #fff;
     border-style: solid;
     border-left-color: #000;
-    border-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     margin-top: calc(var(--vh, 1vh) * 19);
 }
 
