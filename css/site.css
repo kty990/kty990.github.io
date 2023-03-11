@@ -49,6 +49,10 @@
     }
 }
 
+img {
+    pointer-events: none;
+}
+
 /** Inactive */
 #hamburger {
     position: relative;
