@@ -459,6 +459,14 @@ html {
         color: #000000;
         background-color: #f487fecc;
     }
+    
+    .discord_nav_active {
+        width: calc(var(--vw, 1vw) * 25);
+    }
+    
+    #discord_bot>p {
+        width: 100%;
+    }
 
     #scroll-page {
         position: absolute;
