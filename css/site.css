@@ -166,12 +166,13 @@ html {
     position: fixed;
     left: calc(var(--vh, 1vh) * -21);
     height: 100%;
-    width: calc(var(--vh, 1vh) * 20);
+    width: calc(var(--vh, 1vh) * 40);
     backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #cccccc8e;
     border: #000;
     border-style: solid;
+    border-left-style: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     white-space: nowrap;
@@ -184,12 +185,13 @@ html {
     z-index: 100;
     position: fixed;
     height: 100%;
-    width: calc(var(--vh, 1vh) * 20);
+    width: calc(var(--vh, 1vh) * 40);
     backdrop-filter: blur(5px);
     text-decoration: none;
     background-color: #ffffff8e;
     border: #000;
     border-style: solid;
+    border-left-style: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     white-space: nowrap;
@@ -354,6 +356,7 @@ html {
     border-color: #fff;
     border-style: solid;
     border-left-color: #000;
+    border-right-radius: 20px;
     margin-top: calc(var(--vh, 1vh) * 19);
 }
 
