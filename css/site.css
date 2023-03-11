@@ -399,7 +399,7 @@ html {
         justify-content: center;
         align-items: center;
         margin: 0;
-        margin-top: calc(var(--vh, 1vh) * -7.2);
+        background-color: transparent;
     }
 
     #nav-separator {
@@ -415,7 +415,7 @@ html {
         z-index: 6;
         display: flex;
         flex-direction: column;
-        background-color: #47074dd8;
+        background-color: #00000000;
         backdrop-filter: blur(6px);
         justify-content: center;
         align-items: center;
@@ -430,7 +430,7 @@ html {
     }
     
     #hamburger {
-        display: hidden;
+        display: none;
     }
 
     .nav-link-first {
