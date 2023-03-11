@@ -464,6 +464,10 @@ html {
         width: calc(var(--vw, 1vw) * 25);
     }
     
+    #discord_bot {
+        width: calc(var(--vw, 1vw) * 25);
+    }
+    
     #discord_bot>p {
         width: 100%;
     }
