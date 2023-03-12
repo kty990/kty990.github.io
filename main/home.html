@@ -17,39 +17,21 @@
 </head>
 
 <body>
-<!--
-position:  fixed;
-    z-index: 8;
-    right: calc(var(--vw,1vw) * 10);
-    top:  calc(var(--vh, 1vh) * 30);
-    border-color:  #ccc;
-    border-style:  solid;
-    border-width:  1px;
-    padding:  calc(var(--vwh, 1vh) * 2);
-    border-radius: 20px;
--->
     <form id="conForm">
-    <!--
-    position:  relative;
-        z-index: 8;
-        color:  #fff;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
-        margin:  0;
-        width: calc(var(--vw,1vw) * 20);
-        text-align:  center;
-        padding:  0;
-       -->
-        <p class="text-entry-label">First Name</p>
-        <!--
-        background-color:  #000;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    color:  #fff;
-    width:  calc(var(--vw, 1vw) * 20);
-    margin-bottom: calc(var(--vh,1vh) * 1);
-    -->
+        <p class="text-entry-label">First Name <span style="color:red;">*</span></p>
         <input type="text" class="text-entry">
-    <p class="text-entry-label">Last Name</p>
+        
+        <p class="text-entry-label">Last Name<span style="color:red;">*</span></p>
         <input type="text" class="text-entry">
+        
+        <p class="text-entry-label">Email<span style="color:red;">*</span></p>
+        <input type="text" class="email-entry text-entry">
+        
+        <p class="text-entry-label">Password <span style="color:red;">*</span></p>
+        <input type="password" id="password-entry1" class="text-entry">
+        
+        <p class="text-entry-label">Confirm Password <span style="color:red;">*</span></p>
+        <input type="password" id="password-entry2" class="text-entry">
     </form>
 
     <img src="../res/images/bg1/bg1_1.png" alt="An error occured." id="body_bg">
