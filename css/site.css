@@ -28,11 +28,11 @@
 
 @keyframes reveal {
     from {
-        left: -310px;
+        left: calc(var(--vh, 1vh) * -42);
     }
 
     to {
-        left: 0px;
+        left: calc(var(--vh, 1vh) * 40);
     }
 }
 
