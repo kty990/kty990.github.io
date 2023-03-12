@@ -32,7 +32,7 @@
     }
 
     to {
-        left: calc(var(--vh, 1vh) * 40);
+        left: calc(var(--vh, 1vh) * 0);
     }
 }
 
