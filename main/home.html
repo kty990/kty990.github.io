@@ -19,19 +19,19 @@
 <body>
     <form id="conForm">
         <p class="text-entry-label">First Name <span style="color:red;">*</span></p>
-        <input type="text" value="Enter your name here.." onfocus="this.value=''" class="text-entry">
+        <input type="text" value="Enter your name here.." onfocus="this.value=''" onblur="this.value = 'Enter your name here..'" class="text-entry">
         
         <p class="text-entry-label">Last Name<span style="color:red;">*</span></p>
-        <input type="text" value="Enter your last name here.." onfocus="this.value=''" class="text-entry">
+        <input type="text" value="Enter your last name here.." onfocus="this.value=''" onblur="this.value = 'Enter your last name here..'" class="text-entry">
         
         <p class="text-entry-label">Email<span style="color:red;">*</span></p>
-        <input type="text" value="Enter your email here.." onfocus="this.value=''" class="email-entry text-entry">
+        <input type="text" value="Enter your email here.." onfocus="this.value=''" onblur="this.value = 'Enter your email here..'" class="email-entry text-entry">
         
         <p class="text-entry-label">Password <span style="color:red;">*</span></p>
-        <input type="password" value="passWord" onfocus="this.value=''" id="password-entry1" class="text-entry">
+        <input type="password" value="passWord" onfocus="this.value=''" onblur="this.value = 'passWord'" id="password-entry1" class="text-entry">
         
         <p class="text-entry-label">Confirm Password <span style="color:red;">*</span></p>
-        <input type="password" value="passwOrd" onfocus="this.value=''" id="password-entry2" class="text-entry">
+        <input type="password" value="passwOrd" onfocus="this.value=''" onblur="this.value = 'passwOrd'" id="password-entry2" class="text-entry">
     </form>
 
     <img src="../res/images/bg1/bg1_1.png" alt="An error occured." id="body_bg">
