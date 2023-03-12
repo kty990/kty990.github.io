@@ -209,6 +209,35 @@
     /* filter: hue-rotate(90deg); */
 }
 
+/* Form buttons */
+
+#sign-up {
+    position:  fixed;
+    right: calc(var(--vw,1vw) * 11);
+    color:  #fff;
+    z-index: 10;
+    top: calc(var(--vh,1vh) * 5);
+    background-color: #fccc7d7d;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: #000;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#login {
+    position:  fixed;
+    right: calc(var(--vw,1vw) * 1);
+    color:  #fff;
+    z-index: 10;
+    top: calc(var(--vh,1vh) * 5);
+    background-color: #fccc7d7d;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: #000;
+    border-style: solid;
+    border-width: 1px;
+}
 
 /* Form IDs and classes */
 
