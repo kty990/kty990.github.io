@@ -2,4 +2,4 @@
 
 Website created by and for Ty!
 
-It currently has a separate section for [Homies Bot](https://github.com/kty990/HomiesBot), including the command usage, about the bot, and FAQ sections!
+PHP features will not be enabled until a hosting service has been chosen. GitHub pages is a temporary situation.
