@@ -214,7 +214,6 @@
 #sign-up {
     position:  fixed;
     right: calc(var(--vw,1vw) * 11);
-    color:  #ffffff;
     z-index: 10;
     top: calc(var(--vh,1vh) * 5);
     background-color: #fccc7d7d;
@@ -228,12 +227,20 @@
 
 #sign-up>a {
     text-decoration: none;
+    color:  #ffffff;
+}
+
+#sign-up:hover > a {
+    color: #7d7d7d;
+}
+
+#sign-up:hover {
+    background-color: #4f4026d8;
 }
 
 #login {
     position:  fixed;
     right: calc(var(--vw,1vw) * 1);
-    color:  #ffffff;
     z-index: 10;
     top: calc(var(--vh,1vh) * 5);
     background-color: #fccc7d7d;
@@ -247,4 +254,9 @@
 
 #login>a {
     text-decoration: none;
+    color:  #ffffff;
+}
+
+#login:hover {
+    background-color: #4f4026d8;
 }
