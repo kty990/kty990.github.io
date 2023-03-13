@@ -1,0 +1,34 @@
+/* Form IDs and classes */
+
+#conForm {
+    position:  fixed;
+    z-index: 8;
+    right: calc(var(--vw,1vw) * 10);
+    top:  calc(var(--vh, 1vh) * 30);
+    width: calc(var(--vw, 1vw) * 50);
+    border-color:  #ccc;
+    border-style:  solid;
+    border-width:  1px;
+    padding:  calc(var(--vwh, 1vh) * 2);
+    border-radius: 20px;
+}
+
+.text-entry-label {
+    position:  relative;
+    z-index: 8;
+    color:  #fff;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin:  0;
+    width: 85%;
+    left: 7.5%;
+    text-align:  center;
+    padding:  0;
+}
+
+.text-entry {
+    background-color:  #000;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color:  #fff;
+    width:  100%;
+    margin-bottom: calc(var(--vh,1vh) * 2.5);
+}
