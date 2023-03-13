@@ -107,7 +107,7 @@ html {
     position: fixed;
     z-index: 10;
     right: calc(var(--vw, 1vw) * 10);
-    top: calc(var(--vh, 1vh) * 3);
+    bottom: calc(var(--vh, 1vh) * 3);
 }
 
 #site-title {
