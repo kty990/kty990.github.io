@@ -3,7 +3,7 @@
 #conForm {
     position:  fixed;
     z-index: 8;
-    right: calc(var(--vw,1vw) * 10);
+    left: calc(var(--vw,1vw) * 20);
     top:  calc(var(--vh, 1vh) * 30);
     width: calc(var(--vw, 1vw) * 50);
     border-color:  #ccc;
