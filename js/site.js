@@ -1,5 +1,5 @@
 /* Debugging version control */
-let v = 9;
+let v = 9.1;
 const ERROR_LENGTH = 4 * 1000; // 4 seconds
 console.log(`Version: ${v}`);
 
