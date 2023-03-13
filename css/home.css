@@ -226,6 +226,10 @@
     text-decoration: none;
 }
 
+#sign-up>a {
+    text-decoration: none;
+}
+
 #login {
     position:  fixed;
     right: calc(var(--vw,1vw) * 1);
@@ -238,5 +242,9 @@
     border-color: #000;
     border-style: solid;
     border-width: 1px;
+    text-decoration: none;
+}
+
+#login>a {
     text-decoration: none;
 }
