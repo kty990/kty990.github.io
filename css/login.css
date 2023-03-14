@@ -1,10 +1,21 @@
+#submit {
+    position:  fixed;
+    background-color:  transparent;
+    border-style:  solid;
+    border-color:  #ccc;
+    border-radius:  20px;
+    color: #cccccc;
+    top: calc(var(--vh, 1vh) * 60);
+    left: calc(var(--vw, 1vw) * 50);
+}
+
 /* Form IDs and classes */
 
 #conForm {
     position:  fixed;
     z-index: 8;
-    left: calc(var(--vw,1vw) * 20);
-    top:  calc(var(--vh, 1vh) * 30);
+    left: calc(var(--vw,1vw) * 25);
+    top:  calc(var(--vh, 1vh) * 40);
     width: calc(var(--vw, 1vw) * 50);
     border-color:  #ccc;
     border-style:  solid;
