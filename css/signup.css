@@ -8,6 +8,17 @@
     font-size: calc(var(--vwh,1vh) * 7);
 }
 
+#submit {
+    position:  fixed;
+    background-color:  transparent;
+    border-style:  solid;
+    border-color:  #ccc;
+    border-radius:  20px;
+    color: #cccccc;
+    top: calc(var(--vh, 1vh) * 70);
+    left: calc(var(--vw, 1vw) * 45);
+}
+
 /* Form IDs and classes */
 
 #conForm {
