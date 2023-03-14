@@ -166,7 +166,8 @@ const colorField = {
     "HTML": "#f56342",
     "CSS": "#c040f7",
     "PYTHON": "#c9b81a",
-    "JAVA": "#a86f32"
+    "JAVA": "#a86f32",
+    "OTHER": "#7d7d7d"
 }
 
 function formatIntToLength(number, len) {
