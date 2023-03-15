@@ -22,10 +22,16 @@
 
         <h1 id="title">Sign In</h1>
 
-        <div id="sign-up">
-            <a href="../main/signup">Sign Up</a>
+        <div id="form-bttn-flex">
+            <a href="../main/signup">
+                <div class="form-button">
+                    Sign Up
+                </div>
+            </a>          
         </div>
 
+<!-- flex col div -->
+    <div id="form-flex">
         <form id="conForm">
             <p class="text-entry-label">Email<span style="color:red;">*</span></p>
             <input type="text" class="email-entry text-entry">
@@ -35,6 +41,7 @@
         </form>
 
         <button type="submit" form="conForm" id="submit" value="Submit">Submit</button>
+    </div>
 
         <script type="text/javascript" src="../js/site.js"></script>
         <script type="text/javascript" src="../js/login.js"></script>

@@ -49,6 +49,10 @@
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 img {
     pointer-events: none;
 }
@@ -493,52 +497,30 @@ html {
 
 /* Form buttons */
 
-#sign-up {
-    position:  fixed;
-    right: calc(var(--vw,1vw) * 11);
-    z-index: 10;
-    top: calc(var(--vh,1vh) * 5);
+.form-button {
     background-color: #fccc7d7d;
     padding: 10px;
+    margin-left: calc(var(--vw,1vw) * 0.5);
     border-radius: 20px;
     border-color: #000;
     border-style: solid;
     border-width: 1px;
-    text-decoration: none;
-}
-
-#sign-up>a {
-    text-decoration: none;
     color:  #ffffff;
 }
 
-#sign-up:hover > a {
+.form-button:hover {
+    background-color: #4f4026d8;
     color: #7d7d7d;
 }
 
-#sign-up:hover {
-    background-color: #4f4026d8;
-}
-
-#login {
-    position:  fixed;
-    right: calc(var(--vw,1vw) * 1);
+#form-bttn-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    width: calc(var(--vw,1vw) * 95);
+    position: fixed;
+    top: calc(var(--vh,1vh) * 1);
+    left: 0;
     z-index: 10;
-    top: calc(var(--vh,1vh) * 5);
-    background-color: #fccc7d7d;
-    padding: 10px;
-    border-radius: 20px;
-    border-color: #000;
-    border-style: solid;
-    border-width: 1px;
-    text-decoration: none;
-}
-
-#login>a {
-    text-decoration: none;
-    color:  #ffffff;
-}
-
-#login:hover {
-    background-color: #4f4026d8;
 }

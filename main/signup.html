@@ -16,16 +16,23 @@
     </head>
 
     <body>
+        <div id="form-bttn-flex">
+            <a href="../main/login">
+                <div class="form-button">
+                    Log In
+                </div>
+            </a>
+        </div>
+
         <img src="../res/images/bg1/bg1_1.png" alt="An error occured." id="body_bg">
 
         <script id="replace-with-navbar"></script>
 
         <h1 id="title">Sign Up</h1>
 
-        <div id="login">
-            <a href="../main/login">Log In</a>
-        </div>
-
+        
+<!-- flex col div -->
+    <div id="form-flex">
         <form id="conForm" action="../php/signup.php" method="get">
             <p class="text-entry-label">First Name <span style="color:red;">*</span></p>
             <input type="text" placeholder="Enter your name here.." onfocus="this.placeholder=''" onblur="this.placeholder = 'Enter your name here..'" class="text-entry">
@@ -45,7 +52,7 @@
         </form>
 
         <button type="submit" form="conForm" id="submit" value="Submit">Submit</button>
-
+    </div>
         <script type="text/javascript" src="../js/site.js"></script>
         <script type="text/javascript" src="../js/signup.js"></script> 
     </body>

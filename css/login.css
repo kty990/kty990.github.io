@@ -8,24 +8,40 @@
     font-size: calc(var(--vwh,1vh) * 7);
 }
 
+#form-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
 #submit {
-    position:  fixed;
+    position:  relative;
     background-color:  transparent;
     border-style:  solid;
     border-color:  #ccc;
     border-radius:  20px;
     color: #cccccc;
-    top: calc(var(--vh, 1vh) * 60);
-    left: calc(var(--vw, 1vw) * 50);
+    margin-top: calc(var(--vh,1vh) * 2);
+}
+
+#submit:hover {
+    background-color: #cccccc7d;
+    color: #7d7d7d;
+    cursor: pointer;
 }
 
 /* Form IDs and classes */
 
 #conForm {
-    position:  fixed;
+    position:  relative;
     z-index: 8;
-    left: calc(var(--vw,1vw) * 25);
-    top:  calc(var(--vh, 1vh) * 40);
     width: calc(var(--vw, 1vw) * 50);
     border-color:  #ccc;
     border-style:  solid;
