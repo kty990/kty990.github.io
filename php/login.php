@@ -1,7 +1,7 @@
 <?php
 
 // connect to database
-$mysqli = new mysqli("localhost","root","","data");
+$mysqli = new mysqli("localhost","root","","users");
 
 $query = "SELECT * FROM data WHERE email = '$email' AND pw = '$password'"; 
 // probably should come up with an encryption algorithm for this... (not posted to github)

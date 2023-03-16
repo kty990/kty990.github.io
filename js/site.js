@@ -8,6 +8,27 @@ if (localStorage.getItem("flashing") == undefined || localStorage.getItem("flash
 }
 
 /* Functions */
+let cache = {};
+const request = ( url, params = {}, method = 'GET' ) => {
+    // Quick return from cache.
+    let cacheKey = JSON.stringify( { url, params, method } );
+    if ( cache[ cacheKey ] ) {
+        return cache[ cacheKey ];
+    }
+    let options = {
+        method
+    };
+    if (method === 'GET') {
+        url += '?' + ( new URLSearchParams( params ) ).toString();
+    } else { // Post
+        options.body = JSON.stringify( params );
+    }
+    
+    const result = fetch( url, options ).then( response => response.json() );
+    cache[ cacheKey ] = result;
+    return result;
+};
+
 function toggle() {
     let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     let discordNav = document.getElementsByClassName("discord")[0] || document.getElementsByClassName("discord_nav_active")[0];
@@ -190,3 +211,5 @@ window.onerror = function (message, source, lineno, colno, error) {
     }
     OnError(msg);
 }
+
+
