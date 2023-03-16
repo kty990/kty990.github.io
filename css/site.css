@@ -109,7 +109,7 @@ html {
     font-weight: lighter;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     position: fixed;
-    z-index: 10;
+    z-index: 1;
     right: calc(var(--vw, 1vw) * 10);
     bottom: calc(var(--vh, 1vh) * 3);
 }
