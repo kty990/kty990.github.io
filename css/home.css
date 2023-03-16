@@ -5,6 +5,7 @@
     width: 100vw;
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: calc(var(--vh, 1vh) * 7);
     filter: hue-rotate(90deg);
 }
 

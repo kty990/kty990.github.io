@@ -38,6 +38,21 @@ for (let x = 0; x < medias.length; x++){
     display(medias[x]);
 }
 
+
+let secondsPerYear = 31536000;
+function CalculateAge(year, month, day) {
+    let date = new Date();
+    let oldDate = new Date();
+    oldDate.setFullYear(year,month,day);
+    return Math.floor(((date - oldDate) / 1000) / secondsPerYear);
+}
+
+/* About me */
+
+let aboutDesc = document.getElementById("me-subtitle");
+
+aboutDesc.innerHTML = aboutDesc.innerHTML.replace("{}","\n" + CalculateAge(2001,3,29));
+
 /* "Slideshow" */
 
 let img_template = "../res/images/"
