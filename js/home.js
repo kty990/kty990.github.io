@@ -318,6 +318,13 @@ function load_projects() {
                             let total = 0;
                             for (const [language, count] of Object.entries(d)) {
                                 // console.log(`L: ${language}\tC: ${count}`);
+                                if (language.toUpperCase() == "HACK") {
+                                    if (language_tmp.keys.includes("php")) {
+                                        language_tmp['php'] += count;
+                                    } else {
+                                        language_tmp['php'] = count;
+                                    }
+                                }
                                 language_tmp[language] = count;
                                 total = total + count;
                             }
