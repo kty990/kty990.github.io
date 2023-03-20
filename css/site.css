@@ -407,7 +407,7 @@ html {
         border-color: transparent;
         
         position: fixed;
-        left: calc(var(--vw,1vw)*73.8);
+        right: 100%;
         bottom: 100%;
         padding-left: 5px;
         padding-right: 10px;
