@@ -416,6 +416,12 @@ html {
         /* margin-top: calc(var(--vh, 1vh) * 19); */
     }
 
+    .discord-active > a {
+        position: relative;
+        right: 10vw;
+        bottom: 5vh;
+    }
+
     #nav-icon {
         display: none;
     }
