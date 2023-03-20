@@ -397,6 +397,15 @@ html {
 
 
 @media only screen and (max-width: 1080px) {
+    
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        overflow-x: scroll; /* Temporary for debugging purposes, should be hidden */
+    }
+
     .discord-active {
         display: flex;
         flex-direction: column;
