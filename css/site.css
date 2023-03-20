@@ -412,15 +412,9 @@ html {
         border-bottom-right-radius: 20px;
         
         position: fixed;
-        /* left: 100%; */
+        left: calc(var(--vw,1vw)*73.8);
         padding-left: 5px;
         padding-right: 10px;
-    }
-
-    .discord-active > a {
-        position: relative;
-        right: 10vw;
-        bottom: 5vh;
     }
 
     #nav-icon {
@@ -475,8 +469,6 @@ html {
     .nav-link {
         margin: 0;
         padding: 0;
-        /*padding-left: 5vw;*/
-        /*padding-right: 5vw;*/
         text-decoration: none;
         width: calc(var(--vw,1vw) * 100/4);
         color: #cccccc;

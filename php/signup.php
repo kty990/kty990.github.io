@@ -11,10 +11,10 @@ if ($result) {
     if (mysqli_num_rows($result) > 0) {
         echo 'found!';
     } else {
-        echo 'not found';
+        echo 'not found'; // therefore can create an account
     }
 } else {
-    echo 'Error: ' . mysqli_error();
+    echo 'Error: ' . mysqli_error(); // something went wrong... try again later...
 }
 
 // close connection
