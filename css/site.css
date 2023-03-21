@@ -404,7 +404,7 @@ html {
         padding: 0;
         user-select: none;
         overflow-x: scroll; /* Temporary for debugging purposes, should be hidden */
-    }
+    } /* Once mobile debugging completed, delete this entire body,html */
 
     .discord-active {
         display: flex;
