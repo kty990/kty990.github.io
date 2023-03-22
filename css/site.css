@@ -21,6 +21,7 @@
         color: #000;
         background-color: #fff;
     }
+
     to {
         color: #fff;
         background-color: #7a28a0;
@@ -43,6 +44,7 @@
         height: 110%;
         background-color: #ffffffff;
     }
+
     to {
         width: 120%;
         height: 120%;
@@ -397,26 +399,30 @@ html {
 
 
 @media only screen and (max-width: 1080px) {
-    
+
     body,
     html {
         margin: 0;
         padding: 0;
         user-select: none;
-        overflow-x: scroll; /* Temporary for debugging purposes, should be hidden */
-    } /* Once mobile debugging completed, delete this entire body,html */
+        overflow-x: scroll;
+        /* Temporary for debugging purposes, should be hidden */
+    }
+
+    /* Once mobile debugging completed, delete this entire body,html */
 
     .discord-active {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
+
         background-color: transparent;
         border-color: transparent;
-        
+
         position: fixed;
-        right: 100%;
+        right: 0;
+        left: 0;
         bottom: 100%;
         padding-left: 5px;
         padding-right: 10px;
@@ -462,7 +468,7 @@ html {
         font-size: calc(var(--vwh, 1vh) * 3);
         text-shadow: 0px 0px 3px #ff9ef2;
     }
-    
+
     #hamburger {
         display: none;
     }
@@ -475,7 +481,7 @@ html {
         margin: 0;
         padding: 0;
         text-decoration: none;
-        width: calc(var(--vw,1vw) * 100/4);
+        width: calc(var(--vw, 1vw) * 100/4);
         color: #cccccc;
         font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size: calc(var(--vwh, 1vh) * 3);
@@ -491,15 +497,15 @@ html {
         color: #000000;
         background-color: #f487fecc;
     }
-    
+
     .discord_nav_active {
         width: calc(var(--vw, 1vw) * 25);
     }
-    
+
     #discord_bot {
         width: calc(var(--vw, 1vw) * 25);
     }
-    
+
     #discord_bot>p {
         width: 100%;
     }
@@ -524,12 +530,12 @@ html {
 .form-button {
     background-color: #fccc7d7d;
     padding: 10px;
-    margin-left: calc(var(--vw,1vw) * 0.5);
+    margin-left: calc(var(--vw, 1vw) * 0.5);
     border-radius: 20px;
     border-color: #000;
     border-style: solid;
     border-width: 1px;
-    color:  #ffffff;
+    color: #ffffff;
 }
 
 .form-button:hover {
@@ -542,9 +548,9 @@ html {
     flex-direction: row;
     justify-content: right;
     align-items: center;
-    width: calc(var(--vw,1vw) * 95);
+    width: calc(var(--vw, 1vw) * 95);
     position: fixed;
-    top: calc(var(--vh,1vh) * 1);
+    top: calc(var(--vh, 1vh) * 1);
     left: 0;
     z-index: 10;
 }
