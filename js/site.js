@@ -185,14 +185,12 @@ window.addEventListener('resize', () => {
         if (dropdown.classList.contains("discord-active")) {
             dropdown.classList.remove("discord-active");
             dropdown.classList.add("side-drop");
-            discordNav.classList.remove("discord_nav_active");
             discordNav.classList.add("discord");
         }
     } else if (window.innerWidth > 1080 && last_width <= 1080) {
         if (dropdown.classList.contains("discord-active")) {
             dropdown.classList.remove("discord-active");
             dropdown.classList.add("side-drop");
-            discordNav.classList.remove("discord_nav_active");
             discordNav.classList.add("discord");
         }
     }
