@@ -9,23 +9,23 @@ if (localStorage.getItem("flashing") == undefined || localStorage.getItem("flash
 
 /* Functions */
 let cache = {};
-const request = ( url, params = {}, method = 'GET' ) => {
+const request = (url, params = {}, method = 'GET') => {
     // Quick return from cache.
-    let cacheKey = JSON.stringify( { url, params, method } );
-    if ( cache[ cacheKey ] ) {
-        return cache[ cacheKey ];
+    let cacheKey = JSON.stringify({ url, params, method });
+    if (cache[cacheKey]) {
+        return cache[cacheKey];
     }
     let options = {
         method
     };
     if (method === 'GET') {
-        url += '?' + ( new URLSearchParams( params ) ).toString();
+        url += '?' + (new URLSearchParams(params)).toString();
     } else { // Post
-        options.body = JSON.stringify( params );
+        options.body = JSON.stringify(params);
     }
-    
-    const result = fetch( url, options ).then( response => response.json() );
-    cache[ cacheKey ] = result;
+
+    const result = fetch(url, options).then(response => response.json());
+    cache[cacheKey] = result;
     return result;
 };
 
@@ -166,6 +166,8 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 document.documentElement.style.setProperty('--vw', `${vw}px`);
 document.documentElement.style.setProperty('--vwh', `${Math.min(vh, vw)}px`);
 
+let last_width = window.innerWidth;
+
 window.addEventListener('resize', () => {
     let navContainer = document.getElementById("nav-container") || document.getElementById("nav-container_active");
     if (window.innerWidth <= 1080 && navContainer.id == "nav-container_active") {
@@ -179,12 +181,22 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vwh', `${Math.min(vh, vw)}px`);
 
     let dropdown = document.getElementsByClassName("side-drop")[0] || document.getElementsByClassName("discord-active")[0];
-    if (dropdown.classList.contains("discord-active")) {
-        dropdown.classList.remove("discord-active");
-        dropdown.classList.add("side-drop");
-        discordNav.classList.remove("discord_nav_active");
-        discordNav.classList.add("discord");
+    if (window.innerWidth <= 1080 && last_width > 1080) {
+        if (dropdown.classList.contains("discord-active")) {
+            dropdown.classList.remove("discord-active");
+            dropdown.classList.add("side-drop");
+            discordNav.classList.remove("discord_nav_active");
+            discordNav.classList.add("discord");
+        }
+    } else if (window.innerWidth > 1080 && last_width <= 1080) {
+        if (dropdown.classList.contains("discord-active")) {
+            dropdown.classList.remove("discord-active");
+            dropdown.classList.add("side-drop");
+            discordNav.classList.remove("discord_nav_active");
+            discordNav.classList.add("discord");
+        }
     }
+
 });
 
 setActive().catch(console.log);
