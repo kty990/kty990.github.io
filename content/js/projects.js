@@ -414,8 +414,8 @@ async function main() {
     if (!loadData()) {
         await load_projects();
         saveData();
-    } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 30) {
-        // if there has been 30 minutes or more since last save
+    } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 5) {
+        // if there has been 5 minutes or more since last save
         await load_projects();
         saveData();
     }
