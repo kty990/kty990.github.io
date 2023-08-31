@@ -248,9 +248,7 @@ function ConvertToDate(timestamp) {
 
 function GetDateTime(timestamp) {
     let t = new Time(timestamp);
-    // console.log(`Old time: ${t.hour}:${t.minute}:${t.second}`);
     t.Add(19 * 60 * 60);
-    // console.log(`New time: ${t.hour}:${t.minute}:${t.second}`);
     let d = new Datestamp(timestamp);
     d.month--;
     let year = d.year;
