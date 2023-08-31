@@ -1,6 +1,4 @@
-import React from 'react';
 import pjcts from '../js/projects.js';
-
 import React, { useState, useEffect } from 'react';
 
 function Project() {
