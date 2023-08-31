@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component {
 function App() {
   return (
     <BrowserRouter>
-      <ErrorBoundary>
+      <ErrorBoundary msg="Browser visible error">
         <div className="navbar">
           <Link to="/content/pages/home" className="nav-link">Home</Link>
           <Link to="/content/pages/about" className="nav-link">About</Link>
@@ -38,7 +38,7 @@ function App() {
         </div>
       </ErrorBoundary>
 
-      <ErrorBoundary>
+      <ErrorBoundary msg="Routing error">
         <Routes>
           <Route path="/content/pages/home" element={<Home />} />
           <Route path="/content/pages/about" element={<About />} />
