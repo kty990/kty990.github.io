@@ -1,28 +1,40 @@
 import React from 'react';
 import pjcts from '../js/projects.js';
 
-let loaded = false;
+import React, { useState, useEffect } from 'react';
+
 function Project() {
-  let my_projects = [];
-  if (!loaded) {
-    console.error("Not loaded... loading...");
-    pjcts.load_projects().then(() => {
-      my_projects = pjcts.GetProjects();
-      pjcts.saveData();
-      loaded = true;
-    }).catch(()=>{});
-  } else {
-    console.debug("Reloading...");
-    pjcts.loadData();
-    my_projects = pjcts.GetProjects();
-  }
+  const [loaded, setLoaded] = useState(false);
+  const [myProjects, setMyProjects] = useState([]);
+
+  useEffect(() => {
+    if (!loaded) {
+      console.error("Not loaded... loading...");
+      pjcts.load_projects()
+        .then(() => {
+          const projects = pjcts.GetProjects();
+          pjcts.saveData();
+          setMyProjects(projects);
+          setLoaded(true);
+        })
+        .catch(() => {});
+    } else {
+      console.debug("Reloading...");
+      pjcts.loadData();
+      const projects = pjcts.GetProjects();
+      setMyProjects(projects);
+    }
+  }, [loaded]);
 
   return (
     <div>
-      {my_projects}
+      {myProjects.map(project => (
+        <div>{project.name}</div>
+      ))}
     </div>
-  )
+  );
 }
+
 
 function Projects() {
   return (
