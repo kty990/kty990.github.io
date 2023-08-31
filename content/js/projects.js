@@ -515,7 +515,8 @@ function GetProjects() {
     return myProjects;
 }
 
-module.exports = {GetColorFromLang,
+module.exports = {
+    GetColorFromLang,
     hashString,
     loadData,
     saveData,

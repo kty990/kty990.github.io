@@ -1,4 +1,4 @@
-import pjcts from '../js/projects.js';
+import pjcts, {Project} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
 class ErrorBoundary extends React.Component {
@@ -21,7 +21,7 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-function Project() {
+function MyProject() {
   const [loaded, setLoaded] = useState(false);
   const [myProjects, setMyProjects] = useState([]);
 
@@ -64,7 +64,7 @@ function Projects() {
         <p>Active</p>
         <p>Inactive</p>
       </div>
-      <Project/>
+      <MyProject/>
     </div>
   );
 }
