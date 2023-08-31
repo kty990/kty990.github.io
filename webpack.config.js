@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './content/js/site.jsx',
+    entry: './content/jsx/site.jsx',
     output: {
       filename: 'site_bundle.js',
       path: __dirname + '/content/dist/', // Create a 'dist' directory to store bundled files

@@ -8,6 +8,4 @@ function Home() {
   );
 }
 
-console.log("HOME");
-
 export default Home;
