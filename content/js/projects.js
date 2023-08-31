@@ -410,8 +410,9 @@ function hashString(str) {
     return encodeURIComponent(str);
 }
 
+const devModeEnabled = true;
 async function main() {
-    if (!loadData()) {
+    if (!loadData() || devModeEnabled) {
         await load_projects();
         saveData();
     } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 5) {

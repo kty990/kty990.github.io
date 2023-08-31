@@ -68,6 +68,7 @@ html,body {
     flex-direction: column;
     background-color: #28303d;
     border-radius: 10px;
+    overflow-y: auto;
 }
 
 .project {
@@ -77,4 +78,19 @@ html,body {
     padding: 0;
 
     margin-bottom: 1vh;
+}
+
+#filter {
+    position: relative;
+    width: 100%;
+    height: 4vh;
+    background-color: #102b55;
+    display: flex;
+    flex-direction: row;
+}
+
+#filter>p {
+    margin: 0;
+    padding: 0;
+    margin-left: 2vw;
 }
