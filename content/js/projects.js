@@ -419,6 +419,8 @@ async function main() {
         // if there has been 5 minutes or more since last save
         await load_projects();
         saveData();
+    } else {
+        alert("Attempting to use cached items.");
     }
 
     let target = document.getElementById("project-flex");
