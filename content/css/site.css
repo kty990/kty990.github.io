@@ -96,6 +96,8 @@ html,body {
     margin-left: 2vw;
     user-select: none;
     height: 3vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 #active {
