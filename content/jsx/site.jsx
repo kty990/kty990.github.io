@@ -27,26 +27,32 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-function App() {
-  return (
-    <BrowserRouter>
-      <ErrorBoundary msg="Browser visible error">
-        <div className="navbar">
-          <Link to="/content/pages/home" className="nav-link">Home</Link>
-          <Link to="/content/pages/about" className="nav-link">About</Link>
-          <Link to="/content/pages/projects" className="nav-link">Projects</Link>
-        </div>
-      </ErrorBoundary>
-
-      <ErrorBoundary msg="Routing error">
-        <Routes>
-          <Route path="/content/pages/home" element={<Home />} />
-          <Route path="/content/pages/about" element={<About />} />
-          <Route path="/content/pages/projects" element={<Projects />} />
-        </Routes>
-      </ErrorBoundary>
-    </BrowserRouter>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    return (
+      <BrowserRouter>
+        <ErrorBoundary msg="Browser visible error">
+          <div className="navbar">
+            <Link to="/content/pages/home" className="nav-link">Home</Link>
+            <Link to="/content/pages/about" className="nav-link">About</Link>
+            <Link to="/content/pages/projects" className="nav-link">Projects</Link>
+          </div>
+        </ErrorBoundary>
+  
+        <ErrorBoundary msg="Routing error">
+          <Routes>
+            <Route path="/content/pages/home" element={<Home />} />
+            <Route path="/content/pages/about" element={<About />} />
+            <Route path="/content/pages/projects" element={<Projects />} />
+          </Routes>
+        </ErrorBoundary>
+      </BrowserRouter>
+    );
+  }
 }
 const root = createRoot(document.getElementById('root')); 
 root.render(<App />);
