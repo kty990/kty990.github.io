@@ -5,12 +5,14 @@ let loaded = false;
 function Project() {
   let my_projects = [];
   if (!loaded) {
+    console.error("Not loaded... loading...");
     pjcts.load_projects().then(() => {
       my_projects = pjcts.GetProjects();
       pjcts.saveData();
       loaded = true;
     }).catch(()=>{});
   } else {
+    console.debug("Reloading...");
     pjcts.loadData();
     my_projects = pjcts.GetProjects();
   }
