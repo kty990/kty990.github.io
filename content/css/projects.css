@@ -1,13 +1,16 @@
 #project-flex {
-    position: absolute;
+    position: fixed;
     left: 12vw;
     top: 10vh;
     height: 80vh;
     width: 30vw;
     display: flex;
     flex-direction: column;
-
+    background-color: #28303d;
+    border-radius: 10px;
 }
+
+/* #7f93b3; */
 
 .project {
     width: 100%;
