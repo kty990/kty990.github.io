@@ -6,20 +6,45 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import Projects from './projects.jsx';
 
+class ErrorBoundary extends React.Component {
+  constructor(props,msg) {
+    super(props);
+    this.msg = msg;
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    console.log(error);
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>Something went wrong obtaining the project information.<br/>{this.msg}</div>;
+    }
+
+    return this.props.children;
+  }
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="navbar">
-        <Link to="/content/pages/home" className="nav-link">Home</Link>
-        <Link to="/content/pages/about" className="nav-link">About</Link>
-        <Link to="/content/pages/projects" className="nav-link">Projects</Link>
-      </div>
+      <ErrorBoundary>
+        <div className="navbar">
+          <Link to="/content/pages/home" className="nav-link">Home</Link>
+          <Link to="/content/pages/about" className="nav-link">About</Link>
+          <Link to="/content/pages/projects" className="nav-link">Projects</Link>
+        </div>
+      </ErrorBoundary>
 
-      <Routes>
-        <Route path="/content/pages/home" element={<Home />} />
-        <Route path="/content/pages/about" element={<About />} />
-        <Route path="/content/pages/projects" element={<Projects />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/content/pages/home" element={<Home />} />
+          <Route path="/content/pages/about" element={<About />} />
+          <Route path="/content/pages/projects" element={<Projects />} />
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }
