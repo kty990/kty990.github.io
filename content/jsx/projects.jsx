@@ -47,4 +47,4 @@ function Projects() {
   );
 }
 
-export {Projects};
+export {Projects, Project};
