@@ -10,15 +10,15 @@ function App() {
   return (
     <BrowserRouter>
       <div className="navbar">
-        <Link to="/home" className="nav-link">Home</Link>
-        <Link to="/about" className="nav-link">About</Link>
-        <Link to="/projects" className="nav-link">Projects</Link>
+        <Link to="/content/pages/home" className="nav-link">Home</Link>
+        <Link to="/content/pages/about" className="nav-link">About</Link>
+        <Link to="/content/pages/projects" className="nav-link">Projects</Link>
       </div>
 
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/content/pages/home" element={<Home />} />
+        <Route path="/content/pages/about" element={<About />} />
+        <Route path="/content/pages/projects" element={<Projects />} />
       </Routes>
     </BrowserRouter>
   );
