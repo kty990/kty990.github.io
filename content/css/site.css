@@ -41,7 +41,15 @@ html,body {
 
 
 
-
+#site-last-update {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding-left: 5vw;
+    padding-bottom: 2vh;
+    font-size: 1.5vh;
+    color: #ffffff55;
+}
 
 
 
