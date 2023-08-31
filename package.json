@@ -66,6 +66,7 @@
     "mime-types": "^2.1.35",
     "ms": "^2.1.2",
     "neo-async": "^2.6.2",
+    "new-website-design": "file:",
     "node-releases": "^2.0.13",
     "p-limit": "^4.0.0",
     "p-locate": "^6.0.0",
