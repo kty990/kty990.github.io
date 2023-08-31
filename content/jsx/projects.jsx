@@ -1,11 +1,19 @@
 import React from 'react';
 import pjcts from '../js/projects.js';
 
+let loaded = false;
 function Project() {
   let my_projects = [];
-  pjcts.load_projects().then(() => {
+  if (!loaded) {
+    pjcts.load_projects().then(() => {
+      my_projects = pjcts.GetProjects();
+      pjcts.saveData();
+      loaded = true;
+    }).catch(()=>{});
+  } else {
+    pjcts.loadData();
     my_projects = pjcts.GetProjects();
-  }).catch(()=>{});
+  }
 
   return (
     <div>
