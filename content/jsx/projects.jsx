@@ -4,7 +4,7 @@ function Projects() {
   return (
     <div id="project-flex">
       <div id="filter">
-        <p>All</p>
+        <p id="active">All</p>
         <p>Active</p>
         <p>Inactive</p>
       </div>
