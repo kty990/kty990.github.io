@@ -81,7 +81,7 @@ html,body {
 }
 
 #filter {
-    position: relative;
+    position: sticky;
     width: 100%;
     height: 4vh;
     background-color: #102b55;
@@ -95,7 +95,7 @@ html,body {
     padding: 0;
     margin-left: 2vw;
     user-select: none;
-    height: 2vh;
+    height: 3vh;
 }
 
 #active {

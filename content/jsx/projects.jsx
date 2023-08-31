@@ -1,4 +1,18 @@
 import React from 'react';
+import pjcts from '../js/projects.js';
+
+function Project() {
+  let my_projects = [];
+  pjcts.load_projects().then(() => {
+    my_projects = pjcts.GetProjects();
+  }).catch(()=>{});
+
+  return (
+    <div>
+      {my_projects}
+    </div>
+  )
+}
 
 function Projects() {
   return (
@@ -8,8 +22,9 @@ function Projects() {
         <p>Active</p>
         <p>Inactive</p>
       </div>
+      <Project/>
     </div>
   );
 }
 
-export default Projects;
+export {Projects};

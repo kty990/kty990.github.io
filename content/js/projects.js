@@ -410,105 +410,129 @@ function hashString(str) {
     return encodeURIComponent(str);
 }
 
-const devModeEnabled = true;
-async function main() {
-    if (!loadData() || devModeEnabled) {
-        await load_projects();
-        saveData();
-    } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 5) {
-        // if there has been 5 minutes or more since last save
-        await load_projects();
-        saveData();
-    } else {
-        alert("Attempting to use cached items.");
-    }
+// const devModeEnabled = true;
+// async function main() {
+//     if (!loadData() || devModeEnabled) {
+//         await load_projects();
+//         saveData();
+//     } else if (getTimeSince(parseInt(localStorage.getItem("last_save"))) > 5) {
+//         // if there has been 5 minutes or more since last save
+//         await load_projects();
+//         saveData();
+//     } else {
+//         alert("Attempting to use cached items.");
+//     }
 
-    let target = document.getElementById("project-flex");
-    for (let project of myProjects) {
-        let obj = document.createElement("div");
-        obj.classList.add("project");
-        let p = document.createElement("p");
-        p.style.color = "#fff";
-        p.style.textAlign = "center";
-        p.style.width = "100%";
-        p.style.fontSize = "calc(var(--vh, 1vh) * 2)"
-        p.textContent = project.GetName();
-        let lastUpdated = document.createElement("p");
-        lastUpdated.textContent = "Last updated: " + project.GetLastUpdated();
-        lastUpdated.style.color = "#fff";
-        lastUpdated.style.textAlign = "center";
-        lastUpdated.style.width = "100%";
-        lastUpdated.style.fontSize = "calc(var(--vwh, 1vh) * 1)";
-        lastUpdated.style.padding = "0";
-        lastUpdated.style.margin = "0";
-        lastUpdated.style.position = "relative";
-        lastUpdated.style.bottom = "calc(var(--vh, 1vh) * 1)";
+//     let target = document.getElementById("project-flex");
+//     for (let project of myProjects) {
+//         let obj = document.createElement("div");
+//         obj.classList.add("project");
+//         let p = document.createElement("p");
+//         p.style.color = "#fff";
+//         p.style.textAlign = "center";
+//         p.style.width = "100%";
+//         p.style.fontSize = "calc(var(--vh, 1vh) * 2)"
+//         p.textContent = project.GetName();
+//         let lastUpdated = document.createElement("p");
+//         lastUpdated.textContent = "Last updated: " + project.GetLastUpdated();
+//         lastUpdated.style.color = "#fff";
+//         lastUpdated.style.textAlign = "center";
+//         lastUpdated.style.width = "100%";
+//         lastUpdated.style.fontSize = "calc(var(--vwh, 1vh) * 1)";
+//         lastUpdated.style.padding = "0";
+//         lastUpdated.style.margin = "0";
+//         lastUpdated.style.position = "relative";
+//         lastUpdated.style.bottom = "calc(var(--vh, 1vh) * 1)";
 
-        let slide = document.createElement("div");
-        slide.style.position = "relative";
-        slide.style.top = "calc(var(--vh,1vh)*1.2)";
-        slide.style.width = "75%";
-        slide.style.height = "25%";
-        slide.style.left = "12.5%";
-        slide.style.display = "flex";
-        slide.style.flexDirection = "row";
-        let x = 0;
-        for (const [key, value] of Object.entries(project.properties)) {
-            let lang = document.createElement("div");
-            if (x == 0) {
-                lang.style.borderBottomLeftRadius = "50px";
-                lang.style.borderTopLeftRadius = "50px";
-            }
-            if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
-                lang.style.borderBottomRightRadius = "50px";
-                lang.style.borderTopRightRadius = "50px";
-            }
-            // console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
-            x++;
-            lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
-            lang.style.width = `${value * 100}%`;
-            lang.style.filter = "hue-rotate(270deg)";
-            lang.style.height = "calc(var(--vh,1vh)*2)";
-            lang.style.padding = "0";
-            lang.textContent = `${Math.round(value * 1000) / 10}%`;
-            lang.style.fontSize = "calc(var(--vwh,1vh)*1)";
-            lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
-            lang.style.textAlign = "center";
-            lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)";
-            lang.style.position = "relative";
-            lang.style.bottom = "calc(var(--vh,1vh)*2)";
+//         let slide = document.createElement("div");
+//         slide.style.position = "relative";
+//         slide.style.top = "calc(var(--vh,1vh)*1.2)";
+//         slide.style.width = "75%";
+//         slide.style.height = "25%";
+//         slide.style.left = "12.5%";
+//         slide.style.display = "flex";
+//         slide.style.flexDirection = "row";
+//         let x = 0;
+//         for (const [key, value] of Object.entries(project.properties)) {
+//             let lang = document.createElement("div");
+//             if (x == 0) {
+//                 lang.style.borderBottomLeftRadius = "50px";
+//                 lang.style.borderTopLeftRadius = "50px";
+//             }
+//             if (x == Object.keys(project.properties).length - 1 || Object.keys(project.properties).length == 1) {
+//                 lang.style.borderBottomRightRadius = "50px";
+//                 lang.style.borderTopRightRadius = "50px";
+//             }
+//             // console.log(`Check:\tX: ${x}\project.properties.keys.length: ${Object.keys(project.properties).length}`);
+//             x++;
+//             lang.style.backgroundColor = GetColorFromLang(key.toUpperCase());
+//             lang.style.width = `${value * 100}%`;
+//             lang.style.filter = "hue-rotate(270deg)";
+//             lang.style.height = "calc(var(--vh,1vh)*2)";
+//             lang.style.padding = "0";
+//             lang.textContent = `${Math.round(value * 1000) / 10}%`;
+//             lang.style.fontSize = "calc(var(--vwh,1vh)*1)";
+//             lang.style.fontFamily = "'Yanone Kaffeesatz', sans-serif";
+//             lang.style.textAlign = "center";
+//             lang.style.lineHeight = "calc(var(--vh,1vh)*2.5)";
+//             lang.style.position = "relative";
+//             lang.style.bottom = "calc(var(--vh,1vh)*2)";
 
-            /* TOOLTIP CREATION */
-            // let tooltip_div = document.createElement("div");
-            // tooltip_div.classList.add("tooltip");
-            // tooltip_div.style.width = "100%";
-            // tooltip_div.style.height = "100%";
+//             /* TOOLTIP CREATION */
+//             // let tooltip_div = document.createElement("div");
+//             // tooltip_div.classList.add("tooltip");
+//             // tooltip_div.style.width = "100%";
+//             // tooltip_div.style.height = "100%";
 
-            // let tooltip_text = document.createElement("p");
-            // tooltip_text.classList.add("tooltip-text");
-            // tooltip_text.textContent = `${key.toUpperCase()}`;
+//             // let tooltip_text = document.createElement("p");
+//             // tooltip_text.classList.add("tooltip-text");
+//             // tooltip_text.textContent = `${key.toUpperCase()}`;
 
-            // tooltip_div.appendChild(tooltip_text);
-            // lang.appendChild(tooltip_div);
+//             // tooltip_div.appendChild(tooltip_text);
+//             // lang.appendChild(tooltip_div);
 
-            /* END OF TOOLTIP CREATION */
+//             /* END OF TOOLTIP CREATION */
 
-            let empty = document.createElement("p");
-            empty.textContent = "If you are reading this... why?";
-            empty.style.display = "none";
-            lang.appendChild(empty);
+//             let empty = document.createElement("p");
+//             empty.textContent = "If you are reading this... why?";
+//             empty.style.display = "none";
+//             lang.appendChild(empty);
 
-            slide.appendChild(lang);
-        }
-        obj.appendChild(p);
-        obj.append(lastUpdated);
-        obj.appendChild(slide);
-        target.appendChild(obj);
-    }
-}
-
-main();
+//             slide.appendChild(lang);
+//         }
+//         obj.appendChild(p);
+//         obj.append(lastUpdated);
+//         obj.appendChild(slide);
+//         target.appendChild(obj);
+//     }
+// }
 
 function GetColorFromLang(lang) {
     return colorField[lang] || "#fff"
+}
+
+function GetProjects() {
+    return myProjects;
+}
+
+module.exports = {GetColorFromLang,
+    hashString,
+    loadData,
+    saveData,
+    decodeProjects,
+    encodeProjects,
+    Project,
+    Datestamp,
+    Time,
+    load_projects,
+    ConvertToDate,
+    ConvertToTime,
+    colorField,
+    daysPerMonth,
+    months,
+    getJSON,
+    formatIntToLength,
+    CustomCSS,
+    Media,
+    GetProjects
 }
