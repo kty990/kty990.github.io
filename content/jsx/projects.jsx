@@ -47,6 +47,7 @@ function Projects() {
 
 export {Projects, MyProject};
 
+let loaded = false;
 
 const load = () => {
   let filters = document.getElementById("filter").querySelectorAll("p");
@@ -76,6 +77,10 @@ const load = () => {
 
 window.addEventListener('popstate', function(event) {
   try {
+    if (loaded) {
+      return;
+    }
     load();
+    loaded = true;
   } catch(e) {}
 })
