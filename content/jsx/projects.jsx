@@ -26,7 +26,7 @@ function MyProject() {
 
   return (
     <div>
-        {myProjects.map(project => <div>{project.name}</div>)}
+        {myProjects.map(project => <div key={project.name}>{project.name}</div>)}
     </div>
   );
 }
