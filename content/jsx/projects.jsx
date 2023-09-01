@@ -1,27 +1,36 @@
 import pjcts, {Project} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
-
-let projs = [];
-let loaded = false;
-
 function MyProject() {
+  const [projs, setProjs] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  const loadData = () => {
+    pjcts
+      .load_projects()
+      .then(() => {
+        const loadedProjects = pjcts.GetProjects();
+        setProjs(loadedProjects);
+        pjcts.saveData();
+        setLoaded(true); // Set loaded to true when data is successfully loaded
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoaded(false);
+      });
+  };
+
   useEffect(() => {
     if (!loaded) {
-      loaded = true;
       console.error("Not loaded... loading...");
-      pjcts.load_projects()
-        .then(() => {
-          projs = pjcts.GetProjects();
-          pjcts.saveData();
-        })
-        .catch((e) => {console.log(e)});
+      loadData();
     } else {
       console.debug("Reloading...");
       pjcts.loadData();
-      projs = pjcts.GetProjects();
+      const loadedProjects = pjcts.GetProjects();
+      setProjs(loadedProjects);
     }
-  });
+  }, [loaded]);
 
   return (
     <div>
@@ -32,16 +41,10 @@ function MyProject() {
           </div>
         ))
       ) : (
-        <div>Loading...</div>
+        <div style="color:#fff;position:relative;left:2vw;top:2vh;font-family:Montserrat;font-weight:bold;">Loading...</div>
       )}
     </div>
   );
-
-  // return (
-  //   <div>
-  //       {projs.map(project => <div key={project.name} className="project">{project.name}</div>)}
-  //   </div>
-  // );
 }
 
 
