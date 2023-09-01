@@ -19,6 +19,7 @@ html,body {
     backdrop-filter: blur(5px);
     padding-right: 2vw;
     padding-left: 2vw;
+    user-select: none;
 }
 
 .nav-link {
@@ -101,6 +102,8 @@ html,body {
     height: 3vh;
     padding-left: 1vw;
     padding-right: 1vw;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #active {
