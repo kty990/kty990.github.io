@@ -5,7 +5,7 @@ const changeActive = (e) => {
     if (ex) {
       ex.id = "";
     }
-    e.target.id = "active-nav";
+    e.id = "active-nav";
 }
 
 function About() {
@@ -15,6 +15,7 @@ function About() {
   for (let x of elements) {
     if (x.textContent == "About") {
       changeActive(x);
+      break;
     }
   }
   return (
