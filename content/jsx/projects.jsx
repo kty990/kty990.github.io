@@ -37,17 +37,23 @@ function Projects() {
 
   let currentFilter = "All";
   function clicked(filter) {
-    let filters = document.getElementById("filter").children;
-    return (e) => {
-      if (filter != currentFilter) {
-        filters.forEach((ee) => {
-          ee.id = "";
-        })
-        currentFilter = filter;
-        e.id = "active";
-      } else {
-        console.warn(`${currentFilter}\t${filter}`);
+    try {
+      let filters = document.getElementById("filter").children;
+      return (e) => {
+        if (filter != currentFilter) {
+          filters.forEach((ee) => {
+            ee.id = "";
+          })
+          currentFilter = filter;
+          e.id = "active";
+        } else {
+          console.warn(`${currentFilter}\t${filter}`);
+        }
       }
+    } catch (e) {
+      return (
+        <div>Something went wrong. {`${e}`}</div>
+      )
     }
   }
 
