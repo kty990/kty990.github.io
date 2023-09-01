@@ -36,8 +36,8 @@ function Projects() {
   document.title = "View Projects";
 
   let currentFilter = "All";
-  let filters = document.getElementById("filter").children;
   function clicked(filter) {
+    let filters = document.getElementById("filter").children;
     return (e) => {
       if (filter != currentFilter) {
         filters.forEach((ee) => {
