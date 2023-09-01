@@ -10,12 +10,10 @@ const changeActive = (e) => {
 
 function Home() {
   document.title = "Home";
-  let cpage = window.location.href.split("/");
-  cpage = cpage[window.location.href.length-1];
 
   let elements = document.getElementsByClassName("nav-link");
   for (let x of elements) {
-    if (x.textContent == cpage) {
+    if (x.textContent == "Home") {
       changeActive(x);
     }
   }
