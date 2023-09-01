@@ -123,8 +123,9 @@ html,body {
     margin: 0;
     padding: 0;
     margin-left: 2vw;
+    margin-bottom: 0.75vh;
     user-select: none;
-    height: 3vh;
+    height: 2vh;
     padding-left: 1vw;
     padding-right: 1vw;
     text-align: center;
