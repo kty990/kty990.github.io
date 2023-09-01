@@ -70,14 +70,17 @@ function MyProject() {
             <p>{project.name}</p>
             <ErrorBoundary>
               <div>
-              {project.properties.entries.map((k,v) => {
-                return (
-                  <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
-                    {k.toUpperCase()}
-                  </div>
-                );
-              })}
-
+                {project.properties !== undefined ? (
+                  project.properties.entries.map((k,v) => {
+                    return (
+                      <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
+                        {k.toUpperCase()}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p>Something went wrong...</p>
+                )}
               </div>
             </ErrorBoundary>
           </div>
