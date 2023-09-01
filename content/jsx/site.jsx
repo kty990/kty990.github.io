@@ -6,26 +6,39 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import Projects from './projects.jsx';
 
-// class ErrorBoundary extends React.Component {
-//   constructor(props,msg) {
-//     super(props);
-//     this.msg = msg;
-//     this.state = { hasError: false };
-//   }
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+    this.errors = [];
+  }
 
-//   static getDerivedStateFromError(error) {
-//     console.log(error);
-//     return { hasError: true };
-//   }
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
 
-//   render() {
-//     if (this.state.hasError) {
-//       return <div>Something went wrong. {this.msg}</div>;
-//     }
+  componentDidCatch(error, info) {
+    // Example "componentStack":
+    //   in ComponentThatThrows (created by App)
+    //   in ErrorBoundary (created by App)
+    //   in div (created by App)
+    //   in App
+    this.errors.push({error:error, stack:info.componentStack});
+  }
 
-//     return this.props.children;
-//   }
-// }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          {this.errors.map(e => <p> {`${e}`} </p>)}
+        </div>
+      )
+    }
+
+    return this.props.children;
+  }
+}
 
 class App extends React.Component {
   constructor(props) {
