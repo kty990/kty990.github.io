@@ -33,6 +33,7 @@ function MyProject() {
 
 
 function Projects() {
+  document.title = "View Projects";
   return (
     <div id="project-flex">
         <div id="filter">
