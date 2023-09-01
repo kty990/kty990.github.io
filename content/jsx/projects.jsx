@@ -27,7 +27,7 @@ function MyProject() {
   return (
     <div>
         {myProjects.map(project => <div>{project.name}</div>)}
-      </div>
+    </div>
   );
 }
 
@@ -46,3 +46,24 @@ function Projects() {
 }
 
 export {Projects, MyProject};
+
+let filters = document.getElementById("filter").querySelectorAll("p");
+
+let currentFilter = "All";
+function clicked(filter) {
+  return (e) => {
+    if (e.textContent != currentFilter) {
+      filters.forEach((ee) => {
+        ee.id = "";
+      })
+      currentFilter = e.textContent;
+      e.id = "active";
+    }
+  }
+}
+
+filters.forEach((e) => {
+  e.addEventListener("click", () => {
+    clicked(e.textContent);
+  })
+})
