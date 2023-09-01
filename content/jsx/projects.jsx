@@ -1,4 +1,4 @@
-import pjcts, {Project} from '../js/projects.js';
+import pjcts, {Project, GetColorFromLang} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
 function MyProject() {
@@ -37,7 +37,15 @@ function MyProject() {
       {loaded ? (
         projs.map((project) => (
           <div key={project.name} className="project">
-            {project.name}
+            <p>{project.name}</p>
+            <div>
+              {project.properties.entries.map((entry) => (
+                <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${entry[1]}%`, height: "100%" }}>
+                  {entry[0].toUpperCase()}
+                </div>
+              ))}
+
+            </div>
           </div>
         ))
       ) : (
