@@ -80,7 +80,7 @@ let cpage = window.location.href.split("/")[-1];
 window.addEventListener('popstate', function(event) {
   cpage = window.location.href.split("/");
   cpage = cpage[window.location.href.length-1];
-  console.log(cpage);
+  alert(cpage);
   let elements = document.getElementsByClassName("nav-link");
   for (let x of elements) {
     if (x.textContent == cpage) {
