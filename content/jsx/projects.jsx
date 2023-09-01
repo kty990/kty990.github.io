@@ -41,7 +41,7 @@ function MyProject() {
           </div>
         ))
       ) : (
-        <div style="color:#fff;position:relative;left:2vw;top:2vh;font-family:Montserrat;font-weight:bold;">Loading...</div>
+        <div style={{color:"#fff",position:"relative",left:"2vw",top:"2vh",fontFamily:"Montserrat",fontWeight:"bold"}}>Loading...</div>
       )}
     </div>
   );
