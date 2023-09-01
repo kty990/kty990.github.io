@@ -2,8 +2,8 @@ import pjcts, {Project} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
 function MyProject() {
-  const [loaded, setLoaded] = useState(false);
-  const [myProjects, setMyProjects] = useState([]);
+  const [loaded, setLoaded] = useState('load');
+  const [myProjects, setMyProjects] = useState('projs');
 
   useEffect(() => {
     if (!loaded) {
