@@ -61,6 +61,8 @@ const load = () => {
         })
         currentFilter = e.textContent;
         e.id = "active";
+      } else {
+        console.warn(`${currentFilter}\t${e.textContent}`);
       }
     }
   }
