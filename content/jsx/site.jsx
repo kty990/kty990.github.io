@@ -47,7 +47,7 @@ class App extends React.Component {
         if (ex) {
           ex.id = "";
         }
-        e.id = "active-nav";
+        e.target.id = "active-nav";
     }
     return (
         <BrowserRouter>
