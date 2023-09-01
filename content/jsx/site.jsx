@@ -6,26 +6,26 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import Projects from './projects.jsx';
 
-class ErrorBoundary extends React.Component {
-  constructor(props,msg) {
-    super(props);
-    this.msg = msg;
-    this.state = { hasError: false };
-  }
+// class ErrorBoundary extends React.Component {
+//   constructor(props,msg) {
+//     super(props);
+//     this.msg = msg;
+//     this.state = { hasError: false };
+//   }
 
-  static getDerivedStateFromError(error) {
-    console.log(error);
-    return { hasError: true };
-  }
+//   static getDerivedStateFromError(error) {
+//     console.log(error);
+//     return { hasError: true };
+//   }
 
-  render() {
-    if (this.state.hasError) {
-      return <div>Something went wrong obtaining the project information. {this.msg}</div>;
-    }
+//   render() {
+//     if (this.state.hasError) {
+//       return <div>Something went wrong. {this.msg}</div>;
+//     }
 
-    return this.props.children;
-  }
-}
+//     return this.props.children;
+//   }
+// }
 
 class App extends React.Component {
   constructor(props) {
@@ -34,25 +34,19 @@ class App extends React.Component {
   
   render() {
     return (
-      <ErrorBoundary msg="Entire thing">
         <BrowserRouter>
-          <ErrorBoundary msg="Browser visible error">
             <div className="navbar">
               <Link to="/content/pages/home" className="nav-link">Home</Link>
               <Link to="/content/pages/about" className="nav-link">About</Link>
               <Link to="/content/pages/projects" className="nav-link">Projects</Link>
             </div>
-          </ErrorBoundary>
     
-          <ErrorBoundary msg="Routing error">
             <Routes>
               <Route path="/content/pages/home" element={<Home />} />
               <Route path="/content/pages/about" element={<About />} />
               <Route path="/content/pages/projects" element={<Projects />} />
             </Routes>
-          </ErrorBoundary>
         </BrowserRouter>
-      </ErrorBoundary>
     );
   }
 }
