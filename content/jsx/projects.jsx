@@ -14,7 +14,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <div>Something went wrong obtaining the project information.</div>;
+      return <div>Something went wrong obtaining the project information.{this.msg}</div>;
     }
 
     return this.props.children;
@@ -56,14 +56,16 @@ function MyProject() {
 
 function Projects() {
   return (
-    <div id="project-flex">
-      <div id="filter">
-        <p id="active">All</p>
-        <p>Active</p>
-        <p>Inactive</p>
+    <ErrorBoundary msg="Projects">
+      <div id="project-flex">
+        <div id="filter">
+          <p id="active">All</p>
+          <p>Active</p>
+          <p>Inactive</p>
+        </div>
+        <MyProject/>
       </div>
-      <MyProject/>
-    </div>
+    </ErrorBoundary>
   );
 }
 
