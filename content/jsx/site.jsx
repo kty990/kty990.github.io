@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div>
           <p>Something went wrong.</p>
-          {/* {this.errors.map(e => <p> {`${e}`} </p>)} */}
+          {this.errors.map(e => <p> {`${e}`} </p>)}
         </div>
       )
     }
@@ -58,6 +58,7 @@ class App extends React.Component {
             </ErrorBoundary>
     
             <Routes>
+              <Route path="/" element={<Home/>}/>
               <Route path="/content/pages/home" element={<Home />} />
               <Route path="/content/pages/about" element={<About />} />
               <Route path="/content/pages/projects" element={<Projects />} />
