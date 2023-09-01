@@ -15,7 +15,7 @@ function MyProject() {
           setMyProjects(projects);
           setLoaded(true);
         })
-        .catch(() => {});
+        .catch((e) => {console.log(e)});
     } else {
       console.debug("Reloading...");
       pjcts.loadData();
@@ -26,7 +26,7 @@ function MyProject() {
 
   return (
     <div>
-        {myProjects.map(project => <div>{project.name}</div>)}
+        {/* {myProjects.map(project => <div>{project.name}</div>)} */}
       </div>
   );
 }
