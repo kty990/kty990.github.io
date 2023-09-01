@@ -21,7 +21,7 @@ function MyProject() {
       pjcts.loadData();
       projs = pjcts.GetProjects();
     }
-  }, [loaded]);
+  });
 
   return (
     <div>
