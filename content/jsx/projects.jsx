@@ -39,11 +39,13 @@ function MyProject() {
           <div key={project.name} className="project">
             <p>{project.name}</p>
             <div>
-              {project.properties.entries.map((entry) => (
+            {project.properties.entries.map((entry) => {
+              return (
                 <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${entry[1]}%`, height: "100%" }}>
                   {entry[0].toUpperCase()}
                 </div>
-              ))}
+              );
+            })}
 
             </div>
           </div>
