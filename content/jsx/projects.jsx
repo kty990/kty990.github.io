@@ -1,32 +1,31 @@
 import pjcts, {Project} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
-function MyProject() {
-  const [loaded, setLoaded] = useState('load');
-  const [myProjects, setMyProjects] = useState('projs');
 
+let projs = [];
+let loaded = false;
+
+function MyProject() {
   useEffect(() => {
     if (!loaded) {
+      loaded = true;
       console.error("Not loaded... loading...");
       pjcts.load_projects()
         .then(() => {
-          const projects = pjcts.GetProjects();
+          projs = pjcts.GetProjects();
           pjcts.saveData();
-          setMyProjects(projects);
-          setLoaded(true);
         })
         .catch((e) => {console.log(e)});
     } else {
       console.debug("Reloading...");
       pjcts.loadData();
-      const projects = pjcts.GetProjects();
-      setMyProjects(projects);
+      projs = pjcts.GetProjects();
     }
   }, [loaded]);
 
   return (
     <div>
-        {myProjects.map(project => <div key={project.name} className="project">{project.name}</div>)}
+        {projs.map(project => <div key={project.name} className="project">{project.name}</div>)}
     </div>
   );
 }
