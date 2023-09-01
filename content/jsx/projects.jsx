@@ -75,7 +75,7 @@ function MyProject() {
                 {project.properties.entries !== undefined ? (
                   project.properties.entries.map((k, v) => {
                     return (
-                      <div style={{ backgroundColor: `${GetColorFromLang(k[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
+                      <div style={{ backgroundColor: `${GetColorFromLang(k.toUpperCase())}`, width: `${v}%`, height: "100%" }}>
                         {k.toUpperCase()}
                       </div>
                     );

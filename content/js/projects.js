@@ -317,13 +317,14 @@ function load_projects() {
                             for (const [language, count] of Object.entries(d)) {
                                 // console.log(`L: ${language}\tC: ${count}`);
                                 if (language.toUpperCase() == "HACK") {
-                                    if (language_tmp.keys.includes("php")) {
-                                        language_tmp['php'] += count;
+                                    if (language_tmp.keys.includes("Unknown")) {
+                                        language_tmp['Unknown'] += count;
                                     } else {
-                                        language_tmp['php'] = count;
+                                        language_tmp['Unknown'] = count;
                                     }
+                                } else {
+                                    language_tmp[language] = count;
                                 }
-                                language_tmp[language] = count;
                                 total = total + count;
                             }
                             for (const [l, c] of Object.entries(language_tmp)) {
