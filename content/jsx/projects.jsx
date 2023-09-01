@@ -47,9 +47,7 @@ function MyProject() {
   return (
     <ErrorBoundary>
       <div>
-        {myProjects.map(project => (
-          <div>{project.name}</div>
-        ))}
+        {myProjects.map(project => <div>{project.name}</div>)}
       </div>
     </ErrorBoundary>
   );
@@ -69,4 +67,4 @@ function Projects() {
   );
 }
 
-export {Projects, Project};
+export {Projects, MyProject};
