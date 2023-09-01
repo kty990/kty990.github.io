@@ -41,7 +41,7 @@ function Projects() {
           <p>Inactive</p>
         </div>
         <MyProject/>
-      </div>
+    </div>
   );
 }
 

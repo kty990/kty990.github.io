@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import Home from './home.jsx';
 import About from './about.jsx';
-import Projects from './projects.jsx';
+import {MyProject, Projects} from './projects.jsx';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
