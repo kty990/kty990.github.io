@@ -48,11 +48,13 @@ class App extends React.Component {
   render() {
     return (
         <BrowserRouter>
-            <div className="navbar">
-              <Link to="/content/pages/home" className="nav-link">Home</Link>
-              <Link to="/content/pages/about" className="nav-link">About</Link>
-              <Link to="/content/pages/projects" className="nav-link">Projects</Link>
-            </div>
+            <ErrorBoundary>
+              <div className="navbar">
+                <Link to="/content/pages/home" className="nav-link">Home</Link>
+                <Link to="/content/pages/about" className="nav-link">About</Link>
+                <Link to="/content/pages/projects" className="nav-link">Projects</Link>
+              </div>
+            </ErrorBoundary>
     
             <Routes>
               <Route path="/content/pages/home" element={<Home />} />
