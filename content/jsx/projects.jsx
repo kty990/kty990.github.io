@@ -50,10 +50,10 @@ function Projects() {
           console.warn(`${currentFilter}\t${filter}`);
         }
       }
-    } catch (e) {
-      return (
-        <div>Something went wrong. {`${e}`}</div>
-      )
+    } catch (err) {
+        return (e) => {
+          e.id = "active";
+        } 
     }
   }
 
