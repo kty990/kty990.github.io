@@ -1,6 +1,36 @@
 import pjcts, {Project, GetColorFromLang} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+    this.errors = [];
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    this.errors.push({error:error, stack:info.componentStack});
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          <p>Something went wrong.</p>
+          {this.errors.map(e => <p> {`${e}`} </p>)}
+        </div>
+      )
+    }
+
+    return this.props.children;
+  }
+}
+
 function MyProject() {
   const [projs, setProjs] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -38,16 +68,18 @@ function MyProject() {
         projs.map((project) => (
           <div key={project.name} className="project">
             <p>{project.name}</p>
-            <div>
-            {project.properties.entries.map((k,v) => {
-              return (
-                <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
-                  {k.toUpperCase()}
-                </div>
-              );
-            })}
+            <ErrorBoundary>
+              <div>
+              {project.properties.entries.map((k,v) => {
+                return (
+                  <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
+                    {k.toUpperCase()}
+                  </div>
+                );
+              })}
 
-            </div>
+              </div>
+            </ErrorBoundary>
           </div>
         ))
       ) : (
