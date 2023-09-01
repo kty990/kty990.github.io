@@ -71,11 +71,11 @@ function MyProject() {
           <div key={project.name} className="project">
             <p>{project.name}</p>
             <ErrorBoundary>
-              <div style={{display:"flex",flexDirection:"row",width:"100%"}}>
+              <div style={{display:"flex",flexDirection:"row",width:"calc(100% - 0.2vw)"}}>
               {Object.entries(project.properties) !== undefined ? (
                 Object.entries(project.properties).map(([key, value]) => {
                   return (
-                    <div style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}% - 0.75%)`, height: "100%", fontSize: "1vh"}}>
+                    <div style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}%)`, height: "100%", fontSize: "1vh"}}>
                       {key.toUpperCase().replace("JAVASCRIPT","JS")}{'\n'}({Math.floor(value*10000)/100}%)
                     </div>
                   );
