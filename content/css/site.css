@@ -49,10 +49,11 @@ html,body {
     width: 100%;
     height: auto;
     position: relative;
-    left: 75%;
+    left: 70%;
     border-style: solid;
     border-radius: 50%;
     border-color: #000000cc;
+    background-color: #000000cc;
     border-width: 2px;
     margin-top: 2vh;
     margin-bottom: 3vh;

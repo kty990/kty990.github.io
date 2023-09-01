@@ -34,12 +34,29 @@ function MyProject() {
 
 function Projects() {
   document.title = "View Projects";
+
+  let currentFilter = "All";
+  let filters = document.getElementById("filter").children;
+  function clicked(filter) {
+    return (e) => {
+      if (filter != currentFilter) {
+        filters.forEach((ee) => {
+          ee.id = "";
+        })
+        currentFilter = filter;
+        e.id = "active";
+      } else {
+        console.warn(`${currentFilter}\t${filter}`);
+      }
+    }
+  }
+
   return (
     <div id="project-flex">
         <div id="filter">
-          <p id="active">All</p>
-          <p>Active</p>
-          <p>Inactive</p>
+          <p id="active" onClick={clicked("All")}>All</p>
+          <p onClick={clicked("Active")}>Active</p>
+          <p onClick={clicked("Inactive")}>Inactive</p>
         </div>
         <MyProject/>
     </div>
@@ -47,43 +64,3 @@ function Projects() {
 }
 
 export {Projects, MyProject};
-
-let loaded = false;
-
-const load = () => {
-  let filters = document.getElementById("filter").querySelectorAll("p");
-
-  let currentFilter = "All";
-  function clicked(filter) {
-    return (e) => {
-      if (e.textContent != currentFilter) {
-        filters.forEach((ee) => {
-          ee.id = "";
-        })
-        currentFilter = e.textContent;
-        e.id = "active";
-      } else {
-        console.warn(`${currentFilter}\t${e.textContent}`);
-      }
-    }
-  }
-
-  for (let x of filters) {
-    x.addEventListener("click", () => {
-      clicked(x.textContent);
-    })
-  }
-  filters.forEach((e) => {
-    e.addEventListener("click", clicked(e.textContent))
-  })
-}
-
-window.addEventListener('popstate', function(event) {
-  try {
-    if (loaded) {
-      return;
-    }
-    load();
-    loaded = true;
-  } catch(e) {}
-})
