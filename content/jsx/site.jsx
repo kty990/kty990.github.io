@@ -56,6 +56,7 @@ class App extends React.Component {
         <BrowserRouter>
             <ErrorBoundary>
               <div className="navbar">
+                <img src="../images/icon.png" className="nav-icon"/>
                 <Link to="/content/pages/home" className="nav-link" onClick={changeActive}>Home</Link>
                 <Link to="/content/pages/about" className="nav-link" onClick={changeActive}>About</Link>
                 <Link to="/content/pages/projects" className="nav-link" onClick={changeActive}>Projects</Link>
