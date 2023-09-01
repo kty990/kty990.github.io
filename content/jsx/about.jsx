@@ -12,7 +12,6 @@ function About() {
   document.title = "About";
   let cpage = window.location.href.split("/");
   cpage = cpage[window.location.href.length-1];
-  alert(cpage);
   let elements = document.getElementsByClassName("nav-link");
   for (let x of elements) {
     if (x.textContent == cpage) {

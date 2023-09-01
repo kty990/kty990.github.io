@@ -108,8 +108,9 @@ function Projects() {
   document.title = "View Projects";
 
   let cpage = window.location.href.split("/");
+  console.log(`cpage init: ${cpage}`);
   cpage = cpage[window.location.href.length-1];
-  alert(cpage);
+  console.log(`cpage final: ${cpage}`);
   let elements = document.getElementsByClassName("nav-link");
   for (let x of elements) {
     if (x.textContent == cpage) {
