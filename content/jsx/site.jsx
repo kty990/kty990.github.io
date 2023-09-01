@@ -31,7 +31,8 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <div>
-          {this.errors.map(e => <p> {`${e}`} </p>)}
+          <p>Something went wrong.</p>
+          {/* {this.errors.map(e => <p> {`${e}`} </p>)} */}
         </div>
       )
     }
