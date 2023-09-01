@@ -31,6 +31,10 @@ html,body {
     font-family: 'Montserrat', sans-serif;
 }
 
+#active-nav {
+    color: #75cfff;
+}
+
 .nav-link:hover {
     color: #ccc;
 }
