@@ -47,26 +47,35 @@ function Projects() {
 
 export {Projects, MyProject};
 
-let filters = document.getElementById("filter").querySelectorAll("p");
 
-let currentFilter = "All";
-function clicked(filter) {
-  return (e) => {
-    if (e.textContent != currentFilter) {
-      filters.forEach((ee) => {
-        ee.id = "";
-      })
-      currentFilter = e.textContent;
-      e.id = "active";
+const load = () => {
+  let filters = document.getElementById("filter").querySelectorAll("p");
+
+  let currentFilter = "All";
+  function clicked(filter) {
+    return (e) => {
+      if (e.textContent != currentFilter) {
+        filters.forEach((ee) => {
+          ee.id = "";
+        })
+        currentFilter = e.textContent;
+        e.id = "active";
+      }
     }
   }
-}
 
-for (let x of filters) {
-  x.addEventListener("click", () => {
-    clicked(x.textContent);
+  for (let x of filters) {
+    x.addEventListener("click", () => {
+      clicked(x.textContent);
+    })
+  }
+  filters.forEach((e) => {
+    e.addEventListener("click", clicked(e.textContent))
   })
 }
-filters.forEach((e) => {
-  e.addEventListener("click", clicked(e.textContent))
+
+window.addEventListener('popstate', function(event) {
+  try {
+    load();
+  } catch(e) {}
 })
