@@ -84,11 +84,12 @@ html,body {
 
 .project {
     width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-
-    margin-bottom: 1vh;
+    padding: 1vh;
+    padding-right: 0;
+    background-color: #ffffff55;
+    font-family: 'Montserrat';
+    color: #000;
+    margin-bottom: 0.5vh;
 }
 
 #filter {
