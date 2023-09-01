@@ -6,7 +6,7 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import {MyProject, Projects} from './projects.jsx';
 
-console.log(`Version update: 840`);
+console.log(`Version update: 842`);
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
