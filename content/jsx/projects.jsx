@@ -62,6 +62,8 @@ function MyProject() {
     }
   }, [loaded]);
 
+
+  console.log(projs);
   return (
     <div>
       {loaded ? (
@@ -70,10 +72,10 @@ function MyProject() {
             <p>{project.name}</p>
             <ErrorBoundary>
               <div>
-                {project.properties !== undefined ? (
-                  project.properties.entries.map((k,v) => {
+                {project.properties.entries !== undefined ? (
+                  project.properties.entries.map((k, v) => {
                     return (
-                      <div style={{ backgroundColor: `${GetColorFromLang(entry[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
+                      <div style={{ backgroundColor: `${GetColorFromLang(k[0].toUpperCase())}`, width: `${v}%`, height: "100%" }}>
                         {k.toUpperCase()}
                       </div>
                     );
