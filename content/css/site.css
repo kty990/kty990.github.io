@@ -92,6 +92,7 @@ html,body {
     background-color: #102b55;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
+    padding-top: 0.5vh;
 }
 
 #filter>p {
