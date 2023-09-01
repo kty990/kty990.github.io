@@ -6,6 +6,8 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import {MyProject, Projects} from './projects.jsx';
 
+console.log(`Version update: 840`);
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +37,14 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+const changeActive = (e) => {
+  let ex = document.getElementById("active-nav");
+    if (ex) {
+      ex.id = "";
+    }
+    e.target.id = "active-nav";
+}
+
 
 class App extends React.Component {
   constructor(props) {
@@ -42,13 +52,6 @@ class App extends React.Component {
   }
   
   render() {
-    const changeActive = (e) => {
-      let ex = document.getElementById("active-nav");
-        if (ex) {
-          ex.id = "";
-        }
-        e.target.id = "active-nav";
-    }
     return (
         <BrowserRouter>
             <ErrorBoundary>
@@ -71,3 +74,12 @@ class App extends React.Component {
 }
 const root = createRoot(document.getElementById('root')); 
 root.render(<App />);
+
+window.addEventListener('popstate', function(event) {
+  let elements = document.getElementsByClassName("nav-link");
+  for (let x of elements) {
+    if (x.textContent == cpage) {
+      changeActive(x);
+    }
+  }
+})
