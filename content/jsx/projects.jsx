@@ -95,9 +95,27 @@ function MyProject() {
   );
 }
 
+const changeActive = (e) => {
+  let ex = document.getElementById("active-nav");
+    if (ex) {
+      ex.id = "";
+    }
+    e.target.id = "active-nav";
+}
+
 
 function Projects() {
   document.title = "View Projects";
+
+  let cpage = window.location.href.split("/");
+  cpage = cpage[window.location.href.length-1];
+  alert(cpage);
+  let elements = document.getElementsByClassName("nav-link");
+  for (let x of elements) {
+    if (x.textContent == cpage) {
+      changeActive(x);
+    }
+  }
 
   let currentFilter = "All";
   function clicked(filter) {

@@ -75,16 +75,3 @@ class App extends React.Component {
 }
 const root = createRoot(document.getElementById('root')); 
 root.render(<App />);
-
-let cpage = window.location.href.split("/")[-1];
-window.addEventListener('popstate', function(event) {
-  cpage = window.location.href.split("/");
-  cpage = cpage[window.location.href.length-1];
-  alert(cpage);
-  let elements = document.getElementsByClassName("nav-link");
-  for (let x of elements) {
-    if (x.textContent == cpage) {
-      changeActive(x);
-    }
-  }
-})
