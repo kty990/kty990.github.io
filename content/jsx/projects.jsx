@@ -75,7 +75,7 @@ function MyProject() {
               {Object.entries(project.properties) !== undefined ? (
                 Object.entries(project.properties).map(([key, value]) => {
                   return (
-                    <div style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}% - 0.3vw)`, height: "100%", fontSize: "1vh"}}>
+                    <div style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}% - 0.75%)`, height: "100%", fontSize: "1vh"}}>
                       {key.toUpperCase().replace("JAVASCRIPT","JS")}{'\n'}({Math.floor(value*10000)/100}%)
                     </div>
                   );
