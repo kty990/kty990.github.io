@@ -62,8 +62,11 @@ function clicked(filter) {
   }
 }
 
-filters.forEach((e) => {
-  e.addEventListener("click", () => {
-    clicked(e.textContent);
+for (let x of filters) {
+  x.addEventListener("click", () => {
+    clicked(x.textContent);
   })
+}
+filters.forEach((e) => {
+  e.addEventListener("click", clicked(e.textContent))
 })
