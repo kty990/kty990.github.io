@@ -106,13 +106,15 @@ const changeActive = (e) => {
 
 function Projects() {
   document.title = "View Projects";
-  let elements = document.getElementsByClassName("nav-link");
-  for (let x of elements) {
-    if (x.textContent == "Projects") {
-      changeActive(x);
-      break;
-    }
-  }
+  setTimeout(() => {
+    let elements = document.getElementsByClassName("nav-link");
+    for (let x of elements) {
+      if (x.textContent == "Projects") {
+        changeActive(x);
+        break;
+      }
+    } 
+  },200);
 
   let currentFilter = "All";
   function clicked(filter) {

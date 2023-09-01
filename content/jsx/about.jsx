@@ -11,13 +11,15 @@ const changeActive = (e) => {
 function About() {
   document.title = "About";
 
-  let elements = document.getElementsByClassName("nav-link");
-  for (let x of elements) {
-    if (x.textContent == "About") {
-      changeActive(x);
-      break;
-    }
-  }
+  setTimeout(() => {
+    let elements = document.getElementsByClassName("nav-link");
+    for (let x of elements) {
+      if (x.textContent == "About") {
+        changeActive(x);
+        break;
+      }
+    } 
+  },200);
   return (
     <div>
       {/* <h1>About Me</h1> */}
