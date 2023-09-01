@@ -72,17 +72,18 @@ function MyProject() {
             <p>{project.name}</p>
             <ErrorBoundary>
               <div>
-                {Object.entries(project.properties) !== undefined ? (
-                  Object.entries(project.properties).map((k, v) => {
-                    return (
-                      <div style={{ backgroundColor: `${GetColorFromLang(k.toUpperCase())}`, width: `${v}%`, height: "100%" }}>
-                        {k.toUpperCase()}
-                      </div>
-                    );
-                  })
-                ) : (
-                  <p>Something went wrong...</p>
-                )}
+              {Object.entries(project.properties) !== undefined ? (
+                Object.entries(project.properties).map(([key, value]) => {
+                  return (
+                    <div style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, width: `${value}%`, height: "100%" }}>
+                      {key.toUpperCase()}
+                    </div>
+                  );
+                })
+              ) : (
+                <p>Something went wrong...</p>
+              )}
+
               </div>
             </ErrorBoundary>
           </div>
