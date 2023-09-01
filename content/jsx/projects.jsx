@@ -25,9 +25,23 @@ function MyProject() {
 
   return (
     <div>
-        {projs.map(project => <div key={project.name} className="project">{project.name}</div>)}
+      {loaded ? (
+        projs.map((project) => (
+          <div key={project.name} className="project">
+            {project.name}
+          </div>
+        ))
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
+
+  // return (
+  //   <div>
+  //       {projs.map(project => <div key={project.name} className="project">{project.name}</div>)}
+  //   </div>
+  // );
 }
 
 
