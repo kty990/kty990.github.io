@@ -60,7 +60,7 @@ function MyProject() {
       const loadedProjects = pjcts.GetProjects();
       setProjs(loadedProjects);
     }
-  }, [loaded]);
+  }); // ,[loaded]
 
 
   console.log(projs);
