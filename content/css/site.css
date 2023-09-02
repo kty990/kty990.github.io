@@ -29,12 +29,14 @@ html,body {
     margin-bottom: 5vh;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vh;
 }
 
 #active-nav {
     color: #75cfff;
     font-weight: bold;
-    transition-duration: 1s;
+    transition-duration: 500ms;
+    font-size: 2vh;
 }
 
 .nav-link:hover {
