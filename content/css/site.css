@@ -115,6 +115,7 @@ html,body {
     position: sticky;
     width: 100%;
     height: 4vh;
+    top:0;
     background-color: #102b55;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
