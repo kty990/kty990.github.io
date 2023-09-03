@@ -403,15 +403,15 @@ function saveData() {
 }
 
 function loadData() {
-    let success = {success:true,result:[],last_save:0};
+    let success = {success:false,result:[],last_save:0};
     try {
         let tmp = decodeProjects(localStorage.getItem("projects"));
         let tmp_ = decodeProjects(localStorage.getItem("last_save"));
-        if (tmp.length == 0) {
-            success = {success:false,result:tmp,last_save:tmp_};
+        if (tmp.length != 0) {
+            success = {success:true,result:tmp,last_save:tmp_};
         }
     } catch (e) {
-        success = {success:true,result:[],last_save:0};
+        success = {success:false,result:[],last_save:0};
     }
     return success;
 }
