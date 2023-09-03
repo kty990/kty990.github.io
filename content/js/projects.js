@@ -385,7 +385,7 @@ function decodeProjects(data) {
         let name = splitString.splice(0,1)[0];
         let update = splitString.splice(0,1)[0];
         let args = {};
-        let arg_string = splitString[i].split(ARG_SEP);
+        let arg_string = splitString.splice(0,1).split(ARG_SEP);
         for (let i = 0; i < arg_string.length; i++) {
             let tmp = arg_string[i].split("#");
             args[tmp[0]] = parseFloat(tmp[1]);
