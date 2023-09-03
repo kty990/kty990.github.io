@@ -59,7 +59,9 @@ function MyProject() {
       });
   };
 
-  loadData();
+  useEffect(() => {
+    loadData();
+  })
 
 
   console.log(projs);
