@@ -400,6 +400,7 @@ function saveData() {
     const timeSinceEpochMilliseconds = currentDate.getTime();
     localStorage.setItem("last_save", `${timeSinceEpochMilliseconds}`);
     localStorage.setItem("projects", encodeProjects());
+    console.log("Saved!");
 }
 
 function loadData() {
