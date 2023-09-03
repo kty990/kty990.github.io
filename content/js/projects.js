@@ -387,6 +387,7 @@ function decodeProjects(data) {
         let update = splitString.splice(0,1)[0];
         let args = {};
         console.log(`Attempting to decode project cache: ${splitString}`);
+        console.log(typeof splitString);
         let arg_string = splitString.splice(0,1);
         arg_string = arg_string.split(ARG_SEP);
         for (let i = 0; i < arg_string.length; i++) {
