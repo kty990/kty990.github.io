@@ -412,6 +412,7 @@ function loadData() {
             success = {success:true,result:tmp,last_save:tmp_};
         }
     } catch (e) {
+        console.error(`An error occured trying to load data: ${e}`);
         success = {success:false,result:[],last_save:0};
     }
     return success;
