@@ -36,6 +36,8 @@ function MyProject() {
   const [loaded, setLoaded] = useState(false);
   const [lastSave, setSave] = useState(0);
 
+  let debouce = false;
+
   const loadData = () => {
     let data = pjcts.loadData();
     if (data.success == true) {
@@ -61,7 +63,8 @@ function MyProject() {
 
   useEffect(() => {
     loadData();
-  })
+    debouce = true;
+  },[debouce])
 
 
   console.log(projs);
