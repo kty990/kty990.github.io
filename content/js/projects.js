@@ -381,7 +381,7 @@ function decodeProjects(data) {
     let projects = data.split(PROJ_SEP);
     let tmp = [];
     for (let x = 0; x < projects.length; x++) {
-        console.log(`Attempting to decode project cache (init): ${splitString}`);
+        console.log(`Attempting to decode project cache (init): ${projects[x].split(SEP)}`);
         let splitString = projects[x].split(SEP);
         let name = splitString.splice(0,1)[0];
         let update = splitString.splice(0,1)[0];
