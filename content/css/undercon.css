@@ -1,5 +1,6 @@
 .underCon {
-    background-image: url(&quot;https://t4.ftcdn.net/jpg/00/99/71/73/360_F_99717377_4njMiAstg2arKEBkdsqoG7mtVOra3M5y.jpg&quot;);position: fixed;
+    background-image: url("../images/hazard.jpg");
+    position: fixed;
     left: 20vw;
     top: 9vh;
     font-family:  'Montserrat';
