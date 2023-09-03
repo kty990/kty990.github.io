@@ -390,10 +390,12 @@ function decodeProjects(data) {
         console.log(typeof splitString);
         let arg_string = splitString[0];
         console.log(`arg string: ${arg_string}`);
-        arg_string = arg_string.split(ARG_SEP);
-        for (let i = 0; i < arg_string.length; i++) {
-            let tmp = arg_string[i].split("#");
-            args[tmp[0]] = parseFloat(tmp[1]);
+        if (arg_string !== undefined) {
+            arg_string = arg_string.split(ARG_SEP);
+            for (let i = 0; i < arg_string.length; i++) {
+                let tmp = arg_string[i].split("#");
+                args[tmp[0]] = parseFloat(tmp[1]);
+            }
         }
         tmp.push(new Project(name, args, update));
     }
