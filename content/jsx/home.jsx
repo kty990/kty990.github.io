@@ -21,8 +21,8 @@ function Home() {
     } 
   },200);
   return (
-    <div>
-      {/* <h1>Home Page</h1> */}
+    <div className="underCon">
+      <h1>Homepage Under Construction</h1>
     </div>
   );
 }

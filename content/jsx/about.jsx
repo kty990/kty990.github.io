@@ -21,8 +21,8 @@ function About() {
     } 
   },200);
   return (
-    <div>
-      {/* <h1>About Me</h1> */}
+    <div className="underCon">
+      <h1>AboutMe Under Construction</h1>
     </div>
   );
 }
