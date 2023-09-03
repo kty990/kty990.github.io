@@ -403,7 +403,7 @@ function saveData() {
 }
 
 function loadData() {
-    let success = success = {success:true,result:[],last_save:0};
+    let success = {success:true,result:[],last_save:0};
     try {
         let tmp = decodeProjects(localStorage.getItem("projects"));
         let tmp_ = decodeProjects(localStorage.getItem("last_save"));
