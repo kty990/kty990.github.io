@@ -40,6 +40,7 @@ function MyProject() {
 
   const loadData = () => {
     let data = pjcts.loadData();
+    console.log(data);
     if (data.success == true) {
       setProjs(data.result);
       let currentDate = new Date();
@@ -62,8 +63,8 @@ function MyProject() {
   };
 
   useEffect(() => {
-    loadData();
     debouce = true;
+    loadData();
   },[debouce])
 
 
