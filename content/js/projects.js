@@ -381,11 +381,14 @@ function decodeProjects(data) {
     let projects = data.split(PROJ_SEP);
     let tmp = [];
     for (let x = 0; x < projects.length; x++) {
+        console.log(`Attempting to decode project cache (init): ${splitString}`);
         let splitString = projects[x].split(SEP);
         let name = splitString.splice(0,1)[0];
         let update = splitString.splice(0,1)[0];
         let args = {};
-        let arg_string = splitString.splice(0,1).split(ARG_SEP);
+        console.log(`Attempting to decode project cache: ${splitString}`);
+        let arg_string = splitString.splice(0,1);
+        arg_string = arg_string.split(ARG_SEP);
         for (let i = 0; i < arg_string.length; i++) {
             let tmp = arg_string[i].split("#");
             args[tmp[0]] = parseFloat(tmp[1]);
