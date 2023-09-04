@@ -41,9 +41,10 @@ function MyProject() {
   const loadData = () => {
     let data = pjcts.loadData();
     console.log(data);
-    if (data.success == true) {
+    let currentDate = new Date();
+    if (data.success == true && data.last_save - currentDate.getTime() < (30*60)) {
       setProjs(data.result);
-      let currentDate = new Date();
+      
       if (data.last_save - currentDate.getTime() < (30*60)) {
         return;
       }
