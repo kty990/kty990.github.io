@@ -36,7 +36,6 @@ function MyProject() {
 
   const [projs, setProjs] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [lastSave, setSave] = useState(0);
 
   const loadData = () => {
     let data = pjcts.loadData();
@@ -47,8 +46,9 @@ function MyProject() {
       if (data.last_save - currentDate.getTime() < (30*60)) {
         return;
       }
-    }
-    pjcts
+      setLoaded(true);
+    } else {
+      pjcts
       .load_projects()
       .then(() => {
         const loadedProjects = pjcts.GetProjects();
@@ -60,6 +60,8 @@ function MyProject() {
         console.log(e);
         setLoaded(false);
       });
+    }
+    
   };
 
   useEffect(() => {
@@ -69,7 +71,7 @@ function MyProject() {
 
 
   console.log(projs);
-  
+
   return (
     <div>
       {loaded ? (
