@@ -1,5 +1,5 @@
 class Project {
-    constructor(name, properties, lastUpdated, link) {
+    constructor(name, properties, lastUpdated, link, archived) {
         if (link) {
             this.link = link;
         } else {
@@ -9,6 +9,7 @@ class Project {
         this.lastUpdated = lastUpdated;
         this.link = link;
         this.properties = properties;
+        this.archived = archived;
     }
 
     GetName() {
@@ -310,6 +311,7 @@ function load_projects() {
             } else {
                 for (let x = 0; x < data.length; x++) {
                     let repo_name = data[x].name;
+                    let archived = data[x].archived;
                     if (repo_name == SITE_NAME) {
                         document.getElementById("site-last-update").textContent = `Updated: ${GetDateTime(data[x].pushed_at)}`;
                     }
@@ -336,7 +338,7 @@ function load_projects() {
                             for (const [l, c] of Object.entries(language_tmp)) {
                                 language_tmp[l] = c / total;
                             }
-                            myProjects.push(new Project(repo_name, language_tmp, GetDateTime(data[x].pushed_at),`https://github.com/kty990/${repo_name}`));
+                            myProjects.push(new Project(repo_name, language_tmp, GetDateTime(data[x].pushed_at),`https://github.com/kty990/${repo_name}`,archived));
                             if (myProjects.length == data.length) {
                                 myProjects = myProjects.sort((a, b) => {
                                     if (a.name > b.name) {
