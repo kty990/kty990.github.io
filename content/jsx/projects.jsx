@@ -31,12 +31,12 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const [projs, setProjs] = useState([]);
-const [loaded, setLoaded] = useState(false);
-const [lastSave, setSave] = useState(0);
-
 function MyProject() {
   let debouce = false;
+
+  const [projs, setProjs] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [lastSave, setSave] = useState(0);
 
   const loadData = () => {
     let data = pjcts.loadData();
@@ -69,6 +69,7 @@ function MyProject() {
 
 
   console.log(projs);
+  
   return (
     <div>
       {loaded ? (
