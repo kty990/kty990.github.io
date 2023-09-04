@@ -86,7 +86,7 @@ function MyProject() {
                   Object.entries(project.properties).map(([key, value]) => {
                     if (key == "" || isNaN(value)) {
                       return (
-                        <div></div>
+                        <div key={`${project.name}_subkey_Div`}></div>
                       )
                     }
                     return (
