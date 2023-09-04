@@ -32,6 +32,46 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+function getContrastRatio(color1, color2) {
+  // Ensure color inputs are in the format "#RRGGBB" or "rgb(r, g, b)"
+  color1 = normalizeColor(color1);
+  color2 = normalizeColor(color2);
+
+  // Calculate the relative luminance of the colors
+  const luminance1 = calculateRelativeLuminance(color1);
+  const luminance2 = calculateRelativeLuminance(color2);
+
+  // Calculate the contrast ratio
+  const contrastRatio = (Math.max(luminance1, luminance2) + 0.05) / (Math.min(luminance1, luminance2) + 0.05);
+
+  return contrastRatio;
+}
+
+// Helper function to normalize color values
+function normalizeColor(color) {
+  if (color.startsWith("#")) {
+    // Convert "#RRGGBB" format to "rgb(r, g, b)" format
+    const hex = color.slice(1);
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return `rgb(${r}, ${g}, ${b})`;
+  } else {
+    return color;
+  }
+}
+
+// Helper function to calculate relative luminance
+function calculateRelativeLuminance(color) {
+  const values = color.match(/\d+/g).map(Number);
+  const [r, g, b] = values.map(value => {
+    value /= 255;
+    return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
+  });
+
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
 function MyProject() {
   let debouce = false;
 
@@ -84,7 +124,7 @@ function MyProject() {
               {project.archived ? (
                 <div style={{
                 width: "6vw",
-                height: "20px",
+                height: "3vh",
                 position: "relative",
                 backgroundColor: "#7d00007d",
                 transform: "rotate(22deg)",
@@ -110,6 +150,14 @@ function MyProject() {
                         <div key={`${project.name}_subkey_Div`}></div>
                       )
                     }
+                    let color = "";
+                    let colors = ["#000000","#7d7d7d","#fffffff"];
+                    let ratios = [];
+                    for (let c of colors) {
+                      ratios.push(getContrastRatio(c,GetColorFromLang(key.toUpperCase())))
+                    }
+                    const highestValue = Math.max(...numbers);
+                    color = colors[ratios.indexOf(highestValue)];
                     return (
                       <div key={`${project.name}_subkey_${value}`} style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}%)`, height: "100%", fontSize: "1vh"}}>
                         {key.toUpperCase().replace("JAVASCRIPT","JS")}{'\n'}({Math.floor(value*10000)/100}%)
