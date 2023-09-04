@@ -77,7 +77,7 @@ function MyProject() {
     <div>
       {loaded ? (
         projs.map((project) => (
-          <Link to={project.link}>
+          <Link to={project.link} key={`${project.name}_subkey_Link`}>
             <div key={project.name} className="project">
               <p>{project.name}</p>
               <ErrorBoundary>
