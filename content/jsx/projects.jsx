@@ -76,25 +76,27 @@ function MyProject() {
     <div>
       {loaded ? (
         projs.map((project) => (
-          <div key={project.name} className="project">
-            <p>{project.name}</p>
-            <ErrorBoundary>
-              <div style={{display:"flex",flexDirection:"row",width:"calc(100% - 0.2vw)"}}>
-              {Object.entries(project.properties) !== undefined ? (
-                Object.entries(project.properties).map(([key, value]) => {
-                  return (
-                    <div key={`${project.name}_subkey_${value}`} style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}%)`, height: "100%", fontSize: "1vh"}}>
-                      {key.toUpperCase().replace("JAVASCRIPT","JS")}{'\n'}({Math.floor(value*10000)/100}%)
-                    </div>
-                  );
-                })
-              ) : (
-                <p>Something went wrong...</p>
-              )}
+          <Link to={project.link}>
+            <div key={project.name} className="project">
+              <p>{project.name}</p>
+              <ErrorBoundary>
+                <div style={{display:"flex",flexDirection:"row",width:"calc(100% - 0.2vw)"}}>
+                {Object.entries(project.properties) !== undefined ? (
+                  Object.entries(project.properties).map(([key, value]) => {
+                    return (
+                      <div key={`${project.name}_subkey_${value}`} style={{ backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}%)`, height: "100%", fontSize: "1vh"}}>
+                        {key.toUpperCase().replace("JAVASCRIPT","JS")}{'\n'}({Math.floor(value*10000)/100}%)
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p>Something went wrong...</p>
+                )}
 
-              </div>
-            </ErrorBoundary>
-          </div>
+                </div>
+              </ErrorBoundary>
+            </div>
+          </Link>
         ))
       ) : (
         <div style={{color:"#fff",position:"relative",left:"2vw",top:"2vh",fontFamily:"Montserrat",fontWeight:"bold"}}>Loading...</div>

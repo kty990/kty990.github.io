@@ -1,7 +1,8 @@
 class Project {
-    constructor(name, properties, lastUpdated) {
+    constructor(name, properties, lastUpdated, link="https://github.com/kty990?tab=repositories") {
         this.name = name;
         this.lastUpdated = lastUpdated;
+        this.link = link;
         this.properties = properties;
     }
 

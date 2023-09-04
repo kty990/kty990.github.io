@@ -111,6 +111,10 @@ html,body {
     margin-bottom: 0.5vh;
 }
 
+.project:hover {
+    background-color: #ffffffaf;
+}
+
 #filter {
     position: sticky;
     width: 100%;
