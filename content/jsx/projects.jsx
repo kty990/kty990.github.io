@@ -80,7 +80,7 @@ function MyProject() {
           <Link to={project.link} key={`${project.name}_subkey_Link`}>
             <div key={project.name} className="project">
               <p>{project.name}</p>
-              {archived ? (
+              {project.archived ? (
                 <div style="width: 6vw;height: 20px;position: relative;background-color: #7d00007d;transform: rotate(22deg);bottom: 50px;text-align: center;left: 87%;font-size: 1.7vh;border-radius:  10px;border-top-left-radius: 0;border-bottom-right-radius: 0;">
                 Archived
                 </div>
