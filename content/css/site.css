@@ -4,6 +4,10 @@ html,body {
     background-color: #7f93b3;
 }
 
+a {
+    text-decoration: none;
+}
+
 .navbar {
     position: fixed;
     left: 0;
@@ -105,9 +109,9 @@ html,body {
     padding: 1vh;
     padding-right: 0;
     padding-left: 0.2vw;
-    background-color: #ffffff55;
+    background-color: #0f417a;
     font-family: 'Montserrat';
-    color: #000;
+    color: #ffffff;
     margin-bottom: 0.5vh;
 }
 
