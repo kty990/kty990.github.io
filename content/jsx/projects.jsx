@@ -204,8 +204,8 @@ function Projects() {
   let currentFilter = "All";
   function clicked(filter) {
     try {
-      let filters = document.getElementById("filter").children;
       return (e) => {
+        let filters = document.getElementById("filter").children;
         if (filter != currentFilter) {
           filters.forEach((ee) => {
             ee.id = "";
