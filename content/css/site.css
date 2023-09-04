@@ -148,3 +148,27 @@ a {
     border-radius: 5px;
     transition-duration: 500ms;
 }
+
+
+/* Customize the scrollbar */
+#project-flex::-webkit-scrollbar {
+    width: 6px; /* Set the width of the scrollbar */
+    background-color: #48638e;
+  }
+  
+  /* Customize the scrollbar thumb (the draggable part) */
+#project-flex::-webkit-scrollbar-thumb {
+    background: #2374b7; /* Set the color of the thumb */
+    border-radius: 6px; /* Round the corners of the thumb */
+  }
+  
+  /* Customize the scrollbar track */
+#project-flex::-webkit-scrollbar-track {
+    background: #6fa5b7; /* Set the color of the track */
+  }
+  
+  /* Customize the scrollbar thumb when hovering over it */
+#project-flex::-webkit-scrollbar-thumb:hover {
+    background: #0d3d4d; /* Change the color on hover */
+  }
+  
