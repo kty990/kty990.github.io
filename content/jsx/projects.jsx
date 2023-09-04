@@ -82,7 +82,20 @@ function MyProject() {
             <div key={project.name} className="project">
               <p>{project.name}</p>
               {project.archived ? (
-                <div style="width: 6vw;height: 20px;position: relative;background-color: #7d00007d;transform: rotate(22deg);bottom: 50px;text-align: center;left: 87%;font-size: 1.7vh;border-radius:  10px;border-top-left-radius: 0;border-bottom-right-radius: 0;">
+                <div style={{
+                width: "6vw",
+                height: "20px",
+                position: "relative",
+                backgroundColor: "#7d00007d",
+                transform: "rotate(22deg)",
+                bottom: "50px",
+                textAlign: "center",
+                left: "87%",
+                fontSize: "1.7vh",
+                borderRadius:  "10px",
+                borderTopLeftRadius: "0",
+                borderBottomRightRadius: "0"
+                }}>
                 Archived
                 </div>
               ) : (
