@@ -156,7 +156,7 @@ function MyProject() {
                     for (let c of colors) {
                       ratios.push(getContrastRatio(c,GetColorFromLang(key.toUpperCase())))
                     }
-                    const highestValue = Math.max(...numbers);
+                    const highestValue = Math.max(...ratios);
                     color = colors[ratios.indexOf(highestValue)];
                     return (
                       <div key={`${project.name}_subkey_${value}`} style={{ color:color, backgroundColor: `${GetColorFromLang(key.toUpperCase())}`, textAlign:"center", width: `calc(${Math.floor(value*10000)/100}%)`, height: "100%", fontSize: "1vh"}}>
