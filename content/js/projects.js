@@ -336,7 +336,7 @@ function load_projects() {
                             for (const [l, c] of Object.entries(language_tmp)) {
                                 language_tmp[l] = c / total;
                             }
-                            myProjects.push(new Project(repo_name, language_tmp, GetDateTime(data[x].pushed_at)));
+                            myProjects.push(new Project(repo_name, language_tmp, GetDateTime(data[x].pushed_at),`https://github.com/kty990/${repo_name}`));
                             if (myProjects.length == data.length) {
                                 myProjects = myProjects.sort((a, b) => {
                                     if (a.name > b.name) {
@@ -403,7 +403,7 @@ function decodeProjects(data) {
                 args[tmp[0]] = parseFloat(tmp[1]);
             }
         }
-        tmp.push(new Project(name, args, update));
+        tmp.push(new Project(name, args, update, `https://github.com/kty990/${name}`));
     }
     return tmp;
 }
