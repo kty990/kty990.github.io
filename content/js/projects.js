@@ -1,5 +1,10 @@
 class Project {
-    constructor(name, properties, lastUpdated, link="https://github.com/kty990?tab=repositories") {
+    constructor(name, properties, lastUpdated, link) {
+        if (link) {
+            this.link = link;
+        } else {
+            this.link = `https://github.com/kty990/${name}`;
+        }
         this.name = name;
         this.lastUpdated = lastUpdated;
         this.link = link;
