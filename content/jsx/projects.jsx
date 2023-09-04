@@ -1,5 +1,6 @@
 import pjcts, {Project, GetColorFromLang} from '../js/projects.js';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
