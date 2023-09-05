@@ -201,22 +201,19 @@ function Projects() {
     } 
   },200);
 
-  async function waitForElementToLoad(id, callback, timeout = 10000) {
-    const startTime = Date.now();
-  
-    function checkElement() {
-      const element = document.getElementById(id);
-  
-      if (element) {
-        callback(element);
-      } else if (Date.now() - startTime < timeout) {
-        setTimeout(checkElement, 100); // Check again in 100 milliseconds
-      } else {
-        console.error(`Element with id "${id}" not found within ${timeout} ms.`);
+  async function waitForElementToLoad(id, timeout = 10000) {
+    return new Promise((resolve,reject) => {
+      const startTime = Date.now();
+
+      const refresh = () => {
+        setTimeout(() => {
+          if (document.getElementById("filter")) {
+            resolve();
+          }
+          refresh();
+        },100)
       }
-    }
-  
-    checkElement();
+    })
   }
 
   function applyFilter(filter) {
@@ -268,7 +265,7 @@ function Projects() {
     }
   }
 
-  waitForElementToLoad("filter", () => {
+  waitForElementToLoad("filter").then(() => {
     console.log("Filter...");
     let filter = document.getElementById("filter");
     for (let c of filter.children) {
@@ -276,7 +273,7 @@ function Projects() {
         clicked(c.textContent);
       })
     }
-  });
+  }).catch(console.error);
   
 
   return (
