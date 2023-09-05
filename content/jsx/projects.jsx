@@ -226,9 +226,9 @@ function Projects() {
   return (
     <div id="project-flex">
         <div id="filter">
-          <p id="active" onClick={clicked("All")}>All</p>
-          <p onClick={clicked("Active")}>Active</p>
-          <p onClick={clicked("Inactive")}>Inactive</p>
+          <p id="active" onClick={clicked().bind(null, "All")}>All</p>
+          <p onClick={clicked.bind(null, "Active")}>Active</p>
+          <p onClick={clicked.bind(null, "Inactive")}>Inactive</p>
         </div>
         <MyProject/>
     </div>
