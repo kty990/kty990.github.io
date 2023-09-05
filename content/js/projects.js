@@ -445,6 +445,82 @@ function GetProjects() {
     return myProjects;
 }
 
+function logic() {
+    function applyFilter(filter) {
+        let entry = document.getElementById("project-flex").querySelectorAll("a");
+        switch(filter) {
+          case "All":
+            for (let e of entry) {
+              e.style.visibility = "visible";
+            }
+          case "Active":
+            for (let e of entry) {
+              if (e.meta == "archived:false") {
+                e.style.visibility = "visible";
+              } else {
+                e.style.visibility = "hidden";
+              }
+            }
+          case "Inactive":
+            for (let e of entry) {
+              if (e.meta == "archived:true") {
+                e.style.visibility = "visible";
+              } else {
+                e.style.visibility = "hidden";
+              }
+            }
+        }
+      } 
+    
+    let currentFilter = "All";
+      function clicked(filter) {
+        try {
+          return (e) => {
+            let filters = document.getElementById("filter").children;
+            if (filter != currentFilter) {
+              filters.forEach((ee) => {
+                ee.id = "";
+              })
+              currentFilter = filter;
+              e.id = "active";
+              applyFilter(filter);
+            } else {
+              console.warn(`${currentFilter}\t${filter}`);
+            }
+          }
+        } catch (err) {
+            return (e) => {
+              e.id = "active";
+            } 
+        }
+      }
+    
+      const waitForElementToLoad = async (id) => {
+        return new Promise(async (resolve,reject) => {
+            const start = Date.now();
+    
+            const refresh = async () => {
+                setTimeout(async () => {
+                    if (document.getElementById(id)) {
+                        resolve(Date.now() - start);
+                    }
+                    refresh();
+                })
+            }
+        })
+      }
+    
+      waitForElementToLoad("filter").then(async () => {
+        console.log(`Filter: ${duration}`);
+        let filter = document.getElementById("filter");
+        for (let c of filter.children) {
+          c.addEventListener("click", () => {
+            clicked(c.textContent);
+          })
+        }
+      }).catch(console.error);
+}
+
 module.exports = {
     GetColorFromLang,
     hashString,
@@ -465,79 +541,6 @@ module.exports = {
     formatIntToLength,
     CustomCSS,
     Media,
-    GetProjects
+    GetProjects,
+    logic
 }
-
-function applyFilter(filter) {
-    let entry = document.getElementById("project-flex").querySelectorAll("a");
-    switch(filter) {
-      case "All":
-        for (let e of entry) {
-          e.style.visibility = "visible";
-        }
-      case "Active":
-        for (let e of entry) {
-          if (e.meta == "archived:false") {
-            e.style.visibility = "visible";
-          } else {
-            e.style.visibility = "hidden";
-          }
-        }
-      case "Inactive":
-        for (let e of entry) {
-          if (e.meta == "archived:true") {
-            e.style.visibility = "visible";
-          } else {
-            e.style.visibility = "hidden";
-          }
-        }
-    }
-  } 
-
-let currentFilter = "All";
-  function clicked(filter) {
-    try {
-      return (e) => {
-        let filters = document.getElementById("filter").children;
-        if (filter != currentFilter) {
-          filters.forEach((ee) => {
-            ee.id = "";
-          })
-          currentFilter = filter;
-          e.id = "active";
-          applyFilter(filter);
-        } else {
-          console.warn(`${currentFilter}\t${filter}`);
-        }
-      }
-    } catch (err) {
-        return (e) => {
-          e.id = "active";
-        } 
-    }
-  }
-
-  const waitForElementToLoad = (id) => {
-    return new Promise(async (resolve,reject) => {
-        const start = Date.now();
-
-        const refresh = async () => {
-            setTimeout(async () => {
-                if (document.getElementById(id)) {
-                    resolve(Date.now() - start);
-                }
-                refresh();
-            })
-        }
-    })
-  }
-
-  waitForElementToLoad("filter").then(async () => {
-    console.log(`Filter: ${duration}`);
-    let filter = document.getElementById("filter");
-    for (let c of filter.children) {
-      c.addEventListener("click", () => {
-        clicked(c.textContent);
-      })
-    }
-  }).catch(console.error);
