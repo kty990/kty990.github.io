@@ -518,11 +518,11 @@ let currentFilter = "All";
   }
 
   const waitForElementToLoad = (id) => {
-    return new Promise((resolve,reject) => {
+    return new Promise(async (resolve,reject) => {
         const start = Date.now();
 
-        const refresh = () => {
-            setTimeout(() => {
+        const refresh = async () => {
+            setTimeout(async () => {
                 if (document.getElementById(id)) {
                     resolve(Date.now() - start);
                 }
@@ -532,7 +532,7 @@ let currentFilter = "All";
     })
   }
 
-  waitForElementToLoad("filter").then(() => {
+  waitForElementToLoad("filter").then(async () => {
     console.log(`Filter: ${duration}`);
     let filter = document.getElementById("filter");
     for (let c of filter.children) {
