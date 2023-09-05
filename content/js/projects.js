@@ -521,26 +521,30 @@ function logic() {
       }).catch(console.error);
 }
 
-module.exports = {
-    GetColorFromLang,
-    hashString,
-    loadData,
-    saveData,
-    decodeProjects,
-    encodeProjects,
-    Project,
-    Datestamp,
-    Time,
-    load_projects,
-    ConvertToDate,
-    ConvertToTime,
-    colorField,
-    daysPerMonth,
-    months,
-    getJSON,
-    formatIntToLength,
-    CustomCSS,
-    Media,
-    GetProjects,
-    logic
+try {
+    module.exports = {
+        GetColorFromLang,
+        hashString,
+        loadData,
+        saveData,
+        decodeProjects,
+        encodeProjects,
+        Project,
+        Datestamp,
+        Time,
+        load_projects,
+        ConvertToDate,
+        ConvertToTime,
+        colorField,
+        daysPerMonth,
+        months,
+        getJSON,
+        formatIntToLength,
+        CustomCSS,
+        Media,
+        GetProjects,
+        logic
+    }
+} catch (e) {
+    console.error(e);
 }
