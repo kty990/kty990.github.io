@@ -467,3 +467,62 @@ module.exports = {
     Media,
     GetProjects
 }
+
+function applyFilter(filter) {
+    let entry = document.getElementById("project-flex").querySelectorAll("a");
+    switch(filter) {
+      case "All":
+        for (let e of entry) {
+          e.style.visibility = "visible";
+        }
+      case "Active":
+        for (let e of entry) {
+          if (e.meta == "archived:false") {
+            e.style.visibility = "visible";
+          } else {
+            e.style.visibility = "hidden";
+          }
+        }
+      case "Inactive":
+        for (let e of entry) {
+          if (e.meta == "archived:true") {
+            e.style.visibility = "visible";
+          } else {
+            e.style.visibility = "hidden";
+          }
+        }
+    }
+  } 
+
+let currentFilter = "All";
+  function clicked(filter) {
+    try {
+      return (e) => {
+        let filters = document.getElementById("filter").children;
+        if (filter != currentFilter) {
+          filters.forEach((ee) => {
+            ee.id = "";
+          })
+          currentFilter = filter;
+          e.id = "active";
+          applyFilter(filter);
+        } else {
+          console.warn(`${currentFilter}\t${filter}`);
+        }
+      }
+    } catch (err) {
+        return (e) => {
+          e.id = "active";
+        } 
+    }
+  }
+
+  waitForElementToLoad("filter").then(() => {
+    console.log("Filter...");
+    let filter = document.getElementById("filter");
+    for (let c of filter.children) {
+      c.addEventListener("click", () => {
+        clicked(c.textContent);
+      })
+    }
+  }).catch(console.error);
