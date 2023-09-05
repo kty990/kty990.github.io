@@ -269,6 +269,7 @@ function Projects() {
   }
 
   waitForElementToLoad("filter", () => {
+    console.log("Filter...");
     let filter = document.getElementById("filter");
     for (let c of filter.children) {
       c.addEventListener("click", () => {
