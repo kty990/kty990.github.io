@@ -517,8 +517,23 @@ let currentFilter = "All";
     }
   }
 
+  const waitForElementToLoad = (id) => {
+    return new Promise((resolve,reject) => {
+        const start = Date.now();
+
+        const refresh = () => {
+            setTimeout(() => {
+                if (document.getElementById(id)) {
+                    resolve(Date.now() - start);
+                }
+                refresh();
+            })
+        }
+    })
+  }
+
   waitForElementToLoad("filter").then(() => {
-    console.log("Filter...");
+    console.log(`Filter: ${duration}`);
     let filter = document.getElementById("filter");
     for (let c of filter.children) {
       c.addEventListener("click", () => {
