@@ -201,6 +201,24 @@ function Projects() {
     } 
   },200);
 
+  function waitForElementToLoad(id, callback, timeout = 10000) {
+    const startTime = Date.now();
+  
+    function checkElement() {
+      const element = document.getElementById(id);
+  
+      if (element) {
+        callback(element);
+      } else if (Date.now() - startTime < timeout) {
+        setTimeout(checkElement, 100); // Check again in 100 milliseconds
+      } else {
+        console.error(`Element with id "${id}" not found within ${timeout} ms.`);
+      }
+    }
+  
+    checkElement();
+  }
+
   function applyFilter(filter) {
     let entry = document.getElementById("project-flex").querySelectorAll("a");
     switch(filter) {
@@ -250,12 +268,15 @@ function Projects() {
     }
   }
 
-  let filter = document.getElementById("filter");
+  waitForElementToLoad("filter", () => {
+    let filter = document.getElementById("filter");
     for (let c of filter.children) {
       c.addEventListener("click", () => {
         clicked(c.textContent);
       })
     }
+  });
+  
 
   return (
     <MyProject/>
