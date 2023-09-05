@@ -201,7 +201,7 @@ function Projects() {
     } 
   },200);
 
-  function waitForElementToLoad(id, callback, timeout = 10000) {
+  async function waitForElementToLoad(id, callback, timeout = 10000) {
     const startTime = Date.now();
   
     function checkElement() {
