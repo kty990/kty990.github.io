@@ -118,7 +118,7 @@ function MyProject() {
     <div>
       {loaded ? (
         projs.map((project) => (
-          <Link to={project.link} key={`${project.name}_subkey_Link`}>
+          <Link to={project.link} key={`${project.name}_subkey_Link`} meta={`archived:${project.archived}`}>
             <div key={project.name} className="project">
               <p>{project.name}</p>
               {project.archived ? (
@@ -201,6 +201,32 @@ function Projects() {
     } 
   },200);
 
+  function applyFilter(filter) {
+    let entry = document.getElementById("project-flex").querySelectorAll("a");
+    switch(filter) {
+      case "All":
+        for (let e of entry) {
+          e.style.visibility = "visible";
+        }
+      case "Active":
+        for (let e of entry) {
+          if (e.meta == "archived:false") {
+            e.style.visibility = "visible";
+          } else {
+            e.style.visibility = "hidden";
+          }
+        }
+      case "Inactive":
+        for (let e of entry) {
+          if (e.meta == "archived:true") {
+            e.style.visibility = "visible";
+          } else {
+            e.style.visibility = "hidden";
+          }
+        }
+    }
+  }
+
   let currentFilter = "All";
   function clicked(filter) {
     try {
@@ -212,6 +238,7 @@ function Projects() {
           })
           currentFilter = filter;
           e.id = "active";
+          applyFilter(filter);
         } else {
           console.warn(`${currentFilter}\t${filter}`);
         }
