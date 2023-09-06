@@ -210,34 +210,30 @@ function Projects() {
       }
       ee.target.id = "active";
       console.log(filter);
-      switch(filter) {
-        case "All":
-          for (let e of entry) {
-            console.log(e);
+      if (filter == "All") {
+        for (let e of entry) {
+          console.log(e);
+          e.style.display = "block";
+        }
+      } else if (filter == "Active") {
+        for (let e of entry) {
+          if (e.getAttribute("meta") == "archived:false") {
             e.style.display = "block";
+          } else {
+            if (e.id == "filter") continue;
+            e.style.display = "none";
           }
-        case "Active":
-          for (let e of entry) {
-            if (e.getAttribute("meta") == "archived:false") {
-              e.style.display = "block";
-            } else {
-              if (e.id == "filter") continue;
-              e.style.display = "none";
-            }
+        }
+      } else {
+        for (let e of entry) {
+          if (e.getAttribute("meta") == "archived:true") {
+            e.style.display = "block";
+          } else {
+            if (e.id == "filter") continue;
+            e.style.display = "none";
           }
-        case "Inactive":
-          for (let e of entry) {
-            if (e.getAttribute("meta") == "archived:true") {
-              e.style.display = "block";
-            } else {
-              if (e.id == "filter") continue;
-              e.style.display = "none";
-            }
-          }
-        default:
-          break;
-      }
-      
+        }
+      }      
     }
   } 
 
