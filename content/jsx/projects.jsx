@@ -203,7 +203,7 @@ function Projects() {
 
   function applyFilter(filter) {
     return () => {
-      let entry = document.getElementById("project-flex").querySelectorAll("a");
+      let entry = document.getElementById("project-flex").children;
       console.log(filter);
       switch(filter) {
         case "All":
