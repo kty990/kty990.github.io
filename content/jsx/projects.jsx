@@ -213,25 +213,24 @@ function Projects() {
       switch(filter) {
         case "All":
           for (let e of entry) {
-            e.style.visibility = "visible";
+            e.style.display = "block";
           }
         case "Active":
           for (let e of entry) {
-            console.log(e.meta);
             if (e.getAttribute("meta") == "archived:false") {
-              e.style.visibility = "visible";
+              e.style.display = "block";
             } else {
               if (e.id == "filter") continue;
-              e.style.visibility = "hidden";
+              e.style.display = "none";
             }
           }
         case "Inactive":
           for (let e of entry) {
             if (e.getAttribute("meta") == "archived:true") {
-              e.style.visibility = "visible";
+              e.style.display = "block";
             } else {
               if (e.id == "filter") continue;
-              e.style.visibility = "hidden";
+              e.style.display = "none";
             }
           }
         default:
