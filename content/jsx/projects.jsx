@@ -232,9 +232,9 @@ function Projects() {
   return (
     <div id="project-flex">
       <div id="filter">
-        <p id="active" onClick={applyFilter("All")}>All</p>
-        <p onClick={applyFilter("Active")}>Active</p>
-        <p onClick={applyFilter("Inactive")}>Inactive</p>
+        <p id="active" className="filter" onClick={applyFilter("All")}>All</p>
+        <p className="filter" onClick={applyFilter("Active")}>Active</p>
+        <p className="filter" onClick={applyFilter("Inactive")}>Inactive</p>
       </div>
       <MyProject/>
     </div>
