@@ -141,6 +141,8 @@ a {
     padding-right: 1vw;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 999;
 }
 
 #active {

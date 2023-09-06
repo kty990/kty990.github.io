@@ -202,7 +202,9 @@ function Projects() {
   },200);
 
   return (
-    <MyProject/>
+    <div id="project-flex">
+      <MyProject/>
+    </div>
   );
 }
 
