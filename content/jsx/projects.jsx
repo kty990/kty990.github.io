@@ -213,6 +213,7 @@ function Projects() {
       switch(filter) {
         case "All":
           for (let e of entry) {
+            console.log(e);
             e.style.display = "block";
           }
         case "Active":
