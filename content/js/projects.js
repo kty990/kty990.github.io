@@ -466,8 +466,7 @@ try {
         formatIntToLength,
         CustomCSS,
         Media,
-        GetProjects,
-        logic
+        GetProjects
     }
 } catch (e) {
     console.error(e);
