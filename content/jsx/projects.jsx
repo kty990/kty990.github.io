@@ -225,16 +225,19 @@ function Projects() {
               e.style.visibility = "hidden";
             }
           }
+        default:
+          break;
       }
+      
     }
   } 
 
   return (
     <div id="project-flex">
       <div id="filter">
-        <p id="active" className="filter" onClick={applyFilter("All")}>All</p>
-        <p className="filter" onClick={applyFilter("Active")}>Active</p>
-        <p className="filter" onClick={applyFilter("Inactive")}>Inactive</p>
+        <p id="active" className="filter" onclick={applyFilter("All")}>All</p>
+        <p className="filter" onclick={applyFilter("Active")}>Active</p>
+        <p className="filter" onclick={applyFilter("Inactive")}>Inactive</p>
       </div>
       <MyProject/>
     </div>
