@@ -204,6 +204,7 @@ function Projects() {
   function applyFilter(filter) {
     return () => {
       let entry = document.getElementById("project-flex").querySelectorAll("a");
+      console.log(filter);
       switch(filter) {
         case "All":
           for (let e of entry) {
@@ -211,6 +212,7 @@ function Projects() {
           }
         case "Active":
           for (let e of entry) {
+            console.log(e.meta);
             if (e.meta == "archived:false") {
               e.style.visibility = "visible";
             } else {
