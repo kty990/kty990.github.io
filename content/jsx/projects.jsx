@@ -201,12 +201,40 @@ function Projects() {
     } 
   },200);
 
+  function applyFilter(filter) {
+    return () => {
+      let entry = document.getElementById("project-flex").querySelectorAll("a");
+      switch(filter) {
+        case "All":
+          for (let e of entry) {
+            e.style.visibility = "visible";
+          }
+        case "Active":
+          for (let e of entry) {
+            if (e.meta == "archived:false") {
+              e.style.visibility = "visible";
+            } else {
+              e.style.visibility = "hidden";
+            }
+          }
+        case "Inactive":
+          for (let e of entry) {
+            if (e.meta == "archived:true") {
+              e.style.visibility = "visible";
+            } else {
+              e.style.visibility = "hidden";
+            }
+          }
+      }
+    }
+  } 
+
   return (
     <div id="project-flex">
       <div id="filter">
-        <p id="active">All</p>
-        <p>Active</p>
-        <p>Inactive</p>
+        <p id="active" onClick={applyFilter("All")}>All</p>
+        <p onClick={applyFilter("Active")}>Active</p>
+        <p onClick={applyFilter("Inactive")}>Inactive</p>
       </div>
       <MyProject/>
     </div>

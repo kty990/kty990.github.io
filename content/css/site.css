@@ -143,12 +143,18 @@ a {
     font-family: 'Montserrat', sans-serif;
     position: relative;
     z-index: 999;
+    color: #fff;
+}
+
+#filter>p:hover {
+    color: #7d7d7d;
 }
 
 #active {
     background-color: #7f93b3;
     border-radius: 5px;
     transition-duration: 500ms;
+    color: #000;
 }
 
 
