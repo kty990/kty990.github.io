@@ -202,8 +202,13 @@ function Projects() {
   },200);
 
   function applyFilter(filter) {
-    return () => {
+    return (e) => {
       let entry = document.getElementById("project-flex").children;
+      let test = document.getElementById("active");
+      if (test) {
+        test.id = "";
+      }
+      e.target.id = "active";
       console.log(filter);
       switch(filter) {
         case "All":
