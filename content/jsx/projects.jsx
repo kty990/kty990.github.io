@@ -202,13 +202,13 @@ function Projects() {
   },200);
 
   function applyFilter(filter) {
-    return (e) => {
+    return (ee) => {
       let entry = document.getElementById("project-flex").children;
       let test = document.getElementById("active");
       if (test) {
         test.id = "";
       }
-      e.target.id = "active";
+      ee.target.id = "active";
       console.log(filter);
       switch(filter) {
         case "All":
@@ -218,17 +218,19 @@ function Projects() {
         case "Active":
           for (let e of entry) {
             console.log(e.meta);
-            if (e.meta == "archived:false") {
+            if (e.getAttribute("meta") == "archived:false") {
               e.style.visibility = "visible";
             } else {
+              if (e.id == "filter") continue;
               e.style.visibility = "hidden";
             }
           }
         case "Inactive":
           for (let e of entry) {
-            if (e.meta == "archived:true") {
+            if (e.getAttribute("meta") == "archived:true") {
               e.style.visibility = "visible";
             } else {
+              if (e.id == "filter") continue;
               e.style.visibility = "hidden";
             }
           }
