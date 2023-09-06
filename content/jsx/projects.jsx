@@ -115,7 +115,7 @@ function MyProject() {
   console.log(projs);
 
   return (
-    <div>
+    <div id="project_links">
       {loaded ? (
         projs.map((project) => (
           <Link to={project.link} key={`${project.name}_subkey_Link`} meta={`archived:${project.archived}`}>
@@ -203,7 +203,7 @@ function Projects() {
 
   function applyFilter(filter) {
     return (ee) => {
-      let entry = document.getElementById("project-flex").children;
+      let entry = document.getElementById("project_links").children;
       let test = document.getElementById("active");
       if (test) {
         test.id = "";
