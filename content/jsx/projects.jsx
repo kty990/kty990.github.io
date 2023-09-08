@@ -189,11 +189,10 @@ const changeActive = (e) => {
 }
 
 
-class Projects {
-  constructor() {}
+function Projects() {
   
 
-  applyFilter(filter) {
+  function applyFilter(filter) {
     return (ee) => {
       let entry = document.getElementById("project_links").children;
       let test = document.getElementById("active");
@@ -229,7 +228,6 @@ class Projects {
     }
   } 
 
-  render() {
     document.title = "View Projects";
     this.setState();
     setTimeout(() => {
@@ -251,9 +249,6 @@ class Projects {
         <MyProject/>
       </div>
     );
-  }
-
-  
 }
 
 export {Projects, MyProject};
