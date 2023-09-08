@@ -37,6 +37,7 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
 const changeActive = (e) => {
   let ex = document.getElementById("active-nav");
     if (ex) {
@@ -45,10 +46,12 @@ const changeActive = (e) => {
     e.target.id = "active-nav";
 }
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
+    window.addEventListener('popstate', () => {
+      console.log(`Now on ${window.location.href}`);
+    });
   }
   
   render() {

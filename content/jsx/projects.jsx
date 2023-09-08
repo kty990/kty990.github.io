@@ -189,19 +189,11 @@ const changeActive = (e) => {
 }
 
 
-function Projects() {
-  document.title = "View Projects";
-  setTimeout(() => {
-    let elements = document.getElementsByClassName("nav-link");
-    for (let x of elements) {
-      if (x.textContent == "Projects") {
-        changeActive(x);
-        break;
-      }
-    } 
-  },200);
+class Projects {
+  constructor() {}
+  
 
-  function applyFilter(filter) {
+  applyFilter(filter) {
     return (ee) => {
       let entry = document.getElementById("project_links").children;
       let test = document.getElementById("active");
@@ -237,16 +229,31 @@ function Projects() {
     }
   } 
 
-  return (
-    <div id="project-flex">
-      <div id="filter">
-        <p id="active" className="filter" onClick={applyFilter("All")}>All</p>
-        <p className="filter" onClick={applyFilter("Active")}>Active</p>
-        <p className="filter" onClick={applyFilter("Inactive")}>Inactive</p>
+  render() {
+    document.title = "View Projects";
+    this.setState();
+    setTimeout(() => {
+      let elements = document.getElementsByClassName("nav-link");
+      for (let x of elements) {
+        if (x.textContent == "Projects") {
+          changeActive(x);
+          break;
+        }
+      } 
+    },200);
+    return (
+      <div id="project-flex">
+        <div id="filter">
+          <p id="active" className="filter" onClick={applyFilter("All")}>All</p>
+          <p className="filter" onClick={applyFilter("Active")}>Active</p>
+          <p className="filter" onClick={applyFilter("Inactive")}>Inactive</p>
+        </div>
+        <MyProject/>
       </div>
-      <MyProject/>
-    </div>
-  );
+    );
+  }
+
+  
 }
 
 export {Projects, MyProject};
