@@ -189,10 +189,7 @@ const changeActive = (e) => {
 }
 
 
-function Projects() {
-  const [count, setCount] = useState(0);
-  
-  
+function Projects() { 
 
   function applyFilter(filter) {
     return (ee) => {
@@ -231,6 +228,7 @@ function Projects() {
   } 
 
     document.title = "View Projects";
+    loadData();
     setTimeout(() => {
       let elements = document.getElementsByClassName("nav-link");
       for (let x of elements) {
@@ -239,7 +237,7 @@ function Projects() {
           break;
         }
       } 
-      setCount(count + 1);
+      // setCount(count + 1);
     },200);
     return (
       <div id="project-flex">
