@@ -231,7 +231,6 @@ function Projects() {
   } 
 
     document.title = "View Projects";
-    setCount(count + 1);
     setTimeout(() => {
       let elements = document.getElementsByClassName("nav-link");
       for (let x of elements) {
@@ -240,6 +239,7 @@ function Projects() {
           break;
         }
       } 
+      setCount(count + 1);
     },200);
     return (
       <div id="project-flex">
