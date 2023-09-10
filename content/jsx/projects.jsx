@@ -190,6 +190,8 @@ const changeActive = (e) => {
 
 
 function Projects() {
+  const [count, setCount] = useState(0);
+  
   
 
   function applyFilter(filter) {
@@ -229,7 +231,7 @@ function Projects() {
   } 
 
     document.title = "View Projects";
-    this.setState();
+    setCount(count + 1);
     setTimeout(() => {
       let elements = document.getElementsByClassName("nav-link");
       for (let x of elements) {
