@@ -72,13 +72,7 @@ function calculateRelativeLuminance(color) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-function MyProject() {
-  let debouce = false;
-
-  const [projs, setProjs] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-
-  const loadData = () => {
+const loadData = () => {
     let data = pjcts.loadData();
     console.log(data);
     let currentDate = new Date();
@@ -105,6 +99,14 @@ function MyProject() {
     }
     
   };
+  
+function MyProject() {
+  let debouce = false;
+
+  const [projs, setProjs] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  
 
   useEffect(() => {
     debouce = true;
