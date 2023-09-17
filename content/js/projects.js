@@ -424,6 +424,7 @@ function loadData() {
         let tmp = decodeProjects(localStorage.getItem("projects"));
         let tmp_ = decodeProjects(localStorage.getItem("last_save"));
         if (tmp.length != 0) {
+            tmp = decodeProjects(tmp);
             success = {success:true,result:tmp,last_save:tmp_};
         }
     } catch (e) {
