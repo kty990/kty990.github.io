@@ -422,9 +422,8 @@ function loadData() {
     let success = {success:false,result:[],last_save:0};
     try {
         let tmp = decodeProjects(localStorage.getItem("projects"));
-        let tmp_ = decodeProjects(localStorage.getItem("last_save"));
+        let tmp_ = localStorage.getItem("last_save");
         if (tmp.length != 0) {
-            tmp = decodeProjects(tmp);
             success = {success:true,result:tmp,last_save:tmp_};
         }
     } catch (e) {
