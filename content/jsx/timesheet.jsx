@@ -15,4 +15,4 @@ function Timesheet() {
   );
 }
 
-export default Home;
+export default Timesheet;
