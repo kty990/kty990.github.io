@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import Home from './home.jsx';
 import About from './about.jsx';
 import {MyProject, Projects} from './projects.jsx';
+import Timesheet from './timesheet.jsx';
 
 console.log(`Version update: 842`);
 
@@ -72,6 +73,7 @@ class App extends React.Component {
               <Route path="/content/pages/home" element={<Home />} />
               <Route path="/content/pages/about" element={<About />} />
               <Route path="/content/pages/projects" element={<Projects />} />
+              <Route path="/content/pages/timesheet" element={<Timesheet />} />
             </Routes>
         </BrowserRouter>
     );
