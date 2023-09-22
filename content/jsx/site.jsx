@@ -63,6 +63,7 @@ class App extends React.Component {
                 <Link to="/content/pages/home" className="nav-link" onClick={changeActive}>Home</Link>
                 <Link to="/content/pages/about" className="nav-link" onClick={changeActive}>About</Link>
                 <Link to="/content/pages/projects" className="nav-link" onClick={changeActive}>Projects</Link>
+                <Link to="/content/pages/timesheet" className="nav-link" onClick={changeActive}>Timesheet</Link>
               </div>
             </ErrorBoundary>
     
