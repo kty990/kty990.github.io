@@ -54,7 +54,7 @@ class Calendar {
             let c_i = start_i;
             let date = 1;
             let current_week = 0;
-            for (let i = 0; i < start_i; i++) {
+            for (let i = 0; i < start_i-1; i++) {
                 weeks[current_week].push(`<div class="empty-day"></div>`);
             }
             while (true) {
