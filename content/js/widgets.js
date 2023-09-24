@@ -49,8 +49,8 @@ class Calendar {
         if (active != null) {
             const {start, end} = getStartAndEndDate(this.month,this.year);
             let weeks = [[],[],[],[],[]];
-            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase()) + 1;
-            let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase()) + 1;
+            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
+            let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
             let c_i = start_i;
             let date = 1;
             let current_week = 0;
@@ -85,8 +85,8 @@ class Calendar {
         } else {
             const {start, end} = getStartAndEndDate(this.month,this.year);
             let weeks = [[],[],[],[],[]];
-            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase()) + 1;
-            let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase()) + 1;
+            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
+            let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
             let c_i = start_i;
             let date = 1;
             let current_week = 0;
