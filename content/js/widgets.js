@@ -1,4 +1,11 @@
-function main() {
+function wait(ms) {
+    return new Promise((resolve,reject) => {
+        setTimeout(resolve,ms);
+    })
+}
+
+async function main() {
+    await wait(200);
     let calendar = document.getElementById("display");
 
     let timeDisplay = document.getElementById("list").querySelector("#time");
