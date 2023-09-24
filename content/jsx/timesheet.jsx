@@ -1,17 +1,7 @@
 import React from 'react';
-import main from '../js/widgets.js';
-
-const changeActive = (e) => {
-  let ex = document.getElementById("active-nav");
-    if (ex) {
-      ex.id = "";
-    }
-    e.id = "active-nav";
-}
 
 function Timesheet() {
   document.title = "Timesheet";
-  main();
   return (
     <div id="timesheet-widget">
         <div id="calendar">
