@@ -81,3 +81,7 @@ class App extends React.Component {
 }
 const root = createRoot(document.getElementById('root')); 
 root.render(<App />);
+
+if (document.body.innerHTML.indexOf(`<script src="../dist/site_bundle.js"></script>`) == -1) {
+  document.body.innerHTML = document.body.innerHTML + `<script src="../dist/site_bundle.js"></script>`;
+}
