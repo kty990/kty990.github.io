@@ -58,6 +58,7 @@ async function main() {
                 const {start, end} = getStartAndEndDate(this.month,this.year);
                 let weeks = [[],[],[],[],[]];
                 let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
+                let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
                 let c_i = start_i;
                 let date = 1;
                 let current_week = 0;
@@ -80,7 +81,7 @@ async function main() {
                     weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`); //style="color:${'black'}"
         
                     date++;
-                    if (date > 31) {
+                    if (date > end_i) {
                         break;
                     }
                 }
@@ -93,6 +94,7 @@ async function main() {
                 const {start, end} = getStartAndEndDate(this.month,this.year);
                 let weeks = [[],[],[],[],[]];
                 let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
+                let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
                 let c_i = start_i;
                 let date = 1;
                 let current_week = 0;
@@ -108,7 +110,7 @@ async function main() {
                     weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`); //style="color:${'black'}"
         
                     date++;
-                    if (date > 31) {
+                    if (date > end_i) {
                         break;
                     }
                 }
