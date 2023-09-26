@@ -28,8 +28,8 @@ function Timesheet() {
         <div id="list">
             <p id="time">0:00:00</p>
             {/* TO BE COMPLETED AT ANOTHER DATE */}
-            <div style="width: 450px;height: 350px;display:  flex;background-color: #fff;flex-direction: column;margin-left: 5px;"> {/* This is the list box */}
-              <div style="width: 100%;height: 20px;display:  flex;background-color: #000;flex-direction: column;"></div> {/* This is a 'list element' */}
+            <div style={{width: '450px',height: '350px',display: 'flex',backgroundColor: '#fff',flexDirection: 'column',marginLeft: '5px'}}> {/* This is the list box */}
+              <div style={{width: '100%',height: '20px',display: 'flex',backgroundColor: '#000',flexDirection: 'column'}}></div> {/* This is a 'list element' */}
             </div>
         </div>
         <div>
