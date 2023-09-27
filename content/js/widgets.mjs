@@ -123,7 +123,7 @@ async function main() {
         }
     }
     let date = new Date();
-    c = new Calendar(date.getMonth() + 1,date.getFullYear());
+    let c = new Calendar(date.getMonth() + 1,date.getFullYear());
     let data = c.render();
     const cal_innerHTML = calendar.innerHTML
     calendar.innerHTML = cal_innerHTML + data;
