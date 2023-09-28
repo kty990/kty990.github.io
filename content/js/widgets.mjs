@@ -96,7 +96,7 @@ async function main() {
                 let weeks = [[],[],[],[],[]];
                 let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
                 let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
-                console.log(`end_i: ${end_i}`);
+                console.log(`end_i: ${end_i}, end: ${end}`);
                 let c_i = start_i;
                 let date = 1;
                 let current_week = 0;
