@@ -58,7 +58,7 @@ async function main() {
                 const {start, end} = getStartAndEndDate(this.month,this.year);
                 let weeks = [[],[],[],[],[]];
                 let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
-                let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
+                let end_i = parseInt(`${end}`.split(" ")[2]);
                 console.log(`end_i: ${end_i}`);
                 let c_i = start_i;
                 let date = 1;
@@ -95,7 +95,7 @@ async function main() {
                 const {start, end} = getStartAndEndDate(this.month,this.year);
                 let weeks = [[],[],[],[],[]];
                 let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
-                let end_i = this.index.indexOf(`${end}`.split(" ")[0].toUpperCase());
+                let end_i = parseInt(`${end}`.split(" ")[2]);
                 console.log(`end_i: ${end_i}, end: ${end}`);
                 let c_i = start_i;
                 let date = 1;
