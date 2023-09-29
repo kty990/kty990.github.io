@@ -88,8 +88,8 @@ class Calendar {
                         break;
                     }
                 }
-                this.weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`);
-                eList.push(new MyElement(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`));
+                this.weeks[current_week].push(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`);
+                eList.push(new MyElement(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`));
     
                 date++;
                 if (date > end_i) {

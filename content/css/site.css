@@ -227,13 +227,23 @@ a {
     padding: 0;
     margin: 0;
     user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .date>p {
     font-size: 14px;
+    margin: 0;
+    padding: 0;
 }
 
 .date:hover {
+    background-color: #437894;
+}
+
+.date>p:hover .date {
     background-color: #437894;
 }
 
