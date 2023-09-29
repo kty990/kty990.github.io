@@ -226,10 +226,15 @@ a {
     align-items: center;
     padding: 0;
     margin: 0;
+    user-select: none;
 }
 
 .date>p {
     font-size: 14px;
+}
+
+.date:hover {
+    background-color: #437894;
 }
 
 #days {

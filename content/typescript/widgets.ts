@@ -5,39 +5,67 @@ function wait(ms) {
 }
 
 class MyElement {
+    content: string;
+
     constructor(inHTML) {
         this.content = inHTML;
     }
 }
 
 class Day {
+    month: number;
+    day: number;
+
     constructor(month,day) {
         this.month = month;
         this.day = day;
     }
 }
 
+function getStartAndEndDate(month:number, year:number) {
+    // Ensure month is between 1 (January) and 12 (December)
+    if (month < 1 || month > 12) {
+    throw new Error('Month should be between 1 and 12.');
+    }
+
+    // Create a new Date object with the given year and month
+    const startDate = new Date(year, month - 1, 1); // Note: Months are zero-based (0 = January, 11 = December)
+    
+    // Calculate the end date of the month
+    const endDate = new Date(year, month, 0); // Setting day to 0 gives the last day of the previous month
+
+    return { start: startDate, end: endDate };
+}
+
 class Calendar {
+    month: number;
+    year: number;
+    weeks: [Array<string>, Array<string>, Array<string>, Array<string>, Array<string>] = [[], [], [], [], []];
+    index = [
+        "SUN",
+        "MON",
+        "TUES",
+        "WED",
+        "THURS",
+        "FRI",
+        "SAT"
+    ]
+    monthAbbreviations = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
+    ].map(month => month.toUpperCase());
+
+    last_render: string;
+
     constructor(month,year) {
         this.month = month;
         this.year = year;
-        this.index = [
-            "SUN",
-            "MON",
-            "TUES",
-            "WED",
-            "THURS",
-            "FRI",
-            "SAT"
-        ]
-        this.last_render = null;
     }
 
-    render(active=null) {
-        let data, eList = [];
+    render(active:Array<any> | null) {
+        let data = "", eList: Array<any> = [];
         if (active != null) {
             const {start, end} = getStartAndEndDate(this.month,this.year);
-            let weeks = [[],[],[],[],[]];
             let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
             let end_i = parseInt(`${end}`.split(" ")[2]);
             console.log(`end_i: ${end_i}`);
@@ -45,7 +73,7 @@ class Calendar {
             let date = 1;
             let current_week = 0;
             for (let i = 0; i < start_i-1; i++) {
-                weeks[current_week].push(`<div class="empty-day"></div>`);
+                this.weeks[current_week].push(`<div class="empty-day"></div>`);
             }
             while (true) {
                 if (c_i == 8) {
@@ -55,12 +83,12 @@ class Calendar {
                 let color = '#1d99dc';
                 for (let i = 0; i < active.length; i++) {
                     let a = active[i];
-                    if (`${a.month}`.toUpperCase() == monthAbbreviations[this.month-1].toUpperCase() && a.day.replace(":","") == date) {
+                    if (`${a.month}`.toUpperCase() == this.monthAbbreviations[this.month-1].toUpperCase() && a.day.replace(":","") == date) {
                         color = '#6445a3';
                         break;
                     }
                 }
-                weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`);
+                this.weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`);
                 eList.push(new MyElement(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`));
     
                 date++;
@@ -68,12 +96,11 @@ class Calendar {
                     break;
                 }
             }
-            for (let x of weeks) {
+            for (let x of this.weeks) {
                 data = data + x.join("\n");
             }
         } else {
             const {start, end} = getStartAndEndDate(this.month,this.year);
-            let weeks = [[],[],[],[],[]];
             let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
             let end_i = parseInt(`${end}`.split(" ")[2]);
             console.log(`end_i: ${end_i}, end: ${end}`);
@@ -81,7 +108,7 @@ class Calendar {
             let date = 1;
             let current_week = 0;
             for (let i = 0; i < start_i; i++) {
-                weeks[current_week].push(`<div class="empty-day"></div>`);
+                this.weeks[current_week].push(`<div class="empty-day"></div>`);
             }
             while (true) {
                 if (c_i == 8) {
@@ -89,14 +116,14 @@ class Calendar {
                     current_week++;
                 }
                 let color = '#1d99dc';
-                weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`); //style="color:${'black'}"
+                this.weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`); //style="color:${'black'}"
     
                 date++;
                 if (date > end_i) {
                     break;
                 }
             }
-            for (let x of weeks) {
+            for (let x of this.weeks) {
                 data = data + x.join("\n");
             }
         }
@@ -106,34 +133,13 @@ class Calendar {
 
 async function main() {
     await wait(200);
-    let calendar = document.getElementById("display");
+    let calendar = document.getElementById("display")!;
 
-    let timeDisplay = document.getElementById("list").querySelector("#time");
+    let timeDisplay = document.getElementById("list")?.querySelector("#time");
 
-    function getStartAndEndDate(month, year) {
-        // Ensure month is between 1 (January) and 12 (December)
-        if (month < 1 || month > 12) {
-        throw new Error('Month should be between 1 and 12.');
-        }
-
-        // Create a new Date object with the given year and month
-        const startDate = new Date(year, month - 1, 1); // Note: Months are zero-based (0 = January, 11 = December)
-        
-        // Calculate the end date of the month
-        const endDate = new Date(year, month, 0); // Setting day to 0 gives the last day of the previous month
-
-        return { start: startDate, end: endDate };
-    }
-
-    let monthAbbreviations = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
-    ].map(month => month.toUpperCase());
-
-    
     let date = new Date();
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
-    let {data,elements} = c.render();
+    let {data,elements} = c.render(null);
     const cal_innerHTML = calendar.innerHTML
     calendar.innerHTML = cal_innerHTML + data;
 
