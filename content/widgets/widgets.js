@@ -103,7 +103,7 @@ var Calendar = /** @class */ (function () {
                     c_i = 1;
                     current_week++;
                 }
-                var color = '#1d99dc';
+                var color = "";
                 for (var i = 0; i < active.length; i++) {
                     var a = active[i];
                     if ("".concat(a.month).toUpperCase() == this.monthAbbreviations[this.month - 1].toUpperCase() && a.day.replace(":", "") == date) {

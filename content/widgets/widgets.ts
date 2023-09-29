@@ -80,7 +80,7 @@ class Calendar {
                     c_i = 1;
                     current_week++;
                 }
-                let color = '#1d99dc';
+                let color: string = "";
                 for (let i = 0; i < active.length; i++) {
                     let a = active[i];
                     if (`${a.month}`.toUpperCase() == this.monthAbbreviations[this.month-1].toUpperCase() && a.day.replace(":","") == date) {
