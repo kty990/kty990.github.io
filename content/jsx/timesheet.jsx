@@ -1,5 +1,5 @@
 import React from 'react';
-import {main} from '../js/widgets.mjs';
+import {main} from '../widgets/widgets.js';
 
 function Timesheet() {
   document.title = "Timesheet";
