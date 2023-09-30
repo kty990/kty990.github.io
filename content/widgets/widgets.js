@@ -43,9 +43,26 @@ function wait(ms) {
     });
 }
 var MyElement = /** @class */ (function () {
-    function MyElement(inHTML) {
+    function MyElement(inHTML, cal, element) {
+        this.active = false;
         this.content = inHTML;
+        this.calendar = cal;
+        this.element = element;
     }
+    MyElement.prototype.activate = function () {
+        var _this = this;
+        this.calendar.addListener(function (event) {
+            var elem = event.target;
+            if (elem == _this.element) {
+                _this.element.style.backgroundColor = "#01234ff";
+                _this.active = true;
+            }
+            else {
+                _this.element.style.backgroundColor = null;
+                _this.active = false;
+            }
+        });
+    };
     return MyElement;
 }());
 var Day = /** @class */ (function () {
@@ -68,6 +85,8 @@ function getStartAndEndDate(month, year) {
 }
 var Calendar = /** @class */ (function () {
     function Calendar(month, year) {
+        this.month = 1;
+        this.year = 1970;
         this.weeks = [[], [], [], [], []];
         this.index = [
             "SUN",
@@ -82,9 +101,19 @@ var Calendar = /** @class */ (function () {
             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
             'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
         ].map(function (month) { return month.toUpperCase(); });
+        this.listeners = [];
         this.month = month;
         this.year = year;
     }
+    Calendar.prototype.addListener = function (callback) {
+        this.listeners.push(callback);
+    };
+    Calendar.prototype.onClicked = function (args) {
+        for (var _i = 0, _a = this.listeners; _i < _a.length; _i++) {
+            var listener = _a[_i];
+            listener.apply(void 0, args);
+        }
+    };
     Calendar.prototype.render = function (active) {
         var data = "", eList = [];
         if (active != null) {
@@ -95,7 +124,7 @@ var Calendar = /** @class */ (function () {
             var c_i = start_i;
             var date = 1;
             var current_week = 0;
-            for (var i = 0; i < start_i - 1; i++) {
+            for (var i_1 = 0; i_1 < start_i - 1; i_1++) {
                 this.weeks[current_week].push("<div class=\"empty-day\"></div>");
             }
             while (true) {
@@ -104,16 +133,16 @@ var Calendar = /** @class */ (function () {
                     current_week++;
                 }
                 var color = "";
-                for (var i = 0; i < active.length; i++) {
-                    var a = active[i];
+                for (var i_2 = 0; i_2 < active.length; i_2++) {
+                    var a = active[i_2];
                     if ("".concat(a.month).toUpperCase() == this.monthAbbreviations[this.month - 1].toUpperCase() && a.day.replace(":", "") == date) {
                         color = '#6445a3';
                         break;
                     }
                 }
                 console.log({ day: date, color: color });
-                this.weeks[current_week].push("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>"));
-                eList.push(new MyElement("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>")));
+                this.weeks[current_week].push("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\" onclick=").concat(this.onClicked, "><p>").concat(date, "</p></div>"));
+                eList.push(new MyElement("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>"), this, null));
                 date++;
                 if (date > end_i) {
                     break;
@@ -132,7 +161,7 @@ var Calendar = /** @class */ (function () {
             var c_i = start_i;
             var date = 1;
             var current_week = 0;
-            for (var i = 0; i < start_i; i++) {
+            for (var i_3 = 0; i_3 < start_i; i_3++) {
                 this.weeks[current_week].push("<div class=\"empty-day\"></div>");
             }
             while (true) {
@@ -140,9 +169,8 @@ var Calendar = /** @class */ (function () {
                     c_i = 1;
                     current_week++;
                 }
-                var color = '#1d99dc';
                 this.weeks[current_week].push("<div class=\"date\"><p>".concat(date, "</p></div>")); //style="color:${'black'}"
-                eList.push(new MyElement("<div class=\"date\"><p>".concat(date, "</p></div>")));
+                eList.push(new MyElement("<div class=\"date\"><p>".concat(date, "</p></div>"), this, null));
                 date++;
                 if (date > end_i) {
                     break;
@@ -152,6 +180,14 @@ var Calendar = /** @class */ (function () {
                 var x = _e[_d];
                 data = data + x.join("\n");
             }
+        }
+        var es = document.getElementsByClassName("date");
+        var i = 0;
+        for (var _f = 0, eList_1 = eList; _f < eList_1.length; _f++) {
+            var e = eList_1[_f];
+            e.element = es[i];
+            e.activate();
+            i++;
         }
         return { data: data, elements: eList };
     };
