@@ -117,8 +117,8 @@ class Calendar {
                     current_week++;
                 }
                 let color = '#1d99dc';
-                this.weeks[current_week].push(`<div style="background-color:${color}" class="date"><p>${date}</p></div>`); //style="color:${'black'}"
-    
+                this.weeks[current_week].push(`<div class="date"><p>${date}</p></div>`); //style="color:${'black'}"
+                eList.push(new MyElement(`<div class="date"><p>${date}</p></div>`));
                 date++;
                 if (date > end_i) {
                     break;
