@@ -1,4 +1,4 @@
-function wait(ms) {
+function wait(ms: number) {
     return new Promise((resolve,reject) => {
         setTimeout(resolve,ms);
     })
@@ -6,9 +6,27 @@ function wait(ms) {
 
 class MyElement {
     content: string;
+    element: any;
+    calendar: Calendar;
+    active: boolean = false;
 
-    constructor(inHTML) {
+    constructor(inHTML: string, cal: Calendar, element: any) {
         this.content = inHTML;
+        this.calendar = cal;
+        this.element = element;
+    }
+
+    activate() {
+        this.calendar.addListener((event: any) => {
+            let elem = event.target;
+            if (elem == this.element) {
+                this.element.style.backgroundColor = "#01234ff";
+                this.active = true;
+            } else {
+                this.element.style.backgroundColor = null;
+                this.active = false;
+            }
+        })
     }
 }
 
@@ -16,7 +34,7 @@ class Day {
     month: number;
     day: number;
 
-    constructor(month,day) {
+    constructor(month: number,day: number) {
         this.month = month;
         this.day = day;
     }
@@ -38,8 +56,8 @@ function getStartAndEndDate(month:number, year:number) {
 }
 
 class Calendar {
-    month: number;
-    year: number;
+    month: number = 1;
+    year: number = 1970;
     weeks: [Array<string>, Array<string>, Array<string>, Array<string>, Array<string>] = [[], [], [], [], []];
     index = [
         "SUN",
@@ -56,10 +74,21 @@ class Calendar {
     ].map(month => month.toUpperCase());
 
     last_render: string;
+    listeners: Array<Function> = [];
 
-    constructor(month,year) {
+    constructor(month: number,year: number) {
         this.month = month;
         this.year = year;
+    }
+
+    addListener(callback : Function) {
+        this.listeners.push(callback);
+    }
+
+    onClicked(args:Array<any>) {
+        for (let listener of this.listeners) {
+            listener(...args);
+        }
     }
 
     render(active:Array<any> | null) {
@@ -89,8 +118,8 @@ class Calendar {
                     }
                 }
                 console.log({day:date,color:color});
-                this.weeks[current_week].push(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`);
-                eList.push(new MyElement(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`));
+                this.weeks[current_week].push(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date" onclick=${this.onClicked}><p>${date}</p></div>`);
+                eList.push(new MyElement(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`,this,null));
     
                 date++;
                 if (date > end_i) {
@@ -116,9 +145,8 @@ class Calendar {
                     c_i = 1;
                     current_week++;
                 }
-                let color = '#1d99dc';
                 this.weeks[current_week].push(`<div class="date"><p>${date}</p></div>`); //style="color:${'black'}"
-                eList.push(new MyElement(`<div class="date"><p>${date}</p></div>`));
+                eList.push(new MyElement(`<div class="date"><p>${date}</p></div>`,this,null));
                 date++;
                 if (date > end_i) {
                     break;
@@ -127,6 +155,13 @@ class Calendar {
             for (let x of this.weeks) {
                 data = data + x.join("\n");
             }
+        }
+        let es = document.getElementsByClassName("date");
+        let i = 0;
+        for (let e of eList) {
+            e.element = es[i];
+            e.activate();
+            i++;
         }
         return {data:data,elements:eList}
     }
