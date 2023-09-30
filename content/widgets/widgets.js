@@ -190,6 +190,8 @@ var Calendar = /** @class */ (function () {
             e.activate();
             i++;
         }
+        console.log(es);
+        console.log('---');
         return { data: data, elements: eList };
     };
     return Calendar;

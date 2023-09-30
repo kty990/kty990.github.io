@@ -164,6 +164,8 @@ class Calendar {
             e.activate();
             i++;
         }
+        console.log(es);
+        console.log('---');
         return {data:data,elements:eList}
     }
 }
