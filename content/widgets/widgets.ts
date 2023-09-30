@@ -88,6 +88,7 @@ class Calendar {
                         break;
                     }
                 }
+                console.log({day:date,color:color});
                 this.weeks[current_week].push(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`);
                 eList.push(new MyElement(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`));
     

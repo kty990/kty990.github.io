@@ -111,6 +111,7 @@ var Calendar = /** @class */ (function () {
                         break;
                     }
                 }
+                console.log({ day: date, color: color });
                 this.weeks[current_week].push("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>"));
                 eList.push(new MyElement("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>")));
                 date++;
