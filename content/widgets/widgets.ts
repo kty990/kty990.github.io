@@ -160,9 +160,11 @@ class Calendar {
         let es = document.getElementsByClassName("date");
         let i = 0;
         for (let e of eList) {
+            console.log(e);
             e.element = es[i];
             e.activate();
             i++;
+            console.log("activated");
         }
         console.log(es);
         console.log('---');

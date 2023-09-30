@@ -186,9 +186,11 @@ var Calendar = /** @class */ (function () {
         var i = 0;
         for (var _f = 0, eList_1 = eList; _f < eList_1.length; _f++) {
             var e = eList_1[_f];
+            console.log(e);
             e.element = es[i];
             e.activate();
             i++;
+            console.log("activated");
         }
         console.log(es);
         console.log('---');
