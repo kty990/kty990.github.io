@@ -146,7 +146,7 @@ class Calendar {
                     c_i = 1;
                     current_week++;
                 }
-                this.weeks[current_week].push(`<div class="date"><p>${date}</p></div>`); //style="color:${'black'}"
+                this.weeks[current_week].push(`<div class="date" onclick=${this.onClicked}><p>${date}</p></div>`); //style="color:${'black'}"
                 eList.push(new MyElement(`<div class="date"><p>${date}</p></div>`,this,null));
                 date++;
                 if (date > end_i) {
