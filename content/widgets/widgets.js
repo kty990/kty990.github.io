@@ -52,6 +52,7 @@ var MyElement = /** @class */ (function () {
     MyElement.prototype.activate = function () {
         var _this = this;
         this.calendar.addListener(function (event) {
+            console.log(event);
             var elem = event.target;
             if (elem == _this.element) {
                 _this.element.style.backgroundColor = "#01234ff";

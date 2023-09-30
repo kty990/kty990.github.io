@@ -18,6 +18,7 @@ class MyElement {
 
     activate() {
         this.calendar.addListener((event: any) => {
+            console.log(event);
             let elem = event.target;
             if (elem == this.element) {
                 this.element.style.backgroundColor = "#01234ff";
