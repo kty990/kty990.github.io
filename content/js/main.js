@@ -1,7 +1,7 @@
 import {main, wait} from '../widgets/widgets.js';
 
-function m() {
-    let data = main();
+async function m() {
+    let data = await main();
     let elements = data.elements;
     let calendar = data.calendar;
     console.log(elements);
