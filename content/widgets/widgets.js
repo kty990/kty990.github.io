@@ -214,7 +214,7 @@ function main() {
                     _b = c.render(null), data = _b.data, elements = _b.elements;
                     cal_innerHTML = calendar.innerHTML;
                     calendar.innerHTML = cal_innerHTML + data;
-                    return [2 /*return*/];
+                    return [2 /*return*/, { calendar: c }];
             }
         });
     });

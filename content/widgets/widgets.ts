@@ -183,7 +183,7 @@ async function main() {
     let {data,elements} = c.render(null);
     const cal_innerHTML = calendar.innerHTML
     calendar.innerHTML = cal_innerHTML + data;
-
+    return {calendar: c}
 }
 
 export {main};
