@@ -9,6 +9,7 @@ class MyElement {
     element: any;
     calendar: Calendar;
     active: boolean = false;
+    activated: boolean = false;
 
     constructor(inHTML: string, cal: Calendar, element: any) {
         this.content = inHTML;
@@ -17,6 +18,7 @@ class MyElement {
     }
 
     activate() {
+        this.activated = true;
         this.calendar.addListener((event: any) => {
             console.log(event);
             let elem = event.target;
@@ -173,17 +175,19 @@ class Calendar {
 }
 
 async function main() {
-    await wait(200);
-    let calendar = document.getElementById("display")!;
+    await wait(100);
+    let calendar = document.getElementById("display");
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
 
     let date = new Date();
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
     let {data,elements} = c.render(null);
-    const cal_innerHTML = calendar.innerHTML
-    calendar.innerHTML = cal_innerHTML + data;
-    return {calendar: c}
+    const cal_innerHTML = calendar?.innerHTML
+    if (cal_innerHTML && calendar) {
+        calendar.innerHTML = cal_innerHTML + data;
+    }
+    return {calendar: c, elements:elements}
 }
 
-export {main};
+export {main, wait};

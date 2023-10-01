@@ -1,14 +1,9 @@
 import React from 'react';
-import {main} from '../widgets/widgets.js';
+import {m} from '../js/main';
 
 function Timesheet() {
   document.title = "Timesheet";
-  const doLater = async () => {
-    setTimeout(() => {
-      main();
-    },500);
-  }
-  doLater();
+  m();
   return (
     <div id="timesheet-widget">
         <div id="calendar">

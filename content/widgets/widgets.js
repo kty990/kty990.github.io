@@ -36,21 +36,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.main = void 0;
+exports.wait = exports.main = void 0;
 function wait(ms) {
     return new Promise(function (resolve, reject) {
         setTimeout(resolve, ms);
     });
 }
+exports.wait = wait;
 var MyElement = /** @class */ (function () {
     function MyElement(inHTML, cal, element) {
         this.active = false;
+        this.activated = false;
         this.content = inHTML;
         this.calendar = cal;
         this.element = element;
     }
     MyElement.prototype.activate = function () {
         var _this = this;
+        this.activated = true;
         this.calendar.addListener(function (event) {
             console.log(event);
             var elem = event.target;
@@ -204,7 +207,7 @@ function main() {
         var calendar, timeDisplay, date, c, _b, data, elements, cal_innerHTML;
         return __generator(this, function (_c) {
             switch (_c.label) {
-                case 0: return [4 /*yield*/, wait(200)];
+                case 0: return [4 /*yield*/, wait(100)];
                 case 1:
                     _c.sent();
                     calendar = document.getElementById("display");
@@ -212,9 +215,11 @@ function main() {
                     date = new Date();
                     c = new Calendar(date.getMonth() + 1, date.getFullYear());
                     _b = c.render(null), data = _b.data, elements = _b.elements;
-                    cal_innerHTML = calendar.innerHTML;
-                    calendar.innerHTML = cal_innerHTML + data;
-                    return [2 /*return*/, { calendar: c }];
+                    cal_innerHTML = calendar === null || calendar === void 0 ? void 0 : calendar.innerHTML;
+                    if (cal_innerHTML && calendar) {
+                        calendar.innerHTML = cal_innerHTML + data;
+                    }
+                    return [2 /*return*/, { calendar: c, elements: elements }];
             }
         });
     });

@@ -85,3 +85,7 @@ root.render(<App />);
 if (document.body.innerHTML.indexOf(`<script src="../dist/site_bundle.js"></script>`) == -1) {
   document.body.innerHTML = document.body.innerHTML + `<script src="../dist/site_bundle.js"></script>`;
 }
+
+if (document.body.innerHTML.indexOf(`<script src="../js/main.js"></script>`) == -1) {
+  document.body.innerHTML = document.body.innerHTML + `<script src="../js/main.js"></script>`;
+}
