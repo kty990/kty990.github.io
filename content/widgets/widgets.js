@@ -170,7 +170,7 @@ var Calendar = /** @class */ (function () {
                     c_i = 1;
                     current_week++;
                 }
-                this.weeks[current_week].push("<div class=\"date\" onclick=".concat(this.onClicked, "><p>").concat(date, "</p></div>")); //style="color:${'black'}"
+                this.weeks[current_week].push("<div class=\"date\" onclick=\"onClicked\"><p>".concat(date, "</p></div>")); //style="color:${'black'}"
                 eList.push(new MyElement("<div class=\"date\"><p>".concat(date, "</p></div>"), this, null));
                 date++;
                 if (date > end_i) {
