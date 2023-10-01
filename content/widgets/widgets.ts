@@ -170,7 +170,7 @@ class Calendar {
         }
         console.log(es);
         console.log('---');
-        return {data:data,elements:eList}
+        return {data:data,elems:eList}
     }
 }
 
@@ -182,12 +182,12 @@ async function main() {
 
     let date = new Date();
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
-    let {data,elements} = c.render(null);
+    let {data,elems} = c.render(null);
     const cal_innerHTML = calendar?.innerHTML
     if (cal_innerHTML && calendar) {
         calendar.innerHTML = cal_innerHTML + data;
     }
-    return {calendar: c, elements:elements}
+    return {calendar: c, elements:elems}
 }
 
 export {main, wait};

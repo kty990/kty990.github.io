@@ -197,14 +197,14 @@ var Calendar = /** @class */ (function () {
         }
         console.log(es);
         console.log('---');
-        return { data: data, elements: eList };
+        return { data: data, elems: eList };
     };
     return Calendar;
 }());
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, timeDisplay, date, c, _b, data, elements, cal_innerHTML;
+        var calendar, timeDisplay, date, c, _b, data, elems, cal_innerHTML;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(100)];
@@ -214,12 +214,12 @@ function main() {
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
                     date = new Date();
                     c = new Calendar(date.getMonth() + 1, date.getFullYear());
-                    _b = c.render(null), data = _b.data, elements = _b.elements;
+                    _b = c.render(null), data = _b.data, elems = _b.elems;
                     cal_innerHTML = calendar === null || calendar === void 0 ? void 0 : calendar.innerHTML;
                     if (cal_innerHTML && calendar) {
                         calendar.innerHTML = cal_innerHTML + data;
                     }
-                    return [2 /*return*/, { calendar: c, elements: elements }];
+                    return [2 /*return*/, { calendar: c, elements: elems }];
             }
         });
     });
