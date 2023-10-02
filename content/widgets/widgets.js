@@ -207,7 +207,7 @@ function main() {
         var calendar, timeDisplay, date, c, _b, data, elems, cal_innerHTML;
         return __generator(this, function (_c) {
             switch (_c.label) {
-                case 0: return [4 /*yield*/, wait(100)];
+                case 0: return [4 /*yield*/, wait(300)];
                 case 1:
                     _c.sent();
                     calendar = document.getElementById("display");

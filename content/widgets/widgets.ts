@@ -175,7 +175,7 @@ class Calendar {
 }
 
 async function main() {
-    await wait(100);
+    await wait(300);
     let calendar = document.getElementById("display");
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");

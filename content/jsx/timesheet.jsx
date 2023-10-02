@@ -1,9 +1,10 @@
 import React from 'react';
 import {m} from '../js/main';
+import {main} from '../widgets/widgets.js';
 
 function Timesheet() {
   document.title = "Timesheet";
-  m();
+  main();
   return (
     <div id="timesheet-widget">
         <div id="calendar">
