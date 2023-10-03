@@ -215,9 +215,12 @@ function main() {
                     date = new Date();
                     c = new Calendar(date.getMonth() + 1, date.getFullYear());
                     _b = c.render(null), data = _b.data, elems = _b.elems;
-                    cal_innerHTML = calendar === null || calendar === void 0 ? void 0 : calendar.innerHTML;
+                    cal_innerHTML = calendar.innerHTML;
                     if (cal_innerHTML && calendar) {
                         calendar.innerHTML = cal_innerHTML + data;
+                    }
+                    else {
+                        console.log("Calendar: ".concat(calendar));
                     }
                     return [2 /*return*/, { calendar: c, elements: elems }];
             }

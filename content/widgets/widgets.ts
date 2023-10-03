@@ -176,16 +176,18 @@ class Calendar {
 
 async function main() {
     await wait(300);
-    let calendar = document.getElementById("display");
+    let calendar = document.getElementById("display")!;
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
 
     let date = new Date();
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
     let {data,elems} = c.render(null);
-    const cal_innerHTML = calendar?.innerHTML
+    const cal_innerHTML = calendar.innerHTML
     if (cal_innerHTML && calendar) {
         calendar.innerHTML = cal_innerHTML + data;
+    } else {
+        console.log(`Calendar: ${calendar}`)
     }
     return {calendar: c, elements:elems}
 }
