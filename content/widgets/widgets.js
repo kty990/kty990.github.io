@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wait = exports.main = void 0;
+var react_1 = require("react");
 function wait(ms) {
     return new Promise(function (resolve, reject) {
         setTimeout(resolve, ms);
@@ -44,13 +45,31 @@ function wait(ms) {
 }
 exports.wait = wait;
 var MyElement = /** @class */ (function () {
-    function MyElement(inHTML, cal, element) {
+    function MyElement(cal, children, props) {
         this.active = false;
         this.activated = false;
-        this.content = inHTML;
+        this.onclick = function () { };
+        this.classes = [];
+        this.id = "";
+        this.eType = "div";
+        this.children = [];
         this.calendar = cal;
-        this.element = element;
+        this.children = children;
+        if (props != null && props != undefined) {
+            this.props = props;
+        }
     }
+    MyElement.prototype.render = function (content) {
+        var _a = this, eType = _a.eType, id = _a.id, classes = _a.classes, onclick = _a.onclick, children = _a.children;
+        var elementProps = {
+            id: id,
+            className: classes.join(' '),
+            onClick: onclick,
+            children: children,
+        };
+        this.element = react_1.default.createElement(eType, this.props || elementProps, content || "E.404");
+        return this.element;
+    };
     MyElement.prototype.activate = function () {
         var _this = this;
         this.activated = true;
@@ -106,6 +125,7 @@ var Calendar = /** @class */ (function () {
             'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
         ].map(function (month) { return month.toUpperCase(); });
         this.listeners = [];
+        this.eList = [];
         this.month = month;
         this.year = year;
     }
@@ -119,7 +139,7 @@ var Calendar = /** @class */ (function () {
         }
     };
     Calendar.prototype.render = function (active) {
-        var data = "", eList = [];
+        var data = "";
         if (active != null) {
             var _a = getStartAndEndDate(this.month, this.year), start = _a.start, end = _a.end;
             var start_i = this.index.indexOf("".concat(start).split(" ")[0].toUpperCase());
@@ -145,8 +165,7 @@ var Calendar = /** @class */ (function () {
                     }
                 }
                 console.log({ day: date, color: color });
-                this.weeks[current_week].push("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\" onclick=").concat(this.onClicked, "><p>").concat(date, "</p></div>"));
-                eList.push(new MyElement("<div style=".concat(color == "#6445a3" ? "background-color:".concat(color) : "", " class=\"date\"><p>").concat(date, "</p></div>"), this, null));
+                this.eList.push(new MyElement(this, [], { classes: ['date'] }));
                 date++;
                 if (date > end_i) {
                     break;
@@ -173,8 +192,7 @@ var Calendar = /** @class */ (function () {
                     c_i = 1;
                     current_week++;
                 }
-                this.weeks[current_week].push("<div class=\"date\" onclick=\"onClicked\"><p>".concat(date, "</p></div>")); //style="color:${'black'}"
-                eList.push(new MyElement("<div class=\"date\"><p>".concat(date, "</p></div>"), this, null));
+                this.eList.push(new MyElement(this, [], null));
                 date++;
                 if (date > end_i) {
                     break;
@@ -185,19 +203,14 @@ var Calendar = /** @class */ (function () {
                 data = data + x.join("\n");
             }
         }
-        var es = document.getElementsByClassName("date");
         var i = 0;
-        for (var _f = 0, eList_1 = eList; _f < eList_1.length; _f++) {
-            var e = eList_1[_f];
-            console.log(e);
-            e.element = es[i];
+        for (var _f = 0, _g = this.eList; _f < _g.length; _f++) {
+            var e = _g[_f];
             e.activate();
             i++;
             console.log("activated");
         }
-        console.log(es);
-        console.log('---');
-        return { data: data, elems: eList };
+        return { data: this.eList.map(function (e) { return e.render(''); }), elems: this.eList };
     };
     return Calendar;
 }());

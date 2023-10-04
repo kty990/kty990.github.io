@@ -1,3 +1,5 @@
+import React from 'react';
+
 function wait(ms: number) {
     return new Promise((resolve,reject) => {
         setTimeout(resolve,ms);
@@ -6,15 +8,37 @@ function wait(ms: number) {
 
 class MyElement {
     content: string;
-    element: any;
     calendar: Calendar;
     active: boolean = false;
     activated: boolean = false;
+    element: any;
 
-    constructor(inHTML: string, cal: Calendar, element: any) {
-        this.content = inHTML;
+    onclick: Function = () => {}
+    classes: Array<string> = [];
+    id: string = "";
+    eType: string = "div";
+    children: Array<any> = [];
+    props: { [key: string]: string };
+
+    constructor(cal: Calendar, children: Array<any>, props: any){
         this.calendar = cal;
-        this.element = element;
+        this.children = children;
+        if (props != null && props != undefined) {
+            this.props = props;
+        }
+    }
+
+    render(content?: string) {
+        const { eType, id, classes, onclick, children } = this;
+        const elementProps = {
+            id,
+            className: classes.join(' '),
+            onClick: onclick,
+            children,
+        };
+
+        this.element = React.createElement(eType, this.props ||  elementProps, content || "E.404");
+        return this.element;
     }
 
     activate() {
@@ -79,6 +103,8 @@ class Calendar {
     last_render: string;
     listeners: Array<Function> = [];
 
+    eList: Array<MyElement> = [];
+
     constructor(month: number,year: number) {
         this.month = month;
         this.year = year;
@@ -95,7 +121,7 @@ class Calendar {
     }
 
     render(active:Array<any> | null) {
-        let data = "", eList: Array<any> = [];
+        let data = "";
         if (active != null) {
             const {start, end} = getStartAndEndDate(this.month,this.year);
             let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
@@ -121,8 +147,7 @@ class Calendar {
                     }
                 }
                 console.log({day:date,color:color});
-                this.weeks[current_week].push(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date" onclick=${this.onClicked}><p>${date}</p></div>`);
-                eList.push(new MyElement(`<div style=${color == "#6445a3" ? `background-color:${color}`: ``} class="date"><p>${date}</p></div>`,this,null));
+                this.eList.push(new MyElement(this,[], {classes: ['date']}));
     
                 date++;
                 if (date > end_i) {
@@ -148,8 +173,7 @@ class Calendar {
                     c_i = 1;
                     current_week++;
                 }
-                this.weeks[current_week].push(`<div class="date" onclick="onClicked"><p>${date}</p></div>`); //style="color:${'black'}"
-                eList.push(new MyElement(`<div class="date"><p>${date}</p></div>`,this,null));
+                this.eList.push(new MyElement(this,[], null));
                 date++;
                 if (date > end_i) {
                     break;
@@ -159,18 +183,14 @@ class Calendar {
                 data = data + x.join("\n");
             }
         }
-        let es = document.getElementsByClassName("date");
         let i = 0;
-        for (let e of eList) {
-            console.log(e);
-            e.element = es[i];
+        for (let e of this.eList) {
             e.activate();
             i++;
             console.log("activated");
         }
-        console.log(es);
-        console.log('---');
-        return {data:data,elems:eList}
+    
+        return {data:this.eList.map(e => e.render('')),elems:this.eList}
     }
 }
 
