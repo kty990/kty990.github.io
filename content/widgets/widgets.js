@@ -1,3 +1,5 @@
+import react_1 from 'react';
+
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -37,7 +39,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wait = exports.main = void 0;
-var react_1 = require("react");
 function wait(ms) {
     return new Promise(function (resolve, reject) {
         setTimeout(resolve, ms);
