@@ -210,7 +210,7 @@ var Calendar = /** @class */ (function () {
             i++;
             console.log("activated");
         }
-        return { data: this.eList.map(function (e) { return e.render(''); }), elems: this.eList };
+        return { data: this.eList.map(function (e) { return e.render(e.content); }), elems: this.eList };
     };
     return Calendar;
 }());
@@ -241,3 +241,6 @@ function main() {
     });
 }
 exports.main = main;
+document.body.addEventListener('update', function (e) {
+    console.log(e);
+});

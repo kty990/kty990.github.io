@@ -190,7 +190,7 @@ class Calendar {
             console.log("activated");
         }
     
-        return {data:this.eList.map(e => e.render('')),elems:this.eList}
+        return {data:this.eList.map(e => e.render(e.content)),elems:this.eList}
     }
 }
 
@@ -211,5 +211,9 @@ async function main() {
     }
     return {calendar: c, elements:elems}
 }
+
+document.body.addEventListener('update', (e) => {
+    console.log(e);
+})
 
 export {main, wait};

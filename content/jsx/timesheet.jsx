@@ -1,12 +1,34 @@
 import React from 'react';
-import {m} from '../js/main';
+// import {m} from '../js/main';
 import {main} from '../widgets/widgets.js';
+
+const updateEvent = new CustomEvent('update', {
+  bubbles: true,
+  cancelable: false,
+  detail: {
+    data: ''
+  }
+})
 
 function Timesheet() {
   document.title = "Timesheet";
   main();
+  const updateMonth = (c) => {
+    return () => {
+      updateEvent.detail.data = `${c}`;
+      document.body.dispatchEvent(updateEvent);
+    }
+  }
   return (
     <div id="timesheet-widget">
+        <div id="cal_btns">
+            <div id="prev_month" onClick={updateMonth(-1)}>
+                {'←'}
+            </div>
+            <div id="next_month" onClick={updateMonth(1)}>
+                {'→'}
+            </div>
+        </div>
         <div id="calendar">
             <div id="days">
                 <p>SUN</p>
@@ -28,7 +50,7 @@ function Timesheet() {
               <div style={{width: '100%',height: '20px',display: 'flex',backgroundColor: '#000',flexDirection: 'column'}}>List element</div> {/* This is a 'list element' */}
             </div>
         </div>
-    </div>
+      </div>
   );
 }
 

@@ -192,6 +192,8 @@ a {
     top: 25vh;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: row;
 }
 
 #calendar {
@@ -273,4 +275,24 @@ a {
 #timesheet-input {
     width: 450px;
     height: 100px;
+}
+
+#cal_btns {
+    position: relative;
+    height: 200px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#next_month {
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+#prev_month {
+    position: relative;
+    height: 50%;
+    width: 100%;
 }
