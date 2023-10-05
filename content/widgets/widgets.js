@@ -1,4 +1,4 @@
-import react_1 from 'react';
+import React from 'react';
 
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -68,7 +68,7 @@ var MyElement = /** @class */ (function () {
             onClick: onclick,
             children: children,
         };
-        this.element = react_1.default.createElement(eType, this.props || elementProps, content || "E.404");
+        this.element = React.createElement(eType, this.props || elementProps, content || "E.404");
         return this.element;
     };
     MyElement.prototype.activate = function () {
