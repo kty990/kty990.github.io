@@ -234,6 +234,7 @@ function main() {
                     }
                     else {
                         console.log("Calendar: ".concat(calendar));
+                        console.log("InnerHTML: ".concat(calendar.innerHTML));
                     }
                     return [2 /*return*/, { calendar: c, elements: elems }];
             }

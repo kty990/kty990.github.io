@@ -207,7 +207,8 @@ async function main() {
     if (cal_innerHTML && calendar) {
         calendar.innerHTML = cal_innerHTML + data;
     } else {
-        console.log(`Calendar: ${calendar}`)
+        console.log(`Calendar: ${calendar}`);
+        console.log(`InnerHTML: ${calendar.innerHTML}`)
     }
     return {calendar: c, elements:elems}
 }
