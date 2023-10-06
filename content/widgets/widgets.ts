@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+import * as ReactDOM from 'react-dom';
 
 function wait(ms: number) {
     return new Promise((resolve,reject) => {
@@ -28,7 +30,7 @@ class MyElement {
         }
     }
 
-    render(content?: string) : Element {
+    render(content?: string) : any {
         const { eType, id, classes, onclick, children } = this;
         const elementProps = {
             id,
@@ -194,20 +196,22 @@ class Calendar {
     }
 }
 
+let date = new Date();
+let c = new Calendar(date.getMonth() + 1,date.getFullYear());
+
 async function main() {
     await wait(300);
     let calendar = document.getElementById("display")!;
+    let tmpRoot = createRoot(calendar);
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
-
-    let date = new Date();
-    let c = new Calendar(date.getMonth() + 1,date.getFullYear());
+    
     let {data,elems} = c.render(null);
     const cal_innerHTML = calendar.innerHTML
     if (calendar) {
         for (let x = 0; x < data.length; x++) {
             let e = data[x];
-            calendar.appendChild(e);
+            ReactDOM.render(e, calendar);
         }
     } else {
         console.log(`Calendar: ${calendar}`);

@@ -38,6 +38,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wait = exports.main = void 0;
 var React = require("react");
+var client_1 = require("react-dom/client");
+var ReactDOM = require("react-dom");
 function wait(ms) {
     return new Promise(function (resolve, reject) {
         setTimeout(resolve, ms);
@@ -146,7 +148,7 @@ var Calendar = /** @class */ (function () {
             var end_i = parseInt("".concat(end).split(" ")[2]);
             console.log("end_i: ".concat(end_i));
             var c_i = start_i;
-            var date = 1;
+            var date_1 = 1;
             var current_week = 0;
             for (var i_1 = 0; i_1 < start_i - 1; i_1++) {
                 this.weeks[current_week].push("<div class=\"empty-day\"></div>");
@@ -159,15 +161,15 @@ var Calendar = /** @class */ (function () {
                 var color = "";
                 for (var i_2 = 0; i_2 < active.length; i_2++) {
                     var a = active[i_2];
-                    if ("".concat(a.month).toUpperCase() == this.monthAbbreviations[this.month - 1].toUpperCase() && a.day.replace(":", "") == date) {
+                    if ("".concat(a.month).toUpperCase() == this.monthAbbreviations[this.month - 1].toUpperCase() && a.day.replace(":", "") == date_1) {
                         color = '#6445a3';
                         break;
                     }
                 }
-                console.log({ day: date, color: color });
+                console.log({ day: date_1, color: color });
                 this.eList.push(new MyElement(this, [], { classes: ['date'] }));
-                date++;
-                if (date > end_i) {
+                date_1++;
+                if (date_1 > end_i) {
                     break;
                 }
             }
@@ -182,7 +184,7 @@ var Calendar = /** @class */ (function () {
             var end_i = parseInt("".concat(end).split(" ")[2]);
             console.log("end_i: ".concat(end_i, ", end: ").concat(end));
             var c_i = start_i;
-            var date = 1;
+            var date_2 = 1;
             var current_week = 0;
             for (var i_3 = 0; i_3 < start_i; i_3++) {
                 this.weeks[current_week].push("<div class=\"empty-day\"></div>");
@@ -193,8 +195,8 @@ var Calendar = /** @class */ (function () {
                     current_week++;
                 }
                 this.eList.push(new MyElement(this, [], null));
-                date++;
-                if (date > end_i) {
+                date_2++;
+                if (date_2 > end_i) {
                     break;
                 }
             }
@@ -214,25 +216,26 @@ var Calendar = /** @class */ (function () {
     };
     return Calendar;
 }());
+var date = new Date();
+var c = new Calendar(date.getMonth() + 1, date.getFullYear());
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, timeDisplay, date, c, _b, data, elems, cal_innerHTML, x, e;
+        var calendar, tmpRoot, timeDisplay, _b, data, elems, cal_innerHTML, x, e;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
                 case 1:
                     _c.sent();
                     calendar = document.getElementById("display");
+                    tmpRoot = (0, client_1.createRoot)(calendar);
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
-                    date = new Date();
-                    c = new Calendar(date.getMonth() + 1, date.getFullYear());
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     cal_innerHTML = calendar.innerHTML;
                     if (calendar) {
                         for (x = 0; x < data.length; x++) {
                             e = data[x];
-                            calendar.appendChild(e);
+                            ReactDOM.render(e, calendar);
                         }
                     }
                     else {
