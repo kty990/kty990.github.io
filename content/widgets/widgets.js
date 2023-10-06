@@ -68,6 +68,7 @@ var MyElement = /** @class */ (function () {
             onClick: onclick,
             children: children,
         };
+        console.log(content, this.content);
         this.element = React.createElement(eType, this.props || elementProps, content || "E.404");
         return this.element;
     };

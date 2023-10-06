@@ -38,7 +38,7 @@ class MyElement {
             onClick: onclick,
             children,
         };
-
+        console.log(content,this.content);
         this.element = React.createElement(eType, this.props ||  elementProps, content || "E.404");
         return this.element;
     }
