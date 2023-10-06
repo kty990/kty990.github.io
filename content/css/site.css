@@ -288,12 +288,33 @@ a {
 
 #next_month {
     position: relative;
-    height: 50%;
-    width: 100%;
+    height: 30px;
+    width: 30px;
+    background-color: #344d6b;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 20px; 
+    border-style: solid;
+    border-color: #97aed1;
+    color: #ccc;
 }
 
 #prev_month {
     position: relative;
-    height: 50%;
-    width: 100%;
+    height: 30px;
+    width: 30px;
+    background-color: #344d6b;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 20px; 
+    border-style: solid;
+    border-color: #97aed1;
+    color: #ccc;
+}
+
+.cal_btns>div:hover {
+    background-color: #8199b7;
+    color: #4b4b4b;
 }

@@ -23,10 +23,14 @@ function Timesheet() {
     <div id="timesheet-widget">
         <div id="cal_btns">
             <div id="prev_month" onClick={updateMonth(-1)}>
-                {'←'}
+                <p>
+                  {'←'}
+                </p>
             </div>
             <div id="next_month" onClick={updateMonth(1)}>
-                {'→'}
+                <p>
+                  {'→'}
+                </p>
             </div>
         </div>
         <div id="calendar">
