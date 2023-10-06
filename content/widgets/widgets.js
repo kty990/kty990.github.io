@@ -229,7 +229,7 @@ function main() {
                     c = new Calendar(date.getMonth() + 1, date.getFullYear());
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     cal_innerHTML = calendar.innerHTML;
-                    if (cal_innerHTML && calendar) {
+                    if (cal_innerHTML != null && cal_innerHTML != undefined && calendar) {
                         calendar.innerHTML = cal_innerHTML + data;
                     }
                     else {

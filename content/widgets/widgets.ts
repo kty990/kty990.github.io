@@ -204,7 +204,7 @@ async function main() {
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
     let {data,elems} = c.render(null);
     const cal_innerHTML = calendar.innerHTML
-    if (cal_innerHTML && calendar) {
+    if (cal_innerHTML != null && cal_innerHTML != undefined && calendar) {
         calendar.innerHTML = cal_innerHTML + data;
     } else {
         console.log(`Calendar: ${calendar}`);
