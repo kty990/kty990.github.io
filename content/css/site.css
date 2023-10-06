@@ -314,7 +314,12 @@ a {
     color: #ccc;
 }
 
-.cal_btns>div:hover {
+#next_month:hover {
+    background-color: #8199b7;
+    color: #4b4b4b;
+}
+
+#prev_month:hover {
     background-color: #8199b7;
     color: #4b4b4b;
 }
