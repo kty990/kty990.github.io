@@ -59,6 +59,7 @@ var MyElement = /** @class */ (function () {
         if (props != null && props != undefined) {
             var tmp = props;
             tmp.className = tmp.classList.join(" ");
+            tmp.classList = undefined;
             this.props = tmp;
         }
     }
@@ -71,7 +72,7 @@ var MyElement = /** @class */ (function () {
             children: children,
         };
         console.log(content, this.content);
-        this.element = React.createElement(eType, this.props || elementProps, content || "E.404");
+        this.element = React.createElement(eType, elementProps, content || "E.404");
         return this.element;
     };
     MyElement.prototype.activate = function () {

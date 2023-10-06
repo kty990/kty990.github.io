@@ -28,6 +28,7 @@ class MyElement {
         if (props != null && props != undefined) {
             let tmp = props;
             tmp.className = tmp.classList.join(" ");
+            tmp.classList = undefined;
             this.props = tmp;
         }
     }
@@ -41,7 +42,7 @@ class MyElement {
             children,
         };
         console.log(content,this.content);
-        this.element = React.createElement(eType, this.props ||  elementProps, content || "E.404");
+        this.element = React.createElement(eType, elementProps, content || "E.404");
         return this.element;
     }
 
