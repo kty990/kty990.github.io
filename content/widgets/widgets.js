@@ -57,7 +57,9 @@ var MyElement = /** @class */ (function () {
         this.calendar = cal;
         this.children = children;
         if (props != null && props != undefined) {
-            this.props = props;
+            var tmp = props;
+            tmp.className = tmp.classList.join(" ");
+            this.props = tmp;
         }
     }
     MyElement.prototype.render = function (content) {
@@ -187,7 +189,7 @@ var Calendar = /** @class */ (function () {
             var date_2 = 1;
             var current_week = 0;
             for (var i_3 = 0; i_3 < start_i; i_3++) {
-                var tmp = new MyElement(this, [], { classes: ['date'] });
+                var tmp = new MyElement(this, [], { classList: ['date'] });
                 tmp.content = '';
                 this.eList.push(tmp);
             }
@@ -196,7 +198,7 @@ var Calendar = /** @class */ (function () {
                     c_i = 1;
                     current_week++;
                 }
-                var tmp = new MyElement(this, [], { classes: ['date'] });
+                var tmp = new MyElement(this, [], { classList: ['date'] });
                 tmp.content = date_2.toString();
                 this.eList.push(tmp);
                 date_2++;
@@ -246,4 +248,6 @@ function main() {
 exports.main = main;
 document.body.addEventListener('update', function (e) {
     console.log(e);
+    var ce = e;
+    var data = ce.detail.data;
 });

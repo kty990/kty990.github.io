@@ -26,7 +26,9 @@ class MyElement {
         this.calendar = cal;
         this.children = children;
         if (props != null && props != undefined) {
-            this.props = props;
+            let tmp = props;
+            tmp.className = tmp.classList.join(" ");
+            this.props = tmp;
         }
     }
 
@@ -169,7 +171,7 @@ class Calendar {
             let date = 1;
             let current_week = 0;
             for (let i = 0; i < start_i; i++) {
-                let tmp = new MyElement(this,[], {classes: ['date']});
+                let tmp = new MyElement(this,[], {classList: ['date']});
                 tmp.content = '';
                 this.eList.push(tmp);
             }
@@ -178,7 +180,7 @@ class Calendar {
                     c_i = 1;
                     current_week++;
                 }
-                let tmp = new MyElement(this,[], {classes: ['date']});
+                let tmp = new MyElement(this,[], {classList: ['date']});
                 tmp.content = date.toString();
                 this.eList.push(tmp);
                 date++;
@@ -218,8 +220,10 @@ async function main() {
     return {calendar: c, elements:elems}
 }
 
-document.body.addEventListener('update', (e) => {
+document.body.addEventListener('update', function (e) {
     console.log(e);
+    const ce = e as CustomEvent<any>;
+    const data = ce.detail.data;
 })
 
 export {main, wait};
