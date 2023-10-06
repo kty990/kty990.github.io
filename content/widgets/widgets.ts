@@ -36,13 +36,14 @@ class MyElement {
     render(content?: string) : any {
         const { eType, id, classes, onclick, children } = this;
         const elementProps = {
-            id,
+            id: id,
             className: classes.join(' '),
             onClick: onclick,
-            children,
+            children: children,
         };
         console.log(content,this.content);
         this.element = React.createElement(eType, elementProps, content || "E.404");
+        console.log(this.element);
         return this.element;
     }
 

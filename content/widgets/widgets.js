@@ -73,6 +73,7 @@ var MyElement = /** @class */ (function () {
         };
         console.log(content, this.content);
         this.element = React.createElement(eType, elementProps, content || "E.404");
+        console.log(this.element);
         return this.element;
     };
     MyElement.prototype.activate = function () {
