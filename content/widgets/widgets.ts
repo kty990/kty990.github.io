@@ -198,11 +198,12 @@ class Calendar {
 
 let date = new Date();
 let c = new Calendar(date.getMonth() + 1,date.getFullYear());
+type ReactElementType = typeof React.createElement;
+type ReactElement = ReturnType<ReactElementType>
 
 async function main() {
     await wait(300);
     let calendar = document.getElementById("display")!;
-    let tmpRoot = createRoot(calendar);
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
     
@@ -210,7 +211,7 @@ async function main() {
     const cal_innerHTML = calendar.innerHTML
     if (calendar) {
         for (let x = 0; x < data.length; x++) {
-            let e = data[x];
+            let e: ReactElement = data[x];
             ReactDOM.createPortal(e, calendar);
         }
     } else {

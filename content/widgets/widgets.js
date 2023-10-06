@@ -38,7 +38,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wait = exports.main = void 0;
 var React = require("react");
-var client_1 = require("react-dom/client");
 var ReactDOM = require("react-dom");
 function wait(ms) {
     return new Promise(function (resolve, reject) {
@@ -221,14 +220,13 @@ var c = new Calendar(date.getMonth() + 1, date.getFullYear());
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, tmpRoot, timeDisplay, _b, data, elems, cal_innerHTML, x, e;
+        var calendar, timeDisplay, _b, data, elems, cal_innerHTML, x, e;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
                 case 1:
                     _c.sent();
                     calendar = document.getElementById("display");
-                    tmpRoot = (0, client_1.createRoot)(calendar);
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     cal_innerHTML = calendar.innerHTML;
