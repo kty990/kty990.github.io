@@ -217,7 +217,7 @@ var Calendar = /** @class */ (function () {
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, timeDisplay, date, c, _b, data, elems, cal_innerHTML;
+        var calendar, timeDisplay, date, c, _b, data, elems, cal_innerHTML, x, e;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
@@ -229,12 +229,14 @@ function main() {
                     c = new Calendar(date.getMonth() + 1, date.getFullYear());
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     cal_innerHTML = calendar.innerHTML;
-                    if (cal_innerHTML != null && cal_innerHTML != undefined && calendar) {
-                        calendar.innerHTML = cal_innerHTML + data;
+                    if (calendar) {
+                        for (x = 0; x < data.length; x++) {
+                            e = data[x];
+                            calendar.appendChild(e);
+                        }
                     }
                     else {
                         console.log("Calendar: ".concat(calendar));
-                        console.log("InnerHTML: ".concat(calendar.innerHTML));
                     }
                     return [2 /*return*/, { calendar: c, elements: elems }];
             }

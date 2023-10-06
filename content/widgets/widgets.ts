@@ -28,7 +28,7 @@ class MyElement {
         }
     }
 
-    render(content?: string) {
+    render(content?: string) : Element {
         const { eType, id, classes, onclick, children } = this;
         const elementProps = {
             id,
@@ -204,11 +204,13 @@ async function main() {
     let c = new Calendar(date.getMonth() + 1,date.getFullYear());
     let {data,elems} = c.render(null);
     const cal_innerHTML = calendar.innerHTML
-    if (cal_innerHTML != null && cal_innerHTML != undefined && calendar) {
-        calendar.innerHTML = cal_innerHTML + data;
+    if (calendar) {
+        for (let x = 0; x < data.length; x++) {
+            let e = data[x];
+            calendar.appendChild(e);
+        }
     } else {
         console.log(`Calendar: ${calendar}`);
-        console.log(`InnerHTML: ${calendar.innerHTML}`)
     }
     return {calendar: c, elements:elems}
 }
