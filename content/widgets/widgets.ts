@@ -208,9 +208,9 @@ async function main() {
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
     
     let {data,elems} = c.render(null);
-    const cal_innerHTML = calendar.innerHTML
     if (calendar) {
         for (let x = 0; x < data.length; x++) {
+            console.log(typeof data[x],data[x]);
             let e: ReactElement = data[x];
             ReactDOM.createPortal(e, calendar);
         }
