@@ -231,8 +231,8 @@ function main() {
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     if (calendar) {
                         for (x = 0; x < data.length; x++) {
-                            console.log(typeof data[x], data[x]);
                             e = data[x];
+                            console.log(typeof e, e);
                             ReactDOM.createPortal(e, calendar);
                         }
                     }

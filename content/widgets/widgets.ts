@@ -210,8 +210,9 @@ async function main() {
     let {data,elems} = c.render(null);
     if (calendar) {
         for (let x = 0; x < data.length; x++) {
-            console.log(typeof data[x],data[x]);
+            
             let e: ReactElement = data[x];
+            console.log(typeof e,e);
             ReactDOM.createPortal(e, calendar);
         }
     } else {
