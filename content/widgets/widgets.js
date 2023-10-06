@@ -222,17 +222,21 @@ var Calendar = /** @class */ (function () {
 }());
 var date = new Date();
 var c = new Calendar(date.getMonth() + 1, date.getFullYear());
+var calendar_root;
+var calendar;
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, calendar_root, timeDisplay, _b, data, elems;
+        var timeDisplay, _b, data, elems;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
                 case 1:
                     _c.sent();
-                    calendar = document.getElementById("display");
-                    calendar_root = (0, client_1.createRoot)(calendar);
+                    if (!calendar_root) {
+                        calendar = document.getElementById("display");
+                        calendar_root = (0, client_1.createRoot)(calendar);
+                    }
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     if (calendar) {
@@ -251,5 +255,20 @@ exports.main = main;
 document.body.addEventListener('update', function (e) {
     console.log(e);
     var ce = e;
-    var data = ce.detail.data;
+    var dta = ce.detail.data;
+    c.month += parseInt(dta);
+    while (c.month > 12) {
+        c.month -= 12;
+        c.year++;
+    }
+    while (c.month < 1) {
+        c.month += 12;
+        c.year--;
+    }
+    var _a = c.render(null), data = _a.data, elems = _a.elems;
+    if (!calendar_root) {
+        calendar = document.getElementById("display");
+        calendar_root = (0, client_1.createRoot)(calendar);
+    }
+    calendar_root.render(data);
 });

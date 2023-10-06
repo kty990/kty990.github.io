@@ -204,11 +204,15 @@ class Calendar {
 
 let date = new Date();
 let c = new Calendar(date.getMonth() + 1,date.getFullYear());
+let calendar_root: any;
+let calendar: any;
 
 async function main() {
     await wait(300);
-    let calendar = document.getElementById("display")!;
-    let calendar_root = createRoot(calendar); 
+    if (!calendar_root) {
+        calendar = document.getElementById("display")!;
+        calendar_root = createRoot(calendar); 
+    }
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
     
@@ -225,7 +229,22 @@ async function main() {
 document.body.addEventListener('update', function (e) {
     console.log(e);
     const ce = e as CustomEvent<any>;
-    const data = ce.detail.data;
+    const dta = ce.detail.data;
+    c.month += parseInt(dta);
+    while (c.month > 12) {
+        c.month -= 12;
+        c.year++;
+    }
+    while (c.month < 1) {
+        c.month += 12;
+        c.year--;
+    }
+    let {data,elems} = c.render(null);
+    if (!calendar_root) {
+        calendar = document.getElementById("display")!;
+        calendar_root = createRoot(calendar); 
+    }
+    calendar_root.render(data);
 })
 
 export {main, wait};
