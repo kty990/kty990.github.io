@@ -151,7 +151,9 @@ var Calendar = /** @class */ (function () {
             var date_1 = 1;
             var current_week = 0;
             for (var i_1 = 0; i_1 < start_i - 1; i_1++) {
-                this.weeks[current_week].push("<div class=\"empty-day\"></div>");
+                var tmp = new MyElement(this, [], null);
+                tmp.content = '';
+                this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
@@ -167,19 +169,17 @@ var Calendar = /** @class */ (function () {
                     }
                 }
                 console.log({ day: date_1, color: color });
-                this.eList.push(new MyElement(this, [], { classes: ['date'] }));
+                var tmp = new MyElement(this, [], { classes: ['date'] });
+                tmp.content = date_1.toString();
+                this.eList.push(tmp);
                 date_1++;
                 if (date_1 > end_i) {
                     break;
                 }
             }
-            for (var _i = 0, _b = this.weeks; _i < _b.length; _i++) {
-                var x = _b[_i];
-                data = data + x.join("\n");
-            }
         }
         else {
-            var _c = getStartAndEndDate(this.month, this.year), start = _c.start, end = _c.end;
+            var _b = getStartAndEndDate(this.month, this.year), start = _b.start, end = _b.end;
             var start_i = this.index.indexOf("".concat(start).split(" ")[0].toUpperCase());
             var end_i = parseInt("".concat(end).split(" ")[2]);
             console.log("end_i: ".concat(end_i, ", end: ").concat(end));
@@ -187,27 +187,27 @@ var Calendar = /** @class */ (function () {
             var date_2 = 1;
             var current_week = 0;
             for (var i_3 = 0; i_3 < start_i; i_3++) {
-                this.weeks[current_week].push("<div class=\"empty-day\"></div>");
+                var tmp = new MyElement(this, [], { classes: ['date'] });
+                tmp.content = '';
+                this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
                     current_week++;
                 }
-                this.eList.push(new MyElement(this, [], null));
+                var tmp = new MyElement(this, [], { classes: ['date'] });
+                tmp.content = date_2.toString();
+                this.eList.push(tmp);
                 date_2++;
                 if (date_2 > end_i) {
                     break;
                 }
             }
-            for (var _d = 0, _e = this.weeks; _d < _e.length; _d++) {
-                var x = _e[_d];
-                data = data + x.join("\n");
-            }
         }
         var i = 0;
-        for (var _f = 0, _g = this.eList; _f < _g.length; _f++) {
-            var e = _g[_f];
+        for (var _i = 0, _c = this.eList; _i < _c.length; _i++) {
+            var e = _c[_i];
             e.activate();
             i++;
             console.log("activated");

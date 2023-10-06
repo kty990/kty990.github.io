@@ -133,7 +133,9 @@ class Calendar {
             let date = 1;
             let current_week = 0;
             for (let i = 0; i < start_i-1; i++) {
-                this.weeks[current_week].push(`<div class="empty-day"></div>`);
+                let tmp = new MyElement(this,[],null);
+                tmp.content = '';
+                this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
@@ -149,15 +151,14 @@ class Calendar {
                     }
                 }
                 console.log({day:date,color:color});
-                this.eList.push(new MyElement(this,[], {classes: ['date']}));
+                let tmp = new MyElement(this,[], {classes: ['date']});
+                tmp.content = date.toString();
+                this.eList.push(tmp);
     
                 date++;
                 if (date > end_i) {
                     break;
                 }
-            }
-            for (let x of this.weeks) {
-                data = data + x.join("\n");
             }
         } else {
             const {start, end} = getStartAndEndDate(this.month,this.year);
@@ -168,21 +169,22 @@ class Calendar {
             let date = 1;
             let current_week = 0;
             for (let i = 0; i < start_i; i++) {
-                this.weeks[current_week].push(`<div class="empty-day"></div>`);
+                let tmp = new MyElement(this,[], {classes: ['date']});
+                tmp.content = '';
+                this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
                     current_week++;
                 }
-                this.eList.push(new MyElement(this,[], null));
+                let tmp = new MyElement(this,[], {classes: ['date']});
+                tmp.content = date.toString();
+                this.eList.push(tmp);
                 date++;
                 if (date > end_i) {
                     break;
                 }
-            }
-            for (let x of this.weeks) {
-                data = data + x.join("\n");
             }
         }
         let i = 0;
