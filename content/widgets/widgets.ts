@@ -202,12 +202,13 @@ let c = new Calendar(date.getMonth() + 1,date.getFullYear());
 async function main() {
     await wait(300);
     let calendar = document.getElementById("display")!;
+    let calendar_root = createRoot(calendar); 
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
     
     let {data,elems} = c.render(null);
     if (calendar) {
-        ReactDOM.createPortal(data, calendar);
+        calendar_root.render(data);
         console.warn("Should have rendered.");
     } else {
         console.log(`Calendar: ${calendar}`);
