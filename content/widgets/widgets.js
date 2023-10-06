@@ -220,7 +220,7 @@ var c = new Calendar(date.getMonth() + 1, date.getFullYear());
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var calendar, timeDisplay, _b, data, elems, x, e;
+        var calendar, timeDisplay, _b, data, elems;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
@@ -230,11 +230,8 @@ function main() {
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
                     _b = c.render(null), data = _b.data, elems = _b.elems;
                     if (calendar) {
-                        for (x = 0; x < data.length; x++) {
-                            e = data[x];
-                            console.log(typeof e, e);
-                            ReactDOM.createPortal(e, calendar);
-                        }
+                        ReactDOM.createPortal(data, calendar);
+                        console.warn("Should have rendered.");
                     }
                     else {
                         console.log("Calendar: ".concat(calendar));

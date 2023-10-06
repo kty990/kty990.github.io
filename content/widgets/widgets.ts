@@ -198,8 +198,6 @@ class Calendar {
 
 let date = new Date();
 let c = new Calendar(date.getMonth() + 1,date.getFullYear());
-type ReactElementType = typeof React.createElement;
-type ReactElement = ReturnType<ReactElementType>
 
 async function main() {
     await wait(300);
@@ -209,12 +207,8 @@ async function main() {
     
     let {data,elems} = c.render(null);
     if (calendar) {
-        for (let x = 0; x < data.length; x++) {
-            
-            let e: ReactElement = data[x];
-            console.log(typeof e,e);
-            ReactDOM.createPortal(e, calendar);
-        }
+        ReactDOM.createPortal(data, calendar);
+        console.warn("Should have rendered.");
     } else {
         console.log(`Calendar: ${calendar}`);
     }
