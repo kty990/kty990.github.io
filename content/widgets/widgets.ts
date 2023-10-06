@@ -211,7 +211,7 @@ async function main() {
     if (calendar) {
         for (let x = 0; x < data.length; x++) {
             let e = data[x];
-            ReactDOM.render(e, calendar);
+            ReactDOM.createPortal(e, calendar);
         }
     } else {
         console.log(`Calendar: ${calendar}`);

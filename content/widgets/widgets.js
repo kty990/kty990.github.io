@@ -235,7 +235,7 @@ function main() {
                     if (calendar) {
                         for (x = 0; x < data.length; x++) {
                             e = data[x];
-                            ReactDOM.render(e, calendar);
+                            ReactDOM.createPortal(e, calendar);
                         }
                     }
                     else {
