@@ -135,16 +135,15 @@ class Calendar {
             console.log(`end_i: ${end_i}`);
             let c_i = start_i;
             let date = 1;
-            let current_week = 0;
             for (let i = 0; i < start_i-1; i++) {
                 let tmp = new MyElement(this,[],null);
-                tmp.content = '';
+                tmp.content = `${date}`;
+                tmp.classes.push("date");
                 this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
-                    current_week++;
                 }
                 let color: string = "";
                 for (let i = 0; i < active.length; i++) {
@@ -155,8 +154,9 @@ class Calendar {
                     }
                 }
                 console.log({day:date,color:color});
-                let tmp = new MyElement(this,[], {classes: ['date']});
-                tmp.content = date.toString();
+                let tmp = new MyElement(this,[], null);
+                tmp.content = `${date}`;
+                tmp.classes.push("date");
                 this.eList.push(tmp);
     
                 date++;
@@ -171,19 +171,19 @@ class Calendar {
             console.log(`end_i: ${end_i}, end: ${end}`);
             let c_i = start_i;
             let date = 1;
-            let current_week = 0;
             for (let i = 0; i < start_i; i++) {
-                let tmp = new MyElement(this,[], {classList: ['date']});
-                tmp.content = '';
+                let tmp = new MyElement(this,[], null);
+                tmp.content = ``; // EMPTY element
+                tmp.classes.push("date");
                 this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
-                    current_week++;
                 }
-                let tmp = new MyElement(this,[], {classList: ['date']});
-                tmp.content = date.toString();
+                let tmp = new MyElement(this,[], null);
+                tmp.content = `${date}`;
+                tmp.classes.push("date");
                 this.eList.push(tmp);
                 date++;
                 if (date > end_i) {

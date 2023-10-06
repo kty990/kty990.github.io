@@ -153,16 +153,15 @@ var Calendar = /** @class */ (function () {
             console.log("end_i: ".concat(end_i));
             var c_i = start_i;
             var date_1 = 1;
-            var current_week = 0;
             for (var i_1 = 0; i_1 < start_i - 1; i_1++) {
                 var tmp = new MyElement(this, [], null);
-                tmp.content = '';
+                tmp.content = "".concat(date_1);
+                tmp.classes.push("date");
                 this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
-                    current_week++;
                 }
                 var color = "";
                 for (var i_2 = 0; i_2 < active.length; i_2++) {
@@ -173,8 +172,9 @@ var Calendar = /** @class */ (function () {
                     }
                 }
                 console.log({ day: date_1, color: color });
-                var tmp = new MyElement(this, [], { classes: ['date'] });
-                tmp.content = date_1.toString();
+                var tmp = new MyElement(this, [], null);
+                tmp.content = "".concat(date_1);
+                tmp.classes.push("date");
                 this.eList.push(tmp);
                 date_1++;
                 if (date_1 > end_i) {
@@ -189,19 +189,19 @@ var Calendar = /** @class */ (function () {
             console.log("end_i: ".concat(end_i, ", end: ").concat(end));
             var c_i = start_i;
             var date_2 = 1;
-            var current_week = 0;
             for (var i_3 = 0; i_3 < start_i; i_3++) {
-                var tmp = new MyElement(this, [], { classList: ['date'] });
-                tmp.content = '';
+                var tmp = new MyElement(this, [], null);
+                tmp.content = ""; // EMPTY element
+                tmp.classes.push("date");
                 this.eList.push(tmp);
             }
             while (true) {
                 if (c_i == 8) {
                     c_i = 1;
-                    current_week++;
                 }
-                var tmp = new MyElement(this, [], { classList: ['date'] });
-                tmp.content = date_2.toString();
+                var tmp = new MyElement(this, [], null);
+                tmp.content = "".concat(date_2);
+                tmp.classes.push("date");
                 this.eList.push(tmp);
                 date_2++;
                 if (date_2 > end_i) {
