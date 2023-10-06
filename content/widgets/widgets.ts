@@ -41,7 +41,7 @@ class MyElement {
             onClick: onclick,
             children: children,
         };
-        console.log(content,this.content);
+        console.log(`${content}, ${this.content}, ${elementProps}, ${classes}`);
         this.element = React.createElement(eType, elementProps, content || "E.404");
         console.log(this.element);
         return this.element;
