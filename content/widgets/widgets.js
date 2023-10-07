@@ -137,15 +137,15 @@ var Calendar = /** @class */ (function () {
         this.eList = [];
         this.month = month;
         this.year = year;
-        this.listeners = [];
+        Calendar.listeners = [];
     }
     Calendar.prototype.addListener = function (callback) {
-        this.listeners.push(callback);
+        Calendar.listeners.push(callback);
     };
     Calendar.prototype.onClicked = function (args) {
         var _a;
-        for (var x = 0; x < this.listeners.length; x++) {
-            (_a = this.listeners)[x].apply(_a, args);
+        for (var x = 0; x < Calendar.listeners.length; x++) {
+            (_a = Calendar.listeners)[x].apply(_a, args);
         }
     };
     Calendar.prototype.getMonthName = function (m) {
