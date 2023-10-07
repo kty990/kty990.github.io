@@ -145,6 +145,7 @@ class Calendar {
                 c_i = 1;
             }
             let tmp = new MyElement(this,[], null);
+            tmp.onclick = c.onClicked;
             tmp.content = `${date}`;
             tmp.classes.push("date");
             this.eList.push(tmp);
@@ -169,6 +170,7 @@ let date = new Date();
 let c = new Calendar(date.getMonth() + 1,date.getFullYear());
 let calendar_root: any;
 let calendar: any;
+let timeDisplay: any;
 
 async function main() {
     await wait(300);
@@ -177,7 +179,7 @@ async function main() {
         calendar_root = createRoot(calendar); 
     }
 
-    let timeDisplay = document.getElementById("list")?.querySelector("#time");
+    timeDisplay = document.getElementById("list")?.querySelector("#time");
     
     let {data,elems} = c.render();
     if (calendar) {

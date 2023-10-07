@@ -163,6 +163,7 @@ var Calendar = /** @class */ (function () {
                 c_i = 1;
             }
             var tmp = new MyElement(this, [], null);
+            tmp.onclick = c.onClicked;
             tmp.content = "".concat(date);
             tmp.classes.push("date");
             this.eList.push(tmp);
@@ -188,10 +189,11 @@ var date = new Date();
 var c = new Calendar(date.getMonth() + 1, date.getFullYear());
 var calendar_root;
 var calendar;
+var timeDisplay;
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var timeDisplay, _b, data, elems;
+        var _b, data, elems;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, wait(300)];
