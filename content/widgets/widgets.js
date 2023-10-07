@@ -134,10 +134,10 @@ var Calendar = /** @class */ (function () {
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ].map(function (month) { return month.toUpperCase(); });
-        this.listeners = [];
         this.eList = [];
         this.month = month;
         this.year = year;
+        this.listeners = [];
     }
     Calendar.prototype.addListener = function (callback) {
         this.listeners.push(callback);

@@ -112,13 +112,14 @@ class Calendar {
     ].map(month => month.toUpperCase());
 
     last_render: Array<MyElement>;
-    listeners: Array<Function> = [];
+    listeners: Array<Function>;
 
     eList: Array<MyElement> = [];
 
     constructor(month: number,year: number) {
         this.month = month;
         this.year = year;
+        this.listeners = [];
     }
 
     addListener(callback : Function) {
