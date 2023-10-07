@@ -71,7 +71,7 @@ class MyElement {
             if (_c == this.__class) {
                 let elem = this._getElement();
                 if (elem) {
-                    console.log(`Found element, activating...\n${elem}`);
+                    console.log(`Found element, activating...\n`,elem);
                     elem.style.backgroundColor = "#01234ff";
                     this.active = true;
                 } else {

@@ -96,7 +96,7 @@ var MyElement = /** @class */ (function () {
             if (_c == _this.__class) {
                 var elem = _this._getElement();
                 if (elem) {
-                    console.log("Found element, activating...\n".concat(elem));
+                    console.log("Found element, activating...\n", elem);
                     elem.style.backgroundColor = "#01234ff";
                     _this.active = true;
                 }
