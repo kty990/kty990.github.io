@@ -7,15 +7,14 @@
 </head>
 
 <body>
-    <script>
-        function DisplayPage(e) {
-            console.log(e);
-        }
-    </script>
-    <div style="position: fixed; left: 0;top:0;width:100vw;height:100vh;display: flex;justify-content: center;align-items: center;color:#ccc;font-family: 'Montserrat';text-align: center;">
-        <h1 onload="DisplayPage(this)">Error 404: Page not found~!</h1>
-    </div>
     
+    <div style="position: fixed; left: 0;top:0;width:100vw;height:100vh;display: flex;justify-content: center;align-items: center;color:#ccc;font-family: 'Montserrat';text-align: center;">
+        <h1>Error 404: Page not found~!</h1>
+    </div>
+    <script type="text/javascript">
+        let e = document.getElementsByTagName("h1")[0];
+        e.textContent = e.textContent + `\n(${window.location.href})`;
+    </script>
 </body>
 
 </htmL>
