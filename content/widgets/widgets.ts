@@ -106,7 +106,7 @@ class Calendar {
         'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
     ].map(month => month.toUpperCase());
 
-    last_render: string;
+    last_render: Array<MyElement>;
     listeners: Array<Function> = [];
 
     eList: Array<MyElement> = [];
@@ -197,8 +197,9 @@ class Calendar {
             i++;
             console.log("activated");
         }
-    
-        return {data:this.eList.map(e => e.render(e.content)),elems:this.eList}
+        this.last_render = this.eList;
+        this.eList = [];
+        return {data:this.last_render.map(e => e.render(e.content)),elems:this.last_render}; 
     }
 }
 
@@ -243,6 +244,10 @@ document.body.addEventListener('update', function (e) {
     if (!calendar_root) {
         calendar = document.getElementById("display")!;
         calendar_root = createRoot(calendar); 
+    }
+    let elements = Array.from(document.getElementsByClassName("date"));
+    for (let element of elements) {
+        element.remove();
     }
     calendar_root.render(data);
 })

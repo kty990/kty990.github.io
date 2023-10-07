@@ -216,7 +216,9 @@ var Calendar = /** @class */ (function () {
             i++;
             console.log("activated");
         }
-        return { data: this.eList.map(function (e) { return e.render(e.content); }), elems: this.eList };
+        this.last_render = this.eList;
+        this.eList = [];
+        return { data: this.last_render.map(function (e) { return e.render(e.content); }), elems: this.last_render };
     };
     return Calendar;
 }());
@@ -269,6 +271,11 @@ document.body.addEventListener('update', function (e) {
     if (!calendar_root) {
         calendar = document.getElementById("display");
         calendar_root = (0, client_1.createRoot)(calendar);
+    }
+    var elements = Array.from(document.getElementsByClassName("date"));
+    for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
+        var element = elements_1[_i];
+        element.remove();
     }
     calendar_root.render(data);
 });
