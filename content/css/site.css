@@ -323,3 +323,9 @@ a {
     background-color: #8199b7;
     color: #4b4b4b;
 }
+
+#cal-title {
+    position: fixed;
+    left: 30vw;
+    top: 15vh;
+}

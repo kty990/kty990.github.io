@@ -130,6 +130,10 @@ var Calendar = /** @class */ (function () {
             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
             'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
         ].map(function (month) { return month.toUpperCase(); });
+        this.monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ].map(function (month) { return month.toUpperCase(); });
         this.listeners = [];
         this.eList = [];
         this.month = month;
@@ -143,6 +147,9 @@ var Calendar = /** @class */ (function () {
             var listener = _a[_i];
             listener.apply(void 0, args);
         }
+    };
+    Calendar.prototype.getMonthName = function (m) {
+        return this.monthNames[m - 1];
     };
     Calendar.prototype.render = function () {
         var data = "";
@@ -190,6 +197,7 @@ var c = new Calendar(date.getMonth() + 1, date.getFullYear());
 var calendar_root;
 var calendar;
 var timeDisplay;
+var monthDisplay;
 function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
@@ -202,11 +210,13 @@ function main() {
                     if (!calendar_root) {
                         calendar = document.getElementById("display");
                         calendar_root = (0, client_1.createRoot)(calendar);
+                        monthDisplay = document.getElementById("cal-title");
                     }
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
                     _b = c.render(), data = _b.data, elems = _b.elems;
                     if (calendar) {
                         calendar_root.render(data);
+                        monthDisplay.textContent = "".concat(c.getMonthName(c.month));
                         console.warn("Should have rendered.");
                     }
                     else {
@@ -240,6 +250,7 @@ document.body.addEventListener('update', function (e) {
                     if (!calendar_root) {
                         calendar = document.getElementById("display");
                         calendar_root = (0, client_1.createRoot)(calendar);
+                        monthDisplay = document.getElementById("cal-title");
                     }
                     calendar_root.unmount();
                     calendar_root = (0, client_1.createRoot)(calendar);
@@ -247,6 +258,7 @@ document.body.addEventListener('update', function (e) {
                 case 1:
                     _b.sent();
                     calendar_root.render(data);
+                    monthDisplay.textContent = "".concat(c.getMonthName(c.month));
                     return [2 /*return*/];
             }
         });

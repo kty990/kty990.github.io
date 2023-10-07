@@ -34,6 +34,7 @@ function Timesheet() {
             </div>
         </div>
         <div id="calendar">
+          <h1 id="cal-title">month.title</h1>
             <div id="days">
                 <p>SUN</p>
                 <p>MON</p>

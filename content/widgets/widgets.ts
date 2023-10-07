@@ -106,6 +106,11 @@ class Calendar {
         'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
     ].map(month => month.toUpperCase());
 
+    monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ].map(month => month.toUpperCase());
+
     last_render: Array<MyElement>;
     listeners: Array<Function> = [];
 
@@ -124,6 +129,10 @@ class Calendar {
         for (let listener of this.listeners) {
             listener(...args);
         }
+    }
+
+    getMonthName(m: number) {
+        return this.monthNames[m-1];
     }
 
     render() {
@@ -171,12 +180,14 @@ let c = new Calendar(date.getMonth() + 1,date.getFullYear());
 let calendar_root: any;
 let calendar: any;
 let timeDisplay: any;
+let monthDisplay: any;
 
 async function main() {
     await wait(300);
     if (!calendar_root) {
         calendar = document.getElementById("display")!;
         calendar_root = createRoot(calendar); 
+        monthDisplay = document.getElementById("cal-title");
     }
 
     timeDisplay = document.getElementById("list")?.querySelector("#time");
@@ -184,6 +195,7 @@ async function main() {
     let {data,elems} = c.render();
     if (calendar) {
         calendar_root.render(data);
+        monthDisplay.textContent = `${c.getMonthName(c.month)}`;
         console.warn("Should have rendered.");
     } else {
         console.log(`Calendar: ${calendar}`);
@@ -208,11 +220,13 @@ document.body.addEventListener('update', async function (e) {
     if (!calendar_root) {
         calendar = document.getElementById("display")!;
         calendar_root = createRoot(calendar); 
+        monthDisplay = document.getElementById("cal-title");
     }
     calendar_root.unmount();
     calendar_root = createRoot(calendar);
     await wait(100);
     calendar_root.render(data);
+    monthDisplay.textContent = `${c.getMonthName(c.month)}`;
 })
 
 export {main, wait};
