@@ -19,7 +19,6 @@ class MyElement {
     calendar: Calendar;
     active: boolean = false;
     activated: boolean = false;
-    element: any;
     __class: any;
 
     onclick: Function = () => {}
@@ -49,9 +48,19 @@ class MyElement {
             children: children,
         };
         console.log(`${content}, ${this.content}, ${elementProps}, ${classes}`);
-        this.element = React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404' );
-        console.log(this.element);
-        return this.element;
+        return React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404' );
+    }
+
+    _getElement(): any {
+        for (let c of this.classes) {
+            let tmp = document.getElementsByClassName(c);
+            for (let e of Array.from(tmp)) {
+                if (e.textContent == this.content) {
+                    return e;
+                }
+            }
+        }
+        return null;
     }
 
     activate() {
@@ -60,11 +69,21 @@ class MyElement {
             console.log(event);
             let _c = event.__be__data.class;
             if (_c == this.__class) {
-                this.element.style.backgroundColor = "#01234ff";
-                this.active = true;
+                let elem = this._getElement();
+                if (elem) {
+                    elem.style.backgroundColor = "#01234ff";
+                    this.active = true;
+                } else {
+                    console.warn(`Error in activation hook <Activate>: No element matching <div class="${c}>${this.content}</div>"`);
+                }
             } else {
-                this.element.style.backgroundColor = null;
-                this.active = false;
+                let elem = this._getElement();
+                if (elem) {
+                    elem.style.backgroundColor = null;
+                    this.active = false;
+                } else {
+                    console.warn(`Error in activation hook <Deactivate>: No element matching <div class="${c}>${this.content}</div>"`);
+                }
             }
         })
     }

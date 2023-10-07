@@ -72,9 +72,20 @@ var MyElement = /** @class */ (function () {
             children: children,
         };
         console.log("".concat(content, ", ").concat(this.content, ", ").concat(elementProps, ", ").concat(classes));
-        this.element = React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404');
-        console.log(this.element);
-        return this.element;
+        return React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404');
+    };
+    MyElement.prototype._getElement = function () {
+        for (var _i = 0, _a = this.classes; _i < _a.length; _i++) {
+            var c_1 = _a[_i];
+            var tmp = document.getElementsByClassName(c_1);
+            for (var _b = 0, _d = Array.from(tmp); _b < _d.length; _b++) {
+                var e = _d[_b];
+                if (e.textContent == this.content) {
+                    return e;
+                }
+            }
+        }
+        return null;
     };
     MyElement.prototype.activate = function () {
         var _this = this;
@@ -83,12 +94,24 @@ var MyElement = /** @class */ (function () {
             console.log(event);
             var _c = event.__be__data.class;
             if (_c == _this.__class) {
-                _this.element.style.backgroundColor = "#01234ff";
-                _this.active = true;
+                var elem = _this._getElement();
+                if (elem) {
+                    elem.style.backgroundColor = "#01234ff";
+                    _this.active = true;
+                }
+                else {
+                    console.warn("Error in activation hook <Activate>: No element matching <div class=\"".concat(c, ">").concat(_this.content, "</div>\""));
+                }
             }
             else {
-                _this.element.style.backgroundColor = null;
-                _this.active = false;
+                var elem = _this._getElement();
+                if (elem) {
+                    elem.style.backgroundColor = null;
+                    _this.active = false;
+                }
+                else {
+                    console.warn("Error in activation hook <Deactivate>: No element matching <div class=\"".concat(c, ">").concat(_this.content, "</div>\""));
+                }
             }
         });
     };
