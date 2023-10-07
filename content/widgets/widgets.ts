@@ -8,12 +8,19 @@ function wait(ms: number) {
     })
 }
 
+interface eventData {
+    target: any,
+    timestamp: string | number | undefined,
+    __be__data: any;
+}
+
 class MyElement {
     content: string;
     calendar: Calendar;
     active: boolean = false;
     activated: boolean = false;
     element: any;
+    __class: any;
 
     onclick: Function = () => {}
     classes: Array<string> = [];
@@ -49,10 +56,10 @@ class MyElement {
 
     activate() {
         this.activated = true;
-        this.calendar.addListener((event: any) => {
+        this.calendar.addListener((event: eventData) => {
             console.log(event);
-            let elem = event.target;
-            if (elem == this.element) {
+            let _c = event.__be__data.class;
+            if (_c == this.__class) {
                 this.element.style.backgroundColor = "#01234ff";
                 this.active = true;
             } else {
@@ -126,9 +133,9 @@ class Calendar {
         Calendar.listeners.push(callback);
     }
 
-    onClicked(args:Array<any>) {
+    onClicked(args:eventData) {
         for (let x = 0; x < Calendar.listeners.length; x++) {
-            Calendar.listeners[x](...args);
+            Calendar.listeners[x](args);
         }
     }
 
@@ -147,6 +154,7 @@ class Calendar {
         for (let i = 0; i < start_i; i++) {
             let tmp = new MyElement(this,[], null);
             tmp.content = `\u2800`; // EMPTY element
+            tmp.__class = null;
             tmp.classes.push("date");
             this.eList.push(tmp);
         }
@@ -155,8 +163,18 @@ class Calendar {
                 c_i = 1;
             }
             let tmp = new MyElement(this,[], null);
-            tmp.onclick = c.onClicked;
+            tmp.onclick = function() {
+                let eData:eventData = {
+                    target: null,
+                    timestamp: new Date().toISOString(),
+                    __be__data: {
+                        class: tmp
+                    }
+                }
+                c.onClicked(eData);
+            };
             tmp.content = `${date}`;
+            tmp.__class = tmp;
             tmp.classes.push("date");
             this.eList.push(tmp);
             date++;

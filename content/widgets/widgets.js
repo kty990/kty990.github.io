@@ -81,8 +81,8 @@ var MyElement = /** @class */ (function () {
         this.activated = true;
         this.calendar.addListener(function (event) {
             console.log(event);
-            var elem = event.target;
-            if (elem == _this.element) {
+            var _c = event.__be__data.class;
+            if (_c == _this.__class) {
                 _this.element.style.backgroundColor = "#01234ff";
                 _this.active = true;
             }
@@ -143,9 +143,8 @@ var Calendar = /** @class */ (function () {
         Calendar.listeners.push(callback);
     };
     Calendar.prototype.onClicked = function (args) {
-        var _a;
         for (var x = 0; x < Calendar.listeners.length; x++) {
-            (_a = Calendar.listeners)[x].apply(_a, args);
+            Calendar.listeners[x](args);
         }
     };
     Calendar.prototype.getMonthName = function (m) {
@@ -162,22 +161,39 @@ var Calendar = /** @class */ (function () {
         for (var i_1 = 0; i_1 < start_i; i_1++) {
             var tmp = new MyElement(this, [], null);
             tmp.content = "\u2800"; // EMPTY element
+            tmp.__class = null;
             tmp.classes.push("date");
             this.eList.push(tmp);
         }
-        while (true) {
+        var _loop_1 = function () {
             if (c_i == 8) {
                 c_i = 1;
             }
-            var tmp = new MyElement(this, [], null);
-            tmp.onclick = c.onClicked;
+            var tmp = new MyElement(this_1, [], null);
+            tmp.onclick = function () {
+                var eData = {
+                    target: null,
+                    timestamp: new Date().toISOString(),
+                    __be__data: {
+                        class: tmp
+                    }
+                };
+                c.onClicked(eData);
+            };
             tmp.content = "".concat(date);
+            tmp.__class = tmp;
             tmp.classes.push("date");
-            this.eList.push(tmp);
+            this_1.eList.push(tmp);
             date++;
             if (date > end_i) {
-                break;
+                return "break";
             }
+        };
+        var this_1 = this;
+        while (true) {
+            var state_1 = _loop_1();
+            if (state_1 === "break")
+                break;
         }
         var i = 0;
         for (var _i = 0, _b = this.eList; _i < _b.length; _i++) {
@@ -202,11 +218,11 @@ function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
         var _b, data, elems;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0: return [4 /*yield*/, wait(300)];
                 case 1:
-                    _c.sent();
+                    _d.sent();
                     if (!calendar_root) {
                         calendar = document.getElementById("display");
                         calendar_root = (0, client_1.createRoot)(calendar);
