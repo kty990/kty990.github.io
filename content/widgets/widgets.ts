@@ -126,8 +126,8 @@ class Calendar {
     }
 
     onClicked(args:Array<any>) {
-        for (let listener of this.listeners) {
-            listener(...args);
+        for (let x = 0; x < this.listeners.length; x++) {
+            this.listeners[x](...args);
         }
     }
 

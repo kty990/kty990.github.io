@@ -143,9 +143,9 @@ var Calendar = /** @class */ (function () {
         this.listeners.push(callback);
     };
     Calendar.prototype.onClicked = function (args) {
-        for (var _i = 0, _a = this.listeners; _i < _a.length; _i++) {
-            var listener = _a[_i];
-            listener.apply(void 0, args);
+        var _a;
+        for (var x = 0; x < this.listeners.length; x++) {
+            (_a = this.listeners)[x].apply(_a, args);
         }
     };
     Calendar.prototype.getMonthName = function (m) {
