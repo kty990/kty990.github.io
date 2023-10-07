@@ -217,29 +217,35 @@ function main() {
 }
 exports.main = main;
 document.body.addEventListener('update', function (e) {
-    console.log(e);
-    var ce = e;
-    var dta = ce.detail.data;
-    c.month += parseInt(dta);
-    while (c.month > 12) {
-        c.month -= 12;
-        c.year++;
-    }
-    while (c.month < 1) {
-        c.month += 12;
-        c.year--;
-    }
-    var _a = c.render(), data = _a.data, elems = _a.elems;
-    if (!calendar_root) {
-        calendar = document.getElementById("display");
-        calendar_root = (0, client_1.createRoot)(calendar);
-    }
-    var elements = Array.from(document.getElementsByClassName("date"));
-    for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
-        var element = elements_1[_i];
-        element.remove();
-    }
-    setTimeout(function () {
-        calendar_root.render(data);
-    }, 500);
+    return __awaiter(this, void 0, void 0, function () {
+        var ce, dta, _a, data, elems;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    console.log(e);
+                    ce = e;
+                    dta = ce.detail.data;
+                    c.month += parseInt(dta);
+                    while (c.month > 12) {
+                        c.month -= 12;
+                        c.year++;
+                    }
+                    while (c.month < 1) {
+                        c.month += 12;
+                        c.year--;
+                    }
+                    _a = c.render(), data = _a.data, elems = _a.elems;
+                    if (!calendar_root) {
+                        calendar = document.getElementById("display");
+                        calendar_root = (0, client_1.createRoot)(calendar);
+                    }
+                    calendar_root.unmount();
+                    return [4 /*yield*/, wait(100)];
+                case 1:
+                    _b.sent();
+                    calendar_root.render(data);
+                    return [2 /*return*/];
+            }
+        });
+    });
 });

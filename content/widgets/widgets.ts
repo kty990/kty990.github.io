@@ -189,7 +189,7 @@ async function main() {
     return {calendar: c, elements:elems}
 }
 
-document.body.addEventListener('update', function (e) {
+document.body.addEventListener('update', async function (e) {
     console.log(e);
     const ce = e as CustomEvent<any>;
     const dta = ce.detail.data;
@@ -207,13 +207,9 @@ document.body.addEventListener('update', function (e) {
         calendar = document.getElementById("display")!;
         calendar_root = createRoot(calendar); 
     }
-    let elements = Array.from(document.getElementsByClassName("date"));
-    for (let element of elements) {
-        element.remove();
-    }
-    setTimeout(() => {
-        calendar_root.render(data);
-    },500);
+    calendar_root.unmount();
+    await wait(100);
+    calendar_root.render(data);
 })
 
 export {main, wait};
