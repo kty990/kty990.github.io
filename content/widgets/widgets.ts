@@ -42,7 +42,7 @@ class MyElement {
             children: children,
         };
         console.log(`${content}, ${this.content}, ${elementProps}, ${classes}`);
-        this.element = React.createElement(eType, elementProps, content || "E.404");
+        this.element = React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404' );
         console.log(this.element);
         return this.element;
     }
@@ -126,69 +126,31 @@ class Calendar {
         }
     }
 
-    render(active:Array<any> | null) {
+    render() {
         let data = "";
-        if (active != null) {
-            const {start, end} = getStartAndEndDate(this.month,this.year);
-            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
-            let end_i = parseInt(`${end}`.split(" ")[2]);
-            console.log(`end_i: ${end_i}`);
-            let c_i = start_i;
-            let date = 1;
-            for (let i = 0; i < start_i-1; i++) {
-                let tmp = new MyElement(this,[],null);
-                tmp.content = `${date}`;
-                tmp.classes.push("date");
-                this.eList.push(tmp);
+        const {start, end} = getStartAndEndDate(this.month,this.year);
+        let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
+        let end_i = parseInt(`${end}`.split(" ")[2]);
+        console.log(`end_i: ${end_i}, end: ${end}`);
+        let c_i = start_i;
+        let date = 1;
+        for (let i = 0; i < start_i; i++) {
+            let tmp = new MyElement(this,[], null);
+            tmp.content = `\u2800`; // EMPTY element
+            tmp.classes.push("date");
+            this.eList.push(tmp);
+        }
+        while (true) {
+            if (c_i == 8) {
+                c_i = 1;
             }
-            while (true) {
-                if (c_i == 8) {
-                    c_i = 1;
-                }
-                let color: string = "";
-                for (let i = 0; i < active.length; i++) {
-                    let a = active[i];
-                    if (`${a.month}`.toUpperCase() == this.monthAbbreviations[this.month-1].toUpperCase() && a.day.replace(":","") == date) {
-                        color = '#6445a3';
-                        break;
-                    }
-                }
-                console.log({day:date,color:color});
-                let tmp = new MyElement(this,[], null);
-                tmp.content = `${date}`;
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-    
-                date++;
-                if (date > end_i) {
-                    break;
-                }
-            }
-        } else {
-            const {start, end} = getStartAndEndDate(this.month,this.year);
-            let start_i = this.index.indexOf(`${start}`.split(" ")[0].toUpperCase());
-            let end_i = parseInt(`${end}`.split(" ")[2]);
-            console.log(`end_i: ${end_i}, end: ${end}`);
-            let c_i = start_i;
-            let date = 1;
-            for (let i = 0; i < start_i; i++) {
-                let tmp = new MyElement(this,[], null);
-                tmp.content = ``; // EMPTY element
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-            }
-            while (true) {
-                if (c_i == 8) {
-                    c_i = 1;
-                }
-                let tmp = new MyElement(this,[], null);
-                tmp.content = `${date}`;
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-                date++;
-                if (date > end_i) {
-                    break;
-                }
+            let tmp = new MyElement(this,[], null);
+            tmp.content = `${date}`;
+            tmp.classes.push("date");
+            this.eList.push(tmp);
+            date++;
+            if (date > end_i) {
+                break;
             }
         }
         let i = 0;
@@ -217,7 +179,7 @@ async function main() {
 
     let timeDisplay = document.getElementById("list")?.querySelector("#time");
     
-    let {data,elems} = c.render(null);
+    let {data,elems} = c.render();
     if (calendar) {
         calendar_root.render(data);
         console.warn("Should have rendered.");
@@ -240,7 +202,7 @@ document.body.addEventListener('update', function (e) {
         c.month += 12;
         c.year--;
     }
-    let {data,elems} = c.render(null);
+    let {data,elems} = c.render();
     if (!calendar_root) {
         calendar = document.getElementById("display")!;
         calendar_root = createRoot(calendar); 

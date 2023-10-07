@@ -72,7 +72,7 @@ var MyElement = /** @class */ (function () {
             children: children,
         };
         console.log("".concat(content, ", ").concat(this.content, ", ").concat(elementProps, ", ").concat(classes));
-        this.element = React.createElement(eType, elementProps, content || "E.404");
+        this.element = React.createElement(eType, elementProps, (content != undefined) ? content : 'e.404');
         console.log(this.element);
         return this.element;
     };
@@ -144,74 +144,36 @@ var Calendar = /** @class */ (function () {
             listener.apply(void 0, args);
         }
     };
-    Calendar.prototype.render = function (active) {
+    Calendar.prototype.render = function () {
         var data = "";
-        if (active != null) {
-            var _a = getStartAndEndDate(this.month, this.year), start = _a.start, end = _a.end;
-            var start_i = this.index.indexOf("".concat(start).split(" ")[0].toUpperCase());
-            var end_i = parseInt("".concat(end).split(" ")[2]);
-            console.log("end_i: ".concat(end_i));
-            var c_i = start_i;
-            var date_1 = 1;
-            for (var i_1 = 0; i_1 < start_i - 1; i_1++) {
-                var tmp = new MyElement(this, [], null);
-                tmp.content = "".concat(date_1);
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-            }
-            while (true) {
-                if (c_i == 8) {
-                    c_i = 1;
-                }
-                var color = "";
-                for (var i_2 = 0; i_2 < active.length; i_2++) {
-                    var a = active[i_2];
-                    if ("".concat(a.month).toUpperCase() == this.monthAbbreviations[this.month - 1].toUpperCase() && a.day.replace(":", "") == date_1) {
-                        color = '#6445a3';
-                        break;
-                    }
-                }
-                console.log({ day: date_1, color: color });
-                var tmp = new MyElement(this, [], null);
-                tmp.content = "".concat(date_1);
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-                date_1++;
-                if (date_1 > end_i) {
-                    break;
-                }
-            }
+        var _a = getStartAndEndDate(this.month, this.year), start = _a.start, end = _a.end;
+        var start_i = this.index.indexOf("".concat(start).split(" ")[0].toUpperCase());
+        var end_i = parseInt("".concat(end).split(" ")[2]);
+        console.log("end_i: ".concat(end_i, ", end: ").concat(end));
+        var c_i = start_i;
+        var date = 1;
+        for (var i_1 = 0; i_1 < start_i; i_1++) {
+            var tmp = new MyElement(this, [], null);
+            tmp.content = "\u2800"; // EMPTY element
+            tmp.classes.push("date");
+            this.eList.push(tmp);
         }
-        else {
-            var _b = getStartAndEndDate(this.month, this.year), start = _b.start, end = _b.end;
-            var start_i = this.index.indexOf("".concat(start).split(" ")[0].toUpperCase());
-            var end_i = parseInt("".concat(end).split(" ")[2]);
-            console.log("end_i: ".concat(end_i, ", end: ").concat(end));
-            var c_i = start_i;
-            var date_2 = 1;
-            for (var i_3 = 0; i_3 < start_i; i_3++) {
-                var tmp = new MyElement(this, [], null);
-                tmp.content = ""; // EMPTY element
-                tmp.classes.push("date");
-                this.eList.push(tmp);
+        while (true) {
+            if (c_i == 8) {
+                c_i = 1;
             }
-            while (true) {
-                if (c_i == 8) {
-                    c_i = 1;
-                }
-                var tmp = new MyElement(this, [], null);
-                tmp.content = "".concat(date_2);
-                tmp.classes.push("date");
-                this.eList.push(tmp);
-                date_2++;
-                if (date_2 > end_i) {
-                    break;
-                }
+            var tmp = new MyElement(this, [], null);
+            tmp.content = "".concat(date);
+            tmp.classes.push("date");
+            this.eList.push(tmp);
+            date++;
+            if (date > end_i) {
+                break;
             }
         }
         var i = 0;
-        for (var _i = 0, _c = this.eList; _i < _c.length; _i++) {
-            var e = _c[_i];
+        for (var _i = 0, _b = this.eList; _i < _b.length; _i++) {
+            var e = _b[_i];
             e.activate();
             i++;
             console.log("activated");
@@ -240,7 +202,7 @@ function main() {
                         calendar_root = (0, client_1.createRoot)(calendar);
                     }
                     timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
-                    _b = c.render(null), data = _b.data, elems = _b.elems;
+                    _b = c.render(), data = _b.data, elems = _b.elems;
                     if (calendar) {
                         calendar_root.render(data);
                         console.warn("Should have rendered.");
@@ -267,7 +229,7 @@ document.body.addEventListener('update', function (e) {
         c.month += 12;
         c.year--;
     }
-    var _a = c.render(null), data = _a.data, elems = _a.elems;
+    var _a = c.render(), data = _a.data, elems = _a.elems;
     if (!calendar_root) {
         calendar = document.getElementById("display");
         calendar_root = (0, client_1.createRoot)(calendar);
