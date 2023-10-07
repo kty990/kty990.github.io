@@ -69,6 +69,7 @@ class MyElement {
             console.log(event);
             let _c = event.__be__data.class;
             if (_c == this.__class) {
+                console.log("Found element, activating...");
                 let elem = this._getElement();
                 if (elem) {
                     elem.style.backgroundColor = "#01234ff";

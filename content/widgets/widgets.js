@@ -94,6 +94,7 @@ var MyElement = /** @class */ (function () {
             console.log(event);
             var _c = event.__be__data.class;
             if (_c == _this.__class) {
+                console.log("Found element, activating...");
                 var elem = _this._getElement();
                 if (elem) {
                     elem.style.backgroundColor = "#01234ff";
