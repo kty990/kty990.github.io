@@ -240,6 +240,7 @@ document.body.addEventListener('update', function (e) {
                         calendar_root = (0, client_1.createRoot)(calendar);
                     }
                     calendar_root.unmount();
+                    calendar_root = (0, client_1.createRoot)(calendar);
                     return [4 /*yield*/, wait(100)];
                 case 1:
                     _b.sent();

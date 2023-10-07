@@ -208,6 +208,7 @@ document.body.addEventListener('update', async function (e) {
         calendar_root = createRoot(calendar); 
     }
     calendar_root.unmount();
+    calendar_root = createRoot(calendar);
     await wait(100);
     calendar_root.render(data);
 })
