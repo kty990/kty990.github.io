@@ -216,7 +216,7 @@ function main() {
                     _b = c.render(), data = _b.data, elems = _b.elems;
                     if (calendar) {
                         calendar_root.render(data);
-                        monthDisplay.textContent = "".concat(c.getMonthName(c.month));
+                        monthDisplay.textContent = "".concat(c.getMonthName(c.month), " ").concat(c.year);
                         console.warn("Should have rendered.");
                     }
                     else {
@@ -258,7 +258,7 @@ document.body.addEventListener('update', function (e) {
                 case 1:
                     _b.sent();
                     calendar_root.render(data);
-                    monthDisplay.textContent = "".concat(c.getMonthName(c.month));
+                    monthDisplay.textContent = "".concat(c.getMonthName(c.month), " ").concat(c.year);
                     return [2 /*return*/];
             }
         });

@@ -195,7 +195,7 @@ async function main() {
     let {data,elems} = c.render();
     if (calendar) {
         calendar_root.render(data);
-        monthDisplay.textContent = `${c.getMonthName(c.month)}`;
+        monthDisplay.textContent = `${c.getMonthName(c.month)} ${c.year}`;
         console.warn("Should have rendered.");
     } else {
         console.log(`Calendar: ${calendar}`);
@@ -226,7 +226,7 @@ document.body.addEventListener('update', async function (e) {
     calendar_root = createRoot(calendar);
     await wait(100);
     calendar_root.render(data);
-    monthDisplay.textContent = `${c.getMonthName(c.month)}`;
+    monthDisplay.textContent = `${c.getMonthName(c.month)} ${c.year}`;
 })
 
 export {main, wait};
