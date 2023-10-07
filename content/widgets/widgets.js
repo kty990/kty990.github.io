@@ -277,5 +277,7 @@ document.body.addEventListener('update', function (e) {
         var element = elements_1[_i];
         element.remove();
     }
-    calendar_root.render(data);
+    setTimeout(function () {
+        calendar_root.render(data);
+    }, 500);
 });

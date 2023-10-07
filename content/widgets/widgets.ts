@@ -249,7 +249,9 @@ document.body.addEventListener('update', function (e) {
     for (let element of elements) {
         element.remove();
     }
-    calendar_root.render(data);
+    setTimeout(() => {
+        calendar_root.render(data);
+    },500);
 })
 
 export {main, wait};
