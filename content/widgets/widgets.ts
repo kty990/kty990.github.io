@@ -72,11 +72,11 @@ class MyElement {
                 let elem = this._getElement();
                 if (elem) {
                     console.log(`Found element, activating...\n`,elem, elem.style);
-                    elem.style.backgroundColor = "#01234ff";
+                    elem.style.backgroundColor = "#01234f";
                     this.active = true;
                     console.log(`Found element, should now be active...\n`,elem, elem.style);
                 } else {
-                    console.warn(`Error in activation hook <Activate>: No element matching <div class="${c}>${this.content}</div>"`);
+                    console.warn(`Error in activation hook <Activate>: No element matching <div class="${this.classes.join(" ")}>${this.content}</div>"`);
                 }
             } else {
                 let elem = this._getElement();
@@ -84,7 +84,7 @@ class MyElement {
                     elem.style.backgroundColor = null;
                     this.active = false;
                 } else {
-                    console.warn(`Error in activation hook <Deactivate>: No element matching <div class="${c}>${this.content}</div>"`);
+                    console.warn(`Error in activation hook <Deactivate>: No element matching <div class="${this.classes.join(" ")}>${this.content}</div>"`);
                 }
             }
         })
