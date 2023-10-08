@@ -71,9 +71,10 @@ class MyElement {
             if (_c == this.__class) {
                 let elem = this._getElement();
                 if (elem) {
-                    console.log(`Found element, activating...\n`,elem);
+                    console.log(`Found element, activating...\n`,elem, elem.style);
                     elem.style.backgroundColor = "#01234ff";
                     this.active = true;
+                    console.log(`Found element, should now be active...\n`,elem, elem.style);
                 } else {
                     console.warn(`Error in activation hook <Activate>: No element matching <div class="${c}>${this.content}</div>"`);
                 }

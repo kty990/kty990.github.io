@@ -96,9 +96,10 @@ var MyElement = /** @class */ (function () {
             if (_c == _this.__class) {
                 var elem = _this._getElement();
                 if (elem) {
-                    console.log("Found element, activating...\n", elem);
+                    console.log("Found element, activating...\n", elem, elem.style);
                     elem.style.backgroundColor = "#01234ff";
                     _this.active = true;
+                    console.log("Found element, should now be active...\n", elem, elem.style);
                 }
                 else {
                     console.warn("Error in activation hook <Activate>: No element matching <div class=\"".concat(c, ">").concat(_this.content, "</div>\""));
