@@ -368,4 +368,14 @@ a {
     padding: 10px;
     align-self: center;
     font-size: 20px;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #305c6b;
+}
+
+
+.taskbar-action:hover {
+    background-color: #2d3a41;
+    color: #e2e2e2;
 }
