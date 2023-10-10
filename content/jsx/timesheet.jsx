@@ -74,10 +74,11 @@ function Timesheet() {
         </div>
         <p id="time">0:00:00</p>
         <div id="list">
+            
             <div id="taskbar">
-              <p>☰</p>
-              <p onClick={taskUpdate('add')}>+</p>
-              <p onClick={taskUpdate('remove')}>X</p>
+              <p id='taskbar-icon'>☰</p>
+              <p className='taskbar-action' onClick={taskUpdate('add')}>+</p>
+              <p className='taskbar-action' onClick={taskUpdate('remove')}>X</p>
             </div>
         </div>
         <img src="../images/c_p.png" alt="Copy" />

@@ -351,3 +351,21 @@ a {
     background-color:#0d3d4d;
     color: #ccc;
 }
+
+#taskbar-icon {
+    padding: 10px;
+    align-self: center;
+    font-size: 20px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.taskbar-action {
+    margin: 0;
+    margin-right: 10px;
+    background-color: #678493;
+    height: auto;
+    padding: 10px;
+    align-self: center;
+    font-size: 20px;
+}
