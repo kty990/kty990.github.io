@@ -10,6 +10,15 @@ const updateEvent = new CustomEvent('update', {
   }
 })
 
+const taskEvent = new CustomEvent('taskUpdate', {
+  bubbles: true,
+  cancelable: false,
+  detail: {
+    data: '',
+    target: null
+  }
+})
+
 function Timesheet() {
   document.title = "Timesheet";
   main();
@@ -19,6 +28,21 @@ function Timesheet() {
       document.body.dispatchEvent(updateEvent);
     }
   }
+  const taskUpdate = (action) => {
+    return () => {
+      taskEvent.detail.data = `${action}`;
+      document.body.dispatchEvent(taskEvent);
+    }
+  }
+  /*
+  <div style="
+    position:  fixed;
+    left: 600px;
+    top: 550px;
+">
+        <p>Syntax: <em>{month abrv.} {date}: {start}-{end}</em><br><br>Example: Oct 8: 6:30-1:00</p>
+    </div>
+  */
   return (
     <div id="timesheet-widget">
         <div id="cal_btns">
@@ -45,16 +69,18 @@ function Timesheet() {
                 <p>SAT</p>
             </div>
             <div id="display">
-
+              {/* Where the loaded days are displayed */}
             </div>
         </div>
+        <p id="time">0:00:00</p>
         <div id="list">
-            <p id="time">0:00:00</p>
-            {/* TO BE COMPLETED AT ANOTHER DATE */}
-            <div style={{width: '450px',height: '350px',display: 'flex',backgroundColor: '#fff',flexDirection: 'column',marginLeft: '5px'}}> {/* This is the list box */}
-              <div style={{width: '100%',height: '20px',display: 'flex',backgroundColor: '#000',flexDirection: 'column'}}>List element</div> {/* This is a 'list element' */}
+            <div id="taskbar">
+              <p>☰</p>
+              <p onClick={taskUpdate('add')}>+</p>
+              <p onClick={taskUpdate('remove')}>X</p>
             </div>
         </div>
+        <img src="../images/c_p.png" alt="Copy" />
       </div>
   );
 }

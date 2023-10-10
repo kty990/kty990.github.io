@@ -14,6 +14,39 @@ interface eventData {
     __be__data: any;
 }
 
+class Cookie {
+    // Set a cookie with a given name, value, and optional expiration date
+    static set(name: string, value: string, expirationDays?: number): void {
+      let cookieString = `${name}=${encodeURIComponent(value)}`;
+  
+      if (expirationDays !== undefined) {
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + expirationDays);
+        cookieString += `; expires=${expirationDate.toUTCString()}`;
+      }
+  
+      document.cookie = cookieString;
+    }
+  
+    // Get the value of a cookie by its name
+    static get(name: string): string | null {
+      const cookies = document.cookie.split(';');
+      for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.trim().split('=');
+        if (cookieName === name) {
+          return decodeURIComponent(cookieValue);
+        }
+      }
+      return null;
+    }
+  
+    // Delete a cookie by its name
+    static delete(name: string): void {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    }
+}
+  
+
 class MyElement {
     content: string;
     calendar: Calendar;
@@ -230,7 +263,7 @@ async function main() {
         monthDisplay = document.getElementById("cal-title");
     }
 
-    timeDisplay = document.getElementById("list")?.querySelector("#time");
+    timeDisplay = document.getElementById("time");
     
     let {data,elems} = c.render();
     if (calendar) {
@@ -267,6 +300,12 @@ document.body.addEventListener('update', async function (e) {
     await wait(100);
     calendar_root.render(data);
     monthDisplay.textContent = `${c.getMonthName(c.month)} ${c.year}`;
+})
+
+document.body.addEventListener('taskUpdate', async function(e) {
+    const ce = e as CustomEvent<any>;
+    const dta = ce.detail.data;
+    const targt = ce.detail.target;
 })
 
 export {main, wait};

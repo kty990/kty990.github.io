@@ -45,6 +45,37 @@ function wait(ms) {
     });
 }
 exports.wait = wait;
+var Cookie = /** @class */ (function () {
+    function Cookie() {
+    }
+    // Set a cookie with a given name, value, and optional expiration date
+    Cookie.set = function (name, value, expirationDays) {
+        var cookieString = "".concat(name, "=").concat(encodeURIComponent(value));
+        if (expirationDays !== undefined) {
+            var expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + expirationDays);
+            cookieString += "; expires=".concat(expirationDate.toUTCString());
+        }
+        document.cookie = cookieString;
+    };
+    // Get the value of a cookie by its name
+    Cookie.get = function (name) {
+        var cookies = document.cookie.split(';');
+        for (var _i = 0, cookies_1 = cookies; _i < cookies_1.length; _i++) {
+            var cookie = cookies_1[_i];
+            var _a = cookie.trim().split('='), cookieName = _a[0], cookieValue = _a[1];
+            if (cookieName === name) {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+        return null;
+    };
+    // Delete a cookie by its name
+    Cookie.delete = function (name) {
+        document.cookie = "".concat(name, "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;");
+    };
+    return Cookie;
+}());
 var MyElement = /** @class */ (function () {
     function MyElement(cal, children, props) {
         this.active = false;
@@ -240,21 +271,20 @@ var calendar;
 var timeDisplay;
 var monthDisplay;
 function main() {
-    var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var _b, data, elems;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
+        var _a, data, elems;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0: return [4 /*yield*/, wait(300)];
                 case 1:
-                    _d.sent();
+                    _b.sent();
                     if (!calendar_root) {
                         calendar = document.getElementById("display");
                         calendar_root = (0, client_1.createRoot)(calendar);
                         monthDisplay = document.getElementById("cal-title");
                     }
-                    timeDisplay = (_a = document.getElementById("list")) === null || _a === void 0 ? void 0 : _a.querySelector("#time");
-                    _b = c.render(), data = _b.data, elems = _b.elems;
+                    timeDisplay = document.getElementById("time");
+                    _a = c.render(), data = _a.data, elems = _a.elems;
                     if (calendar) {
                         calendar_root.render(data);
                         monthDisplay.textContent = "".concat(c.getMonthName(c.month), " ").concat(c.year);
@@ -302,6 +332,17 @@ document.body.addEventListener('update', function (e) {
                     monthDisplay.textContent = "".concat(c.getMonthName(c.month), " ").concat(c.year);
                     return [2 /*return*/];
             }
+        });
+    });
+});
+document.body.addEventListener('taskUpdate', function (e) {
+    return __awaiter(this, void 0, void 0, function () {
+        var ce, dta, targt;
+        return __generator(this, function (_a) {
+            ce = e;
+            dta = ce.detail.data;
+            targt = ce.detail.target;
+            return [2 /*return*/];
         });
     });
 });
