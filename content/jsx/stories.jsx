@@ -45,7 +45,7 @@ function Stories() {
     setTimeout(() => {
         let elements = document.getElementsByClassName("nav-link");
         for (let x of elements) {
-          if (x.textContent == "Projects") {
+          if (x.textContent == "Stories") {
             changeActive(x);
             break;
           }
