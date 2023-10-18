@@ -249,6 +249,10 @@ function Projects() {
           <p className="filter" onClick={applyFilter("Inactive")}>Inactive</p>
         </div>
         <MyProject/>
+        <div id="stories">
+          <a href="https://www.kutcher.ca/content/pages/stories">Cool Stories</a>
+          <p id="descriptor">These are some cool programming related stories.</p>
+      </div>
       </div>
     );
 }
