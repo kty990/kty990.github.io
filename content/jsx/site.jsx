@@ -6,6 +6,7 @@ import Home from './home.jsx';
 import About from './about.jsx';
 import { MyProject, Projects } from './projects.jsx';
 import Timesheet from './timesheet.jsx';
+import {Stories} from './stories.jsx';
 
 console.log(`Version update: 842`);
 
@@ -75,6 +76,7 @@ class App extends React.Component {
           <Route path="/content/pages/about" element={<About />} />
           <Route path="/content/pages/projects" element={<Projects />} />
           <Route path="/content/pages/timesheet" element={<Timesheet />} />
+          <Route path="/content/pages/stories" element={<Stories />} />
         </Routes>
       </BrowserRouter>
     );
