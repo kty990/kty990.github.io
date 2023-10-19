@@ -417,3 +417,98 @@ a {
     font-style: italic;
     text-wrap: wrap;
 }
+
+#main-stories {
+    position: fixed;
+    background-color: var(--menu);
+    color: var(--text);
+    border-radius: 20px;
+    left: 25vw;
+    top: 5vh;
+    height: 90vh;
+    width: 50vw;
+    user-select: none;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #6f6f6fff;
+    overflow-y: auto;
+    padding-top: 10px;
+    overflow-x: hidden;
+}
+
+#main-stories>#title {
+    width: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+#story-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    padding-bottom: 15px;
+    margin: 0;
+}
+
+.story {
+    background-color: var(--sub-menu);
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.story>#title {
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.story>a {
+    text-decoration: none;
+    color: var(--text);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: block;
+}
+
+.story>a:visited {
+    color: var(--link-visited);
+}
+
+#main-stories::-webkit-scrollbar {
+    width: 6px;
+    /* Set the width of the scrollbar */
+    background-color: #48638e;
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+#main-stories::-webkit-scrollbar-thumb {
+    background: #2d4558;
+    /* Set the color of the thumb */
+    border-radius: 6px;
+    /* Round the corners of the thumb */
+}
+
+/* Customize the scrollbar track */
+#main-stories::-webkit-scrollbar-track {
+    background: #6fa5b7;
+    /* Set the color of the track */
+}
+
+/* Customize the scrollbar thumb when hovering over it */
+#main-stories::-webkit-scrollbar-thumb:hover {
+    background: #0d3d4d;
+    /* Change the color on hover */
+}
