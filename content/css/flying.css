@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --menu: #34586b;
+    --text: #fff;
+    --sub-menu: #1d3745;
+    --link-visited: #346b5c;
+    --link: #233572;
+}
+
+html,
+body {
+    background-color: #7f93b3;
+    font-family: 'Montserrat';
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 130px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000cc;
+    backdrop-filter: blur(5px);
+    padding-right: 2vw;
+    padding-left: 2vw;
+    user-select: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5vh;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+#active-nav {
+    color: #75cfff;
+    font-weight: bold;
+    transition-duration: 500ms;
+    font-size: 2vh;
+}
+
+.nav-link:hover {
+    color: #ccc;
+}
+
+.nav-link:first-child {
+    margin-top: 5vh;
+}
+
+.nav-icon {
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 70%;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: #000000cc;
+    background-color: #000000cc;
+    border-width: 2px;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+}
+
+#active {
+    background-color: #7f93b3;
+    border-radius: 5px;
+    transition-duration: 500ms;
+    color: #000;
+}
+
+#flight-info {
+    position: fixed;
+    left: 400px;
+    width: 70vw;
+    height: 90vh;
+    top: 5vh;
+    background-color: var(--menu);
+    border-color: var(--sub-menu);
+    border-style: solid;
+    padding-top: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: left;
+}
+
+.info {
+    width: 90%;
+    height: fit-content;
+    position: relative;
+    left: 5%;
+    padding: 0;
+    margin: 0;
+    background-color: #309090;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.info>#title {
+    font-weight: bold;
+}
+
+.info>#tags {
+    background-color: #004f55;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
