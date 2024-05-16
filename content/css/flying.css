@@ -85,7 +85,7 @@ a {
 #flight-info {
     position: fixed;
     left: 400px;
-    width: 70vw;
+    width: calc(90%-400px);
     height: 90vh;
     top: 5vh;
     background-color: var(--menu);
