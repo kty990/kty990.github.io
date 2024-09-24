@@ -1,0 +1,48 @@
+#aboutme-snippet {
+    position: fixed;
+    left: 15vw;
+    top: 10vh;
+    min-width: 10vw;
+    max-width: 15vw;
+    width: fit-content;
+    min-height: 10vw;
+    height: auto;
+    background-color: var(--element);
+    padding: 15px;
+    border-radius: 10px;
+    border-color: var(--text);
+    border-style: solid;
+    border-width: 2px;
+    display: flex;
+    padding-bottom: 60px;
+}
+
+#aboutme-snippet>img {
+    width: 100px;
+    height: 100px;
+    /* margin-right: 5px; */
+    position: relative;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 50px;
+    border-color: var(--text);
+    border-style: solid;
+    border-width: 2px;
+    background-color: var(--text);
+}
+
+#aboutme-snippet>div {
+    position: relative;
+    right: 5vw;
+    top: 50px;
+    padding-left: 5px;
+    color: var(--text);
+}
+
+#aboutme-snippet>div>#name {
+    font-size: 2vh;
+}
+
+#aboutme-snippet>div>#desc {
+    font-size: 1.25vh;
+}
