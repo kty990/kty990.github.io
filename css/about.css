@@ -33,7 +33,7 @@
 
 #aboutme-snippet>div {
     position: relative;
-    right: 5vw;
+    right: 80px;
     top: 50px;
     padding-left: 5px;
     color: var(--text);

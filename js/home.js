@@ -8,7 +8,7 @@ function grow(element, i, max) {
             grow(element, i + 0.05, max);
         }, 10)
     } else {
-        console.log("Return");
+        element.style.transform = `scale(${i})`;
         return;
     }
 }
@@ -21,7 +21,7 @@ function shrink(element, i, min) {
             shrink(element, i - 0.05, min);
         }, 10)
     } else {
-        console.log("Return");
+        element.style.transform = `scale(${i})`;
         return;
     }
 }
@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         tab.addEventListener("mouseenter", () => {
             tab.style.zIndex = '9';
-            grow(tab, 1, 1.5);
+            grow(tab, 1, 1.25);
         })
         tab.addEventListener("mouseleave", () => {
             tab.style.zIndex = '1';
-            shrink(tab, 1.5, 1);
+            shrink(tab, 1.25, 1);
         })
     }
 })
