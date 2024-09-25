@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/site.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" sizes="32x32">
     <title>Error 404: Not Found!</title>
 </head>
@@ -16,6 +15,20 @@
     <script type="text/javascript">
         let e = document.getElementsByTagName("h1")[0];
         e.textContent = e.textContent + `\n(${window.location.href})`;
+        let parts = window.location.href.split("/");
+        let counter = 0;
+        while (true) {
+            if (parts[parts.length - 1] != 'www.kutcher.ca') {
+                parts.splice(parts.length - 1, 1);
+            }
+            counter++;
+        }
+        let tmp = "./";
+        for (let i = 0; i < counter; i++) {
+            tmp += "../"
+        }
+        let v = `<link rel="stylesheet" href="${tmp}css/site.css">`
+        document.head.innerHTML += v;
     </script>
 </body>
 
