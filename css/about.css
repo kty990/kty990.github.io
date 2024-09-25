@@ -24,7 +24,7 @@
     position: relative;
     right: 50px;
     bottom: 50px;
-    border-radius: 50px;
+    border-radius: 1000px;
     border-color: var(--text);
     border-style: solid;
     border-width: 2px;
@@ -33,7 +33,7 @@
 
 #aboutme-snippet>div {
     position: relative;
-    right: 80px;
+    right: 50px;
     top: 50px;
     padding-left: 5px;
     color: var(--text);
