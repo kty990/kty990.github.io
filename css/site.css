@@ -16,6 +16,49 @@ body {
     font-family: 'Montserrat';
 }
 
+#error {
+    position: fixed;
+    font-size: 35vh;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    color: var(--text);
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    animation-name: error;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+
+@keyframes error {
+    0% {
+        font-size: 35vh;
+        color: var(--text);
+        filter: opacity(1);
+        top: 0;
+    }
+
+    50% {
+        font-size: 45vh;
+        color: #7f0000;
+        filter: opacity(1);
+        top: -5vh;
+    }
+
+    100% {
+        font-size: 35vh;
+        color: var(--text);
+        filter: opacity(1);
+        top: 0;
+    }
+}
+
 nav {
     position: fixed;
     left: 0;
