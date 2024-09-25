@@ -79,7 +79,7 @@ nav {
 nav>ul {
     margin: 0;
     padding: 0;
-    background-color: var(--sub-menu);
+    /* background-color: var(--sub-menu); */
     padding-top: 5vh;
     padding-bottom: 5vh;
 }
@@ -97,10 +97,20 @@ nav>ul>li {
 a {
     text-decoration: none;
     color: var(--link);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#active {
+    color: var(--active);
+    font-size: 2vh;
+    margin-bottom: 2.4vh;
+}
+
+#active:hover {
+    animation-name: empty !important;
 }
 
 nav>ul>li:hover {
-    color: var(--link-visited);
     animation-name: grow;
     animation-duration: 0.25s;
     animation-timing-function: ease-out;
@@ -108,6 +118,12 @@ nav>ul>li:hover {
     animation-iteration-count: 1;
     font-size: 2vh;
     margin-bottom: 2.4vh;
+}
+
+@keyframes empty {
+    0% {}
+
+    100% {}
 }
 
 @keyframes grow {
