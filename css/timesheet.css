@@ -45,9 +45,9 @@
 
 #edit-menu {
     position: fixed;
-    left: 0;
+    left: 10.5vw;
     top: 0;
-    width: 70vw;
+    width: 60vw;
     height: 100vh;
     background-color: var(--sub-menu);
     border-right-style: solid;
@@ -73,7 +73,7 @@
 #edit-menu>#delete {
     position: absolute;
     bottom: 0;
-    left: 5px;
+    left: calc(5px);
     background-color: var(--element);
     padding: 10px;
     border-radius: 10px;
@@ -86,11 +86,11 @@
 }
 
 #edit-menu>#save {
-    left: 75px;
+    left: calc(75px);
 }
 
 #edit-menu>#delete {
-    left: 145px;
+    left: calc(145px);
 }
 
 #edit-menu>#new:hover,
