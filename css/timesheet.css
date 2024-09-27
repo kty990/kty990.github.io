@@ -1,0 +1,101 @@
+#entries {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 20vw;
+    height: calc(100vh - 10px);
+    padding-top: 10px;
+    background-color: var(--menu);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sub-menu);
+    color: var(--text);
+    text-align: center;
+}
+
+.entry:hover {
+    filter: opacity(0.7);
+    cursor: pointer;
+}
+
+.entry>#name,
+.entry>#timestamp {
+    margin: 0;
+    padding: 0;
+}
+
+.entry>#name {
+    font-size: 2vh;
+    margin-bottom: 10px;
+    padding-top: 5px;
+}
+
+.entry>#timestamp {
+    font-size: 1.25vh;
+    padding-bottom: 5px;
+}
+
+#edit-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70vw;
+    height: 100vh;
+    background-color: var(--sub-menu);
+    border-right-style: solid;
+    border-color: var(--text);
+}
+
+#edit-menu>#calendar {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    background-color: var(--text);
+}
+
+#edit-menu>#hours {
+    position: absolute;
+    left: 50%;
+    top: 350px;
+    background-color: var(--text);
+}
+
+#edit-menu>#new,
+#edit-menu>#save,
+#edit-menu>#delete {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    background-color: var(--element);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--text);
+    border-color: var(--menu);
+    border-style: solid;
+    border-width: 1px;
+    user-select: none;
+    font-size: 15px;
+}
+
+#edit-menu>#save {
+    left: 75px;
+}
+
+#edit-menu>#delete {
+    left: 145px;
+}
+
+#edit-menu>#new:hover,
+#edit-menu>#save:hover,
+#edit-menu>#delete:hover {
+    filter: opacity(0.7);
+    cursor: pointer;
+}
