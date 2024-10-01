@@ -29,8 +29,8 @@ class Calendar {
      * 
      * @param {HTMLDivElement} div 
      */
-    constructor(div, month, year) {
-        this.div = div;
+    constructor(month, year) {
+        this.div = document.createElement("div");
         this.month = month;
         this.year = year;
         if (!Array.from(this.div.classList).includes('calendar')) {
@@ -38,22 +38,18 @@ class Calendar {
         }
     }
 
-    async generate() {
-        const remove = () => {
-            return new Promise((resolve) => {
-                for (let c of Array.from(this.div.children)) {
-                    c.remove();
-                }
-                if (Array.from(this.div.children).length == 0) {
-                    resolve();
-                } else {
-                    throw "Something went wrong...";
-                }
-            })
+    generate(year = null, month = null) {
+        if (year) {
+            this.year = year;
         }
-        await remove().then(() => {
-            console.log(Array.from(this.div.children).length)
-        });
+        if (month) {
+            this.month = month;
+        }
+        this.div.remove();
+        this.div = document.createElement("div");
+        document.getElementById("edit-menu").appendChild(this.div);
+        this.div.classList.add("calendar");
+
         function getFirstDayOfMonth(year, month) {
             // Create a new Date object for the first day of the specified month and year
             const date = new Date(year, month, 1);
@@ -106,7 +102,7 @@ class Calendar {
         ]
         let day = getFirstDayOfMonth(this.year, this.month)
         let days = daysInMonth[this.month];
-        console.warn(day, days, this.div.innerHTML);
+        console.warn(this.month + 1, this.year, day, days)
         for (let i = 0; i < 7; i++) {
             let d = document.createElement("p");
             d.textContent = daysOfWeek[i];
@@ -119,7 +115,7 @@ class Calendar {
             }
         }
         if (days != "?") {
-            console.error("Not ?")
+            // console.error("Not ?")
             for (let i = 0; i < days; i++) {
                 let e = newEmpty();
                 e.querySelector("p").textContent = `${i + 1}`;
@@ -148,6 +144,8 @@ class Calendar {
             }
         }
 
+        console.log(this.div);
+
         document.getElementById("month-year").textContent = `${months[this.month]} ${this.year}`;
     }
 
@@ -158,7 +156,8 @@ class Calendar {
             this.month -= 12;
             this.year++;
         }
-        this.generate();
+        console.log(`.next() Debug 2: ${this.year},${this.month}`)
+        this.generate(this.year, this.month);//.catch(e => console.error(e));
     }
 
     prev() {
@@ -168,7 +167,8 @@ class Calendar {
             this.month += 12;
             this.year--;
         }
-        this.generate();
+        console.log(`.prev() Debug 2: ${this.year},${this.month}`)
+        this.generate(this.year, this.month);//.catch(e => console.error(e));
     }
 }
 
@@ -177,7 +177,7 @@ class HourSelect {
 }
 
 
-let c = new Calendar(document.getElementById('calendar'), 8, 2024);
+let c = new Calendar(9, 2024);
 c.generate();
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
