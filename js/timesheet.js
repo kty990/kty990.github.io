@@ -29,13 +29,15 @@ class Calendar {
      * 
      * @param {HTMLDivElement} div 
      */
-    constructor(month, year) {
+    constructor(month, year, parentID = "edit-menu") {
         this.div = document.createElement("div");
         this.month = month;
+        this.parentID = parentID;
         this.year = year;
         if (!Array.from(this.div.classList).includes('calendar')) {
             this.div.classList.add("calendar");
         }
+        this.generate();
     }
 
     generate(year = null, month = null) {
@@ -47,7 +49,7 @@ class Calendar {
         }
         this.div.remove();
         this.div = document.createElement("div");
-        document.getElementById("edit-menu").appendChild(this.div);
+        document.getElementById(this.parentID).appendChild(this.div);
         this.div.classList.add("calendar");
 
         function getFirstDayOfMonth(year, month) {
@@ -172,22 +174,49 @@ class Calendar {
     }
 }
 
-class HourSelect {
-
+const TIME = {
+    hour: 0,
+    minute: 0
 }
 
 
 let c = new Calendar(9, 2024);
-c.generate();
+// c.generate();
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
-
-console.warn(prev, next);
+const hour = document.getElementById("hour");
+const minute = document.getElementById("minute");
+console.warn(prev, next, hour, minute);
 
 document.addEventListener("mousedown", (e) => {
+    console.warn(e.target.id, e.target.parentElement.id)
     if (e.target.id == "next") {
         c.next();
     } else if (e.target.id == "prev") {
         c.prev();
+    } else if (e.target.id == "up") {
+        if (e.target.parentElement.id == "hour") {
+            TIME.hour++;
+            hour.querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+            console.log("Hour up", TIME);
+        } else {
+            // minute
+            TIME.minute++;
+            console.log("Minute up", TIME);
+            minute.querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+        }
+    } else if (e.target.id == 'down') {
+        if (e.target.parentElement.id == 'hour') {
+            TIME.hour--;
+            console.log("Hour down", TIME);
+            hour.querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+        } else {
+            console.log("Minute down", TIME);
+            TIME.minute--;
+            minute.querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+        }
     }
 })
+
+
+
