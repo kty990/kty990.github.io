@@ -29,77 +29,29 @@ class Calendar {
      * 
      * @param {HTMLDivElement} div 
      */
-    constructor(div, month, year) {
-        this.div = div;
-        this.children = [];
+    constructor(month, year, parentID = "edit-menu") {
+        this.div = document.createElement("div");
         this.month = month;
+        this.parentID = parentID;
         this.year = year;
         if (!Array.from(this.div.classList).includes('calendar')) {
             this.div.classList.add("calendar");
         }
+        this.generate();
     }
 
-    async generate() {
-        const remove = () => {
-            return new Promise((resolve) => {
-                for (let c of this.children) {
-                    c.remove();
-                }
-                this.div.innerHTML = "";
-                resolve();
-            })
+    generate(year = null, month = null) {
+        if (year) {
+            this.year = year;
         }
-        remove().then(() => {
-            let day = getFirstDayOfMonth(this.year, this.month)
-            let days = daysInMonth[this.month];
-            console.warn(day, days, this.div.innerHTML);
-            for (let i = 0; i < 7; i++) {
-                let d = document.createElement("p");
-                d.textContent = daysOfWeek[i];
-                this.div.appendChild(d);
-                this.children.push(d);
-            }
-            if (day != 0) {
-                for (let i = 0; i < day; i++) {
-                    let e = newEmpty();
-                    this.div.appendChild(e);
-                    this.children.push(e);
-                    console.log('empty');
-                }
-            }
-            if (days != "?") {
-                console.error("Not ?")
-                for (let i = 0; i < days; i++) {
-                    let e = newEmpty();
-                    e.querySelector("p").textContent = `${i + 1}`;
-                    let descriptorContainer = e.querySelector("div");
-                    // Load descriptors from cookies
-                    this.div.appendChild(e);
-                    this.children.push(e);
-                    console.log("day added", e)
-                }
-            } else {
-                if (!isLeapYear(this.year)) {
-                    for (let i = 0; i < 28; i++) {
-                        let e = newEmpty();
-                        e.querySelector("p").textContent = `${i + 1}`;
-                        let descriptorContainer = e.querySelector("div");
-                        // Load descriptors from cookies
-                        this.div.appendChild(e);
-                    }
-                } else {
-                    for (let i = 0; i < 29; i++) {
-                        let e = newEmpty();
-                        e.querySelector("p").textContent = `${i + 1}`;
-                        let descriptorContainer = e.querySelector("div");
-                        // Load descriptors from cookies
-                        this.div.appendChild(e);
-                    }
-                }
-            }
+        if (month) {
+            this.month = month;
+        }
+        this.div.remove();
+        this.div = document.createElement("div");
+        document.getElementById(this.parentID).appendChild(this.div);
+        this.div.classList.add("calendar");
 
-            document.getElementById("month-year").textContent = `${months[this.month]} ${this.year}`;
-        });
         function getFirstDayOfMonth(year, month) {
             // Create a new Date object for the first day of the specified month and year
             const date = new Date(year, month, 1);
@@ -150,9 +102,53 @@ class Calendar {
             "Fri",
             "Sat"
         ]
-        // setTimeout(() => {
+        let day = getFirstDayOfMonth(this.year, this.month)
+        let days = daysInMonth[this.month];
+        console.warn(this.month + 1, this.year, day, days)
+        for (let i = 0; i < 7; i++) {
+            let d = document.createElement("p");
+            d.textContent = daysOfWeek[i];
+            this.div.appendChild(d);
+        }
+        if (day != 0) {
+            for (let i = 0; i < day; i++) {
+                this.div.appendChild(newEmpty());
+                console.log('empty');
+            }
+        }
+        if (days != "?") {
+            // console.error("Not ?")
+            for (let i = 0; i < days; i++) {
+                let e = newEmpty();
+                e.querySelector("p").textContent = `${i + 1}`;
+                let descriptorContainer = e.querySelector("div");
+                // Load descriptors from cookies
+                this.div.appendChild(e);
+                console.log("day added", e)
+            }
+        } else {
+            if (!isLeapYear(this.year)) {
+                for (let i = 0; i < 28; i++) {
+                    let e = newEmpty();
+                    e.querySelector("p").textContent = `${i + 1}`;
+                    let descriptorContainer = e.querySelector("div");
+                    // Load descriptors from cookies
+                    this.div.appendChild(e);
+                }
+            } else {
+                for (let i = 0; i < 29; i++) {
+                    let e = newEmpty();
+                    e.querySelector("p").textContent = `${i + 1}`;
+                    let descriptorContainer = e.querySelector("div");
+                    // Load descriptors from cookies
+                    this.div.appendChild(e);
+                }
+            }
+        }
 
-        // }, 3000);
+        console.log(this.div);
+
+        document.getElementById("month-year").textContent = `${months[this.month]} ${this.year}`;
     }
 
     next() {
@@ -162,7 +158,8 @@ class Calendar {
             this.month -= 12;
             this.year++;
         }
-        this.generate();
+        console.log(`.next() Debug 2: ${this.year},${this.month}`)
+        this.generate(this.year, this.month);//.catch(e => console.error(e));
     }
 
     prev() {
@@ -172,24 +169,54 @@ class Calendar {
             this.month += 12;
             this.year--;
         }
-        this.generate();
+        console.log(`.prev() Debug 2: ${this.year},${this.month}`)
+        this.generate(this.year, this.month);//.catch(e => console.error(e));
     }
 }
 
-// class HourSelect {
+const TIME = {
+    hour: 0,
+    minute: 0
+}
 
-// }
 
-
-let c = new Calendar(document.getElementById('calendar'), 8, 2024);
-c.generate();
+let c = new Calendar(9, 2024);
+// c.generate();
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
+const hour = document.getElementById("hour");
+const minute = document.getElementById("minute");
+console.warn(prev, next, hour, minute);
 
 document.addEventListener("mousedown", (e) => {
+    console.warn(e.target.id, e.target.parentElement.id)
     if (e.target.id == "next") {
         c.next();
     } else if (e.target.id == "prev") {
         c.prev();
+    } else if (e.target.id == "up") {
+        if (e.target.parentElement.id == "hour") {
+            TIME.hour++;
+            document.getElementById("hour").querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+            // console.log("Hour up", TIME, document.getElementById("hour").querySelector("#display").querySelector("p"));
+        } else {
+            // minute
+            TIME.minute++;
+            // console.log("Minute up", TIME, document.getElementById("minute").querySelector("#display").querySelector("p"));
+            document.getElementById("minute").querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+        }
+    } else if (e.target.id == 'down') {
+        if (e.target.parentElement.id == 'hour') {
+            TIME.hour--;
+            // console.log("Hour down", TIME, document.getElementById("hour").querySelector("#display").querySelector("p"));
+            document.getElementById("hour").querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+        } else {
+            // console.log("Minute down", TIME, document.getElementById("minute").querySelector("#display").querySelector("p"));
+            TIME.minute--;
+            document.getElementById("minute").querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+        }
     }
 })
+
+
+
