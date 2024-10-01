@@ -1,27 +1,27 @@
-function getCookie(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
+// function getCookie(name) {
+//     var cookies = document.cookie.split(';');
+//     for (var i = 0; i < cookies.length; i++) {
+//         var cookie = cookies[i].trim();
 
-        if (cookie.indexOf(name + '=') === 0) {
-            return cookie.substring(name.length + 1);
+//         if (cookie.indexOf(name + '=') === 0) {
+//             return cookie.substring(name.length + 1);
 
-        }
-    }
-    return null;
-}
+//         }
+//     }
+//     return null;
+// }
 
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires
-            = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value
-        + expires + "; path=/";
-}
+// function setCookie(name, value, days) {
+//     var expires = "";
+//     if (days) {
+//         var date = new Date();
+//         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+//         expires
+//             = "; expires=" + date.toUTCString();
+//     }
+//     document.cookie = name + "=" + value
+//         + expires + "; path=/";
+// }
 
 class Calendar {
 
@@ -31,6 +31,7 @@ class Calendar {
      */
     constructor(div, month, year) {
         this.div = div;
+        this.children = [];
         this.month = month;
         this.year = year;
         if (!Array.from(this.div.classList).includes('calendar')) {
@@ -41,18 +42,63 @@ class Calendar {
     async generate() {
         const remove = () => {
             return new Promise((resolve) => {
-                for (let c of Array.from(this.div.children)) {
+                for (let c of this.children) {
                     c.remove();
                 }
-                if (Array.from(this.div.children).length == 0) {
-                    resolve();
-                } else {
-                    throw "Something went wrong...";
-                }
+                this.div.innerHTML = "";
+                resolve();
             })
         }
-        await remove().then(() => {
-            console.log(Array.from(this.div.children).length)
+        remove().then(() => {
+            let day = getFirstDayOfMonth(this.year, this.month)
+            let days = daysInMonth[this.month];
+            console.warn(day, days, this.div.innerHTML);
+            for (let i = 0; i < 7; i++) {
+                let d = document.createElement("p");
+                d.textContent = daysOfWeek[i];
+                this.div.appendChild(d);
+                this.children.push(d);
+            }
+            if (day != 0) {
+                for (let i = 0; i < day; i++) {
+                    let e = newEmpty();
+                    this.div.appendChild(e);
+                    this.children.push(e);
+                    console.log('empty');
+                }
+            }
+            if (days != "?") {
+                console.error("Not ?")
+                for (let i = 0; i < days; i++) {
+                    let e = newEmpty();
+                    e.querySelector("p").textContent = `${i + 1}`;
+                    let descriptorContainer = e.querySelector("div");
+                    // Load descriptors from cookies
+                    this.div.appendChild(e);
+                    this.children.push(e);
+                    console.log("day added", e)
+                }
+            } else {
+                if (!isLeapYear(this.year)) {
+                    for (let i = 0; i < 28; i++) {
+                        let e = newEmpty();
+                        e.querySelector("p").textContent = `${i + 1}`;
+                        let descriptorContainer = e.querySelector("div");
+                        // Load descriptors from cookies
+                        this.div.appendChild(e);
+                    }
+                } else {
+                    for (let i = 0; i < 29; i++) {
+                        let e = newEmpty();
+                        e.querySelector("p").textContent = `${i + 1}`;
+                        let descriptorContainer = e.querySelector("div");
+                        // Load descriptors from cookies
+                        this.div.appendChild(e);
+                    }
+                }
+            }
+
+            document.getElementById("month-year").textContent = `${months[this.month]} ${this.year}`;
         });
         function getFirstDayOfMonth(year, month) {
             // Create a new Date object for the first day of the specified month and year
@@ -104,51 +150,9 @@ class Calendar {
             "Fri",
             "Sat"
         ]
-        let day = getFirstDayOfMonth(this.year, this.month)
-        let days = daysInMonth[this.month];
-        console.warn(day, days, this.div.innerHTML);
-        for (let i = 0; i < 7; i++) {
-            let d = document.createElement("p");
-            d.textContent = daysOfWeek[i];
-            this.div.appendChild(d);
-        }
-        if (day != 0) {
-            for (let i = 0; i < day; i++) {
-                this.div.appendChild(newEmpty());
-                console.log('empty');
-            }
-        }
-        if (days != "?") {
-            console.error("Not ?")
-            for (let i = 0; i < days; i++) {
-                let e = newEmpty();
-                e.querySelector("p").textContent = `${i + 1}`;
-                let descriptorContainer = e.querySelector("div");
-                // Load descriptors from cookies
-                this.div.appendChild(e);
-                console.log("day added", e)
-            }
-        } else {
-            if (!isLeapYear(this.year)) {
-                for (let i = 0; i < 28; i++) {
-                    let e = newEmpty();
-                    e.querySelector("p").textContent = `${i + 1}`;
-                    let descriptorContainer = e.querySelector("div");
-                    // Load descriptors from cookies
-                    this.div.appendChild(e);
-                }
-            } else {
-                for (let i = 0; i < 29; i++) {
-                    let e = newEmpty();
-                    e.querySelector("p").textContent = `${i + 1}`;
-                    let descriptorContainer = e.querySelector("div");
-                    // Load descriptors from cookies
-                    this.div.appendChild(e);
-                }
-            }
-        }
+        // setTimeout(() => {
 
-        document.getElementById("month-year").textContent = `${months[this.month]} ${this.year}`;
+        // }, 3000);
     }
 
     next() {
@@ -172,17 +176,15 @@ class Calendar {
     }
 }
 
-class HourSelect {
+// class HourSelect {
 
-}
+// }
 
 
 let c = new Calendar(document.getElementById('calendar'), 8, 2024);
 c.generate();
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
-
-console.warn(prev, next);
 
 document.addEventListener("mousedown", (e) => {
     if (e.target.id == "next") {
