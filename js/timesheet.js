@@ -188,6 +188,7 @@ const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 console.warn(prev, next, hour, minute);
 
+
 document.addEventListener("mousedown", (e) => {
     console.warn(e.target.id, e.target.parentElement.id)
     if (e.target.id == "next") {
@@ -197,23 +198,23 @@ document.addEventListener("mousedown", (e) => {
     } else if (e.target.id == "up") {
         if (e.target.parentElement.id == "hour") {
             TIME.hour++;
-            hour.querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
-            console.log("Hour up", TIME);
+            document.getElementById("hour").querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+            // console.log("Hour up", TIME, document.getElementById("hour").querySelector("#display").querySelector("p"));
         } else {
             // minute
             TIME.minute++;
-            console.log("Minute up", TIME);
-            minute.querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+            // console.log("Minute up", TIME, document.getElementById("minute").querySelector("#display").querySelector("p"));
+            document.getElementById("minute").querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
         }
     } else if (e.target.id == 'down') {
         if (e.target.parentElement.id == 'hour') {
             TIME.hour--;
-            console.log("Hour down", TIME);
-            hour.querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
+            // console.log("Hour down", TIME, document.getElementById("hour").querySelector("#display").querySelector("p"));
+            document.getElementById("hour").querySelector("#display").querySelector("p").textContent = `${(TIME.hour < 10) ? '0' : ''}${TIME.hour}`
         } else {
-            console.log("Minute down", TIME);
+            // console.log("Minute down", TIME, document.getElementById("minute").querySelector("#display").querySelector("p"));
             TIME.minute--;
-            minute.querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
+            document.getElementById("minute").querySelector("#display").querySelector("p").textContent = `${(TIME.minute < 10) ? '0' : ''}${TIME.minute}`
         }
     }
 })
