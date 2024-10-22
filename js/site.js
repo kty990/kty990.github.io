@@ -10,6 +10,7 @@ async function init() {
         <li><a href="./projects" ${(active.indexOf('projects') != -1) ? 'id="active"' : ''}>Projects <span style="font-size:0.75vh">WIP</span></a></li>
         <li><a href="./stories" ${(active.indexOf('stories') != -1) ? 'id="active"' : ''}>Stories <span style="font-size:0.75vh">WIP</span></a></li>
         <li><a href="./timesheet" ${(active.indexOf('timesheet') != -1) ? 'id="active"' : ''}>Timesheet <span style="font-size:0.75vh">WIP</span></a></li>
+        <li><a href="./physics" ${(active.indexOf('physics') != -1) ? 'id="active"' : ''}>Physics Emulator <span style="font-size:0.75vh">WIP</span></a></li>
     </ul>
 </nav>`
     document.body.innerHTML += navbar;
