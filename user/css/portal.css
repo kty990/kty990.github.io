@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --text: #ffffff;
+    --border: #D0CDD7;
+    --body: #ACB0BD;
+    --menu: #416165;
+    --accent: #0B3948;
+    /* coolors.co */
+}
+
+html,
+body {
+    font-family: "Montserrat", sans-serif;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--body);
+}
