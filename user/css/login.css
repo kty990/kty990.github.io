@@ -58,15 +58,12 @@ button {
     font-weight: bold;
 }
 
-#togglePass {
-    user-select: none;
-    background-color: var(--accent);
-    border-radius: 1px;
-    padding: 5px;
-}
-
-#togglePass:hover,
 button:hover {
     filter: brightness(0.5);
     cursor: pointer;
+}
+
+#showPass {
+    font-size: 1.5vh;
+    height: fit-content;
 }
